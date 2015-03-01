@@ -1,0 +1,6 @@
+Protocol 2
+
+#Host me
+#    HostName www.xxx.xx
+#    Port 9999
+#    ForwardAgent yes

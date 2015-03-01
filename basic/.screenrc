@@ -1,0 +1,58 @@
+# Start message
+startup_message off
+bell_msg ""
+
+
+# Set default encoding using utf8
+defutf8 on
+
+# Refresh the display when exiting programs
+altscreen on
+
+
+# Dynamic title
+shelltitle '$ |bash'
+bindkey ^[z prev
+bindkey ^[x next
+
+#bindkey 5D prev #ctrl + left   , move to previous window
+#bindkey 5C next # ctrl+ right , move to next window
+
+bindkey ^[[5D prev #ctrl + left   , move to previous window
+bindkey ^[[5C next # ctrl+ right , move to next window
+
+bindkey ^[5D prev #ctrl + left   , move to previous window
+bindkey ^[5C next # ctrl+ right , move to next window
+
+bindkey ^[[1;5D prev # ctrl+ right , move to next window
+bindkey ^[[1;5C next # ctrl+ right , move to next window
+
+
+
+
+# for putty
+bindkey ^[[D prev #ctrl + left   , move to previous window
+bindkey ^[[C next # ctrl+ right , move to next window
+
+shell -bash
+bind s
+#ban掉鎖定預設熱鍵
+
+
+defencoding utf8
+caption always "%{.KW} %-w%{.mW}[%n] %t%{.KW}%+w"
+#hardstatus alwayslastline "%{R}[ %{w}%1` %{R}]%=%{M}%e %{G}%H %{Y} %c %{R} %d/%m/%Y %{K} Load: %l %{w}"
+
+#term screen-256color
+attrcolor b ".I"
+termcapinfo xterm 'Co#256:AB=\E[48;5;%dm:AF=\E[38;5;%dm'
+termcapinfo xterm-256 'Co#256:AB=\E[48;5;%dm:AF=\E[38;5;%dm'
+
+defbce on
+
+screen 0
+select 0
+exec ssh-agent screen
+exec true
+source $HOME/.ssh/screen_agent
+
