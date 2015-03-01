@@ -4,3 +4,7 @@ Protocol 2
 #    HostName www.xxx.xx
 #    Port 9999
 #    ForwardAgent yes
+
+Host ptt
+    HostName ptt.cc
+    User bbs
