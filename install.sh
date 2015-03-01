@@ -1,3 +1,4 @@
+touch ~/.bash_host
 cp basic/.* ~/
 
 # .vim style
