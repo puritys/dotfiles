@@ -1,0 +1,9 @@
+PATH=$PATH:/cygdrive/c/Program\ Files\ \(x86\)/Java/jdk1.7.0_40/bin/
+
+export $PATH
+
+user=whoami
+
+NODE_PATH='C:\Users\$(user)\AppData\Roaming\npm\node_modules'
+
+export NODE_PATH
