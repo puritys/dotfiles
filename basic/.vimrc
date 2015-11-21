@@ -135,6 +135,8 @@ map <ESC>[882 :tabn<CR> " shift + right , move to next tab
 au BufRead,BufNewFile *.sjs set filetype=javascript
 au BufRead,BufNewFile *.js set filetype=javascript
 au BufRead,BufNewFile *.html set filetype=php
+au BufRead,BufNewFile *.go set filetype=go
+
 
 " mark
 sign define information text=- linehl=Warning texthl=Error
