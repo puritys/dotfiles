@@ -55,14 +55,10 @@ set wcm=<C-Z>
 hi TabLine guifg=#2f2f2f guibg=#a050a0     ctermfg=248 ctermbg=233
 hi TabLineSel guifg=#2f2f2f guibg=#a050a0     ctermfg=white ctermbg=69
 "hi Comment term=bold ctermfg=darkcyan guifg=LightBlue
-"熱鍵
-map ,w :w<CR>
-map ,q :wq<CR>
-map ,e :mksession /home/puritys/~my_editFiles.vim<CR> "指定暫存些頁面 mks
+
+" Hot key 
 map <Esc> :<C-c>
-"Tab hotkeys
-"nmap <C-t> :tabnew<CR>
-"nmap <C-> :tabc<CR> "close tab
+
 "數字鍵轉正常數字
 map <Esc>Oq 1
 map <Esc>Or 2
@@ -82,18 +78,6 @@ map <Esc>OS -
 map <Esc>[D 4
 map <Esc>[C 6
 
-" ctrl + s = save
-map <C-s> :w<cr>
-
-" Ctrl + c = copy
-vmap <C-c> y
-
-" Ctrl + v = paste
-imap <C-v> <esc>P
-
-" cut selected text (ctrl-x)
-vmap <C-x> x
-
 "切換tab
 nmap 4 :tabp<CR>
 nmap 6 :tabn<CR>
@@ -103,17 +87,7 @@ nmap m :tabn<CR>
 nmap gf <C-w>gf
 map <F6> :emenu <C-Z>
 
-" Fix for chrome 
-nmap ,w <C-w>
-
-" plugin
-nmap ,tree :NERDTree<CR> " NERDTree plugin
-nmap ,ctag :TlistToggle<CR> " taglist
-
 " switch vim window
-"<C-w>l right , <C-w>h left, <C-w>k up, <C-w>j down
-"nmap <ESC>[1;5C <C-w>l " ctrl + right arrow : move to up split window
-"nmap <ESC>[1;5D <C-w>h " ctrl + left arrow : 
 nmap <ESC>[1;5A <C-w>h " ctrl + up arrow : move to up split window
 nmap <ESC>[1;5B <C-w>l " ctrl + down arrow : move to up split window
 
@@ -131,21 +105,28 @@ nmap <ESC>[1;2C :tabn<CR> " shift + right
 nmap <ESC>[D :tabp<CR>
 nmap <ESC>[C :tabn<CR>
 
-
 " Mac
 map <ESC>[881 :tabp<CR> " shift + left , move to previous tab 
 map <ESC>[882 :tabn<CR> " shift + right , move to next tab 
+
+" auto complete
+:inoremap <buffer> <C-X><C-U> <C-X><C-U><C-P> 
+:inoremap <buffer> <C-S-Space> <C-X><C-U><C-P> 
+:imap <tab> <c-x><c-o>
+
+:nmap <c-s> :w<CR>
+:imap <c-s> <Esc>:w<CR>a
+
+" plugin hot key
+nmap ,tree :NERDTree<CR> " NERDTree plugin
+nmap ,ctag :TlistToggle<CR> " taglist
+
 
 au BufRead,BufNewFile *.sjs set filetype=javascript
 au BufRead,BufNewFile *.js set filetype=javascript
 au BufRead,BufNewFile *.html set filetype=php
 au BufRead,BufNewFile *.go set filetype=go
 au BufRead,BufNewFile *.java set filetype=java
-
-
-:inoremap <buffer> <C-X><C-U> <C-X><C-U><C-P> 
-:inoremap <buffer> <C-S-Space> <C-X><C-U><C-P> 
-:imap <tab> <c-x><c-o>
 
 
 if has("autocmd") 
