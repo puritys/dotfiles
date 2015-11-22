@@ -112,7 +112,6 @@ map <ESC>[882 :tabn<CR> " shift + right , move to next tab
 " auto complete
 :inoremap <buffer> <C-X><C-U> <C-X><C-U><C-P> 
 :inoremap <buffer> <C-S-Space> <C-X><C-U><C-P> 
-:imap <tab> <c-x><c-o>
 
 :nmap <c-s> :w<CR>
 :imap <c-s> <Esc>:w<CR>a
@@ -127,6 +126,16 @@ au BufRead,BufNewFile *.js set filetype=javascript
 au BufRead,BufNewFile *.html set filetype=php
 au BufRead,BufNewFile *.go set filetype=go
 au BufRead,BufNewFile *.java set filetype=java
+
+function! Tab_Or_Complete()
+  if col('.')>1 && strpart( getline('.'), col('.')-2, 3 ) =~ '^\w'
+    return "\<C-X>\<C-O>"
+  else
+    return "\<Tab>"
+  endif
+endfunction
+:inoremap <Tab> <C-R>=Tab_Or_Complete()<CR>
+":set dictionary="/usr/dict/words"
 
 
 if has("autocmd") 
