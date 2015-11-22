@@ -1,5 +1,8 @@
 syntax on
-"/usr/share/vim/vim70/lang/
+""/usr/share/vim/vim70/lang/
+
+"set paste "" Can not put this line after the autoindent, of the  autoindent will be reset, "set paste" will disable hot key on insert mode.
+
 set nocompatible
 set hlsearch "high light search
 set encoding=utf-8
@@ -9,7 +12,9 @@ set tabstop=4
 set shiftwidth=4
 set et
 
+filetype plugin on
 filetype plugin indent on
+
 
 "自動縮排 cindent autoindent(ai)  smartindent
 set cindent
@@ -20,9 +25,8 @@ set backspace=2
 set t_Co=256 "設定成256色
 source $VIMRUNTIME/macros/matchit.vim
 set foldmethod=marker
-set paste "不能放在 autoindent 之後， 否則autoindent will reset
 colorscheme mystyle_white
-"mystyle  molokai 
+"" mystyle  molokai 
 
 set cursorline
 
@@ -136,12 +140,17 @@ au BufRead,BufNewFile *.sjs set filetype=javascript
 au BufRead,BufNewFile *.js set filetype=javascript
 au BufRead,BufNewFile *.html set filetype=php
 au BufRead,BufNewFile *.go set filetype=go
+au BufRead,BufNewFile *.java set filetype=java
 
 
-" mark
-sign define information text=- linehl=Warning texthl=Error
-:map <C-n> :exe ":sign place 1 line=" . line(".") ." name=information file=" . expand("%:p")<CR>
-:map <S-n> :exe ":sign unplace 1 "<CR>
+:inoremap <buffer> <C-X><C-U> <C-X><C-U><C-P> 
+:inoremap <buffer> <C-S-Space> <C-X><C-U><C-P> 
+:imap <tab> <c-x><c-o>
 
-":map <C-F7> :sign unplace<CR>
-":exe ":sign jump  file=".expand("%:p")
+
+if has("autocmd") 
+  autocmd Filetype java setlocal omnifunc=javacomplete#Complete
+  autocmd Filetype php setlocal omnifunc=phpcomplete#CompletePHP
+endif 
+
+
