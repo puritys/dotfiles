@@ -120,12 +120,28 @@ map <ESC>[882 :tabn<CR> " shift + right , move to next tab
 nmap ,tree :NERDTree<CR> " NERDTree plugin
 nmap ,ctag :TlistToggle<CR> " taglist
 
+" OmniCppComplete
+set tags+=~/.vim/tags/cpp
+"map <C-F12> :!ctags -R --sort=yes --c++-kinds=+p --fields=+iaS --extra=+q .<CR>
+let OmniCpp_NamespaceSearch = 1
+let OmniCpp_GlobalScopeSearch = 1
+let OmniCpp_ShowAccess = 1
+let OmniCpp_ShowPrototypeInAbbr = 1 " show function parameters
+let OmniCpp_MayCompleteDot = 1 " autocomplete after .
+let OmniCpp_MayCompleteArrow = 1 " autocomplete after ->
+let OmniCpp_MayCompleteScope = 1 " autocomplete after ::
+let OmniCpp_DefaultNamespaces = ["std", "_GLIBCXX_STD"]
+" automatically open and close the popup menu / preview window
+au CursorMovedI,InsertLeave * if pumvisible() == 0|silent! pclose|endif
+set completeopt=menuone,menu,longest ",preview
 
 au BufRead,BufNewFile *.sjs set filetype=javascript
 au BufRead,BufNewFile *.js set filetype=javascript
 au BufRead,BufNewFile *.html set filetype=php
 au BufRead,BufNewFile *.go set filetype=go
 au BufRead,BufNewFile *.java set filetype=java
+au BufRead,BufNewFile *.cc set filetype=cpp
+au BufRead,BufNewFile *.c set filetype=cpp
 
 function! Tab_Or_Complete()
   if col('.')>1 && strpart( getline('.'), col('.')-2, 3 ) =~ '^\w'
@@ -141,6 +157,7 @@ endfunction
 if has("autocmd") 
   autocmd Filetype java setlocal omnifunc=javacomplete#Complete
   autocmd Filetype php setlocal omnifunc=phpcomplete#CompletePHP
+  autocmd Filetype cpp setlocal omnifunc=omni#cpp#complete#Main
 endif 
 
 
