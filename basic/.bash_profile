@@ -6,6 +6,7 @@ if [ -f ~/.bash_host ]; then
 fi
 
 
+
 if [ -f ~/.bashrc ]; then
 	. ~/.bashrc
 fi
@@ -14,6 +15,9 @@ if [ -f ~/.alias ]; then
     . ~/.alias
 fi
 
+if [ -f ~/.ssh/config_customized ]; then
+    alias ssh='ssh -F <(cat .ssh/config ~/.ssh/config_customized)'
+fi
 
 # User specific environment and startup programs
 
@@ -61,3 +65,9 @@ export LANG=en_US.UTF-8
 
 # enable control-s and control-q
 stty -ixon
+
+if [ -f ~/.bash_customized ]; then
+	. ~/.bash_customized
+fi
+
+

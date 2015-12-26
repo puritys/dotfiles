@@ -17,8 +17,10 @@ filetype plugin indent on
 
 
 "自動縮排 cindent autoindent(ai)  smartindent
-set cindent
-set ai
+"set cindent
+"set ai
+filetype indent off
+set noautoindent
 set showcmd
 set bg=dark
 set backspace=2
