@@ -2,7 +2,7 @@ touch ~/.bash_host
 cp basic/.* ~/
 
 # .vim style
-cp -r vim ~/.vim
+cp -rT vim ~/.vim
 
 # ssh
 mkdir ~/.ssh

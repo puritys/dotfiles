@@ -162,4 +162,12 @@ if has("autocmd")
   autocmd Filetype cpp setlocal omnifunc=omni#cpp#complete#Main
 endif 
 
+"set verbosefile=~/.vimlog
+"set verbose=15  
+
+" Plugins
+" How to instal plugin :PlugInstall
+"call plug#begin('~/.vim/plugged')
+"Plug 'fatih/vim-go'
+"call plug#end()
 
