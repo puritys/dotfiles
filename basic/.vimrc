@@ -28,6 +28,7 @@ set backspace=2
 set t_Co=256 "設定成256色
 source $VIMRUNTIME/macros/matchit.vim
 set foldmethod=marker
+set tabpagemax=100
 
 "tab setting
 hi TabLine guifg=#2f2f2f guibg=#a050a0     ctermfg=248 ctermbg=233

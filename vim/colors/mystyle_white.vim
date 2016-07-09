@@ -24,13 +24,13 @@ hi TextBold cterm=bold ctermfg=88 ctermbg=none
 hi TextEmphasize cterm=bold ctermfg=255  ctermbg=124
 hi Test ctermfg=124
 
-hi TabLineFill cterm=none ctermfg=black ctermbg=239
-hi TabLine     cterm=none ctermfg=248   ctermbg=239
+hi TabLineFill cterm=none ctermfg=black ctermbg=240
+hi TabLine     cterm=none ctermfg=247   ctermbg=240
 hi TabLineSel  cterm=bold ctermfg=black ctermbg=230
 
 hi Normal   ctermfg=238  ctermbg=none
 " Number line
-hi LineNr   cterm=none  ctermfg=240 ctermbg=none 
+hi LineNr   cterm=none  ctermfg=240 ctermbg=254 
 "  "xxxxxx" 
 hi Constant cterm=none  ctermfg=202  ctermbg=none
 
