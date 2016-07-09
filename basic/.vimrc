@@ -1,3 +1,4 @@
+source ~/.vimrc_vundle
 syntax on
 ""/usr/share/vim/vim70/lang/
 
@@ -27,6 +28,10 @@ set backspace=2
 set t_Co=256 "設定成256色
 source $VIMRUNTIME/macros/matchit.vim
 set foldmethod=marker
+
+"tab setting
+hi TabLine guifg=#2f2f2f guibg=#a050a0     ctermfg=248 ctermbg=233
+hi TabLineSel guifg=#2f2f2f guibg=#a050a0     ctermfg=white ctermbg=69
 colorscheme mystyle_white
 "" mystyle  molokai 
 
@@ -52,11 +57,6 @@ set wildmenu
 set cpo-=<
 set wcm=<C-Z>
 
-
-"tab setting
-hi TabLine guifg=#2f2f2f guibg=#a050a0     ctermfg=248 ctermbg=233
-hi TabLineSel guifg=#2f2f2f guibg=#a050a0     ctermfg=white ctermbg=69
-"hi Comment term=bold ctermfg=darkcyan guifg=LightBlue
 
 " Hot key 
 map <Esc> :<C-c>
