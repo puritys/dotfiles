@@ -2,7 +2,11 @@ touch ~/.bash_host
 cp basic/.* ~/
 
 # .vim style
-cp -rT vim ~/.vim
+if [[ `uname` == 'Darwin' ]]; then
+    cp -R vim/ ~/.vim
+else 
+    cp -rT vim ~/.vim
+fi
 
 
 
