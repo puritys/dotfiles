@@ -1,0 +1,6 @@
+alias ll='ls -la -G'
+alias ls='ls -G'
+
+#alias er='tail -f /logs/xxx'
+
+

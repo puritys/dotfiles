@@ -11,8 +11,14 @@ if [ -f ~/.bashrc ]; then
 	. ~/.bashrc
 fi
 
-if [ -f ~/.alias ]; then
-    . ~/.alias
+if [ `uname` == "Darwin" ]; then
+    if [ -f ~/.alias_mac ]; then
+        . ~/.alias_mac
+    fi
+else
+    if [ -f ~/.alias ]; then
+        . ~/.alias
+    fi
 fi
 
 if [ -f ~/.ssh/config_customized ]; then
