@@ -51,21 +51,7 @@ myname=`whoami`
 if [ -n "$SSH_AUTH_SOCK" ]; then
     true
 else
-    port=`ps aux | grep $myname | grep ssh-agent | grep -v grep | awk '{print $2}'`
-    port=( $port )
-    port=${port[0]}
-    if [ ${#port} -gt 0 ];then
-        port=$(($port - 2))
-    else
-        port=""
-    fi
-
-    if [ "x$port" != "x" ]; then
-        file=`find /tmp/ssh* | grep $port |grep agent`
-        SSH_AUTH_SOCK=$file
-        export SSH_AUTH_SOCK
-
-    fi
+    source $HOME/.ssh/environment
 fi
 export LANG=en_US.UTF-8
 export LC_CTYPE=en_US.UTF-8
