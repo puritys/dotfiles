@@ -11,9 +11,9 @@ fi
 
 
 # ssh
-mkdir ~/.ssh
-cp ssh/* ~/.ssh/
-chmod 400 ~/.ssh/config
+#mkdir ~/.ssh
+#cp ssh/* ~/.ssh/
+#chmod 400 ~/.ssh/config
 
 
 git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
