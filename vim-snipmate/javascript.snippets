@@ -1,0 +1,31 @@
+snippet des "Describe" b
+	describe('${1:}', () => {
+		${0}
+		assert.equal("", "");
+	});
+snippet it "it" b
+	it('${1:}', () => {
+		${0}
+	});
+snippet exp "expect" b
+	expect(${1:})${0};
+snippet expe "expect" b
+	expect(${1:}).to.equal(${0});
+snippet expd "expect" b
+	expect(${1:}).to.deep.equal(${0});
+
+snippet class
+	function ${1:function_name}() {
+		${0}
+	}
+	var o = $1.prototype;
+	o.xxx = function () {
+	}
+snippet mocha
+	var assert = require('assert');
+
+	describe("Test Method ", function () {
+	    it("normal case", function () {
+	        assert.equal("", "");
+	    }); 
+	});

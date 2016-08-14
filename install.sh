@@ -15,5 +15,9 @@ fi
 #cp ssh/* ~/.ssh/
 #chmod 400 ~/.ssh/config
 
-
 git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+
+
+mkdir -p ~/.vim/bundle/vim-snipmate/snippets
+cp vim-snipmate/*.snippets ~/.vim/bundle/vim-snipmate/snippets/
+
