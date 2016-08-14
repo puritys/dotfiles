@@ -5,16 +5,18 @@ Plugin 'scrooloose/nerdtree'
 "Plugin 'jistr/vim-nerdtree-tabs' "always only 1 NERDTree tab
 Plugin 'ctrlpvim/ctrlp.vim'
 "Plugin 'airblade/vim-gitgutter'
+"Plugin 'Valloric/YouCompleteMe'
 
-"" Snippet
-"Plugin 'MarcWeber/vim-addon-mw-utils'
-"Plugin 'tomtom/tlib_vim'     
-"Plugin 'garbas/vim-snipmate'
+" Snippet
+Plugin 'MarcWeber/vim-addon-mw-utils'
+Plugin 'tomtom/tlib_vim'     
+Plugin 'garbas/vim-snipmate'
+"Plugin 'honza/vim-snippets'
 
 "Plugin 'vim-airline/vim-airline'
 "Plugin 'vim-airline/vim-airline-themes'
 "Plugin 'Raimondi/delimitMate'
-Plugin 'ervandew/supertab'
+"Plugin 'ervandew/supertab'
 call vundle#end()
 
 "" CtrlP Fuzzy file finder
@@ -57,3 +59,14 @@ let NERDTreeShowHidden=1
 ""detection
 """buffer
 "set hidden "hide unwritten buffer if new buffer is opened
+"
+
+" Snippet
+"let g:snippets_dir='~/.vim/bundle/vim-snipmate/snippets/'
+"call ExtractSnipsFile(g:snippets_dir.'javascript.snippets', 'javascript')
+"call ExtractSnipsFile(g:snippets_dir.'php.snippets', 'php')
+" call ExtractSnipsFile(g:snippets_dir.'myCustomSnippets.snippets',
+" 'javascript')
+let g:snipMate = get(g:, 'snipMate', {}) " Allow for vimrc re-sourcing
+let g:snipMate.scope_aliases = {}
+let g:snipMate.scope_aliases['php'] = 'php,html'

@@ -146,22 +146,23 @@ au BufRead,BufNewFile *.java set filetype=java
 au BufRead,BufNewFile *.cc set filetype=cpp
 au BufRead,BufNewFile *.c set filetype=cpp
 
-function! Tab_Or_Complete()
-  if col('.')>1 && strpart( getline('.'), col('.')-2, 3 ) =~ '^\w'
-    return "\<C-X>\<C-O>"
-  else
-    return "\<Tab>"
-  endif
-endfunction
-:inoremap <Tab> <C-R>=Tab_Or_Complete()<CR>
-":set dictionary="/usr/dict/words"
 
-
-if has("autocmd") 
-  autocmd Filetype java setlocal omnifunc=javacomplete#Complete
-  autocmd Filetype php setlocal omnifunc=phpcomplete#CompletePHP
-  autocmd Filetype cpp setlocal omnifunc=omni#cpp#complete#Main
-endif 
+"function! Tab_Or_Complete()
+"  if col('.')>1 && strpart( getline('.'), col('.')-2, 3 ) =~ '^\w'
+"    return "\<C-X>\<C-O>"
+"  else
+"    return "\<Tab>"
+"  endif
+"endfunction
+":inoremap <Tab> <C-R>=Tab_Or_Complete()<CR>
+"":set dictionary="/usr/dict/words"
+"
+"
+"if has("autocmd") 
+"  autocmd Filetype java setlocal omnifunc=javacomplete#Complete
+"  autocmd Filetype php setlocal omnifunc=phpcomplete#CompletePHP
+"  autocmd Filetype cpp setlocal omnifunc=omni#cpp#complete#Main
+"endif 
 
 "set verbosefile=~/.vimlog
 "set verbose=15  
