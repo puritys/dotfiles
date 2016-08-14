@@ -1,6 +1,8 @@
 snippet des "Describe" b
 	describe('${1:}', () => {
-		${0}
+		it('${2}', () => {
+			${0}
+		});
 		assert.equal("", "");
 	});
 snippet it "it" b
