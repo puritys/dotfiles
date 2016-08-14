@@ -10,3 +10,21 @@ snippet class
 
 		}
 	}
+snippet unit
+	class testMyClass extends PHPUnit_Framework_TestCase {
+		protected function tearDown()
+		{
+	    }
+	}
+
+snippet switch "switch($var) { case 'xyz': ... default: .... }"
+	switch ($${1:variable}) {
+		case '${2:value}':
+			break;
+		default:
+			break;
+	}
+snippet for "for ($i = 0; $i < $count; $i++) { ... }"
+	for ($${2:i} = 0; $$2 < ${1:count}; $$2${3:++}) {
+		${0}
+	}
