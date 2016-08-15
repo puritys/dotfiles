@@ -1,0 +1,9 @@
+snippet multiline
+	cat <<EOF
+		${0}
+	EOF
+snippet function
+	${1} () {
+		param1=$1
+	    ${0}
+	}
