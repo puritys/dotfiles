@@ -28,3 +28,5 @@ snippet for "for ($i = 0; $i < $count; $i++) { ... }"
 	for ($${2:i} = 0; $$2 < ${1:count}; $$2${3:++}) {
 		${0}
 	}
+snippet log
+	error_log(print_r(${1}, 1), 3, '/tmp/php.log');
