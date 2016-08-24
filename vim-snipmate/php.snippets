@@ -12,8 +12,15 @@ snippet class
 	}
 snippet unit
 	class testMyClass extends PHPUnit_Framework_TestCase {
+		public $tester;
+		protected function setUp()
+		{
+			${0}
+		}
+
 		protected function tearDown()
 		{
+
 	    }
 	}
 
