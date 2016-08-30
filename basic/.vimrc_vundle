@@ -15,7 +15,7 @@ Plugin 'garbas/vim-snipmate'
 
 "Plugin 'vim-airline/vim-airline'
 "Plugin 'vim-airline/vim-airline-themes'
-Plugin 'Raimondi/delimitMate'
+"Plugin 'Raimondi/delimitMate'
 "Plugin 'ervandew/supertab'
 call vundle#end()
 
