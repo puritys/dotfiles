@@ -37,3 +37,35 @@ snippet for "for ($i = 0; $i < $count; $i++) { ... }"
 	}
 snippet log
 	error_log(print_r(${1}, 1), 3, '/tmp/php.log');
+
+snippet provider
+	public function provider${1:name}()
+	{
+	    $data = array();
+	    $expect = 1;
+	    $data[] = array($expect);                                                                                                                             
+	    return $data;
+	}   
+	/**                                                                                                                                                            * @dataProvider provider$1
+	 */  
+	public function test$1($expect)
+	{   
+	    ${0}
+	}   
+
+snippet mock "PHPUnit / Mock Builder"
+	\$this
+	->getMockBuilder('${1}')
+	->setMethods(array(${2}))
+	->disableOriginalConstructor()
+	->getMock()${0}
+	endsnippet
+
+snippet option
+	$n = $_SERVER['argc'];
+	$param;
+	for ($i = 1; $i < $n; $i+=2) {
+	    $key = preg_replace('/^\-{2,2}/', '', $_SERVER['argv'][$i]);
+	    $value = $_SERVER['argv'][$i + 1]; 
+	    $param[$key] = $value;
+	}
