@@ -29,7 +29,7 @@ fi
 
 PATH=$PATH:$HOME/bin:/usr/local/bin:/sbin:/usr/local/sbin:/usr/sbin
 
-export NODE_PATH=/usr/local/lib/node_modules
+export NODE_PATH=/usr/local/lib/node_modules:/usr/lib/node_modules
 
 
 LANG=zh_TW.UTF-8
