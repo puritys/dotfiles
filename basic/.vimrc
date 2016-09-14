@@ -36,12 +36,12 @@ hi TabLineSel guifg=#2f2f2f guibg=#a050a0     ctermfg=white ctermbg=69
 colorscheme mystyle_white
 "" mystyle  molokai 
 
-set cursorline
+
+"出現水平線
+"set cursorline
 
 "use mouse
 "set mouse=a
-"出現水平線
-"set cursorline
 
 "最下下出現目前行數
 set ruler
