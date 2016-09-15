@@ -36,14 +36,13 @@ hi TabLineSel guifg=#2f2f2f guibg=#a050a0     ctermfg=white ctermbg=69
 colorscheme mystyle_white
 "" mystyle  molokai 
 
+"出現水平線
 set cursorline
 
 "use mouse
 "set mouse=a
-"出現水平線
-"set cursorline
 
-"最下下出現目前行數
+"最下面出現目前行數
 set ruler
 
 let mapleader=","
@@ -88,6 +87,9 @@ nmap 6 :tabn<CR>
 nmap n :tabp<CR>
 nmap m :tabn<CR>
 nmap gf <C-w>gf
+nmap <C-[>q :tabp<CR>
+nmap <C-[>w :tabn<CR>
+
 map <F6> :emenu <C-Z>
 
 " switch vim window
@@ -118,6 +120,9 @@ map <ESC>[882 :tabn<CR> " shift + right , move to next tab
 
 :nmap <c-s> :w<CR>
 :imap <c-s> <Esc>:w<CR>a
+:nmap <c-q> :q<CR>
+:imap <c-q> <Esc>:q<CR>a
+
 
 " plugin hot key
 nmap ,tree :NERDTree<CR> " NERDTree plugin

@@ -49,3 +49,15 @@ snippet proto
 	}
 snippet log
 	console.log(${0});
+snippet options
+	var param = require('commander');
+
+	param.version('0.0.1')
+	    .option('-d, --debug [type]', 'enable debug or not', 'default')
+	    .parse(process.argv);
+
+	if (param.debug === "true") console.log('Enable debug');
+snippet chr
+	String.fromCharCode(${0});
+snippet ord
+	${0}charAt(0);
