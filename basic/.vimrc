@@ -87,8 +87,8 @@ nmap 6 :tabn<CR>
 nmap n :tabp<CR>
 nmap m :tabn<CR>
 nmap gf <C-w>gf
-nmap <C-[>q :tabp<CR>
-nmap <C-[>w :tabn<CR>
+nmap <C-[>a :tabp<CR>
+nmap <C-[>s :tabn<CR>
 
 map <F6> :emenu <C-Z>
 
