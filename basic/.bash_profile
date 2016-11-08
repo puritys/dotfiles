@@ -63,4 +63,7 @@ if [ -f ~/.bash_customized ]; then
 	. ~/.bash_customized
 fi
 
+if [ -f ~/.alias_customized ]; then
+    . ~/.alias_customized
+fi
 
