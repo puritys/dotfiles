@@ -1,6 +1,6 @@
 alias ll='ls -la --color=auto'
 alias ls='ls --color=auto'
+alias plog='tail -f /tmp/php.log'
 
-#alias er='tail -f /logs/xxx'
 
 
