@@ -1,3 +1,10 @@
+snippet ase "$this->assertEquals()"
+	$this->assertEquals(${1:expected}, ${2:actual});
+
+snippet case "case 'value': ... break"
+	case '${1:value}':
+		${2}
+		break;
 snippet class
 	class ${1:`vim_snippets#Filename()`}
 	{
@@ -35,11 +42,16 @@ snippet for "for ($i = 0; $i < $count; $i++) { ... }"
 	for ($${2:i} = 0; $$2 < ${1:count}; $$2${3:++}) {
 		${0}
 	}
+snippet func
+	function ${1}(${0}) 
+	{
+	
+	}
 snippet log
-	error_log(print_r(${1}, 1) . "\n", 3, '/tmp/php.log');
+	error_log("LOG: " . __LINE__", " . print_r(${1}, 1) . " \n", 3, '/tmp/php.log');
 
 snippet provider
-	public function provider${1:name}()
+	public function provider${1:name}() 
 	{
 	    $data = array();
 	    $expect = 1;
@@ -48,8 +60,8 @@ snippet provider
 	}   
 	/**                                                                                                                                                            * @dataProvider provider$1
 	 */  
-	public function test$1($expect)
-	{   
+	public function test$1($expect) 
+	{ 
 	    ${0}
 	}   
 
@@ -69,3 +81,45 @@ snippet option
 	    $value = $_SERVER['argv'][$i + 1]; 
 	    $param[$key] = $value;
 	}
+
+snippet wh "while (condition) { ... }"
+	while (${1:/* condition */}) {
+		${0}
+	}
+snippet do "do { ... } while (condition)"
+	do {
+		${0}
+	} while (${1});
+
+snippet if "if (condition) { ... }"
+	if (${1}) {
+		${0}
+	}
+
+snippet ife "if (cond) { ... } else { ... }"
+	if (${1}) {
+		${2}
+	} else {
+		${3}
+	}
+	${0}
+
+snippet arrexist
+	in_array(${1:/*needle*/}, ${2:/*array haystack*/});
+
+snippet arrsearch
+	array_search(${1:/*$needle*/}, ${2:/*$haystack*/});
+
+snippet try "try { ... } catch (Exception $e) { ... }"
+	try {
+		${0}
+	} catch (Exception $e) {
+
+	}
+
+snippet pr
+	print_r(${0});
+
+
+
+
