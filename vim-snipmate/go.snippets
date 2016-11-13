@@ -1,0 +1,60 @@
+snippet switch
+	switch ${1:var} {
+	case ${2:value1}:
+		${3}
+	case ${4:value2}:
+		${5}
+	default:
+		${0}
+	}
+
+
+snippet sprintf
+	fmt.Sprintf("%${1:s}", ${2:var})
+
+snippet main
+	package main
+	import "fmt"
+
+	func main() {
+
+	}
+
+snippet pr
+	fmt.Printf(${1:/* var */})
+
+snippet if
+	if ${1:/* condition */} {
+		${2}
+	} else {
+		${3}
+	}
+	${0}
+snippet for
+	for ${2:i} := 0; $2 < ${1:count}; $2${3:++} {
+		${0}
+	}
+
+# import
+snippet im
+	import "${1:package}"
+
+snippet immysql
+	import "database/sql"
+snippet crmysql
+	db, err := sql.Open("mysql", "root:@/test?charset=utf8");
+	if err != nil {
+		fmt.Println("error = %s", err);
+		os.Exit(1);
+	}
+	ret, err := db.Query("select * from Person");
+	if err != nil {
+	log.Fatal(err);
+	}
+	for ret.Next() {
+		var id int
+		var email string
+		if err := ret.Scan(&id, &email); err != nil {
+			log.Fatal(err);
+		}
+	} 
