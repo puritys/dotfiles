@@ -145,11 +145,14 @@ set completeopt=menuone,menu,longest ",preview
 
 au BufRead,BufNewFile *.sjs set filetype=javascript
 au BufRead,BufNewFile *.js set filetype=javascript
-au BufRead,BufNewFile *.html set filetype=php
+au BufRead,BufNewFile *.html set filetype=html
 au BufRead,BufNewFile *.go set filetype=go
 au BufRead,BufNewFile *.java set filetype=java
 au BufRead,BufNewFile *.cc set filetype=cpp
 au BufRead,BufNewFile *.c set filetype=cpp
+au BufRead,BufNewFile *.php set filetype=php
+au BufRead,BufNewFile *.phtml set filetype=php
+au BufRead,BufNewFile *.inc set filetype=php
 
 
 "function! Tab_Or_Complete()

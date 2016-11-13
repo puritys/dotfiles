@@ -18,6 +18,9 @@ fi
 git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 
 
-mkdir -p ~/.vim/bundle/vim-snipmate/snippets
+if [ ! -d ~/.vim/bundle/vim-snipmate/snippets ]; then
+    mkdir -p ~/.vim/bundle/vim-snipmate/snippets
+fi
+sudo rm ~/.vim/bundle/vim-snipmate/snippets/*
 cp vim-snipmate/*.snippets ~/.vim/bundle/vim-snipmate/snippets/
 

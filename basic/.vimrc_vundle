@@ -69,4 +69,11 @@ let NERDTreeShowHidden=1
 " 'javascript')
 let g:snipMate = get(g:, 'snipMate', {}) " Allow for vimrc re-sourcing
 let g:snipMate.scope_aliases = {}
-let g:snipMate.scope_aliases['php'] = 'php,html'
+let g:snipMate.no_default_aliases = 1
+
+let g:snipMate.scope_aliases['javascript'] = 'core_javascript'
+let g:snipMate.scope_aliases['html'] = 'core_html,js'
+let g:snipMate.scope_aliases['php'] = 'core_php,core_html'
+let g:snipMate.scope_aliases['inc'] = 'core_php'
+
+
