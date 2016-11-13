@@ -27,6 +27,8 @@ hi Test ctermfg=124
 hi TabLineFill cterm=none ctermfg=black ctermbg=240
 hi TabLine     cterm=none ctermfg=247   ctermbg=240
 hi TabLineSel  cterm=bold ctermfg=black ctermbg=230
+hi TabLineSelRightIcon     cterm=none ctermfg=230   ctermbg=240
+hi TabLineRightIcon     cterm=none ctermfg=240   ctermbg=230
 
 hi Normal   ctermfg=238  ctermbg=none
 " Number line
