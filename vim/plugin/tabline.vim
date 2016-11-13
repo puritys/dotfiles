@@ -56,6 +56,10 @@ function! Tabline()
     if i + 1 == currentPage
       let s .= '%#TabLineSel# ' .tab . ':'
       let s .= bufname
+      if bufmodified
+        let s .= '[+] '
+      endif
+
       if i + 1 != tabCount
           let s .=  '%#TabLineSelRightIcon#' . arrow
       endif
@@ -63,6 +67,10 @@ function! Tabline()
     else
       let s .= '%#TabLine# ' .tab.':'
       let s .= bufname
+      if bufmodified
+        let s .= '[+] '
+      endif
+
       if i + 2 == currentPage
         let s .=  "%#TabLineRightIcon#".arrow
       elseif i+ 1 != tabCount
@@ -71,9 +79,6 @@ function! Tabline()
     endif
 
 
-    if bufmodified
-      let s .= '[+] '
-    endif
 
   endfor
   let s .= '%#TabLineFill#'
