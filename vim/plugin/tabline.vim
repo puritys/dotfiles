@@ -46,7 +46,7 @@ function! Tabline()
     let arrow = "\ue0b0"
     let arrowLight = "\ue0b1"
 
-    if len(bufname) > 10
+    if len(bufname) > 14
         "let bufname = system("echo 'aaa'")
         let nbufname = strpart(bufname, 0, 10) . '..'
         let nbufname .= strpart(bufname, len(bufname) - 4, 3)

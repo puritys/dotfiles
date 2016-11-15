@@ -13,7 +13,8 @@ snippet class
 		 * construct
 		 *
 		 */
-		public function __consturct() {
+		public function __construct() 
+		{
 
 		}
 	}
@@ -48,7 +49,7 @@ snippet func
 	
 	}
 snippet log
-	error_log("LOG: " . __LINE__", " . print_r(${1}, 1) . " \n", 3, '/tmp/php.log');
+	error_log("LOG: " . __LINE__ . ", " . print_r(${1}, 1) . " \n", 3, '/tmp/php.log');
 snippet er
 	error_log("LOG: ".__LINE."${1}");
 
@@ -122,6 +123,9 @@ snippet try "try { ... } catch (Exception $e) { ... }"
 snippet pr
 	print_r(${0});
 
-
+snippet /*
+	/*
+	  ${1}
+	*/
 
 
