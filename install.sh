@@ -14,8 +14,9 @@ fi
 #mkdir ~/.ssh
 #cp ssh/* ~/.ssh/
 #chmod 400 ~/.ssh/config
-
-git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+if [ ! -d ~/.vim/bundle/Vundle.vim ]; then
+    git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+fi
 
 
 if [ ! -d ~/.vim/bundle/vim-snipmate/snippets ]; then
