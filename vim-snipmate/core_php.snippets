@@ -49,6 +49,8 @@ snippet func
 	}
 snippet log
 	error_log("LOG: " . __LINE__", " . print_r(${1}, 1) . " \n", 3, '/tmp/php.log');
+snippet er
+	error_log("LOG: ".__LINE."${1}");
 
 snippet provider
 	public function provider${1:name}() 
