@@ -27,24 +27,29 @@ function! Tabline()
     let start = 0
   endif
 
+  let arrow = "\ue0b0"
+  let arrowLight = "\ue0b1"
 
+  let nextMore = ""
+  let prevMore = ""
   for i in range(tabpagenr('$'))
+    let tab = i + 1
+
     if i < start
+        let prevMore .= tab."."
         continue
     endif
     if i > end
+        let nextMore .= tab."."
         continue
     endif
 
-    let tab = i + 1
     let winnr = tabpagewinnr(tab)
     let buflist = tabpagebuflist(tab)
     let bufnr = buflist[winnr - 1]
     let bufname = bufname(bufnr)
     let bufmodified = getbufvar(bufnr, "&mod")
     let bufname = (bufname != '' ? ' '. fnamemodify(bufname, ':t') . ' ' : '[No Name] ')
-    let arrow = "\ue0b0"
-    let arrowLight = "\ue0b1"
 
     if len(bufname) > 14
         "let bufname = system("echo 'aaa'")
@@ -77,11 +82,14 @@ function! Tabline()
         let s .= arrowLight
       endif
     endif
-
-
-
   endfor
-  let s .= '%#TabLineFill#'
+  if prevMore != ""
+      let prevMore = "%#TabLine#" . prevMore . arrowLight
+  endif
+  if nextMore != ""
+      let nextMore = " " . nextMore
+  endif
+  let s = prevMore . s . nextMore . '%#TabLineFill#'
   return s
 endfunction
 
