@@ -14,7 +14,7 @@ set shiftwidth=4
 set et
 
 filetype plugin on
-filetype plugin indent on
+"filetype plugin indent on
 
 
 "自動縮排 cindent autoindent(ai)  smartindent
