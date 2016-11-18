@@ -5,17 +5,21 @@ powerline () {
 
     PS1="\[\e[37;44m\][$host]@ \[\e[0m\]"
     path=`pwd`
+    if [ "x$path" == "x/" ];then
+        PS1="$PS1\e[37;44m$path \e[0m\e[34m$arrow\e[0m\n"
+        return ;
+    fi
     split=(${path//\// })
-    powPath=""
+    powPath="\e[37;44m/\e[0m"
     length=${#split[@]}
     for ((i=0; i<$length;i++))
     do
-        powPath="$powPath\e[37;44m ${split[$i]} \e[0m"
+        powPath="$powPath\e[37;44m${split[$i]} \e[0m"
         j=$((i+1))
         if [ "$j" == "$length" ];then
             powPath="$powPath\e[34m$arrow\e[0m"
         else
-            powPath="$powPath\e[37;44m$arrowLight\e[0m"
+            powPath="$powPath\e[37;44m$arrowLight \e[0m"
         fi
     done
     PS1="$PS1$powPath\n"
@@ -29,8 +33,8 @@ changePS () {
             ;;
         xterm*)
             if [ `uname` == "Darwin" ]; then
-                arrow=`echo -e "\xee\x82\xb0"`
-                arrowLight=`echo -e "\xee\x82\xb1"`
+                arrow=`echo "\xee\x82\xb0"`
+                arrowLight=`echo "\xee\x82\xb1"`
             else
                 arrow=`echo -e "\xee\x82\xb0"`
                 arrowLight=`echo -e "\xee\x82\xb1"`
