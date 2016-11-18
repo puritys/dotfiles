@@ -4,7 +4,7 @@ snippet multiline
 	EOF
 snippet func
 	${1} () {
-		param1=$1
+		param1=\$1
 	    ${0}
 	}
 snippet if
@@ -32,3 +32,18 @@ snippet option
 	            ;;  
 		esac
 	done
+
+snippet split
+	(\${${1:str}//${2:splitKey}/ });
+snippet length
+	\${#${1:var}[@]}
+
+snippet for
+	for(( i=0; i<\$length; i++ ))
+	do
+		line=\${arr[$i]}
+		echo \$line
+	done
+
+snippet atoi
+	\$(( d1 - d2 ))
