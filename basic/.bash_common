@@ -1,0 +1,50 @@
+powerline () {
+    host=$1
+    arrow=$2
+    arrowLight=$3
+
+    PS1="\[\e[37;44m\][$host]@ \[\e[0m\]"
+    path=`pwd`
+    split=(${path//\// })
+    powPath=""
+    length=${#split[@]}
+    for ((i=0; i<$length;i++))
+    do
+        powPath="$powPath\e[37;44m ${split[$i]} \e[0m"
+        j=$((i+1))
+        if [ "$j" == "$length" ];then
+            powPath="$powPath\e[34m$arrow\e[0m"
+        else
+            powPath="$powPath\e[37;44m$arrowLight\e[0m"
+        fi
+    done
+    PS1="$PS1$powPath\n"
+}
+
+changePS () {
+    case $TERM in
+        screen*)
+            arrow=`echo -e "\xee\x82\xb0"`
+            arrowLight=`echo -e  "\xee\x82\xb1"`
+            powerline $host $arrow $arrowLight
+            ;;
+        xterm*)
+            arrow=`echo "\xee\x82\xb0"`
+            arrowLight=`echo "\xee\x82\xb1"`
+            powerline $host $arrow $arrowLight
+        ;;
+        *)
+            echo "TERM = $TERM"
+            arrow=`echo "\xee\x82\xb0"`
+            arrowLight=`echo "\xee\x82\xb1"`
+            powerline $host $arrow $arrowLight
+        ;;
+    esac
+    export PS1
+}
+
+runcd () {
+    path=$1
+    builtin cd $path
+    changePS
+}

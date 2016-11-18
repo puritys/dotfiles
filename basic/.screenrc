@@ -2,7 +2,6 @@
 startup_message off
 bell_msg ""
 
-
 # Set default encoding using utf8
 defutf8 on
 
