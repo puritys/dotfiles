@@ -2,6 +2,7 @@ alias ll='ls -la -G'
 alias ls='ls -G'
 alias cd='runcd  '
 alias plog='tail -f /tmp/php.log'
+alias s='source ~/.bash_profile  '
 
 #alias er='tail -f /logs/xxx'
 

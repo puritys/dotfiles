@@ -2,15 +2,20 @@ powerline () {
     host=$1
     arrow=$2
     arrowLight=$3
-
+    local powPath=""
     PS1="\[\e[37;44m\][$host]@ \[\e[0m\]"
-    path=`pwd`
+    local path="$PWD"
+    case $path in
+      $HOME) path="~";;
+      $HOME/*) path="~${path#$HOME}";;
+      *) powPath="\e[37;44m/\e[0m";;
+    esac
+
     if [ "x$path" == "x/" ];then
         PS1="$PS1\e[37;44m$path \e[0m\e[34m$arrow\e[0m\n"
         return ;
     fi
     split=(${path//\// })
-    powPath="\e[37;44m/\e[0m"
     length=${#split[@]}
     for ((i=0; i<$length;i++))
     do
@@ -30,11 +35,12 @@ changePS () {
         screen*)
             arrow=`echo -e "\xee\x82\xb0"`
             arrowLight=`echo -e  "\xee\x82\xb1"`
+            PROMPT_COMMAND="screen_path; $PROMPT_COMMAND"
             ;;
         xterm*)
             if [ `uname` == "Darwin" ]; then
-                arrow=`echo "\xee\x82\xb0"`
-                arrowLight=`echo "\xee\x82\xb1"`
+                arrow=`perl -e 'print "\xee\x82\xb0"'`
+                arrowLight=`perl -e 'print "\xee\x82\xb1"'`
             else
                 arrow=`echo -e "\xee\x82\xb0"`
                 arrowLight=`echo -e "\xee\x82\xb1"`
@@ -48,6 +54,40 @@ changePS () {
     esac
     powerline $host $arrow $arrowLight
     export PS1
+}
+
+screen_path() {
+    local path="$PWD"
+    case $path in
+      $HOME) path="~";;
+      $HOME/*) path="~${path#$HOME}";;
+    esac
+    local split=(${path//\// })
+    local length=${#split[@]}
+    local i=$((length-1))
+    if [ "x$length" != "1" ];then
+        path=${split[$i]}
+    fi
+    printf '\ek%s\e\\' "$path"
+
+}
+
+screen_title () {
+    local arrow=`echo -e "\xee\x82\xb0"`
+    local arrowLight=`echo -e "\xee\x82\xb1"`
+    local arrowLeftLight="<"#`echo -e "\xee\x82\xb3"`
+
+    local title=`uname -n`
+    if [ "x$title" == "x" ];then
+        local path="$PWD"
+        case $path in
+          $HOME) title="~";;
+          $HOME/*) title="~${path#$HOME}";;
+        esac
+    fi
+    #title="<$title"
+    printf '\ek%s\e\\' "$title"
+
 }
 
 runcd () {

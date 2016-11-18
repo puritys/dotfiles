@@ -39,7 +39,11 @@ bind s
 
 
 defencoding utf8
-caption always "%{.KW} %-w%{.mW}[%n] %t%{.KW}%+w"
+#caption always "%{.KW} %-w%{.mW}[%n] %t%{.KW}%+w" # legacy
+#arrowLight=`echo -e "\xee\x82\xb0`
+caption always "%{= kw}%-w%{= BW}%n >%t%{-}%+w"
+#caption always "%{= kw}%-w%{= BW}%n %t%{-}%+w %-= @%H - %LD %d %LM - %c"
+
 #hardstatus alwayslastline "%{R}[ %{w}%1` %{R}]%=%{M}%e %{G}%H %{Y} %c %{R} %d/%m/%Y %{K} Load: %l %{w}"
 
 #term screen-256color

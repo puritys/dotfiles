@@ -3,6 +3,7 @@ alias ls='ls --color=auto'
 alias plog='tail -f /tmp/php.log'
 alias sudo='sudo -E '
 alias cd='runcd  '
+alias s='source ~/.bash_profile  '
 
 if [ -f .alias_customized ]; then
     source .alias_customized
