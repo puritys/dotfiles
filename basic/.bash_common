@@ -47,7 +47,7 @@ changePS () {
             fi
         ;;
         *)
-            echo "TERM = $TERM"
+            #echo "TERM = $TERM"
             arrow=`echo -e "\xee\x82\xb0"`
             arrowLight=`echo -e "\xee\x82\xb1"`
         ;;

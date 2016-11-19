@@ -1,5 +1,5 @@
-# .bashrc
-echo "=== Load ~/.bashrc ==="
+# .bashrc : do not echo any thing
+#echo "=== Load ~/.bashrc ==="
 
 # User specific aliases and functions
 
@@ -12,6 +12,7 @@ fi
 if [ -f ~/.bash_common ]; then
 	. ~/.bash_common
 fi
+#echo "===  ~/.bashrc changePS ==="
 
 changePS
 
