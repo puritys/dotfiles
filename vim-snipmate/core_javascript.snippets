@@ -49,6 +49,9 @@ snippet proto
 	}
 snippet log
 	console.log(${0});
+snippet er
+	console.error(${0});
+
 snippet options
 	var param = require('commander');
 
@@ -72,3 +75,13 @@ snippet func
 	{
 	
 	}
+snippet re
+	require('${1:fs}');
+
+snippet file_get_contents
+	fs.readFileSync(${1}, "UTF-8");
+
+snippet file_put_contents
+	fs.writeFileSync(${1:filename}, ${2:content}, "UTF-8");
+
+
