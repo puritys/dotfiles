@@ -21,9 +21,9 @@ snippet option
 			break;
 		fi  
 		case "$1" in
-		  -t | --tag ) tag=$2; shift 2 ;;
+		  -t | --tag   ) tag=$2; shift 2 ;;
 		  -d | --debug ) DEBUG=true; shift 1 ;;
-		  -h | --help ) 
+		  -h | --help  ) 
 			  echo "Usage:"                                                                                                                          
 			  echo "-t: set tag name, ex: -t mytag."
 			  echo "-d: Enable debug"
