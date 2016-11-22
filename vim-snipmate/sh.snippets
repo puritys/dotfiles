@@ -16,20 +16,21 @@ snippet if
 	#    echo "else"
 	fi 
 snippet option
-	while getopts "he" OPTION; do
-		case $OPTION in
-		e)  
-	        ECHO="true"
-	            ;;  
-	    h)  
-	            echo "Usage:"
-	            echo "args.sh -h "
-	            echo "args.sh -e "
-	             echo ""
-	            echo "   -e     to execute echo \"hello world\""
-	            echo "   -h     help (this output)"
-	            exit 0
-	            ;;  
+	while true; do
+		if [ "x$1" == "x" ];then
+			break;
+		fi  
+		case "$1" in
+		  -t | --tag ) tag=$2; shift 2 ;;
+		  -d | --debug ) DEBUG=true; shift 1 ;;
+		  -h | --help ) 
+			  echo "Usage:"                                                                                                                          
+			  echo "-t: set tag name, ex: -t mytag."
+			  echo "-d: Enable debug"
+			  shift 1 
+			  ;;  
+		  --) echo "-- is not a correct option.";shift 1; ;;
+		  * ) echo "$1 is not a correct option.";shift 1; ;;
 		esac
 	done
 
