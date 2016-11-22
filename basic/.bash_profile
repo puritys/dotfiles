@@ -1,6 +1,7 @@
 # .bash_profile
-echo "=== Load ~/.bash_profile ==="
-echo "TERM = $TERM"
+#echo "=== Load ~/.bash_profile ==="
+#echo "TERM = $TERM"
+
 # Get the aliases and functions
 if [ -f ~/.bash_host ]; then
 	. ~/.bash_host
