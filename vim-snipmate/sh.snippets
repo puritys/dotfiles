@@ -19,12 +19,12 @@ snippet option
 	while true; do
 		if [ "x$1" == "x" ];then
 			break;
-		fi  
+		fi
 		case "$1" in
 		  -t | --tag   ) tag=$2; shift 2 ;;
 		  -d | --debug ) DEBUG=true; shift 1 ;;
 		  -h | --help  ) 
-			  echo "Usage:"                                                                                                                          
+			  echo "Usage:"
 			  echo "-t: set tag name, ex: -t mytag."
 			  echo "-d: Enable debug"
 			  shift 1 
