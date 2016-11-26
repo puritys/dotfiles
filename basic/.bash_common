@@ -87,8 +87,8 @@ screen_title () {
     printf '\ek%s\e\\' "$title"
 }
 
-runcd () {
-    path=$1
-    builtin cd $path
-    changePS
-}
+#runcd () {
+#    path=$1
+#    builtin cd $path
+#    changePS
+#}

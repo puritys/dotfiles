@@ -2,7 +2,7 @@ alias ll='ls -la --color=auto'
 alias ls='ls --color=auto'
 alias plog='tail -f /tmp/php.log'
 alias sudo='sudo -E '
-alias cd='runcd  '
+#alias cd='runcd  '
 alias s='source ~/.bash_profile  '
 alias cpu="ps aux | awk '{printf \"CPU Usage: %s Process: %s\n\n\", \$3, \$0}' | sort -n"
 
