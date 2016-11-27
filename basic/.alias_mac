@@ -2,7 +2,7 @@ alias ll='ls -la -G'
 alias ls='ls -G'
 alias plog='tail -f /tmp/php.log'
 alias s='source ~/.bash_profile  '
-
+alias gmake='make '
 #alias er='tail -f /logs/xxx'
 
 
