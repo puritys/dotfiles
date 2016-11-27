@@ -45,9 +45,10 @@ snippet for "for ($i = 0; $i < $count; $i++) { ... }"
 	}
 snippet func
 	function ${1}(${0}) 
-	{
+	{//{{{
 	
-	}
+	}//}}}
+
 snippet log
 	error_log("LOG: " . __LINE__ . ", " . print_r(${1}, 1) . " \n", 3, '/tmp/php.log');
 snippet er
@@ -55,19 +56,20 @@ snippet er
 
 snippet provider
 	public function provider${1:name}() 
-	{
+	{//{{{
 	    $data = array();
 	    $expect = 1;
 	    $data[] = array($expect);                                                                                                                             
 	    return $data;
-	}   
+	}//}}}
+	   
 	/**
 	 * @dataProvider provider$1
 	 */  
 	public function test$1($expect) 
-	{ 
+	{//{{{
 	    ${0}
-	}   
+	}//}}}   
 
 snippet mock "PHPUnit / Mock Builder"
 	\$this
