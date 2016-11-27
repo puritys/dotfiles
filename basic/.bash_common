@@ -36,7 +36,7 @@ changePS () {
         screen*)
             arrow=`echo -e "\xee\x82\xb0"`
             arrowLight=`echo -e  "\xee\x82\xb1"`
-            PROMPT_COMMAND="screen_title; $PROMPT_COMMAND"
+            screen_title;
             ;;
         xterm*)
             if [ `uname` == "Darwin" ]; then
