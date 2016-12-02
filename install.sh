@@ -2,7 +2,7 @@ touch ~/.bash_host
 cp basic/.* ~/
 
 if hash sudo 2>/dev/null; then
-    sudo="sudo"
+    sudo="sudo -t"
 else
     sudo=""
 fi
