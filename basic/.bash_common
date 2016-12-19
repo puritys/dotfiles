@@ -105,21 +105,14 @@ function getMySSHAgent {
                 sshagent=$(find /tmp/ssh-* -user `whoami` -type s -printf '%p\n' 2>/dev/null | grep $pid) 
             fi  
             if [ "x$sshagent" != "x" ];then
-                #echo "sshagent = " $sshagent                                                                            
                 cat <<- EOF > ~/.ssh/environment
                     export SSH_AUTH_SOCK=$sshagent
                     export SSH_AGENT_PID=$pid
 EOF
                 source ~/.ssh/environment
-                i=$length
-                j=5 
+                return 
             fi  
             pid=$(($pid - 1))
         done
     done
 }
-#runcd () {
-#    path=$1
-#    builtin cd $path
-#    changePS
-#}
