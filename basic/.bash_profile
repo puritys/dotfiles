@@ -49,12 +49,14 @@ function start_agent {
      ls ~/.ssh/ | grep 'rsa\|dsa' | grep -v pub | awk '{printf "/usr/bin/ssh-add ~/.ssh/%s\n",$1}' | sh
 }
 
-myname=`whoami`
-if [ -n "$SSH_AUTH_SOCK" ]; then
-    true
-else
-    source $HOME/.ssh/environment
-fi
+getMySSHAgent
+#myname=`whoami`
+#if [ -n "$SSH_AUTH_SOCK" ]; then
+#    true
+#else
+#    source $HOME/.ssh/environment
+#fi
+
 export LANG=en_US.UTF-8
 export LC_CTYPE=en_US.UTF-8
 
