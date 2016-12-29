@@ -1,3 +1,4 @@
+#!/bin/bash
 touch ~/.bash_host
 cp basic/.* ~/
 
