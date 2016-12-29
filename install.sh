@@ -25,7 +25,6 @@ while true; do
     esac
 done
 
-installVimPlugin=$1
 # .vim style
 if [[ `uname` == 'Darwin' ]]; then
     cp -R vim/ ~/.vim
