@@ -87,8 +87,32 @@ screen_title () {
     printf '\ek%s\e\\' "$title"
 }
 
-#runcd () {
-#    path=$1
-#    builtin cd $path
-#    changePS
-#}
+function getMySSHAgent {
+    myname=`whoami`
+    OS=$(uname -s)
+    pids=`ps aux | grep $myname | grep ssh-agent | grep -v grep | awk '{print $2}'`
+    pids=( $pids )
+    length=${#pids[@]}
+    for(( i=0; i<$length; i++ ))
+    do  
+        pid=${pids[$i]}
+        for(( j=0; j<4; j++ ))
+        do  
+            if [[ X"$OS" == X"Darwin" ]]; then
+                # $TMPDIR is environment variable on MAC OS
+                sshagent=$(find $TMPDIR -user `whoami` -type s | grep ssh |grep $pid | xargs ls -rt | awk '{print }')
+            elif [[ X"$OS" == X"Linux" ]]; then
+                sshagent=$(find /tmp/ssh-* -user `whoami` -type s -printf '%p\n' 2>/dev/null | grep $pid) 
+            fi  
+            if [ "x$sshagent" != "x" ];then
+                cat <<- EOF > ~/.ssh/environment
+                    export SSH_AUTH_SOCK=$sshagent
+                    export SSH_AGENT_PID=$pid
+EOF
+                source ~/.ssh/environment
+                return 
+            fi  
+            pid=$(($pid - 1))
+        done
+    done
+}

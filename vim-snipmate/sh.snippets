@@ -40,7 +40,7 @@ snippet length
 	\${#${1:var}[@]}
 
 snippet for
-	for(( i=0; i<\$length; i++ ))
+	for(( i=0; i<\${#arr[@]}; i++ ))
 	do
 		line=\${arr[$i]}
 		echo \$line
