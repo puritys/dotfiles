@@ -1,0 +1,20 @@
+snippet log
+	System.out.println($1);
+
+snippet implist
+	import java.util.ArrayList;
+	import java.util.Iterator;
+	import java.util.List;   
+
+snippet impinject
+	import com.google.inject.Inject;
+
+snippet impdate
+	import java.text.ParseException;
+	import java.text.SimpleDateFormat;
+	import java.util.Date;
+
+snippet exdate
+	Date date = format.parse("12/31/2006");
+	String pattern = "MM/dd/yyyy";
+	SimpleDateFormat format = new SimpleDateFormat(pattern);
