@@ -15,6 +15,9 @@ snippet impdate
 	import java.text.SimpleDateFormat;
 	import java.util.Date;
 	import java.sql.Timestamp;
+snippet impstring
+	import import org.apache.commons.lang3.StringUtils; 
+
 
 snippet exdate
 	try {
@@ -28,3 +31,6 @@ snippet exdate
 
 snippet itoa
 	Integer.toString(${1});
+
+snippet empty
+	StringUtils.isEmpty(${1});
