@@ -11,10 +11,20 @@ snippet impinject
 
 snippet impdate
 	import java.text.ParseException;
+	import java.text.DateFormat;
 	import java.text.SimpleDateFormat;
 	import java.util.Date;
+	import java.sql.Timestamp;
 
 snippet exdate
-	Date date = format.parse("12/31/2006");
-	String pattern = "MM/dd/yyyy";
-	SimpleDateFormat format = new SimpleDateFormat(pattern);
+	try {
+		DateFormat format = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS");
+		Date date = format.parse("2012-11-17T12:10:00.000+08:00");
+		int d = (int)date.getTime();
+		System.out.println("time = " + Integer.toString(d));
+	} catch (Exception ParseException) {
+
+	}   
+
+snippet itoa
+	Integer.toString(${1});
