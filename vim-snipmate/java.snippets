@@ -18,6 +18,13 @@ snippet impdate
 snippet impstring
 	import import org.apache.commons.lang3.StringUtils; 
 
+snippet impexception
+	import java.util.concurrent.ExecutionException;
+	import java.io.IOException; 
+
+snipprt json
+	import org.json.JSONObject; 
+	JSONObject jsonObject = new JSONObject("{}");
 
 snippet exdate
 	try {
@@ -31,6 +38,9 @@ snippet exdate
 
 snippet itoa
 	Integer.toString(${1});
+
+snippet atoi
+	Integer.parseInt(${1});
 
 snippet empty
 	StringUtils.isEmpty(${1});
