@@ -1,5 +1,5 @@
 snippet log
-	System.out.println($1);
+	System.out.println(${1});
 
 snippet implist
 	import java.util.ArrayList;
@@ -44,3 +44,19 @@ snippet atoi
 
 snippet empty
 	StringUtils.isEmpty(${1});
+
+snippet main
+	public class ${1/*classname*/} {
+
+		public static void main (String[] args) {
+			${2}
+		}
+	}
+
+snippet sw
+	switch(${1}) {
+		case 1:
+			break;
+		case 3:
+			break;
+	}   
