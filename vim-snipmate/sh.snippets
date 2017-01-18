@@ -17,11 +17,11 @@ snippet if
 	fi 
 snippet option
 	while true; do
-		if [ "x$1" == "x" ];then
+		if [ "x\$1" == "x" ];then
 			break;
 		fi
-		case "$1" in
-		  -t | --tag   ) tag=$2; shift 2 ;;
+		case "\$1" in
+		  -t | --tag   ) tag=\$2; shift 2 ;;
 		  -d | --debug ) DEBUG=true; shift 1 ;;
 		  -h | --help  ) 
 			  echo "Usage:"
@@ -30,7 +30,7 @@ snippet option
 			  shift 1 
 			  ;;  
 		  --) echo "-- is not a correct option.";shift 1; ;;
-		  * ) echo "$1 is not a correct option.";shift 1; ;;
+		  * ) echo "\$1 is not a correct option.";shift 1; ;;
 		esac
 	done
 
