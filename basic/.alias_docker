@@ -1,0 +1,45 @@
+alias mysql='mysql_fn';
+alias mvn="mvn_fn"
+alias javar="javar_fn"
+alias atslog="atslog_fn"
+
+function mysql_fn() {
+    command="/usr/bin/mysql  $@ "
+    docker exec -t -i  puritys-mysql_client bash -c "$command";
+}
+function mvn_fn() {
+    command=" $@ "
+    pwd=`pwd`
+    owner=`whoami`
+    if [ `uname` = "Darwin" ]; then
+        HOME="/Users/$owner"
+    else
+        HOME="/home/$owner"
+    fi 
+    command="docker run -it --rm -v $HOME/.m2:/root/.m2 -v $(pwd):/usr/src/mymaven -w /usr/src/mymaven my/my-mvn $command"
+    echo $command
+    $command
+}
+
+function javar_fn() {
+    command=" $@ "
+    pwd=`pwd`
+    owner=`whoami`
+    if [ `uname` = "Darwin" ]; then
+        HOME="/Users/$owner"
+    else
+        HOME="/home/$owner"
+    fi 
+    command="docker run -it --rm -v $HOME/.m2:/root/.m2 -v $(pwd):/usr/src/mymaven -w /usr/src/mymaven my/my-mvn $command"
+    echo $command
+    $command
+}
+
+function atslog_fn() {
+    pwd=`pwd`
+    command="/usr/local/bin/traffic_logcat $@ "
+    command="docker run -it --rm -v $(pwd):/logs -w /logs  puritys/ats $command"
+    echo $command
+    $command
+}
+

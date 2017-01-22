@@ -28,6 +28,7 @@ snippet option
 			  echo "-t: set tag name, ex: -t mytag."
 			  echo "-d: Enable debug"
 			  shift 1 
+		      exit 0
 			  ;;  
 		  --) echo "-- is not a correct option.";shift 1; ;;
 		  * ) echo "\$1 is not a correct option.";shift 1; ;;

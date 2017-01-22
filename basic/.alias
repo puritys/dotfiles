@@ -10,6 +10,10 @@ if [ -f .alias_customized ]; then
     source .alias_customized
 fi
 
+if [ -f .alias_docker ]; then
+    source .alias_docker
+fi
+
 if [ -f .bash_common ]; then
     source .bash_common
 fi
