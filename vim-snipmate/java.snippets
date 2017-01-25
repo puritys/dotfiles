@@ -3,9 +3,15 @@ snippet log
 
 snippet implist
 	import java.util.ArrayList;
+	import java.util.Arrays;
 	import java.util.Iterator;
-	import java.util.List;   
-
+	import java.util.List;
+snippet impjson
+	import org.json.JSONObject;
+	import org.json.JSONArray;
+snippet imptest
+	import static org.testng.Assert.assertEquals;
+ 
 snippet impinject
 	import com.google.inject.Inject;
 
@@ -68,7 +74,9 @@ snippet for
 	}
 
 snippet list
-	List<String> dates = new ArrayList
+	List<String> status = new ArrayList<>(Arrays.asList("0", "1"));
 
 snippet
 	Map<String, String> m = new HashMap<>();
+
+
