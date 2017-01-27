@@ -3,29 +3,32 @@ powerline () {
     arrow=$2
     arrowLight=$3
     local powPath=""
+    local color="\e[30;47m"
+    local startColor="\e[30m"
+    local arrowColor="\e[37m"
     #\[\ek\h\e\\\] : display screen hostname
-    PS1="\[\e[37;44m\][$host]@ \[\e[0m\]"
+    PS1="\[$color\][$host]@ \[\e[0m\]"
     local path="$PWD"
     case $path in
       $HOME) path="~";;
       $HOME/*) path="~${path#$HOME}";;
-      *) powPath="\e[37;44m/\e[0m";;
+      *) powPath="$color/\e[0m";;
     esac
 
     if [ "x$path" == "x/" ];then
-        PS1="$PS1\e[37;44m$path \e[0m\e[34m$arrow\e[0m\n"
+        PS1="$PS1$color$path $arrowColor$arrow\e[0m\n"
         return ;
     fi
     split=(${path//\// })
     length=${#split[@]}
     for ((i=0; i<$length;i++))
     do
-        powPath="$powPath\e[37;44m${split[$i]} \e[0m"
+        powPath="$powPath$color${split[$i]} \e[0m"
         j=$((i+1))
         if [ "$j" == "$length" ];then
-            powPath="$powPath\e[34m$arrow\e[0m"
+            powPath="$powPath$arrowColor$arrow\e[0m"
         else
-            powPath="$powPath\e[37;44m$arrowLight \e[0m"
+            powPath="$powPath$color$arrowLight \e[0m"
         fi
     done
     PS1="$PS1$powPath\n"
