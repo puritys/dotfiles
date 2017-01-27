@@ -2,9 +2,28 @@
 My ssh config, vimrc, .screenrc, alias
 
 
-vim 相關功能
------------
+# How to install
 
-需要設定一些自定的 environment 時，可以建立 ~/.bash_customized 這個檔案，將特殊設定寫在這個檔案
-* function 建議與說明: 輸入 function 名稱，再按 Tab 就會出現
-* 不要自動縮排
+sh install.sh
+
+
+
+## Install Font
+
+The bashrc will use powerline font, so you have to install this font by yourselves. The font is on the dir "assets", called "Meslo LG M Regular for Powerline.otf".
+
+* assets/Meslo LG M Regular for Powerline.otf
+
+
+On the other side, I suggest you to install a pretty font called "PT Mono".
+* https://fonts.google.com/specimen/PT+Mono
+
+How to let these two font exist on the terminal?
+In software iTerm2, you can open it's preferences interface and change the regular font to be "PT Mono" and the Non-ASCII font to be "Powerline symbols"
+
+## customized
+
+* Add file .bash_customzied
+* Add file .alias_customized
+
+
