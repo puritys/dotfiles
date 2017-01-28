@@ -2,7 +2,7 @@ set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'scrooloose/nerdtree'
-"Plugin 'jistr/vim-nerdtree-tabs' "always only 1 NERDTree tab
+Plugin 'jistr/vim-nerdtree-tabs'
 Plugin 'ctrlpvim/ctrlp.vim'
 "Plugin 'airblade/vim-gitgutter'
 "Plugin 'Valloric/YouCompleteMe'
@@ -18,20 +18,6 @@ Plugin 'garbas/vim-snipmate'
 "Plugin 'Raimondi/delimitMate'
 "Plugin 'ervandew/supertab'
 call vundle#end()
-
-"" CtrlP Fuzzy file finder
-let g:ctrlp_cmd = 'CtrlPMRU' " most recently used mode
-let g:ctrlp_by_filename=1    " fuzzy search on filename rather than whole path
-let g:ctrlp_split_window=1   " open file on a new tab
-set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.tgz
-let g:ctrlp_custom_ignore = {
-  \ 'dir':  '\v[\/]\.(git|hg|svn)$',
-  \ 'file': '\v\.(exe|so|dll)$',
-  \ 'link': 'some_bad_symbolic_links',
-  \ }
-
-"map <F2> :NERDTreeToggle<CR> " open NerdTree tab
-let NERDTreeShowHidden=1
 
 
 
@@ -60,20 +46,5 @@ let NERDTreeShowHidden=1
 """buffer
 "set hidden "hide unwritten buffer if new buffer is opened
 "
-
-" Snippet
-"let g:snippets_dir='~/.vim/bundle/vim-snipmate/snippets/'
-"call ExtractSnipsFile(g:snippets_dir.'javascript.snippets', 'javascript')
-"call ExtractSnipsFile(g:snippets_dir.'php.snippets', 'php')
-" call ExtractSnipsFile(g:snippets_dir.'myCustomSnippets.snippets',
-" 'javascript')
-let g:snipMate = get(g:, 'snipMate', {}) " Allow for vimrc re-sourcing
-let g:snipMate.scope_aliases = {}
-let g:snipMate.no_default_aliases = 1
-
-let g:snipMate.scope_aliases['javascript'] = 'core_javascript'
-let g:snipMate.scope_aliases['html'] = 'core_html,js'
-let g:snipMate.scope_aliases['php'] = 'core_php,core_html'
-let g:snipMate.scope_aliases['inc'] = 'core_php'
 
 

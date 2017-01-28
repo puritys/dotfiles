@@ -7,11 +7,13 @@ while true; do
     case "$1" in
       -p | --vimPlugin   ) installVimPlugin=1; shift 1 ;;
       -d | --debug ) DEBUG=true; shift 1 ;;
+      -j | --jave ) JAVE=true; shift 1 ;;
       -k | --docker) DOCKER=true; shift 1;;
       -h | --help  ) 
           echo "Usage:"
           echo "-p: install vim plugin"
-          echo "-p: install docker alias"
+          echo "-k: install docker alias"
+          echo "-j: install some vim plugins for java"
           shift 1
           exit 1 
           ;;  
@@ -58,4 +60,17 @@ $sudo rm -f ~/.vim/bundle/vim-snipmate/snippets/*
 
 
 cp vim-snipmate/*.snippets ~/.vim/bundle/vim-snipmate/snippets/
+
+
+# install  JavaImp
+# http://www.vim.org/scripts/script.php?script_id=325
+# Java JDK http://download.java.net/openjdk/jdk7/promoted/b147/openjdk-7-fcs-src-b147-27_jun_2011.zip
+
+if [ "x$java" != "x"]; then
+    wget http://download.java.net/openjdk/jdk7/promoted/b147/openjdk-7-fcs-src-b147-27_jun_2011.zip
+    mkdir ~/openjdk
+    mv openjdk-7-fcs-src-b147-27_jun_2011.zip ~/openjdk/
+    cd ~/openjdk && unzip openjdk-7-fcs-src-b147-27_jun_2011.zip
+fi
+
 
