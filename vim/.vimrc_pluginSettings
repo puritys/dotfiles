@@ -34,6 +34,7 @@ let g:JavaImpDataDir = $HOME . "/.vim/JavaImp"
 " Java Source code path
 let g:JavaImpPaths = $HOME . "/openjdk/openjdk"
 " :JIG create dir, :JI Auto add import file, :JIS  sort the import list,  :JIF  find the source on your scursor
+imap <c-i> <c-c>:JI<CR>i
 "" JavaImp End
 
 

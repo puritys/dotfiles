@@ -97,6 +97,7 @@ nmap <ESC>[1;5A <C-w>h " ctrl + up arrow : move to up split window
 nmap <ESC>[1;5B <C-w>l " ctrl + down arrow : move to up split window
 
 nmap <Tab> <C-w>w " Clicking Tab  will  go to the next split window;
+
 " putty
 nmap <ESC>[A <C-w>h " ctrl + up arrow : move to up split window
 nmap <ESC>[B <C-w>l " ctrl + down arrow : move to up split window
