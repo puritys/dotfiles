@@ -89,6 +89,8 @@ nmap m :tabn<CR>
 nmap gf <C-w>gf
 nmap <C-[>a :tabp<CR>
 nmap <C-[>s :tabn<CR>
+nmap <ESC>[2;1 :tabp<CR>
+nmap <ESC>[2;2 :tabn<CR>
 
 map <F6> :emenu <C-Z>
 
