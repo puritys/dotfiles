@@ -32,9 +32,9 @@ let g:ctrlp_custom_ignore = {
 " A dir to save JavaImp settings and cache files
 let g:JavaImpDataDir = $HOME . "/.vim/JavaImp"
 " Java Source code path
-let g:JavaImpPaths = $HOME . "/openjdk/openjdk"
+let g:JavaImpPaths = $HOME . "/openjdk/openjdk/jdk/src/share/classes/"
 " :JIG create dir, :JI Auto add import file, :JIS  sort the import list,  :JIF  find the source on your scursor
-imap <c-i> <c-c>:JI<CR>i
+"imap <c-i> <c-c>:JI<CR>i
 "" JavaImp End
 
 
