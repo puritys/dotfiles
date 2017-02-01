@@ -54,3 +54,6 @@ let g:snipMate.scope_aliases['php'] = 'core_php,core_html'
 let g:snipMate.scope_aliases['inc'] = 'core_php'
 "" Snippet End
 
+"" ntpeters/vim-better-whitespace start
+highlight ExtraWhitespace ctermbg=251
+"" ntpeters/vim-better-whitespace end

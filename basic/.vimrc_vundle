@@ -7,6 +7,8 @@ Plugin 'ctrlpvim/ctrlp.vim'
 "Plugin 'airblade/vim-gitgutter'
 "Plugin 'Valloric/YouCompleteMe'
 
+Plugin 'ntpeters/vim-better-whitespace'
+
 " Snippet
 Plugin 'MarcWeber/vim-addon-mw-utils'
 Plugin 'tomtom/tlib_vim'     

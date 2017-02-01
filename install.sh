@@ -42,7 +42,7 @@ if [ ! -d ~/.vim/bundle/Vundle.vim ]; then
     git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 fi
 echo $DOCKER
-if [ "x$DOCKER" == "x" ];then 
+if [ "x$DOCKER" == "x" ];then
     echo "Without docker"
     rm -f ~/.alias_docker
 fi
