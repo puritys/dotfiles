@@ -57,3 +57,10 @@ let g:snipMate.scope_aliases['inc'] = 'core_php'
 "" ntpeters/vim-better-whitespace start
 highlight ExtraWhitespace ctermbg=251
 "" ntpeters/vim-better-whitespace end
+
+"" eclim start
+let g:EclimLogLevel="error"
+let g:EclimJavaValidate=1
+let g:EclimJavaCheckstyleOnSave=1
+"" eclim end
+
