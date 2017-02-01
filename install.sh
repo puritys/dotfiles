@@ -77,7 +77,7 @@ fi
 # install eclim: 
 # http://www.eclipse.org/downloads/download.php?file=/eclipse/downloads/drops/R-3.7.2-201202080800/eclipse-SDK-3.7.2-linux-gtk-x86_64.tar.gz
 # http://www.eclipse.org/downloads/packages/eclipse-ide-java-ee-developers/mars2
-if [ "x$JAVA" == "x" ]; then
+if [ "x$JAVA" == "xxxx" ]; then
     # Add hostname into /etc/hosts. e.g. 127.0.0.1 xxxHost
     #cd ~/ && wget http://www.eclipse.org/downloads/download.php?file=/eclipse/downloads/drops/R-3.7.2-201202080800/eclipse-SDK-3.7.2-linux-gtk-x86_64.tar.gz 
     #if [ -d ~/.vim/eclipse ]; then rm -rf ~/.vim/eclipse; fi
