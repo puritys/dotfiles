@@ -74,4 +74,28 @@ if [ "x$JAVA" != "x" ]; then
     cd ~/openjdk && unzip openjdk-7-fcs-src-b147-27_jun_2011.zip
 fi
 
+# install eclim: 
+# http://www.eclipse.org/downloads/download.php?file=/eclipse/downloads/drops/R-3.7.2-201202080800/eclipse-SDK-3.7.2-linux-gtk-x86_64.tar.gz
+# http://www.eclipse.org/downloads/packages/eclipse-ide-java-ee-developers/mars2
+if [ "x$JAVA" == "x" ]; then
+    # Add hostname into /etc/hosts. e.g. 127.0.0.1 xxxHost
+    #cd ~/ && wget http://www.eclipse.org/downloads/download.php?file=/eclipse/downloads/drops/R-3.7.2-201202080800/eclipse-SDK-3.7.2-linux-gtk-x86_64.tar.gz 
+    #if [ -d ~/.vim/eclipse ]; then rm -rf ~/.vim/eclipse; fi
+    #cd ~/ && tar -zxvf eclipse-SDK-3.7.2-linux-gtk-x86_64.tar.gz
+    #cd ~/ && tar -zxvf eclipse-platform-3.7.2-linux-gtk-x86_64.tar.gz
+    #cd ~/ && tar -zxvf eclipse-jee-mars-2-linux-gtk-x86_64.tar.gz
+    #mv ~/eclipse ~/.vim/
+    ps aux |grep -i Xvfb |grep -v grep | awk '{printf "kill -9 %s\n",$2}' | sudo sh
+    export DISPLAY=:1
+    Xvfb :1 -screen 0 1024x768x24 &
+    DISPLAY=:1 ~/.vim/eclipse/eclipse -nosplash -consolelog -debug -application org.eclipse.equinox.p2.director   -repository http://download.eclipse.org/releases/juno      -installIU org.eclipse.wst.web_ui.feature.feature.group
+    sleep 5
+    java -Dvim.files=$HOME/.vim  -Declipse.home=$HOME/.vim/eclipse/  -jar ./vim/javaPlugin/eclim_2.6.0.jar install
+    sleep 3
+    DISPLAY=:1 ~/.vim/eclipse/eclimd -b
+    # :ProjectCreate ./ -n java
+    # :ProjectList
+    # :ProjectDelete xxx
+fi
+
 
