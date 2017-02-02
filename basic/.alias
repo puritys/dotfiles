@@ -5,6 +5,7 @@ alias sudo='sudo -E '
 #alias cd='runcd  '
 alias s='source ~/.bash_profile  '
 alias cpu="ps aux | awk '{printf \"CPU Usage: %s Process: %s\n\n\", \$3, \$0}' | sort -n"
+alias eclim_start='fn_eclim_start'
 
 if [ -f .alias_customized ]; then
     source .alias_customized
@@ -19,3 +20,13 @@ if [ -f .bash_common ]; then
 fi
 
 
+fn_eclim_start() {
+    ps aux |grep -i Xvfb |grep -v grep | awk '{printf "kill -9 %s\n",$2}' | sudo sh
+    sudo Xvfb :1 -screen 0 1024x768x24 &
+    DISPLAY=:1 ~/.vim/eclipse/eclipse -nosplash -consolelog -debug -application org.eclipse.equinox.p2.director   -repository http://download.eclipse.org/releases/juno      -installIU org.eclipse.wst.web_ui.feature.feature.group&
+    echo "Wait for eclipse start"
+    sleep 30
+    DISPLAY=:1 ~/.vim/eclipse/eclimd -b
+    echo "Wait 20 seconds for eclim start."
+    sleep 20
+}

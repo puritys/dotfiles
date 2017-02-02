@@ -85,21 +85,27 @@ if [ "x$JAVA" == "xxxx" ]; then
     ps aux |grep -i Xvfb |grep -v grep | awk '{printf "kill -9 %s\n",$2}' | sudo sh
     export DISPLAY=:1
     echo "\n\n=== Start Xvfb ===\n\n"
-    Xvfb :1 -screen 0 1024x768x24 &
+    sudo Xvfb :1 -screen 0 1024x768x24 &
 
     echo "\n\n=== Start eclipse ===\n\n"
-    DISPLAY=:1 ~/.vim/eclipse/eclipse -nosplash -consolelog -debug -application org.eclipse.equinox.p2.director   -repository http://download.eclipse.org/releases/juno      -installIU org.eclipse.wst.web_ui.feature.feature.group
-    sleep 5
+    DISPLAY=:1 ~/.vim/eclipse/eclipse -nosplash -consolelog -debug -application org.eclipse.equinox.p2.director   -repository http://download.eclipse.org/releases/juno      -installIU org.eclipse.wst.web_ui.feature.feature.group &
+    sleep 25
 
     echo "\n\n=== Install eclim ===\n\n"
     java -Dvim.files=$HOME/.vim  -Declipse.home=$HOME/.vim/eclipse/  -jar ./vim/javaPlugin/eclim_2.6.0.jar install
-    sleep 3
 
     echo "\n\n=== Start eclimd ===\n\n"
     DISPLAY=:1 ~/.vim/eclipse/eclimd -b
+    sleep 20
+    cp vim/javaPlugin/eclim_settings ~/workspace/.metadata/.plugins/org.eclipse.core.runtime/.settings/org.eclim.prefs
+    cp vim/javaPlugin/google_checks.xml ~/.vim/
+    cp vim/javaPlugin/checkstyle.xml ~/.vim/
+
     # :ProjectCreate ./ -n java
     # :ProjectList
     # :ProjectDelete xxx
+    # mvn dependency:resolve (update classpath)
 fi
+if [ ! -d ~/.eclim/ ];  then mkdir ~/.eclim/; fi
 
 
