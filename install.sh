@@ -82,6 +82,13 @@ if [ "x$JAVA" == "xxxx" ]; then
     #if [ -d ~/.vim/eclipse ]; then rm -rf ~/.vim/eclipse; fi
     #cd ~/ && tar -zxvf eclipse-jee-mars-2-linux-gtk-x86_64.tar.gz
     #mv ~/eclipse ~/.vim/
+    if [ ! -d "~/workspace/.metadata/.plugins/org.eclipse.core.runtime/.settings/" ];then
+        mkdir ~/workspace/.metadata/.plugins/org.eclipse.core.runtime/.settings/;
+    fi
+    cp vim/javaPlugin/eclim_settings ~/workspace/.metadata/.plugins/org.eclipse.core.runtime/.settings/org.eclim.prefs
+    sudo cp vim/javaPlugin/google_checks.xml /usr/local/etc/
+    sudo cp vim/javaPlugin/checkstyle.xml /usr/local/etc/
+
     ps aux |grep -i Xvfb |grep -v grep | awk '{printf "kill -9 %s\n",$2}' | sudo sh
     export DISPLAY=:1
     echo "\n\n=== Start Xvfb ===\n\n"
@@ -91,15 +98,14 @@ if [ "x$JAVA" == "xxxx" ]; then
     DISPLAY=:1 ~/.vim/eclipse/eclipse -nosplash -consolelog -debug -application org.eclipse.equinox.p2.director   -repository http://download.eclipse.org/releases/juno      -installIU org.eclipse.wst.web_ui.feature.feature.group &
     sleep 25
 
+
     echo "\n\n=== Install eclim ===\n\n"
     java -Dvim.files=$HOME/.vim  -Declipse.home=$HOME/.vim/eclipse/  -jar ./vim/javaPlugin/eclim_2.6.0.jar install
 
     echo "\n\n=== Start eclimd ===\n\n"
     DISPLAY=:1 ~/.vim/eclipse/eclimd -b
     sleep 20
-    cp vim/javaPlugin/eclim_settings ~/workspace/.metadata/.plugins/org.eclipse.core.runtime/.settings/org.eclim.prefs
-    cp vim/javaPlugin/google_checks.xml ~/.vim/
-    cp vim/javaPlugin/checkstyle.xml ~/.vim/
+
 
     # :ProjectCreate ./ -n java
     # :ProjectList

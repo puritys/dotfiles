@@ -1,5 +1,5 @@
 eclipse.preferences.version=1
-org.eclim.java.checkstyle.config=~/.vim/checkstyle.xml
+org.eclim.java.checkstyle.config=/usr/local/etc/checkstyle.xml
 org.eclim.java.checkstyle.onvalidate=false
 org.eclim.java.checkstyle.properties=
 org.eclim.java.doc.dest=doc
