@@ -65,3 +65,14 @@ let g:EclimJavaCheckstyleOnSave=1
 let g:EclimMavenPomClasspathUpdate = 1
 "" eclim end
 
+"" Hard time start
+let g:hardtime_default_on = 1
+let g:hardtime_timeout = 50
+"let g:hardtime_allow_different_key = 1
+let g:list_of_normal_keys = []
+let g:list_of_visual_keys = []
+let g:list_of_insert_keys = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"]
+let g:list_of_disabled_keys = []
+"" Hard time end
+
+

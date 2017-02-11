@@ -11,8 +11,10 @@ Plugin 'ntpeters/vim-better-whitespace'
 
 " Snippet
 Plugin 'MarcWeber/vim-addon-mw-utils'
-Plugin 'tomtom/tlib_vim'     
+Plugin 'tomtom/tlib_vim'
 Plugin 'garbas/vim-snipmate'
+Plugin 'junegunn/vim-easy-align'
+"Plugin 'takac/vim-hardtime' # prevent repeat typing
 "Plugin 'honza/vim-snippets'
 
 "Plugin 'vim-airline/vim-airline'

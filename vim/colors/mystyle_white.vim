@@ -15,13 +15,14 @@ if exists("syntax_on")
 syntax reset
 endif
 
-" Which one is right?
 let g:colors_name = "mystyle_white"
 
 hi TextMain ctermfg=18  cterm=none ctermbg=none
 hi TextSub  ctermfg=236 ctermbg=none
+hi TextHeavySub  ctermfg=17 ctermbg=none
 hi TextBold cterm=bold ctermfg=88 ctermbg=none
-hi TextEmphasize cterm=bold ctermfg=255  ctermbg=124
+hi TextEmphasize cterm=bold ctermfg=0  ctermbg=251
+
 hi Test ctermfg=124
 
 hi TabLineFill cterm=none ctermfg=black ctermbg=240
@@ -31,10 +32,14 @@ hi TabLineSelRightIcon     cterm=none ctermfg=230   ctermbg=240
 hi TabLineRightIcon     cterm=none ctermfg=240   ctermbg=230
 
 hi Normal   ctermfg=238  ctermbg=none
+
 " Number line
 hi LineNr   cterm=none  ctermfg=240 ctermbg=254 
+" The number line which cursor on it.
+hi CursorLineNr guibg=lightblue cterm=none ctermfg=0 ctermbg=252
+
 "  "xxxxxx" 
-hi Constant cterm=none  ctermfg=202  ctermbg=none
+hi Constant cterm=none  ctermfg=17  ctermbg=none
 
 hi Exception ctermfg=124
 hi IncSearch    cterm=none  ctermfg=0   ctermbg=223

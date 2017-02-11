@@ -134,6 +134,10 @@ map <ESC>[882 :tabn<CR> " shift + right , move to next tab
 nmap ,tree :NERDTree<CR> " NERDTree plugin
 nmap ,ctag :TlistToggle<CR> " taglist
 
+" align
+nmap align= <Plug>(EasyAlign)ip=
+nmap align, <Plug>(EasyAlign)ip*,
+
 " OmniCppComplete
 set tags+=~/.vim/tags/cpp
 "map <C-F12> :!ctags -R --sort=yes --c++-kinds=+p --fields=+iaS --extra=+q .<CR>
