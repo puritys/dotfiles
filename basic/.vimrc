@@ -125,6 +125,9 @@ map <ESC>[882 :tabn<CR> " shift + right , move to next tab
 :imap <c-s> <Esc>:w<CR>a
 :nmap <c-q> :q<CR>
 :imap <c-q> <Esc>:q<CR>a
+:nmap :T :t
+:nmap :W :w
+:nmap :Q :q
 
 
 " plugin hot key
