@@ -134,9 +134,9 @@ map <ESC>[882 :tabn<CR> " shift + right , move to next tab
 nmap ,tree :NERDTree<CR> " NERDTree plugin
 nmap ,ctag :TlistToggle<CR> " taglist
 
-" align
-nmap align= <Plug>(EasyAlign)ip=
-nmap align, <Plug>(EasyAlign)ip*,
+" tabular
+map align :Tabularize /
+
 
 " OmniCppComplete
 set tags+=~/.vim/tags/cpp

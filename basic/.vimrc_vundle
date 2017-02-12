@@ -13,7 +13,8 @@ Plugin 'ntpeters/vim-better-whitespace'
 Plugin 'MarcWeber/vim-addon-mw-utils'
 Plugin 'tomtom/tlib_vim'
 Plugin 'garbas/vim-snipmate'
-Plugin 'junegunn/vim-easy-align'
+"http://vimcasts.org/episodes/aligning-text-with-tabular-vim/
+Plugin 'godlygeek/tabular'
 "Plugin 'takac/vim-hardtime' # prevent repeat typing
 "Plugin 'honza/vim-snippets'
 
