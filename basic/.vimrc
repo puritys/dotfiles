@@ -136,7 +136,7 @@ nmap ,ctag :TlistToggle<CR> " taglist
 
 " tabular
 map align :Tabularize /
-
+map align, :Tab /,\zs
 
 " OmniCppComplete
 set tags+=~/.vim/tags/cpp
