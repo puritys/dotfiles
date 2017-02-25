@@ -6,7 +6,7 @@ alias sudo='sudo -E '
 alias s='source ~/.bash_profile  '
 alias cpu="ps aux | awk '{printf \"CPU Usage: %s Process: %s\n\n\", \$3, \$0}' | sort -n"
 alias eclim_start='fn_eclim_start'
-
+alias ecliUpdate='ecliUpdate'
 if [ -f .alias_customized ]; then
     source .alias_customized
 fi
@@ -30,3 +30,8 @@ fn_eclim_start() {
     echo "Wait 20 seconds for eclim start."
     sleep 20
 }
+
+ecliUpdate() {
+    mvn eclipse:clean eclipse:eclipse;
+    sed 's/kind="var"/kind="lib"/' -i .classpath
+

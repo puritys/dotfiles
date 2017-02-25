@@ -62,7 +62,7 @@ highlight ExtraWhitespace ctermbg=251
 let g:EclimLogLevel="error"
 let g:EclimJavaValidate=1
 let g:EclimJavaCheckstyleOnSave=1
-let g:EclimMavenPomClasspathUpdate = 1
+"let g:EclimMavenPomClasspathUpdate = 1 " Cannot add correct dependencies if it include properties.
 "" eclim end
 
 "" Hard time start
