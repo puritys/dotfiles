@@ -34,4 +34,6 @@ fn_eclim_start() {
 ecliUpdate() {
     mvn eclipse:clean eclipse:eclipse;
     sed 's/kind="var"/kind="lib"/' -i .classpath
-
+    h=`echo $HOME | sed 's/\//\\\\\//g'`
+    sed "s/M2_REPO/$h\/.m2\/repository/" -i .classpath
+}
