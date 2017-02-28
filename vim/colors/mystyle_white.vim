@@ -19,7 +19,6 @@ let g:colors_name = "mystyle_white"
 
 hi TextMain ctermfg=18  cterm=none ctermbg=none
 hi TextSub  ctermfg=236 ctermbg=none
-hi TextHeavySub  ctermfg=17 ctermbg=none
 hi TextBold cterm=bold ctermfg=88 ctermbg=none
 hi TextEmphasize cterm=bold ctermfg=0  ctermbg=251
 
@@ -39,7 +38,7 @@ hi LineNr   cterm=none  ctermfg=240 ctermbg=254
 hi CursorLineNr guibg=lightblue cterm=none ctermfg=0 ctermbg=252
 
 "  "xxxxxx" 
-hi Constant cterm=none  ctermfg=17  ctermbg=none
+hi Constant cterm=none  ctermfg=202  ctermbg=none
 
 hi Exception ctermfg=124
 hi IncSearch    cterm=none  ctermfg=0   ctermbg=223
