@@ -19,14 +19,14 @@ let g:colors_name = "mystyle_white"
 
 hi TextMain ctermfg=18  cterm=none ctermbg=none
 hi TextSub  ctermfg=236 ctermbg=none
-hi TextBold cterm=bold ctermfg=88 ctermbg=none
-hi TextEmphasize cterm=bold ctermfg=0  ctermbg=251
+hi TextBold cterm=none ctermfg=88 ctermbg=none
+hi TextEmphasize cterm=none ctermfg=0  ctermbg=251
 
 hi Test ctermfg=124
 
 hi TabLineFill cterm=none ctermfg=black ctermbg=240
 hi TabLine     cterm=none ctermfg=247   ctermbg=240
-hi TabLineSel  cterm=bold ctermfg=black ctermbg=230
+hi TabLineSel  cterm=none ctermfg=black ctermbg=230
 hi TabLineSelRightIcon     cterm=none ctermfg=230   ctermbg=240
 hi TabLineRightIcon     cterm=none ctermfg=240   ctermbg=230
 
