@@ -45,15 +45,15 @@ hi IncSearch    cterm=none  ctermfg=0   ctermbg=223
 
 hi Search   cterm=none  ctermfg=255  ctermbg=242  
 hi ErrorMsg cterm=none  ctermfg=160 ctermbg=17  
-hi WarningMsg   cterm=bold  ctermfg=196 ctermbg=none
-hi ModeMsg  cterm=bold  ctermfg=fg  ctermbg=none
-hi MoreMsg  cterm=bold  ctermfg=242 ctermbg=none
+hi WarningMsg   cterm=none  ctermfg=196 ctermbg=none
+hi ModeMsg  cterm=none  ctermfg=fg  ctermbg=none
+hi MoreMsg  cterm=none  ctermfg=242 ctermbg=none
 
-"hi StatusLine   cterm=bold  ctermfg=fg  ctermbg=242 
+"hi StatusLine   cterm=none  ctermfg=fg  ctermbg=242 
 "hi StatusLineNC cterm=none  ctermfg=fg  ctermbg=237 
 hi VertSplit    cterm=reverse   ctermfg=fg  ctermbg=240
 
-"hi WildMenu cterm=bold  ctermfg=0   ctermbg=184 gui=bold    guifg=#000000   guibg=#dfdf00
+"hi WildMenu cterm=none  ctermfg=0   ctermbg=184 gui=none    guifg=#000000   guibg=#dfdf00
 
 hi Folded   cterm=none  ctermfg=234 ctermbg=253
 hi FoldColumn   cterm=none  ctermfg=248 ctermbg=58 
@@ -63,7 +63,7 @@ hi SignColumn   cterm=none  ctermfg=248 ctermbg=58
 hi Directory    cterm=none  ctermfg=0  ctermbg=none 
 
 "left Line number
-"hi NonText  cterm=bold  ctermfg=233 ctermbg=none  
+"hi NonText  cterm=none  ctermfg=233 ctermbg=none  
 
 hi Title    cterm=none  ctermfg=0   ctermbg=184 
 hi Visual   cterm=none  ctermfg=255 ctermbg=244 
