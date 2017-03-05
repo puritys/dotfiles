@@ -8,6 +8,7 @@ while true; do
       -p | --vimPlugin   ) installVimPlugin=1; shift 1 ;;
       -d | --debug ) DEBUG=true; shift 1 ;;
       -j | --jave ) JAVA=true; shift 1 ;;
+      -ujc | --updateJaveConfig ) UPDATE_JAVA_CONFIG=true; shift 1 ;;
       -k | --docker) DOCKER=true; shift 1;;
       -h | --help  ) 
           echo "Usage:"
@@ -76,19 +77,25 @@ fi
 
 # install eclim: 
 # http://www.eclipse.org/downloads/packages/eclipse-ide-java-ee-developers/mars2
-if [ "x$JAVA" == "xxxx" ]; then
+if [ "x$JAVA" != "x" ] || [ "x$UPDATE_JAVA_CONFIG" != "x" ]; then
     # Add hostname into /etc/hosts. e.g. 127.0.0.1 xxxHost
     #cd ~/ && wget xx
     #if [ -d ~/.vim/eclipse ]; then rm -rf ~/.vim/eclipse; fi
     #cd ~/ && tar -zxvf eclipse-jee-mars-2-linux-gtk-x86_64.tar.gz
     #mv ~/eclipse ~/.vim/
-    if [ ! -d "~/workspace/.metadata/.plugins/org.eclipse.core.runtime/.settings/" ];then
-        mkdir ~/workspace/.metadata/.plugins/org.eclipse.core.runtime/.settings/;
+    if [ ! -d "$HOME/workspace/.metadata/.plugins/org.eclipse.core.runtime/.settings/" ];then
+        mkdir $HOME/workspace/.metadata/.plugins/org.eclipse.core.runtime/.settings/;
     fi
+
     cp vim/javaPlugin/eclim_settings ~/workspace/.metadata/.plugins/org.eclipse.core.runtime/.settings/org.eclim.prefs
+    cp vim/javaPlugin/eclipse_config/org.eclipse.jdt.core.prefs.sh ~/workspace/.metadata/.plugins/org.eclipse.core.runtime/.settings/
+    pwd="$HOME/workspace/.metadata/.plugins/org.eclipse.core.runtime/.settings"
+    sh $pwd/org.eclipse.jdt.core.prefs.sh > $pwd/org.eclipse.jdt.core.prefs
     sudo cp vim/javaPlugin/google_checks.xml /usr/local/etc/
     sudo cp vim/javaPlugin/checkstyle.xml /usr/local/etc/
+fi
 
+if [ "x$JAVA" == "xxxx" ]; then
     ps aux |grep -i Xvfb |grep -v grep | awk '{printf "kill -9 %s\n",$2}' | sudo sh
     export DISPLAY=:1
     echo "\n\n=== Start Xvfb ===\n\n"
@@ -99,12 +106,12 @@ if [ "x$JAVA" == "xxxx" ]; then
     sleep 25
 
 
-    echo "\n\n=== Install eclim ===\n\n"
-    java -Dvim.files=$HOME/.vim  -Declipse.home=$HOME/.vim/eclipse/  -jar ./vim/javaPlugin/eclim_2.6.0.jar install
+    #echo "\n\n=== Install eclim ===\n\n"
+    #java -Dvim.files=$HOME/.vim  -Declipse.home=$HOME/.vim/eclipse/  -jar ./vim/javaPlugin/eclim_2.6.0.jar install
 
-    echo "\n\n=== Start eclimd ===\n\n"
-    DISPLAY=:1 ~/.vim/eclipse/eclimd -b
-    sleep 20
+    #echo "\n\n=== Start eclimd ===\n\n"
+    #DISPLAY=:1 ~/.vim/eclipse/eclimd -b
+    #sleep 20
 
 
     # :ProjectCreate ./ -n java
