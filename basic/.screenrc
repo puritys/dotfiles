@@ -1,7 +1,7 @@
 # Start message
 startup_message off
 bell_msg ""
-
+scrollback 10000
 # Set default encoding using utf8
 defutf8 on
 
