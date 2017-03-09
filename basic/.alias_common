@@ -3,7 +3,7 @@ alias s='source ~/.bash_profile  '
 alias cpu="ps aux | awk '{printf \"CPU Usage: %s Process: %s\n\n\", \$3, \$0}' | sort -n"
 alias eclim_start='fn_eclim_start'
 alias ecliUpdate='ecliUpdate'
-alias f='find ./ -iname '
+alias f='findFile'
 
 fn_eclim_start() {
     ps aux |grep -i Xvfb |grep -v grep | awk '{printf "kill -9 %s\n",$2}' | sudo sh
@@ -22,4 +22,10 @@ ecliUpdate() {
     sed 's/kind="var"/kind="lib"/' -i .classpath
     h=`echo $HOME | sed 's/\//\\\\\//g'`
     sed "s/M2_REPO/$h\/.m2\/repository/" -i .classpath
+}
+
+
+findFile () {
+    text="*$@*"
+    find ./ -iname  $text
 }
