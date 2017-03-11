@@ -75,4 +75,7 @@ let g:list_of_insert_keys = ["a","b","c","d","e","f","g","h","i","j","k","l","m"
 let g:list_of_disabled_keys = []
 "" Hard time end
 
+"" vim-syntastic/syntastic start
+let g:syntastic_php_checkers = ['php']
+"" vim-syntastic/syntastic end
 
