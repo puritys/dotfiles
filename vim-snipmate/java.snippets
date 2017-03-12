@@ -90,3 +90,30 @@ snippet /*
 	 * @param xxx xxx
 	 * @return String
 	 */
+
+snippet func
+	public void function ${1}() {
+		${2}
+	}
+
+snippet unit
+	package com.xxx;
+	import static org.junit.Assert.assertEquals;
+	import org.junit.*;
+
+	public class AppTest {
+		private App tester;
+
+		@Before
+		public void setUp() throws Exception {
+			this.tester = new App();
+		}
+
+		@Test
+		public void testApp() throws exception {
+			String ret = this.tester.getLink(1);
+			assertEquals("The url should be xxxx", "http://", ret);
+	 	}
+	}
+
+
