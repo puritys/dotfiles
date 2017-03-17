@@ -121,6 +121,14 @@ map <ESC>[882 :tabn<CR> " shift + right , move to next tab
 :inoremap <buffer> <C-X><C-U> <C-X><C-U><C-P> 
 :inoremap <buffer> <C-S-Space> <C-X><C-U><C-P> 
 
+" FZF
+":map <C-p> :FZF<CR>
+:map <C-p> :call fzf#run({
+  \ 'sink':  'tabe',
+  \ 'down': '40%',
+  \ 'options': '--reverse --margin 5%,0%'
+  \ })<CR>
+
 :nmap <c-s> :w<CR>
 :imap <c-s> <Esc>:w<CR>a
 :nmap <c-q> :q<CR>
