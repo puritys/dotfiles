@@ -24,3 +24,6 @@ export LS_OPTIONS
 
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
+[ -f ~/.sh_tool/z/z.sh ] && source ~/.sh_tool/z/z.sh
+
+
