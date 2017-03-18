@@ -1,7 +1,7 @@
 alias plog='tail -f /tmp/php.log'
 alias s='source ~/.bash_profile  '
 alias cpu="ps aux | awk '{printf \"CPU Usage: %s Process: %s\n\n\", \$3, \$0}' | sort -n"
-alias eclim_start='fn_eclim_start'
+alias ecliStart='fn_eclim_start'
 alias ecliUpdate='ecliUpdate'
 alias f='findFile'
 alias vim='vim -p '

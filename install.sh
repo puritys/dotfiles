@@ -3,21 +3,22 @@
 while true; do
     if [ "x$1" == "x" ];then
         break;
-    fi  
+    fi
     case "$1" in
       -p | --vimPlugin   ) installVimPlugin=1; shift 1 ;;
       -d | --debug ) DEBUG=true; shift 1 ;;
       -j | --jave ) JAVA=true; shift 1 ;;
       -ujc | --updateJaveConfig ) UPDATE_JAVA_CONFIG=true; shift 1 ;;
       -k | --docker) DOCKER=true; shift 1;;
-      -h | --help  ) 
+      -i | --init) INIT=true; shift 1;;
+      -h | --help  )
           echo "Usage:"
           echo "-p: install vim plugin"
           echo "-k: install docker alias"
           echo "-j: install some vim plugins for java"
           shift 1
-          exit 1 
-          ;;  
+          exit 1
+          ;;
       --) echo "-- is not a correct option.";shift 1; ;;
       * ) echo "$1 is not a correct option.";shift 1; ;;
     esac
@@ -75,7 +76,7 @@ if [ "x$JAVA" != "x" ]; then
     cd ~/openjdk && unzip openjdk-7-fcs-src-b147-27_jun_2011.zip
 fi
 
-# install eclim: 
+# install eclim:
 # http://www.eclipse.org/downloads/packages/eclipse-ide-java-ee-developers/mars2
 if [ "x$JAVA" != "x" ] || [ "x$UPDATE_JAVA_CONFIG" != "x" ]; then
     # Add hostname into /etc/hosts. e.g. 127.0.0.1 xxxHost
@@ -121,4 +122,8 @@ if [ "x$JAVA" == "xxxx" ]; then
 fi
 if [ ! -d ~/.eclim/ ];  then mkdir ~/.eclim/; fi
 
+if [ "x$INIT" != "x" ];  then
+    git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
+    ~/.fzf/install
+fi
 
