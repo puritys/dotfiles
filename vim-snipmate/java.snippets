@@ -9,9 +9,13 @@ snippet implist
 snippet impjson
 	import org.json.JSONObject;
 	import org.json.JSONArray;
+snippet impgson
+	import import com.google.gson.Gson;
 snippet imptest
-	import static org.testng.Assert.assertEquals;
- 
+	import static org.junit.Assert.assertEquals;
+	import static org.junit.Assert.assertNotEquals;
+	import static org.junit.Assert.assertTrue;
+
 snippet impinject
 	import com.google.inject.Inject;
 
@@ -25,15 +29,35 @@ snippet impdate
 
 snippet impstring
 	import org.apache.commons.lang3.StringUtils;
+
 snippet imparray
 	import java.util.Arrays;
 
 snippet impexception
 	import java.util.concurrent.ExecutionException;
-	import java.io.IOException; 
+	import java.io.IOException;
 
-snipprt json
-	import org.json.JSONObject; 
+snippet impapache
+	import org.apache.commons.lang3.builder.ToStringBuilder;
+	import org.apache.commons.lang3.builder.ToStringStyle;
+
+snippet pomgson
+	<dependency>
+	    <groupId>com.google.code.gson</groupId>
+	    <artifactId>gson</artifactId>
+	    <version>2.8.0</version>
+	    <scope>compile</scope>
+	</dependency>
+
+snippet pomapache
+	<dependency>
+		<groupId>org.apache.commons</groupId>
+	    <artifactId>commons-lang3</artifactId>
+		<version>3.5</version>
+	</dependency>
+
+snippet json
+	import org.json.JSONObject;
 	JSONObject jsonObject = new JSONObject("{}");
 
 snippet exdate
