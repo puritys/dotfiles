@@ -123,7 +123,7 @@ map <ESC>[882 :tabn<CR> " shift + right , move to next tab
 
 " FZF
 ":map <C-p> :FZF<CR>
-:map <C-p> :call fzf#run({
+:nmap <C-p> :call fzf#run({
   \ 'sink':  'tabe',
   \ 'down': '40%',
   \ 'options': '--reverse --margin 5%,0%'

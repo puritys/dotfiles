@@ -132,10 +132,16 @@ snippet /*
 	 */ 
 
 snippet curl
-	$c = curl_init(); 
-	curl_setopt($c, CURLOPT_URL, $url); 
-	curl_setopt($c, CURLOPT_RETURNTRANSFER, true); 
-	curl_setopt($c, CURLOPT_FOLLOWLOCATION, true); 
+	$c = curl_init();
+	curl_setopt($c, CURLOPT_URL, $url);
+	curl_setopt($c, CURLOPT_RETURNTRANSFER, true);
+	curl_setopt($c, CURLOPT_FOLLOWLOCATION, true);
 	$data = curl_exec($c);
-	$httpCode = curl_getinfo($c, CURLINFO_HTTP_CODE); 
+	$httpCode = curl_getinfo($c, CURLINFO_HTTP_CODE);
 	curl_close($c);
+
+snippet empty
+	empty
+
+snippet isset
+	isset
