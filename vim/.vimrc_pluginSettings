@@ -79,6 +79,12 @@ let g:list_of_disabled_keys = []
 let g:syntastic_php_checkers = ['php']
 "" vim-syntastic/syntastic end
 
+" pangloss/vim-javascript start
+let g:javascript_plugin_jsdoc = 1
+let g:javascript_plugin_ngdoc = 1
+let g:javascript_plugin_flow = 1
+" pangloss/vim-javascript end
+
 ""FZF start
 ""FZF end
 

@@ -17,13 +17,17 @@ Plugin 'tomtom/tlib_vim'
 Plugin 'garbas/vim-snipmate'
 "http://vimcasts.org/episodes/aligning-text-with-tabular-vim/
 Plugin 'godlygeek/tabular'
-"Plugin 'takac/vim-hardtime' # prevent repeat typing
+"Plugin 'takac/vim-hardtime' " prevent repeat typing
 "Plugin 'honza/vim-snippets'
 
 "Plugin 'vim-airline/vim-airline'
 "Plugin 'vim-airline/vim-airline-themes'
 "Plugin 'Raimondi/delimitMate'
 "Plugin 'ervandew/supertab'
+"
+"Plugin 'pangloss/vim-javascript' " javascript hightlight, better indent
+"Plugin 'groenewege/vim-less'    " less highlight, indent, autocomplete
+"Plugin 'fatih/vim-go'           " Golang
 call vundle#end()
 
 

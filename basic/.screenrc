@@ -1,7 +1,10 @@
 # Start message
 startup_message off
-bell_msg ""
-scrollback 10000
+bell_msg        ""
+hardcopy_append on    # hardcopy Ctrl+a h Writes out the current display contents to the file hardcopy.n
+defscrollback   10000 # set scollbar line
+shell           -bash # use bash
+
 # Set default encoding using utf8
 defutf8 on
 
@@ -12,6 +15,12 @@ log of
 
 # Dynamic title
 shelltitle '$ |bash'
+
+
+# ======================================================
+# Key bindings
+# ======================================================
+
 bindkey ^[z prev
 bindkey ^[x next
 
@@ -34,7 +43,6 @@ bindkey ^[[1;5C next # ctrl+ right , move to next window
 bindkey ^[[D prev #ctrl + left   , move to previous window
 bindkey ^[[C next # ctrl+ right , move to next window
 
-shell -bash
 bind s
 #ban掉鎖定預設熱鍵
 
