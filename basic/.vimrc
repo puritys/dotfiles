@@ -1,3 +1,4 @@
+let g:forceUseTab = 1
 source ~/.vimrc_vundle
 syntax on
 ""/usr/share/vim/vim70/lang/
@@ -81,17 +82,52 @@ map <Esc>[D 4
 map <Esc>[C 6
 
 "切換tab
-nmap 4 :tabp<CR>
-nmap 6 :tabn<CR>
+if (exists("g:forceUseTab") && g:forceUseTab == 1)
+    nmap 4 :tabp<CR>
+    nmap 6 :tabn<CR>
+    nmap n :tabp<CR>
+    nmap m :tabn<CR>
+    nmap <C-[>a :tabp<CR>
+    nmap <C-[>s :tabn<CR>
+    nmap <ESC>[2;1 :tabp<CR>
+    nmap <ESC>[2;2 :tabn<CR>
+    "vim tab
+    nmap <ESC>[1;2D :tabp<CR> " shift + left
+    nmap <ESC>[1;2C :tabn<CR> " shift + right
 
-nmap n :tabp<CR>
-nmap m :tabn<CR>
+    " putty
+    nmap <ESC>[D :tabp<CR>
+    nmap <ESC>[C :tabn<CR>
+
+    " Mac
+    map <ESC>[881 :tabp<CR> " shift + left , move to previous tab 
+    map <ESC>[882 :tabn<CR> " shift + right , move to next tab 
+    let g:myTabe = "tabe"
+else
+    nmap 4 :bp<CR>
+    nmap 6 :bn<CR>
+    nmap n :bp<CR>
+    nmap m :bn<CR>
+    nmap <C-[>a :bp<CR>
+    nmap <C-[>s :bn<CR>
+    nmap <ESC>[2;1 :bp<CR>
+    nmap <ESC>[2;2 :bn<CR>
+    "vim tab
+    nmap <ESC>[1;2D :bp<CR> " shift + left
+    nmap <ESC>[1;2C :bn<CR> " shift + right
+
+    " putty
+    nmap <ESC>[D :bp<CR>
+    nmap <ESC>[C :bn<CR>
+
+    " Mac
+    map <ESC>[881 :bp<CR> " shift + left , move to previous tab 
+    map <ESC>[882 :bn<CR> " shift + right , move to next tab 
+    let g:myTabe = "e"
+
+endif
+
 nmap gf <C-w>gf
-nmap <C-[>a :tabp<CR>
-nmap <C-[>s :tabn<CR>
-nmap <ESC>[2;1 :tabp<CR>
-nmap <ESC>[2;2 :tabn<CR>
-
 map <F6> :emenu <C-Z>
 
 " switch vim window
@@ -105,17 +141,6 @@ nmap <ESC>[A <C-w>h " ctrl + up arrow : move to up split window
 nmap <ESC>[B <C-w>l " ctrl + down arrow : move to up split window
 
 
-"vim tab
-nmap <ESC>[1;2D :tabp<CR> " shift + left
-nmap <ESC>[1;2C :tabn<CR> " shift + right
-
-" putty
-nmap <ESC>[D :tabp<CR>
-nmap <ESC>[C :tabn<CR>
-
-" Mac
-map <ESC>[881 :tabp<CR> " shift + left , move to previous tab 
-map <ESC>[882 :tabn<CR> " shift + right , move to next tab 
 
 " auto complete
 :inoremap <buffer> <C-X><C-U> <C-X><C-U><C-P> 
@@ -124,7 +149,7 @@ map <ESC>[882 :tabn<CR> " shift + right , move to next tab
 " FZF
 ":map <C-p> :FZF<CR>
 :nmap <C-p> :call fzf#run({
-  \ 'sink':  'tabe',
+  \ 'sink':  g:myTabe,
   \ 'down': '40%',
   \ 'options': '--reverse --margin 5%,0%'
   \ })<CR>
