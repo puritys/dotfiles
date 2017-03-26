@@ -200,7 +200,7 @@ else
     autocmd BufAdd    * call tabline#updateBuffer()
     autocmd BufDelete * call tabline#updateBuffer()
     autocmd TabEnter  * call tabline#updateBuffer()
-    "autocmd VimEnter  * call tabline#updateBuffer()
+    autocmd VimEnter  * call tabline#updateBuffer()
 
 endif
 

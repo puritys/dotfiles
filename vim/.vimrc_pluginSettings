@@ -65,6 +65,11 @@ let g:EclimJavaCheckstyleOnSave=1
 "let g:EclimMavenPomClasspathUpdate = 1 " Cannot add correct dependencies if it include properties.
 "" eclim end
 
+"" airline start
+let g:airline#extensions#tabline#enabled = 1
+let g:airline_theme='simple'
+"" airline end
+
 "" Hard time start
 let g:hardtime_default_on = 1
 let g:hardtime_timeout = 50
