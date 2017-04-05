@@ -171,6 +171,9 @@ nmap ,ctag :TlistToggle<CR> " taglist
 map align :Tabularize /
 map align, :Tab /,\zs
 
+" SyntasticCheck
+nmap sc :SyntasticCheck<CR>
+
 " OmniCppComplete
 set tags+=~/.vim/tags/cpp
 "map <C-F12> :!ctags -R --sort=yes --c++-kinds=+p --fields=+iaS --extra=+q .<CR>

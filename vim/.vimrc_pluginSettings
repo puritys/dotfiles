@@ -81,7 +81,13 @@ let g:list_of_disabled_keys = []
 "" Hard time end
 
 "" vim-syntastic/syntastic start
+"let g:syntastic_php_checkers = ['php', 'phpcs', 'phpmd']
 let g:syntastic_php_checkers = ['php']
+let g:syntastic_auto_loc_list = 0
+let g:syntastic_check_on_open = 0
+let g:syntastic_check_on_wq = 0
+let g:syntastic_check_on_w = 0
+let g:syntastic_mode_map={'mode': 'passive'}
 "" vim-syntastic/syntastic end
 
 " pangloss/vim-javascript start
