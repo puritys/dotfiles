@@ -128,6 +128,7 @@ if [ "x$INIT" != "x" ];  then
     fi
     git clone --depth 1 https://github.com/junegunn/fzf.git ~/.sh_tool/fzf
     ~/.sh_tool/fzf/install
+    ## append <(cat ~/machine_list.txt | grep -v '#')  ~/.fzf/shell/completion.bash
     git clone https://github.com/rupa/z.git ~/.sh_tool/z
 fi
 
