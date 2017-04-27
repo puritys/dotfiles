@@ -154,8 +154,8 @@ nmap <ESC>[B <C-w>l " ctrl + down arrow : move to up split window
   \ 'options': '--reverse --margin 5%,0%'
   \ })<CR>
 
-:nmap <c-s> :w<CR>
-:imap <c-s> <Esc>:w<CR>a
+:nmap <c-s> :w!<CR>
+:imap <c-s> <Esc>:w!<CR>a
 :nmap <c-q> :q<CR>
 :imap <c-q> <Esc>:q<CR>a
 :nmap :T :t
