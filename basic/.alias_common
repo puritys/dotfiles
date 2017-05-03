@@ -6,7 +6,11 @@ alias ecliUpdate='ecliUpdate'
 alias f='findFile'
 alias vim='vim -p'
 alias Grep='grep'
-
+alias ..='cd ..'
+alias ...='cd ../..'
+alias ....='cd ../../..'
+alias .....='cd ../../../..'
+alias ......='cd ../../../../..'
 fn_eclim_start() {
     ps aux |grep -i Xvfb |grep -v grep | awk '{printf "kill -9 %s\n",$2}' | sudo sh
     sudo Xvfb :1 -screen 0 1024x768x24 &
