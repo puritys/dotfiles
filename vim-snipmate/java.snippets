@@ -125,4 +125,17 @@ snippet unit
 	 	}
 	}
 
+snippet guicemodule
+	package com.xx;
+	import com.google.inject.AbstractModule;
+
+	public class GuiceModule extends AbstractModule {
+
+		@Override
+		protected void configure() {
+			bind(Car.class).to(CartImpl.class);
+		}
+
+	}
+
 
