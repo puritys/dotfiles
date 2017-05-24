@@ -13,12 +13,16 @@ set tabstop=4 shiftwidth=4  softtabstop=0 expandtab
 set nosmarttab
 filetype plugin on
 "filetype plugin indent on
+filetype plugin indent off
+
 set nois " quick search
 
-filetype indent off
+" indent
 set nocindent
 set noautoindent
 set nosmartindent
+au FileType cpp,c,java,sh,pl,php,phtml,asp,xml,javascript  set nosmartindent nocindent noautoindent
+
 set showcmd
 set bg=dark
 set backspace=2
@@ -195,7 +199,6 @@ au BufRead,BufNewFile *.c set filetype=cpp
 au BufRead,BufNewFile *.php set filetype=php
 au BufRead,BufNewFile *.phtml set filetype=php
 au BufRead,BufNewFile *.inc set filetype=php
-
 source ~/.vim/.vimrc_pluginSettings
 
 "function! Tab_Or_Complete()
