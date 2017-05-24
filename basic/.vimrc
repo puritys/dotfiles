@@ -9,20 +9,16 @@ set nocompatible
 set hlsearch "high light search
 set encoding=utf-8
 set nu
-set tabstop=4
-"set softtabstop=4
-set shiftwidth=4
-set et
-
+set tabstop=4 shiftwidth=4  softtabstop=0 expandtab
+set nosmarttab
 filetype plugin on
 "filetype plugin indent on
+set nois " quick search
 
-
-"自動縮排 cindent autoindent(ai)  smartindent
-"set cindent
-"set ai
 filetype indent off
+set nocindent
 set noautoindent
+set nosmartindent
 set showcmd
 set bg=dark
 set backspace=2
@@ -35,7 +31,7 @@ set tabpagemax=100
 hi TabLine guifg=#2f2f2f guibg=#a050a0     ctermfg=248 ctermbg=233
 hi TabLineSel guifg=#2f2f2f guibg=#a050a0     ctermfg=white ctermbg=69
 colorscheme mystyle_white
-"" mystyle  molokai 
+"" mystyle  molokai
 
 "出現水平線
 set cursorline
@@ -228,3 +224,13 @@ source ~/.vim/.vimrc_pluginSettings
 "Plug 'fatih/vim-go'
 "call plug#end()
 
+
+"inoremap <tab> <c-r>=InsertTabWrapper()<cr>  
+"function InsertTabWrapper()
+"   let col = col('.') - 1
+"   if !col || getline('.')[col - 1] !~ '\k'
+"        return "\<tab>"
+"    else
+"        return "\<c-p>"
+"    endif
+"endfunction
