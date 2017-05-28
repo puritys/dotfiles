@@ -1,7 +1,12 @@
 let g:forceUseTab = 1
 source ~/.vimrc_vundle
+
+" load fzf
+set rtp+=~/.fzf
+
 syntax on
 ""/usr/share/vim/vim70/lang/
+
 
 "set paste "" Can not put this line after the autoindent, of the  autoindent will be reset, "set paste" will disable hot key on insert mode.
 
