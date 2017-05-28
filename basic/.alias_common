@@ -6,11 +6,28 @@ alias ecliUpdate='ecliUpdate'
 alias f='findFile'
 alias vim='vim -p'
 alias Grep='grep'
+alias mem="ps aux | awk '{printf \"%s %s\n\",\$4,\$0}' | sort -n"
+alias memSum="ps aux | awk '{sum += \$4} END {print sum}' "
+alias myHelp='fn_help'
+
 alias ..='cd ..'
 alias ...='cd ../..'
 alias ....='cd ../../..'
 alias .....='cd ../../../..'
 alias ......='cd ../../../../..'
+
+
+
+fn_help() {
+    echo "mem: get the process using most memory"
+    echo "memSum: get sum of memory usage"
+    echo "ecliStart: start eclim"
+    echo "ecliUpdate: Update .class of java mvn project"
+
+
+}
+
+
 fn_eclim_start() {
     ps aux |grep -i Xvfb |grep -v grep | awk '{printf "kill -9 %s\n",$2}' | sudo sh
     sudo Xvfb :1 -screen 0 1024x768x24 &
