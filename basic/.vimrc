@@ -18,9 +18,9 @@ set tabstop=4 shiftwidth=4  softtabstop=0 expandtab
 set nosmarttab
 filetype plugin on
 "filetype plugin indent on
-filetype plugin indent off
+"filetype plugin indent off " this will break eclim validate
 
-set nois " quick search
+"set nois " quick search
 
 " indent
 set nocindent
