@@ -26,7 +26,7 @@ done
 
 touch ~/.bash_host
 cp basic/.* ~/
-
+pwd=`pwd`
 if hash sudo 2>/dev/null; then
     sudo="sudo "
 else
@@ -78,6 +78,7 @@ fi
 
 # install eclim:
 # http://www.eclipse.org/downloads/packages/eclipse-ide-java-ee-developers/mars2
+cd $pwd
 if [ "x$JAVA" != "x" ] || [ "x$UPDATE_JAVA_CONFIG" != "x" ]; then
     # Add hostname into /etc/hosts. e.g. 127.0.0.1 xxxHost
     #cd ~/ && wget xx
@@ -85,7 +86,7 @@ if [ "x$JAVA" != "x" ] || [ "x$UPDATE_JAVA_CONFIG" != "x" ]; then
     #cd ~/ && tar -zxvf eclipse-jee-mars-2-linux-gtk-x86_64.tar.gz
     #mv ~/eclipse ~/.vim/
     if [ ! -d "$HOME/workspace/.metadata/.plugins/org.eclipse.core.runtime/.settings/" ];then
-        mkdir $HOME/workspace/.metadata/.plugins/org.eclipse.core.runtime/.settings/;
+        mkdir -p $HOME/workspace/.metadata/.plugins/org.eclipse.core.runtime/.settings/;
     fi
 
     cp vim/javaPlugin/eclim_settings ~/workspace/.metadata/.plugins/org.eclipse.core.runtime/.settings/org.eclim.prefs
@@ -96,13 +97,14 @@ if [ "x$JAVA" != "x" ] || [ "x$UPDATE_JAVA_CONFIG" != "x" ]; then
     sudo cp vim/javaPlugin/checkstyle.xml /usr/local/etc/
 fi
 
-if [ "x$JAVA" == "xxxx" ]; then
+if [ "x$JAVA" != "x" ]; then
     ps aux |grep -i Xvfb |grep -v grep | awk '{printf "kill -9 %s\n",$2}' | sudo sh
     export DISPLAY=:1
     echo "\n\n=== Start Xvfb ===\n\n"
     sudo Xvfb :1 -screen 0 1024x768x24 &
 
     echo "\n\n=== Start eclipse ===\n\n"
+    mkdir -p ~/.vim/eclipse/eclipse
     DISPLAY=:1 ~/.vim/eclipse/eclipse -nosplash -consolelog -debug -application org.eclipse.equinox.p2.director   -repository http://download.eclipse.org/releases/juno      -installIU org.eclipse.wst.web_ui.feature.feature.group &
     sleep 25
 
