@@ -16,7 +16,14 @@ alias ....='cd ../../..'
 alias .....='cd ../../../..'
 alias ......='cd ../../../../..'
 
+# date to timestamp
+alias d2t='fn_d2t'
 
+fn_d2t() {
+    command="date -d "$1" +%s"
+    echo $command
+    echo `$command` 
+}
 
 fn_help() {
     echo "mem: get the process using most memory"
