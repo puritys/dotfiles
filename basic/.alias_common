@@ -1,6 +1,7 @@
 alias plog='tail -f /tmp/php.log'
 alias s='source ~/.bash_profile  '
 alias ecliStart='fn_eclim_start'
+alias ecliStop='fn_eclim_stop'
 alias ecliUpdate='ecliUpdate'
 alias f='findFile'
 alias vim='vim -p'
@@ -55,6 +56,11 @@ fn_eclim_start() {
         echo "Wait 20 seconds for eclim start."
         sleep 20
     fi
+}
+
+fn_eclim_stop() {
+    ps aux |grep -i ecli |grep -v grep | awk '{printf "kill -9 %s\n",$2}' | sudo sh
+    ps aux |grep -i Xvfb |grep -v grep | awk '{printf "kill -9 %s\n",$2}' | sudo sh
 }
 
 ecliUpdate() {
