@@ -42,7 +42,7 @@ fn_eclim_start() {
         ps aux |grep -i ecli |grep -v grep | awk '{printf "kill -9 %s\n",$2}' | sudo sh
         open $HOME/.vim/Eclipse.app
         echo "Wait for eclipse start"
-        sleep 30
+        sleep 50
         DISPLAY=:1 $HOME/.vim/Eclipse.app/Contents/Eclipse/eclimd -b
         echo "Wait 20 seconds for eclim start."
         sleep 20
@@ -51,7 +51,7 @@ fn_eclim_start() {
         sudo Xvfb :1 -screen 0 1024x768x24 &
         DISPLAY=:1 ~/.vim/eclipse/eclipse -nosplash -consolelog -debug -application org.eclipse.equinox.p2.director   -repository http://download.eclipse.org/releases/juno      -installIU org.eclipse.wst.web_ui.feature.feature.group&
         echo "Wait for eclipse start"
-        sleep 30
+        sleep 50
         DISPLAY=:1 ~/.vim/eclipse/eclimd -b
         echo "Wait 20 seconds for eclim start."
         sleep 20
