@@ -11,6 +11,7 @@ alias cpuSum="ps aux | awk '{sum += \$3} END {print sum}'"
 alias mem="ps aux | awk '{printf \"%s %s\n\",\$4,\$0}' | sort -n"
 alias memSum="ps aux | awk '{sum += \$4} END {print sum}' "
 alias myHelp='fn_help'
+alias ntpSync='sudo ntpdate -s time.stdtime.gov.tw'
 
 alias ..='cd ..'
 alias ...='cd ../..'
