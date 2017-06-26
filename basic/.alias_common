@@ -12,6 +12,8 @@ alias mem="ps aux | awk '{printf \"%s %s\n\",\$4,\$0}' | sort -n"
 alias memSum="ps aux | awk '{sum += \$4} END {print sum}' "
 alias myHelp='fn_help'
 alias ntpSync='sudo ntpdate -s time.stdtime.gov.tw'
+alias gitDeleteBranch='fnGitDeleteBranch'
+alias gitForceCommit='fnGitForceCommit'
 
 alias ..='cd ..'
 alias ...='cd ../..'
@@ -76,4 +78,16 @@ ecliUpdate() {
 findFile () {
     text="*$@*"
     find ./ -iname  $text
+}
+
+fnGitDeleteBranch() {
+    echo -e "git branch -D $1\n"
+    echo -e "git push origin --delete $1\n"
+    git branch -D $1
+    git push origin --delete $1
+}
+
+fnGitForceCommit() {
+    echo -e "git commit -m "$1" --no-verify\n"
+    git commit -m "$1" --no-verify
 }
