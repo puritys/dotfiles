@@ -2,6 +2,10 @@ snippet multiline
 	cat <<EOF
 		${0}
 	EOF
+snippet multilineString
+	read -r -d '' var  <<EOF
+		echo xx
+	EOF
 snippet func
 	${1} () {
 		param1=\$1
@@ -64,3 +68,8 @@ snippet sw
 
 snippet include
 	. $(dirname "\$0")/${1}.sh
+
+snippet strcontains
+	if [[ $str == *"ISxxx"* ]]; then
+		  echo "ok"
+	fi
