@@ -73,3 +73,17 @@ snippet strcontains
 	if [[ $str == *"ISxxx"* ]]; then
 		  echo "ok"
 	fi
+
+snippet ifor
+	if [ "0" == $week ] || [ "7" == $week ]; then
+		echo "xxx."
+	fi
+snippet ifand
+	if [ "0" == $week ] && [ "7" == $week ]; then
+		echo "xxx."
+	fi
+snippet ifgt
+	if [ $hour -lt 11 ] && [ $hour -gt 17 ]; then
+		echo "xxx."
+		exit 1
+	fi
