@@ -138,4 +138,12 @@ snippet guicemodule
 
 	}
 
+snippet pathCurrent
+	Paths.get("").toAbsolutePath().toString()
+
+snippet pathDir
+	this.getClass().getClassLoader().getResource("").getPath()
+
+snippet fileRead
+	BufferedReader in = new BufferedReader(new InputStreamReader(new FileInputStream("zzz"), "UTF8"));    
 
