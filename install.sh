@@ -10,7 +10,7 @@ while true; do
       -j | --jave ) JAVA=true; shift 1 ;;
       -ujc | --updateJaveConfig ) UPDATE_JAVA_CONFIG=true; shift 1 ;;
       -k | --docker) DOCKER=true; shift 1;;
-      -i | --init) INIT=true; shift 1;;
+      -i | --init) INIT=true; installVimPlugin=1; shift 1;;
       -h | --help  )
           echo "Usage:"
           echo "-p: install vim plugin"
@@ -42,9 +42,6 @@ else
     cp -rT vim ~/.vim
 fi
 
-if [ ! -d ~/.vim/bundle/Vundle.vim ]; then
-    git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
-fi
 echo $DOCKER
 if [ "x$DOCKER" == "x" ];then
     echo "Without docker"
@@ -52,8 +49,13 @@ if [ "x$DOCKER" == "x" ];then
 fi
 
 if [ "x$installVimPlugin" != "x" ];then
+    if [ -d ~/.vim/bundle/Vundle.vim ]; then
+        $sudo rm -rf ~/.vim/bundle/Vundle.vim
+        git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+    fi
+
     $sudo rm -rf ~/.vim/bundle/vim-snipmate/
-    vim -c :PluginInstall +qall &>/dev/null
+    #vim -c :PluginInstall +qall &>/dev/null
 fi
 
 if [ ! -d ~/.vim/bundle/vim-snipmate/snippets ]; then
@@ -172,7 +174,7 @@ if [ "x$INIT" != "x" ];  then
     fi
     git clone --depth 1 https://github.com/junegunn/fzf.git ~/.sh_tool/fzf
     ~/.sh_tool/fzf/install
-    ## append (cat ~/machine_list.txt | command grep -v '#' | sed -e 's/^/host /') \  ~/.fzf/shell/completion.bash : _fzf_complete_ssh
+    ## append (cat ~/machine_list.txt | command grep -v '#' | sed -e 's/^/host /') \  ~/.sh_tool/fzf/shell/completion.bash : _fzf_complete_ssh
     git clone https://github.com/rupa/z.git ~/.sh_tool/z
 fi
 
