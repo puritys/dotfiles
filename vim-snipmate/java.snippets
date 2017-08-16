@@ -45,6 +45,9 @@ snippet json
 	import org.json.JSONObject;
 	JSONObject jsonObject = new JSONObject("{}");
 
+snippet impMap
+	import java.util.Map;
+
 snippet exdate
 	try {
 		DateFormat format = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS");
@@ -82,6 +85,11 @@ snippet sw
 
 snippet for
 	for (int i = 0; i < n ; i++) {
+	}
+
+snippet forMap
+	for (Map.Entry<String, String> entry : map.entrySet()) {
+	    System.out.println(entry.getKey() + "/" + entry.getValue());
 	}
 
 snippet list
@@ -156,3 +164,16 @@ snippet forMap
 
 snippet upperCase
 	str.toUpperCase()
+
+snippet checkSkip
+	SuppressWarnings({"PMD.NPathComplexity", "PMD.ExcessiveMethodLength"})
+
+snippet jsonType
+	if (json.has("zzz")) {
+		Object aObj = json.get("zzz");
+		if(aObj instanceof JSONArray){
+			json.getJSONArray("cust_category");
+		}   
+	}   
+
+
