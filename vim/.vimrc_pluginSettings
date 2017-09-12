@@ -102,6 +102,11 @@ let g:javascript_plugin_flow = 1
 ""FZF start
 ""FZF end
 
+" incsearch
+set hlsearch
+let g:incsearch#auto_nohlsearch = 1
+map /  <Plug>(incsearch-forward)
+
 augroup autoformat_settings
   autocmd FileType bzl AutoFormatBuffer buildifier
   autocmd FileType c,cpp,proto,javascript AutoFormatBuffer clang-format

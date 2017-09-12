@@ -11,6 +11,8 @@ Plugin 'junegunn/fzf'
 Plugin 'vim-syntastic/syntastic'
 Plugin 'ntpeters/vim-better-whitespace'
 
+Plugin 'haya14busa/incsearch.vim'
+
 " Snippet
 Plugin 'MarcWeber/vim-addon-mw-utils'
 Plugin 'tomtom/tlib_vim'
