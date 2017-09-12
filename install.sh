@@ -67,6 +67,10 @@ $sudo rm -f ~/.vim/bundle/vim-snipmate/snippets/*
 
 cp vim-snipmate/*.snippets ~/.vim/bundle/vim-snipmate/snippets/
 
+if [ -d /usr/local/lib/ ]; then
+    sudo cp vim/javaPlugin/google-java-format-1.4-all-deps.jar /usr/local/lib/
+fi
+
 
 # install  JavaImp
 # http://www.vim.org/scripts/script.php?script_id=325
