@@ -26,7 +26,7 @@ filetype plugin on
 set nocindent
 set noautoindent
 set nosmartindent
-au FileType cpp,c,java,sh,pl,php,phtml,asp,xml,javascript  set nosmartindent nocindent noautoindent
+au FileType cpp,c,cc,java,sh,pl,php,phtml,asp,xml,javascript  set nosmartindent nocindent noautoindent
 
 set showcmd
 set bg=dark

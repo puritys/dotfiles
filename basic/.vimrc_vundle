@@ -31,17 +31,17 @@ Plugin 'godlygeek/tabular'
 "Plugin 'groenewege/vim-less'    " less highlight, indent, autocomplete
 "Plugin 'fatih/vim-go'           " Golang
 
-Plugin 'google/vim-maktaba'
-Plugin 'google/vim-codefmt'
-Plugin 'google/vim-glaive'
+" code format
+"Plugin 'google/vim-maktaba'
+"Plugin 'google/vim-codefmt'
+"Plugin 'google/vim-glaive'
 
 call vundle#end()
 
 " enable maktabe / codefmt
-call glaive#Install()
-" Optional: Enable codefmt's default mappings on the <Leader>= prefix.
-Glaive codefmt plugin[mappings]
-Glaive codefmt google_java_executable="java -jar /usr/local/lib/google-java-format-1.4-all-deps.jar"
+"call glaive#Install()
+"Glaive codefmt plugin[mappings]
+"Glaive codefmt google_java_executable="java -jar /usr/local/lib/google-java-format-1.4-all-deps.jar"
 
 
 """" Git Gutter
