@@ -176,7 +176,8 @@ map align :Tabularize /
 map align, :Tab /,\zs
 
 " TagBar
-nmap <F2> :TagbarToggle<CR>
+nmap <ESC>OQ ::TagbarToggle<CR>
+nmap <F2>    :TagbarToggle<CR>
 
 " SyntasticCheck
 nmap sc :SyntasticCheck<CR>
