@@ -107,14 +107,23 @@ set hlsearch
 let g:incsearch#auto_nohlsearch = 1
 map /  <Plug>(incsearch-forward)
 
-augroup autoformat_settings
-  autocmd FileType bzl AutoFormatBuffer buildifier
-  autocmd FileType c,cpp,proto,javascript AutoFormatBuffer clang-format
-  autocmd FileType dart AutoFormatBuffer dartfmt
-  autocmd FileType go AutoFormatBuffer gofmt
-  autocmd FileType gn AutoFormatBuffer gn
-  autocmd FileType html,css,json AutoFormatBuffer js-beautify
-  autocmd FileType java AutoFormatBuffer google-java-format
-  autocmd FileType python AutoFormatBuffer yapf
-  " Alternative: autocmd FileType python AutoFormatBuffer autopep8
-augroup END
+"" Enable maktabe / codefmt
+"call glaive#Install()
+"Glaive codefmt plugin[mappings]
+"Glaive codefmt google_java_executable="java -jar /usr/local/lib/google-java-format-1.4-all-deps.jar"
+
+"augroup autoformat_settings
+"  autocmd FileType bzl AutoFormatBuffer buildifier
+"  autocmd FileType c,cpp,proto,javascript AutoFormatBuffer clang-format
+"  autocmd FileType dart AutoFormatBuffer dartfmt
+"  autocmd FileType go AutoFormatBuffer gofmt
+"  autocmd FileType gn AutoFormatBuffer gn
+"  autocmd FileType html,css,json AutoFormatBuffer js-beautify
+"  autocmd FileType java AutoFormatBuffer google-java-format
+"  autocmd FileType python AutoFormatBuffer yapf
+"  " Alternative: autocmd FileType python AutoFormatBuffer autopep8
+"augroup END
+
+
+"" Tagbar Command
+" :TagbarToggle

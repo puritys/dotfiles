@@ -129,7 +129,6 @@ else
     map <ESC>[881 :bp<CR> " shift + left , move to previous tab 
     map <ESC>[882 :bn<CR> " shift + right , move to next tab 
     let g:myTabe = "e"
-
 endif
 
 nmap gf <C-w>gf
@@ -175,6 +174,9 @@ nmap ,ctag :TlistToggle<CR> " taglist
 " tabular
 map align :Tabularize /
 map align, :Tab /,\zs
+
+" TagBar
+nmap <F2> :TagbarToggle<CR>
 
 " SyntasticCheck
 nmap sc :SyntasticCheck<CR>

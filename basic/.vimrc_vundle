@@ -3,48 +3,46 @@ call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'scrooloose/nerdtree'
 Plugin 'jistr/vim-nerdtree-tabs'
-"Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'junegunn/fzf'
-"Plugin 'airblade/vim-gitgutter'
-"Plugin 'Valloric/YouCompleteMe'
 
 Plugin 'vim-syntastic/syntastic'
 Plugin 'ntpeters/vim-better-whitespace'
-
 Plugin 'haya14busa/incsearch.vim'
+Plugin 'majutsushi/tagbar'
 
 " Snippet
 Plugin 'MarcWeber/vim-addon-mw-utils'
 Plugin 'tomtom/tlib_vim'
 Plugin 'garbas/vim-snipmate'
+
 "http://vimcasts.org/episodes/aligning-text-with-tabular-vim/
 Plugin 'godlygeek/tabular'
-"Plugin 'takac/vim-hardtime' " prevent repeat typing
-"Plugin 'honza/vim-snippets'
 
+
+"" Airline
 "Plugin 'vim-airline/vim-airline'
 "Plugin 'vim-airline/vim-airline-themes'
-"Plugin 'Raimondi/delimitMate'
 
-" Auto complete
+
+"" Auto complete
 "Plugin 'ervandew/supertab'
 
-
-"Plugin 'pangloss/vim-javascript' " javascript hightlight, better indent
-"Plugin 'groenewege/vim-less'    " less highlight, indent, autocomplete
-"Plugin 'fatih/vim-go'           " Golang
-
-" code format
+"" code format
 "Plugin 'google/vim-maktaba'
 "Plugin 'google/vim-codefmt'
 "Plugin 'google/vim-glaive'
 
-call vundle#end()
+" others
+"Plugin 'takac/vim-hardtime' " prevent repeat typing
+"Plugin 'Raimondi/delimitMate'
+"Plugin 'pangloss/vim-javascript' " javascript hightlight, better indent
+"Plugin 'groenewege/vim-less'    " less highlight, indent, autocomplete
+"Plugin 'fatih/vim-go'           " Golang
+"Plugin 'airblade/vim-gitgutter'
+"Plugin 'Valloric/YouCompleteMe'
+"Plugin 'ctrlpvim/ctrlp.vim'
 
-" enable maktabe / codefmt
-"call glaive#Install()
-"Glaive codefmt plugin[mappings]
-"Glaive codefmt google_java_executable="java -jar /usr/local/lib/google-java-format-1.4-all-deps.jar"
+call vundle#end()
 
 
 """" Git Gutter
