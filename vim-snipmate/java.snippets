@@ -176,4 +176,11 @@ snippet jsonType
 		}   
 	}   
 
+snippet reg
+	Pattern p = Pattern.compile("embed/[a-zA-Z0-9-]+");
+	Matcher m = p.matcher("embed/zzz");
+	if (m.find()) {
+		string id = m.group();
+		id = id.substring(6);
+	}
 
