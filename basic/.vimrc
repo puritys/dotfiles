@@ -217,11 +217,11 @@ source ~/.vim/.vimrc_pluginSettings
 "":set dictionary="/usr/dict/words"
 "
 "
-"if has("autocmd") 
+"if has("autocmd")
 "  autocmd Filetype java setlocal omnifunc=javacomplete#Complete
 "  autocmd Filetype php setlocal omnifunc=phpcomplete#CompletePHP
 "  autocmd Filetype cpp setlocal omnifunc=omni#cpp#complete#Main
-"endif 
+"endif
 
 "set verbosefile=~/.vimlog
 "set verbose=15  
