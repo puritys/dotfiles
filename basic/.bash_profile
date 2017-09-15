@@ -8,6 +8,7 @@ if [ -f ~/.bash_host ]; then
 fi
 
 
+export SHELL=/bin/bash
 
 if [ -f ~/.bashrc ]; then
 	. ~/.bashrc
