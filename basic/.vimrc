@@ -145,11 +145,6 @@ nmap <ESC>[A <C-w>h " ctrl + up arrow : move to up split window
 nmap <ESC>[B <C-w>l " ctrl + down arrow : move to up split window
 
 
-
-" auto complete
-:inoremap <buffer> <C-X><C-U> <C-X><C-U><C-P> 
-:inoremap <buffer> <C-S-Space> <C-X><C-U><C-P> 
-
 " FZF
 ":map <C-p> :FZF<CR>
 :nmap <C-p> :call fzf#run({
@@ -209,17 +204,18 @@ au BufRead,BufNewFile *.phtml set filetype=php
 au BufRead,BufNewFile *.inc set filetype=php
 source ~/.vim/.vimrc_pluginSettings
 
-"function! Tab_Or_Complete()
-"  if col('.')>1 && strpart( getline('.'), col('.')-2, 3 ) =~ '^\w'
-"    return "\<C-X>\<C-O>"
-"  else
-"    return "\<Tab>"
-"  endif
-"endfunction
+function! Tab_Or_Complete()
+  if col('.')>1 && strpart( getline('.'), col('.')-2, 3 ) =~ '^\w'
+    return "\<C-X>\<C-O>"
+  else
+    return "\<Tab>"
+  endif
+endfunction
 ":inoremap <Tab> <C-R>=Tab_Or_Complete()<CR>
 "":set dictionary="/usr/dict/words"
-"
-"
+
+
+
 "if has("autocmd")
 "  autocmd Filetype java setlocal omnifunc=javacomplete#Complete
 "  autocmd Filetype php setlocal omnifunc=phpcomplete#CompletePHP
