@@ -1,6 +1,10 @@
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
+
+" vim plugin libary
+Plugin 'google/vim-maktaba'
+
 Plugin 'scrooloose/nerdtree'
 Plugin 'jistr/vim-nerdtree-tabs'
 Plugin 'junegunn/fzf'
@@ -28,7 +32,6 @@ Plugin 'godlygeek/tabular'
 "Plugin 'ervandew/supertab'
 
 "" code format
-"Plugin 'google/vim-maktaba'
 "Plugin 'google/vim-codefmt'
 "Plugin 'google/vim-glaive'
 
