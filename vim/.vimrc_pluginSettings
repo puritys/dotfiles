@@ -127,3 +127,18 @@ map /  <Plug>(incsearch-forward)
 
 "" Tagbar Command
 " :TagbarToggle
+
+"" QuickMenu
+let g:quickmenu_options = "HL"
+noremap <silent><F1> :call quickmenu#toggle(0)<cr>
+call quickmenu#reset()
+call quickmenu#append('# Main', '')
+call quickmenu#append('Function List', 'TagbarToggle', "F2")
+call quickmenu#append('NERDTree', 'NERDTree', "tree")
+call quickmenu#append('Find Files', "call fzf#run({'sink':'tabe', 'down': '40%'})", "Ctrl+p")
+
+
+
+
+
+

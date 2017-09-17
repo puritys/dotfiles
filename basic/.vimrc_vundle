@@ -5,6 +5,9 @@ Plugin 'scrooloose/nerdtree'
 Plugin 'jistr/vim-nerdtree-tabs'
 Plugin 'junegunn/fzf'
 
+" Menu to remember command
+Plugin 'skywind3000/quickmenu.vim'
+
 Plugin 'vim-syntastic/syntastic'
 Plugin 'ntpeters/vim-better-whitespace'
 Plugin 'haya14busa/incsearch.vim'
