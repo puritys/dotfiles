@@ -51,9 +51,8 @@ fi
 if [ "x$installVimPlugin" != "x" ];then
     if [ -d ~/.vim/bundle/Vundle.vim ]; then
         $sudo rm -rf ~/.vim/bundle/Vundle.vim
-        git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
     fi
-
+    git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
     $sudo rm -rf ~/.vim/bundle/vim-snipmate/
     #vim -c :PluginInstall +qall &>/dev/null
 fi
