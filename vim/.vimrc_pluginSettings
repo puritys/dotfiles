@@ -1,3 +1,11 @@
+"" Enable maktabe log
+let g:maktaba = maktaba#Maktaba()
+"let g:vroom_logger = maktaba#log#Logger('DEMO')
+call maktaba#log#SetNotificationLevel(maktaba#log#LEVELS.ERROR)
+"call g:vroom_logger.Debug('Test')
+"call g:vroom_logger.Error('my')
+
+
 "" NerdTree start "
 map <C-f> :NERDTreeToggle<CR> " open NerdTree tab
 " show line
@@ -103,16 +111,15 @@ let g:javascript_plugin_flow = 1
 ""FZF end
 
 " incsearch
-set hlsearch
-let g:incsearch#auto_nohlsearch = 1
-map /  <Plug>(incsearch-forward)
-
-"" Enable maktabe log
-let g:maktaba = maktaba#Maktaba()
-"let g:vroom_logger = maktaba#log#Logger('DEMO')
-call maktaba#log#SetNotificationLevel(maktaba#log#LEVELS.ERROR)
-"call g:vroom_logger.Debug('Test')
-"call g:vroom_logger.Error('my')
+if has("unix")
+    let s:uname = system("uname -s")
+    if s:uname == "Darwin\n"
+    else
+        set hlsearch
+        let g:incsearch#auto_nohlsearch = 1
+        map /  <Plug>(incsearch-forward)
+    endif
+endif
 
 
 "" Enable codefmt

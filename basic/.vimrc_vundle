@@ -30,6 +30,9 @@ Plugin 'godlygeek/tabular'
 
 "" Auto complete
 "Plugin 'ervandew/supertab'
+Plugin 'Valloric/YouCompleteMe'
+
+
 
 "" code format
 "Plugin 'google/vim-codefmt'

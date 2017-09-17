@@ -1,5 +1,7 @@
 #!/bin/bash
 
+#download vim https://github.com/vim/vim/archive/v7.4.2367.tar.gz
+
 while true; do
     if [ "x$1" == "x" ];then
         break;
@@ -176,9 +178,23 @@ if [ "x$INIT" != "x" ];  then
     if [ ! -d ~/.sh_tool ]; then
         mkdir ~/.sh_tool
     fi
-    git clone --depth 1 https://github.com/junegunn/fzf.git ~/.sh_tool/fzf
-    ~/.sh_tool/fzf/install
-    ## append (cat ~/machine_list.txt | command grep -v '#' | sed -e 's/^/host /') \  ~/.sh_tool/fzf/shell/completion.bash : _fzf_complete_ssh
-    git clone https://github.com/rupa/z.git ~/.sh_tool/z
+    if [ ! -d ~/.sh_tool/fzf ]; then
+        git clone --depth 1 https://github.com/junegunn/fzf.git ~/.sh_tool/fzf
+        ~/.sh_tool/fzf/install --all
+        ## append (cat ~/machine_list.txt | command grep -v '#' | sed -e 's/^/host /') \  ~/.sh_tool/fzf/shell/completion.bash : _fzf_complete_ssh
+        git clone https://github.com/rupa/z.git ~/.sh_tool/z
+    fi
+
+    # Install youCompleteMe
+    #if [ ! -d ~/.vim/bundle/YouCompleteMe ]; then
+    #    echo "Install YouCompleteMe: need cmake and python-3"
+    #    if [ -f /usr/bin/yum ];then
+    #        sudo yum -y install https://centos7.iuscommunity.org/ius-release.rpm
+    #        sudo yum install build-essential cmake python-devel python3-devel
+    #    fi
+    #    cd ~/.vim/bundle/YouCompleteMe
+    #    git submodule update --init --recursive
+    #    ./install.py --all
+    #fi
 fi
 
