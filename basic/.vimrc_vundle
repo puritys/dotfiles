@@ -4,6 +4,7 @@ Plugin 'VundleVim/Vundle.vim'
 Plugin 'scrooloose/nerdtree'
 Plugin 'jistr/vim-nerdtree-tabs'
 Plugin 'junegunn/fzf'
+Plugin 'google/vim-maktaba'
 
 " Menu to remember command
 Plugin 'skywind3000/quickmenu.vim'
@@ -21,6 +22,8 @@ Plugin 'garbas/vim-snipmate'
 "http://vimcasts.org/episodes/aligning-text-with-tabular-vim/
 Plugin 'godlygeek/tabular'
 
+" Auto Complete
+"Plugin 'Valloric/YouCompleteMe'
 
 "" Airline
 "Plugin 'vim-airline/vim-airline'
@@ -31,7 +34,6 @@ Plugin 'godlygeek/tabular'
 "Plugin 'ervandew/supertab'
 
 "" code format
-"Plugin 'google/vim-maktaba'
 "Plugin 'google/vim-codefmt'
 "Plugin 'google/vim-glaive'
 
@@ -42,7 +44,6 @@ Plugin 'godlygeek/tabular'
 "Plugin 'groenewege/vim-less'    " less highlight, indent, autocomplete
 "Plugin 'fatih/vim-go'           " Golang
 "Plugin 'airblade/vim-gitgutter'
-"Plugin 'Valloric/YouCompleteMe'
 "Plugin 'ctrlpvim/ctrlp.vim'
 
 call vundle#end()

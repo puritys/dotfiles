@@ -1,3 +1,10 @@
+"" Enable maktabe / codefmt		 +"" Enable maktabe log
+let g:maktaba = maktaba#Maktaba()
+let g:vroom_logger = maktaba#log#Logger('DEMO')
+call g:maktaba#log#SetNotificationLevel(g:maktaba#log#LEVELS.ERROR)
+"call g:vroom_logger.Debug('Test')
+"call g:vroom_logger.Error('my')
+
 "" NerdTree start "
 map <C-f> :NERDTreeToggle<CR> " open NerdTree tab
 " show line
@@ -104,7 +111,7 @@ let g:javascript_plugin_flow = 1
 
 " incsearch
 set hlsearch
-let g:incsearch#auto_nohlsearch = 1
+let g:incsearch#auto_nohlsearch = 0 " 0: keep hightlight when mouse cursor move
 map /  <Plug>(incsearch-forward)
 
 "" Enable maktabe / codefmt
@@ -140,5 +147,14 @@ call quickmenu#append('Find Files', "call fzf#run({'sink':'tabe', 'down': '40%'}
 
 
 
-
-
+""" YouCompleteMe
+"let g:ycm_auto_trigger = 1
+"let g:ycm_min_num_of_chars_for_completion = 1
+"let g:ycm_min_num_identifier_candidate_chars = 0
+"let g:ycm_max_num_candidates = 50 " maxmum
+""""let g:ycm_filetype_whitelist = { '*': 1 }
+""let g:ycm_show_diagnostics_ui = 1
+""let g:ycm_complete_in_comments = 1
+""let g:ycm_key_list_previous_completion = ['<C-TAB>']
+"let g:ycm_key_invoke_completion = '<C-d>'
+"

@@ -1,5 +1,5 @@
 #!/bin/bash
-
+installYouCompleteMe=0
 while true; do
     if [ "x$1" == "x" ];then
         break;
@@ -11,6 +11,7 @@ while true; do
       -ujc | --updateJaveConfig ) UPDATE_JAVA_CONFIG=true; shift 1 ;;
       -k | --docker) DOCKER=true; shift 1;;
       -i | --init) INIT=true; installVimPlugin=1; shift 1;;
+      -s | --special) installYouCompleteMe=1; shift 1;;
       -h | --help  )
           echo "Usage:"
           echo "-p: install vim plugin"
@@ -48,7 +49,25 @@ if [ "x$DOCKER" == "x" ];then
     rm -f ~/.alias_docker
 fi
 
+# Install youCompleteMe
+if [ "x$installYouCompleteMe" == "x1" ]; then
+if [ ! -d ~/.vim/bundle/YouCompleteMe ]; then
+    echo "Install YouCompleteMe: need cmake and python-devel-2.7 or 3 "
+    #if [ -f /usr/bin/yum ];then
+    #    sudo yum -y install https://centos7.iuscommunity.org/ius-release.rpm
+    #    sudo yum install build-essential cmake python-devel python3-devel
+    #fi
+    git clone git@github.com:Valloric/YouCompleteMe.git ~/.vim/bundle/YouCompleteMe
+    cd ~/.vim/bundle/YouCompleteMe
+    git submodule update --init --recursive
+    python2 ./install.py --all
+fi
+fi
+
+
+# Install vim Plugin
 if [ "x$installVimPlugin" != "x" ];then
+
     if [ -d ~/.vim/bundle/Vundle.vim ]; then
         $sudo rm -rf ~/.vim/bundle/Vundle.vim
     fi
@@ -57,15 +76,17 @@ if [ "x$installVimPlugin" != "x" ];then
     echo "\n" | vim -c :PluginInstall +qall
 fi
 
+
+# Update snippet script
 if [ ! -d ~/.vim/bundle/vim-snipmate/snippets ]; then
     mkdir -p ~/.vim/bundle/vim-snipmate/snippets
 fi
 
 $sudo rm -f ~/.vim/bundle/vim-snipmate/snippets/*
 
-
 cp vim-snipmate/*.snippets ~/.vim/bundle/vim-snipmate/snippets/
 
+# install google java code format
 if [ -d /usr/local/lib/ ]; then
     if [ ! -f /usr/local/lib/google-java-format-1.4-all-deps.jar ]; then
         sudo cp vim/javaPlugin/google-java-format-1.4-all-deps.jar /usr/local/lib/
@@ -182,4 +203,5 @@ if [ "x$INIT" != "x" ];  then
     ## append (cat ~/machine_list.txt | command grep -v '#' | sed -e 's/^/host /') \  ~/.sh_tool/fzf/shell/completion.bash : _fzf_complete_ssh
     git clone https://github.com/rupa/z.git ~/.sh_tool/z
 fi
+
 

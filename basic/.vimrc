@@ -211,33 +211,14 @@ function! Tab_Or_Complete()
     return "\<Tab>"
   endif
 endfunction
-":inoremap <Tab> <C-R>=Tab_Or_Complete()<CR>
+:inoremap <C-d> <C-R>=Tab_Or_Complete()<CR>
 "":set dictionary="/usr/dict/words"
 
 
-
-"if has("autocmd")
+if has("autocmd")
 "  autocmd Filetype java setlocal omnifunc=javacomplete#Complete
-"  autocmd Filetype php setlocal omnifunc=phpcomplete#CompletePHP
-"  autocmd Filetype cpp setlocal omnifunc=omni#cpp#complete#Main
-"endif
-
-"set verbosefile=~/.vimlog
-"set verbose=15  
-
-" Plugins
-" How to instal plugin :PlugInstall
-"call plug#begin('~/.vim/plugged')
-"Plug 'fatih/vim-go'
-"call plug#end()
+  autocmd Filetype php setlocal omnifunc=phpcomplete#CompletePHP
+  autocmd Filetype cpp setlocal omnifunc=omni#cpp#complete#Main
+endif
 
 
-"inoremap <tab> <c-r>=InsertTabWrapper()<cr>  
-"function InsertTabWrapper()
-"   let col = col('.') - 1
-"   if !col || getline('.')[col - 1] !~ '\k'
-"        return "\<tab>"
-"    else
-"        return "\<c-p>"
-"    endif
-"endfunction
