@@ -5,6 +5,7 @@ call g:maktaba#log#SetNotificationLevel(g:maktaba#log#LEVELS.ERROR)
 "call g:vroom_logger.Debug('Test')
 "call g:vroom_logger.Error('my')
 
+
 "" NerdTree start "
 map <C-f> :NERDTreeToggle<CR> " open NerdTree tab
 " show line
@@ -61,6 +62,15 @@ let g:snipMate.scope_aliases['php'] = 'core_php,core_html'
 let g:snipMate.scope_aliases['inc'] = 'core_php'
 let g:snipMate.scope_aliases['xml'] = 'mvn_pom'
 let g:snipMate.scope_aliases['java'] = 'java'
+
+" remap
+"let g:snips_no_mappings = 1
+"let s:overwrite = maparg('<Tab>', 'i') ==? '<Plug>SuperTabForward'
+"call s:map_if_not_mapped('<Tab>', '<Plug>snipMateNextOrTrigger', 'i')
+"call s:map_if_not_mapped('<Tab>', '<Plug>snipMateNextOrTrigger', 's')
+"let s:overwrite = 0
+"call s:map_if_not_mapped('<Tab>', '<Plug>snipMateVisual', 'x')
+
 
 "" Snippet End
 

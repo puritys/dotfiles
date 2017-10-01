@@ -1,6 +1,10 @@
 " Vim color file
 
-
+"The colors of the menu can be changed with these highlight groups:
+"Pmenu           normal item  hl-Pmenu
+"PmenuSel        selected item  hl-PmenuSel
+"PmenuSbar       scrollbar  hl-PmenuSbar
+"PmenuThumb      thumb of the scrollbar  hl-PmenuThumb
 
 if &t_Co != 256 && ! has("gui_running")
 echomsg ""
