@@ -1,7 +1,7 @@
 "" Enable maktabe / codefmt		 +"" Enable maktabe log
 let g:maktaba = maktaba#Maktaba()
-let g:vroom_logger = maktaba#log#Logger('DEMO')
-call g:maktaba#log#SetNotificationLevel(g:maktaba#log#LEVELS.ERROR)
+let g:vroom_logger = maktaba#log#Logger('DEFAULT')
+"call g:maktaba#log#SetNotificationLevel(g:maktaba#log#LEVELS.ERROR)
 "call g:vroom_logger.Debug('Test')
 "call g:vroom_logger.Error('my')
 

@@ -202,7 +202,6 @@ au BufRead,BufNewFile *.c set filetype=cpp
 au BufRead,BufNewFile *.php set filetype=php
 au BufRead,BufNewFile *.phtml set filetype=php
 au BufRead,BufNewFile *.inc set filetype=php
-source ~/.vim/.vimrc_pluginSettings
 
 function! Tab_Or_Complete()
   if col('.')>1 && strpart( getline('.'), col('.')-2, 3 ) =~ '^\w'
@@ -222,3 +221,4 @@ if has("autocmd")
 endif
 
 
+source ~/.vim/.vimrc_pluginSettings
