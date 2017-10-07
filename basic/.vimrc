@@ -1,6 +1,9 @@
 let g:forceUseTab = 1
 source ~/.vimrc_vundle
 
+" vim log
+"set verbosefile=/tmp/vim.log
+
 " load fzf
 set rtp+=~/.fzf
 
