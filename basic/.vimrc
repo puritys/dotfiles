@@ -1,5 +1,4 @@
 let g:forceUseTab = 1
-source ~/.vimrc_vundle
 
 " vim log
 "set verbosefile=/tmp/vim.log
@@ -226,5 +225,4 @@ if has("autocmd")
 
 endif
 
-
-source ~/.vim/.vimrc_pluginSettings
+source ~/.vimrc_vundle

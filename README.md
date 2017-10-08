@@ -57,6 +57,8 @@ host=MacMini
 | vim-airline/vim-airline |               | Beautiful status bar                      |
 | godlygeek/tabular       | align,<Enter> | Auto align code                           |
 
+Attentions.
+* ctags is needed by vim-nerdtree-tabs.
 
 ### Included plugins
 |plugin | shortcut| description|
