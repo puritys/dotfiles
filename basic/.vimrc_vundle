@@ -200,7 +200,7 @@ if has("unix")
     if s:uname == "Darwin\n"
     else
         set hlsearch
-        let g:incsearch#auto_nohlsearch = 1 " 0: keep hightlight when mouse cursor move
+        let g:incsearch#auto_nohlsearch = 0 " 0: keep hightlight when mouse cursor move
         map /  <Plug>(incsearch-forward)
     endif
 endif

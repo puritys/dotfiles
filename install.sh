@@ -12,6 +12,7 @@ while true; do
       -k | --docker) DOCKER=true; shift 1;;
       -i | --init) INIT=true; installVimPlugin=1; shift 1;;
       -s | --special) installYouCompleteMe=1; shift 1;;
+      -f | --fzf) installFZF=1; shift 1;;
       -h | --help  )
           echo "Usage:"
           echo "-p: install docfiles and vim plugin"
@@ -199,7 +200,7 @@ if [ "x$JAVA" != "x" ]; then
 fi
 if [ ! -d ~/.eclim/ ];  then mkdir ~/.eclim/; fi
 
-if [ "x$INIT" != "x" ];  then
+if [ "x$INIT" != "x" ] || [ "x$installFZF" != "x" ];  then
     if [ ! -d ~/.sh_tool ]; then
         mkdir ~/.sh_tool
     fi
