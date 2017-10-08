@@ -53,7 +53,8 @@ In software iTerm2, you can open it's preferences interface and change the regul
 
 
 ### Included plugins
-
+|plugin | shortcut| description|
+|:---|:---|:---|
 | vim/plugin/JavaImp.vim        | :JI/:JIS | Auto import java packages     |
 | vim/plugin/tabline.vim        |          | Menu                          |
 | vim/autoload/phpcomplete.vim  |          | Auto complete PHP function    |
