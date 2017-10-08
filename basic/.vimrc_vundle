@@ -49,7 +49,6 @@ Plugin '1995eaton/vim-better-javascript-completion'
 "Plugin 'groenewege/vim-less'    " less highlight, indent, autocomplete
 "Plugin 'fatih/vim-go'           " Golang
 "Plugin 'airblade/vim-gitgutter'
-"Plugin 'ctrlpvim/ctrlp.vim'
 
 call vundle#end()
 

@@ -24,18 +24,6 @@ let g:NERDTreeDirArrowExpandable=1
 let g:NERDTreeDirArrowCollapsible=1
 "" NerdTree end "
 
-"" CtrlP Fuzzy file finder
-"let g:ctrlp_cmd = 'CtrlPMRU' " most recently used mode
-"let g:ctrlp_by_filename=1    " fuzzy search on filename rather than whole path
-"let g:ctrlp_split_window=1   " open file on a new tab
-"set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.tgz
-"let g:ctrlp_custom_ignore = {
-"  \ 'dir':  '\v[\/]\.(git|hg|svn)$',
-"  \ 'file': '\v\.(exe|so|dll)$',
-"  \ 'link': 'some_bad_symbolic_links',
-"  \ }
-"" CtrlP end
-
 "" JavaImp Start
 " A dir to save JavaImp settings and cache files
 let g:JavaImpDataDir = $HOME . "/.vim/JavaImp"

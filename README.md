@@ -11,13 +11,13 @@ Update dotfiles
 * sh install.sh
 
 Auto install vim plugins
-* sh install -p
+* sh install.sh -p
 
 
 
 ## Install Font
 
-The bashrc will use powerline font, so you have to install this font by yourselves. The font is on the dir "assets", called "Meslo LG M Regular for Powerline.otf".
+The bashrc will use powerline font, so you have to install this font by yourselves. The font is on the dir "assets" named "Meslo LG M Regular for Powerline.otf".
 
 * assets/Meslo LG M Regular for Powerline.otf
 
@@ -25,14 +25,20 @@ The bashrc will use powerline font, so you have to install this font by yourselv
 On the other side, I suggest you to install a pretty font called "PT Mono".
 * https://fonts.google.com/specimen/PT+Mono
 
-How to let these two font exist on the terminal?
+How to let these two fonts exist on the terminal?
 In software iTerm2, you can open it's preferences interface and change the regular font to be "PT Mono" and the Non-ASCII font to be "Powerline symbols"
 
 ## customized
 
-* Add file .bash_customzied
-* Add file .alias_customized
+You can customzied any alias and env variable by just create these three dotfiles.
+* Add file ~/.bash_host
+* Add file ~/.bash_customzied
+* Add file ~/.alias_customized
 
+How to set hostname on your terminal. You can add a environment host on ~/.bash_host:
+```
+host=MacMini
+```
 
 ## Vim Plugins
 
