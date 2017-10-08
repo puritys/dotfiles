@@ -179,6 +179,12 @@ nmap <F2>    :TagbarToggle<CR>
 " SyntasticCheck
 nmap sc :SyntasticCheck<CR>
 
+" Copy/Paste : http://vim.wikia.com/wiki/Copy_and_paste_between_Vim_instances
+vnoremap <silent> ,y y:new<CR>:call setline(1,getregtype())<CR>o<Esc>P:wq! ~/.vim_clipboard.txt<CR>
+nnoremap <silent> ,y :new<CR>:call setline(1,getregtype())<CR>o<Esc>P:wq! ~/.vim_clipboard.txt<CR>
+map <silent> ,p :sview ~/.vim_clipboard.txt<CR>"zdddG:q!<CR>:call setreg('"', @", @z)<CR>p
+map <silent> ,P :sview ~/.vim_clipboard.txt<CR>"zdddG:q!<CR>:call setreg('"', @", @z)<CR>P
+
 " OmniCppComplete
 set tags+=~/.vim/tags/cpp
 "map <C-F12> :!ctags -R --sort=yes --c++-kinds=+p --fields=+iaS --extra=+q .<CR>
@@ -224,5 +230,6 @@ if has("autocmd")
   autocmd Filetype javascript  setlocal omnifunc=js#CompleteJS
 
 endif
+
 
 source ~/.vimrc_vundle

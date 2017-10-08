@@ -6,6 +6,10 @@ Plugin 'jistr/vim-nerdtree-tabs'
 Plugin 'junegunn/fzf'
 Plugin 'google/vim-maktaba'
 
+" JSON parse
+Plugin 'coldnight/pretty_json.vim'
+Plugin 'vim-json-line-format'
+
 " Execute self file
 Plugin 'thinca/vim-quickrun'
 

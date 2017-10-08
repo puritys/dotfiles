@@ -4,6 +4,7 @@ alias ecliStart='fn_eclim_start'
 alias ecliStop='fn_eclim_stop'
 alias ecliUpdate='ecliUpdate'
 alias f='findFile'
+alias vi='vim -p'
 alias vim='vim -p'
 alias Grep='grep'
 alias cpu="ps aux | awk '{printf \"CPU Usage: %s Process: %s\n\n\", \$3, \$0}' | sort -n"
@@ -27,7 +28,7 @@ alias d2t='fn_d2t'
 fn_d2t() {
     command="date -d "$1" +%s"
     echo $command
-    echo `$command` 
+    echo `$command`
 }
 
 fn_help() {

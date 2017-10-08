@@ -56,6 +56,7 @@ host=MacMini
 | google/vim-codefmt      |               | Auto fix java code formatter/indent       |
 | vim-airline/vim-airline |               | Beautiful status bar                      |
 | godlygeek/tabular       | align,<Enter> | Auto align code                           |
+| vim-json-line-format    | ,jp ,jw       | JSON Parser (support unicode)             |
 
 Attentions.
 * ctags is needed by vim-nerdtree-tabs.
