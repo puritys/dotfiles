@@ -46,7 +46,7 @@ host=MacMini
 |:---|:---|:---|
 | jistr/vim-nerdtree-tabs        |          | Show file tree when you call ":tabe" to open a file |
 | junegunn/fzf                   | [Ctrl+p] | Fuzzle search for opening a existed file            |
-| thinca/vim-quickrun            | [Ctal+e] | Execute the file you are editing                    |
+| thinca/vim-quickrun            | [Ctrl+e] | Execute the file you are editing                    |
 | ntpeters/vim-better-whitespace |          | Show white space of line tail                       |
 | haya14busa/incsearch.vim       |          | Better search interface                             |
 | vim-syntastic/syntastic        | sc       | syntax check                                        |
