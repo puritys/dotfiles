@@ -26,6 +26,10 @@ while true; do
     esac
 done
 
+# Remove legacy
+rm -f ~/.vim/.vimrc_pluginSettings
+
+
 touch ~/.bash_host
 cp basic/.* ~/
 pwd=`pwd`
