@@ -6,8 +6,11 @@ Plugin 'jistr/vim-nerdtree-tabs'
 Plugin 'junegunn/fzf'
 Plugin 'google/vim-maktaba'
 
+" Execute self file
+Plugin 'thinca/vim-quickrun'
+
 " Menu to remember command
-Plugin 'skywind3000/quickmenu.vim'
+"Plugin 'skywind3000/quickmenu.vim'
 
 Plugin 'vim-syntastic/syntastic'
 Plugin 'ntpeters/vim-better-whitespace'

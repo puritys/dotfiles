@@ -120,9 +120,15 @@ let g:javascript_plugin_flow = 1
 ""FZF end
 
 " incsearch
-set hlsearch
-let g:incsearch#auto_nohlsearch = 0 " 0: keep hightlight when mouse cursor move
-map /  <Plug>(incsearch-forward)
+if has("unix")
+    let s:uname = system("uname -s")
+    if s:uname == "Darwin\n"
+    else
+        set hlsearch
+        let g:incsearch#auto_nohlsearch = 1 " 0: keep hightlight when mouse cursor move
+        map /  <Plug>(incsearch-forward)
+    endif
+endif
 
 "" Enable maktabe / codefmt
 "call glaive#Install()
@@ -146,13 +152,13 @@ map /  <Plug>(incsearch-forward)
 " :TagbarToggle
 
 "" QuickMenu
-let g:quickmenu_options = "HL"
-noremap <silent><F1> :call quickmenu#toggle(0)<cr>
-call quickmenu#reset()
-call quickmenu#append('# Main', '')
-call quickmenu#append('Function List', 'TagbarToggle', "F2")
-call quickmenu#append('NERDTree', 'NERDTree', "tree")
-call quickmenu#append('Find Files', "call fzf#run({'sink':'tabe', 'down': '40%'})", "Ctrl+p")
+"let g:quickmenu_options = "HL"
+"noremap <silent><F1> :call quickmenu#toggle(0)<cr>
+"call quickmenu#reset()
+"call quickmenu#append('# Main', '')
+"call quickmenu#append('Function List', 'TagbarToggle', "F2")
+"call quickmenu#append('NERDTree', 'NERDTree', "tree")
+"call quickmenu#append('Find Files', "call fzf#run({'sink':'tabe', 'down': '40%'})", "Ctrl+p")
 
 
 
@@ -180,3 +186,12 @@ let g:vimjs#smartcomplete = 0
 let g:vimjs#chromeapis = 0
 " " Disabled by default. Toggling this will enable completion for a number of
 " Chrome's JavaScript extension APIs
+
+
+" Quickrun
+:nnoremap <C-e> <CR>:QuickRun<CR>
+:vnoremap <C-e> :QuickRun -mode v<CR>
+
+
+
+

@@ -4,7 +4,14 @@ My ssh config, vimrc, .screenrc, alias
 
 # How to install
 
-sh install.sh
+First time to install dotfiles.
+* sh install.sh -i
+
+Update dotfiles
+* sh install.sh
+
+Auto install vim plugins
+* sh install -p
 
 
 
@@ -25,5 +32,15 @@ In software iTerm2, you can open it's preferences interface and change the regul
 
 * Add file .bash_customzied
 * Add file .alias_customized
+
+
+## Vim Plugins
+
+|plugin | description|
+|:---|:---|
+|jistr/vim-nerdtree-tabs| show file tree when you call ":tabe" to open a file  |
+|junegunn/fzf | fuzzle search|
+
+
 
 

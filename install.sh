@@ -14,9 +14,10 @@ while true; do
       -s | --special) installYouCompleteMe=1; shift 1;;
       -h | --help  )
           echo "Usage:"
-          echo "-p: install vim plugin"
+          echo "-p: install docfiles and vim plugin"
           echo "-k: install docker alias"
-          echo "-j: install some vim plugins for java"
+          echo "-j: install docfiles and some vim plugins for java, eclipse"
+          echo "-i: install docfiles and vim plugins"
           shift 1
           exit 1
           ;;
