@@ -4,6 +4,7 @@ bell_msg        ""
 hardcopy_append on    # hardcopy Ctrl+a h Writes out the current display contents to the file hardcopy.n
 defscrollback   10000 # set scollbar line
 shell           -bash # use bash
+silencewait     15
 
 # Set default encoding using utf8
 defutf8 on
