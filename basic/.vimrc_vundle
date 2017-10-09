@@ -35,8 +35,8 @@ Plugin '1995eaton/vim-better-javascript-completion'
 "Plugin 'Valloric/YouCompleteMe'
 
 "" Airline
-"Plugin 'vim-airline/vim-airline'
-"Plugin 'vim-airline/vim-airline-themes'
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
 
 
 "" Auto complete
@@ -69,21 +69,19 @@ call vundle#end()
 ""let g:gitgutter_sign_added = '+'
 ""let g:gitgutter_sign_modified = 'm'
 ""let g:gitgutter_sign_removed = '-'
-""
-"" vim airline
-"set laststatus=2   " Always show the statusline
-"set encoding=utf-8 " Necessary to show Unicode glyphs
-"set term=xterm-256color
-"set termencoding=utf-8
-"let g:airline_powerline_fonts = 1
-"let g:airline_theme='silver'
-""let g:airline#extensions#tabline#enabled=1
-"""let g:airline#extensions#tabline#fnamemod=':t' "only show the filaname
-""let g:airline#extensions#whitespace#enabled=0 "disable whitespace trailing
-""detection
-"""buffer
-"set hidden "hide unwritten buffer if new buffer is opened
-"
+
+""  Airline Settings
+set laststatus=2   " Always show the statusline
+set encoding=utf-8 " Necessary to show Unicode glyphs
+set term=xterm-256color
+set termencoding=utf-8
+let g:airline_extensions = ['branch']
+let g:airline_powerline_fonts = 1
+let g:airline_theme='papercolor'
+"let g:airline#extensions#tabline#enabled=1
+"let g:airline#extensions#tabline#fnamemod=':t' "only show the filaname
+"let g:airline#extensions#whitespace#enabled=0 "disable whitespace trailing
+
 
 "" Enable maktabe / codefmt		 +"" Enable maktabe log
 let g:maktaba = maktaba#Maktaba()
@@ -160,10 +158,6 @@ let g:EclimJavaCheckstyleOnSave=1
 "let g:EclimMavenPomClasspathUpdate = 1 " Cannot add correct dependencies if it include properties.
 "" eclim end
 
-"" airline start
-let g:airline#extensions#tabline#enabled = 1
-let g:airline_theme='simple'
-"" airline end
 
 "" Hard time start
 let g:hardtime_default_on = 1
