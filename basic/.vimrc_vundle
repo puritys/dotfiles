@@ -20,7 +20,6 @@ Plugin 'majutsushi/tagbar' " methond/function list menu
 Plugin 'haya14busa/incsearch.vim' " better search plugin
 Plugin 'ntpeters/vim-better-whitespace' " show tail whitespace
 
-
 " ----------------
 " Code change Plugins
 " ----------------
@@ -91,7 +90,7 @@ set laststatus=2   " Always show the statusline
 set encoding=utf-8 " Necessary to show Unicode glyphs
 set term=xterm-256color
 set termencoding=utf-8
-let g:airline_extensions = ['branch']
+let g:airline_extensions = []
 let g:airline_powerline_fonts = 1
 let g:airline_theme='papercolor'
 "let g:airline#extensions#tabline#enabled=1
