@@ -7,7 +7,6 @@ Plugin 'junegunn/fzf'
 Plugin 'google/vim-maktaba'
 
 " JSON parse
-Plugin 'coldnight/pretty_json.vim'
 Plugin 'vim-json-line-format'
 
 " Execute self file
@@ -29,18 +28,19 @@ Plugin 'garbas/vim-snipmate'
 "http://vimcasts.org/episodes/aligning-text-with-tabular-vim/
 Plugin 'godlygeek/tabular'
 
-Plugin '1995eaton/vim-better-javascript-completion'
 
-" Auto Complete
-"Plugin 'Valloric/YouCompleteMe'
 
 "" Airline
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 
 
-"" Auto complete
+" -------------
+" Auto Complete
+" -------------
 "Plugin 'ervandew/supertab'
+"Plugin 'Valloric/YouCompleteMe'
+Plugin '1995eaton/vim-better-javascript-completion'
 
 "" code format
 "Plugin 'google/vim-codefmt'
@@ -83,12 +83,27 @@ let g:airline_theme='papercolor'
 "let g:airline#extensions#whitespace#enabled=0 "disable whitespace trailing
 
 
-"" Enable maktabe / codefmt		 +"" Enable maktabe log
+"" Enable maktabe / codefmt		 + Enable maktabe log
 let g:maktaba = maktaba#Maktaba()
 let g:vroom_logger = maktaba#log#Logger('DEFAULT')
 "call g:maktaba#log#SetNotificationLevel(g:maktaba#log#LEVELS.ERROR)
 "call g:vroom_logger.Debug('Test')
 "call g:vroom_logger.Error('my')
+"call glaive#Install()
+"Glaive codefmt plugin[mappings]
+"Glaive codefmt google_java_executable="java -jar /usr/local/lib/google-java-format-1.4-all-deps.jar"
+"augroup autoformat_settings
+"  autocmd FileType bzl AutoFormatBuffer buildifier
+"  autocmd FileType c,cpp,proto,javascript AutoFormatBuffer clang-format
+"  autocmd FileType dart AutoFormatBuffer dartfmt
+"  autocmd FileType go AutoFormatBuffer gofmt
+"  autocmd FileType gn AutoFormatBuffer gn
+"  autocmd FileType html,css,json AutoFormatBuffer js-beautify
+"  autocmd FileType java AutoFormatBuffer google-java-format
+"  autocmd FileType python AutoFormatBuffer yapf
+"  " Alternative: autocmd FileType python AutoFormatBuffer autopep8
+"augroup END
+
 
 
 "" NerdTree start "
@@ -199,23 +214,6 @@ if has("unix")
     endif
 endif
 
-"" Enable maktabe / codefmt
-"call glaive#Install()
-"Glaive codefmt plugin[mappings]
-"Glaive codefmt google_java_executable="java -jar /usr/local/lib/google-java-format-1.4-all-deps.jar"
-
-"augroup autoformat_settings
-"  autocmd FileType bzl AutoFormatBuffer buildifier
-"  autocmd FileType c,cpp,proto,javascript AutoFormatBuffer clang-format
-"  autocmd FileType dart AutoFormatBuffer dartfmt
-"  autocmd FileType go AutoFormatBuffer gofmt
-"  autocmd FileType gn AutoFormatBuffer gn
-"  autocmd FileType html,css,json AutoFormatBuffer js-beautify
-"  autocmd FileType java AutoFormatBuffer google-java-format
-"  autocmd FileType python AutoFormatBuffer yapf
-"  " Alternative: autocmd FileType python AutoFormatBuffer autopep8
-"augroup END
-
 
 "" Tagbar Command
 " :TagbarToggle
@@ -243,6 +241,7 @@ endif
 ""let g:ycm_key_list_previous_completion = ['<C-TAB>']
 "let g:ycm_key_invoke_completion = '<C-d>'
 
+"" js complete
 let g:vimjs#casesensistive = 1
 " Enabled by default. flip the value to make completion matches case
 " insensitive
