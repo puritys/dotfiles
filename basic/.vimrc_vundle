@@ -1,38 +1,35 @@
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
+
+" ----------------
+" Basic plugins
+" ----------------
 Plugin 'VundleVim/Vundle.vim'
-Plugin 'scrooloose/nerdtree'
-Plugin 'jistr/vim-nerdtree-tabs'
-Plugin 'junegunn/fzf'
 Plugin 'google/vim-maktaba'
-
-" JSON parse
-Plugin 'vim-json-line-format'
-
-" Execute self file
-Plugin 'thinca/vim-quickrun'
-
-" Menu to remember command
-"Plugin 'skywind3000/quickmenu.vim'
-
-Plugin 'vim-syntastic/syntastic'
-Plugin 'ntpeters/vim-better-whitespace'
-Plugin 'haya14busa/incsearch.vim'
-Plugin 'majutsushi/tagbar'
-
-" Snippet
-Plugin 'MarcWeber/vim-addon-mw-utils'
-Plugin 'tomtom/tlib_vim'
-Plugin 'garbas/vim-snipmate'
-
-"http://vimcasts.org/episodes/aligning-text-with-tabular-vim/
-Plugin 'godlygeek/tabular'
+Plugin 'junegunn/fzf' " File finder
 
 
-
-"" Airline
+" ----------------
+" UI Plugins
+" ----------------
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
+Plugin 'scrooloose/nerdtree'
+Plugin 'jistr/vim-nerdtree-tabs'
+Plugin 'majutsushi/tagbar' " methond/function list menu
+Plugin 'haya14busa/incsearch.vim' " better search plugin
+Plugin 'ntpeters/vim-better-whitespace' " show tail whitespace
+
+
+" ----------------
+" Code change Plugins
+" ----------------
+"http://vimcasts.org/episodes/aligning-text-with-tabular-vim/
+Plugin 'godlygeek/tabular' " align code
+Plugin 'vim-json-line-format' " JSON Parse
+"" code format
+"Plugin 'google/vim-codefmt'
+"Plugin 'google/vim-glaive'
 
 
 " -------------
@@ -41,10 +38,22 @@ Plugin 'vim-airline/vim-airline-themes'
 "Plugin 'ervandew/supertab'
 "Plugin 'Valloric/YouCompleteMe'
 Plugin '1995eaton/vim-better-javascript-completion'
+" Snippet
+Plugin 'MarcWeber/vim-addon-mw-utils'
+Plugin 'tomtom/tlib_vim'
+Plugin 'garbas/vim-snipmate'
 
-"" code format
-"Plugin 'google/vim-codefmt'
-"Plugin 'google/vim-glaive'
+" ----------------
+" Execute command
+" ----------------
+" Execute self file
+Plugin 'thinca/vim-quickrun'
+
+" ----------------
+" Others
+" ----------------
+Plugin 'vim-syntastic/syntastic' " syntax check
+
 
 " others
 "Plugin 'takac/vim-hardtime' " prevent repeat typing
@@ -53,11 +62,15 @@ Plugin '1995eaton/vim-better-javascript-completion'
 "Plugin 'groenewege/vim-less'    " less highlight, indent, autocomplete
 "Plugin 'fatih/vim-go'           " Golang
 "Plugin 'airblade/vim-gitgutter'
+" Menu to remember command
+"Plugin 'skywind3000/quickmenu.vim'
 
 call vundle#end()
 
+" =============== "
+" Plugin Settings "
+" =============== "
 
-""""""" Plugin Settings """"""""""""""
 
 """" Git Gutter
 "map <F3> :GitGutterToggle<CR>
@@ -70,7 +83,10 @@ call vundle#end()
 ""let g:gitgutter_sign_modified = 'm'
 ""let g:gitgutter_sign_removed = '-'
 
-""  Airline Settings
+
+" ----------------
+" Airline settings
+" ----------------
 set laststatus=2   " Always show the statusline
 set encoding=utf-8 " Necessary to show Unicode glyphs
 set term=xterm-256color
@@ -82,13 +98,15 @@ let g:airline_theme='papercolor'
 "let g:airline#extensions#tabline#fnamemod=':t' "only show the filaname
 "let g:airline#extensions#whitespace#enabled=0 "disable whitespace trailing
 
-
-"" Enable maktabe / codefmt		 + Enable maktabe log
+" ---------------------------------
+" Enable maktabe / codeformat / log
+" ---------------------------------
 let g:maktaba = maktaba#Maktaba()
 let g:vroom_logger = maktaba#log#Logger('DEFAULT')
 "call g:maktaba#log#SetNotificationLevel(g:maktaba#log#LEVELS.ERROR)
 "call g:vroom_logger.Debug('Test')
 "call g:vroom_logger.Error('my')
+
 "call glaive#Install()
 "Glaive codefmt plugin[mappings]
 "Glaive codefmt google_java_executable="java -jar /usr/local/lib/google-java-format-1.4-all-deps.jar"
@@ -105,8 +123,10 @@ let g:vroom_logger = maktaba#log#Logger('DEFAULT')
 "augroup END
 
 
+" -----------------
+" NerdTree settings
+" -----------------
 
-"" NerdTree start "
 map <C-f> :NERDTreeToggle<CR> " open NerdTree tab
 " show line
 let NERDTreeShowLineNumbers=1
@@ -122,24 +142,24 @@ let NERDTreeShowBookmarks=1
 let g:NERDTreeGlyphReadOnly=0
 let g:NERDTreeDirArrowExpandable=1
 let g:NERDTreeDirArrowCollapsible=1
-"" NerdTree end "
 
-"" JavaImp Start
+
+" ----------------
+" JavaImp settings
+" Java import plugin
+" ----------------
+
 " A dir to save JavaImp settings and cache files
 let g:JavaImpDataDir = $HOME . "/.vim/JavaImp"
 " Java Source code path
 let g:JavaImpPaths = $HOME . "/openjdk/openjdk/jdk/src/share/classes/"
 " :JIG create dir, :JI Auto add import file, :JIS  sort the import list,  :JIF  find the source on your scursor
 "imap <c-i> <c-c>:JI<CR>i
-"" JavaImp End
 
-
-"" Snippet Start
+" ----------------
+" Snippet settings
+" ----------------
 "let g:snippets_dir='~/.vim/bundle/vim-snipmate/snippets/'
-"call ExtractSnipsFile(g:snippets_dir.'javascript.snippets', 'javascript')
-"call ExtractSnipsFile(g:snippets_dir.'php.snippets', 'php')
-" call ExtractSnipsFile(g:snippets_dir.'myCustomSnippets.snippets',
-" 'javascript')
 let g:snipMate = get(g:, 'snipMate', {}) " Allow for vimrc re-sourcing
 let g:snipMate.scope_aliases = {}
 let g:snipMate.no_default_aliases = 1
@@ -151,7 +171,7 @@ let g:snipMate.scope_aliases['inc'] = 'core_php'
 let g:snipMate.scope_aliases['xml'] = 'mvn_pom'
 let g:snipMate.scope_aliases['java'] = 'java'
 
-" remap
+" snippet remap
 "let g:snips_no_mappings = 1
 "let s:overwrite = maparg('<Tab>', 'i') ==? '<Plug>SuperTabForward'
 "call s:map_if_not_mapped('<Tab>', '<Plug>snipMateNextOrTrigger', 'i')
@@ -160,31 +180,21 @@ let g:snipMate.scope_aliases['java'] = 'java'
 "call s:map_if_not_mapped('<Tab>', '<Plug>snipMateVisual', 'x')
 
 
-"" Snippet End
-
 "" ntpeters/vim-better-whitespace start
 highlight ExtraWhitespace ctermbg=251
 "" ntpeters/vim-better-whitespace end
 
-"" eclim start
+" -------------
+" eclim
+" -------------
 let g:EclimLogLevel="error"
 let g:EclimJavaValidate=1
 let g:EclimJavaCheckstyleOnSave=1
 "let g:EclimMavenPomClasspathUpdate = 1 " Cannot add correct dependencies if it include properties.
-"" eclim end
 
-
-"" Hard time start
-let g:hardtime_default_on = 1
-let g:hardtime_timeout = 50
-"let g:hardtime_allow_different_key = 1
-let g:list_of_normal_keys = []
-let g:list_of_visual_keys = []
-let g:list_of_insert_keys = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"]
-let g:list_of_disabled_keys = []
-"" Hard time end
-
-"" vim-syntastic/syntastic start
+" -----------------------
+" vim-syntastic/syntastic
+" -----------------------
 "let g:syntastic_php_checkers = ['php', 'phpcs', 'phpmd']
 let g:syntastic_php_checkers = ['php']
 let g:syntastic_auto_loc_list = 0
@@ -192,16 +202,12 @@ let g:syntastic_check_on_open = 0
 let g:syntastic_check_on_wq = 0
 let g:syntastic_check_on_w = 0
 let g:syntastic_mode_map={'mode': 'passive'}
-"" vim-syntastic/syntastic end
 
-" pangloss/vim-javascript start
-let g:javascript_plugin_jsdoc = 1
-let g:javascript_plugin_ngdoc = 1
-let g:javascript_plugin_flow = 1
-" pangloss/vim-javascript end
-
-""FZF start
-""FZF end
+"" pangloss/vim-javascript start
+"let g:javascript_plugin_jsdoc = 1
+"let g:javascript_plugin_ngdoc = 1
+"let g:javascript_plugin_flow = 1
+"" pangloss/vim-javascript end
 
 " incsearch
 if has("unix")
@@ -255,8 +261,9 @@ let g:vimjs#chromeapis = 0
 " " Disabled by default. Toggling this will enable completion for a number of
 " Chrome's JavaScript extension APIs
 
-
-" Quickrun
+" ----------------
+" Qickrun settings
+" ----------------
 :nnoremap <C-e> <CR>:QuickRun<CR>
 :vnoremap <C-e> :QuickRun -mode v<CR>
 

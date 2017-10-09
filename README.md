@@ -54,7 +54,7 @@ host=MacMini
 |1995eaton/vim-better-javascript-completion| |Javascript auto complete function|
 | Valloric/YouCompleteMe  |               | Auto complete function for c/c++/ruby/... |
 | google/vim-codefmt      |               | Auto fix java code formatter/indent       |
-| vim-airline/vim-airline |               | Beautiful status bar                      |
+| vim-airline/vim-airline |               | Beautiful status bar and tab              |
 | godlygeek/tabular       | align,<Enter> | Auto align code                           |
 | vim-json-line-format    | ,jp ,jw       | JSON Parser (support unicode)             |
 
