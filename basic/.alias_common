@@ -23,13 +23,7 @@ alias .....='cd ../../../..'
 alias ......='cd ../../../../..'
 
 # date to timestamp
-alias d2t='fn_d2t'
-
-fn_d2t() {
-    command="date -d "$1" +%s"
-    echo $command
-    echo `$command`
-}
+alias mydate='fnDate'
 
 fn_help() {
     echo "mem: get the process using most memory"
@@ -91,4 +85,36 @@ fnGitDeleteBranch() {
 fnGitForceCommit() {
     echo -e "git commit -m "$1" --no-verify\n"
     git commit -m "$1" --no-verify
+}
+
+fnDate() {
+    act=$1
+    os=`uname`
+    if [ "x$os" == "xDarwin" ]; then
+        case "$act" in
+        "-timestamp")
+            echo `date +%s`
+        ;;
+        "-date")
+            echo `date "+%Y/%m/%d %H:%M:%S"`
+        ;;
+        *)
+            echo `date -r $1`
+        ;;
+        esac
+    else
+        case "$act" in
+        "-timestamp")
+            echo `date +%s`
+        ;;
+        "-date")
+            echo `date "+%Y/%m/%d %H:%M:%S"`
+        ;;
+        *)
+            echo `date -d@$1`
+        ;;
+        esac
+
+    fi
+
 }
