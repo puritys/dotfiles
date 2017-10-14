@@ -5,13 +5,13 @@ My ssh config, vimrc, .screenrc, alias
 # How to install
 
 First time to install dotfiles.
-* sh install.sh -i
+* ./install.sh -i
 
 Update dotfiles
-* sh install.sh
+* ./install.sh
 
 Auto install vim plugins
-* sh install.sh -p
+* ./install.sh -p
 
 
 

@@ -13,6 +13,7 @@ while true; do
       -i | --init) INIT=true; installVimPlugin=1; shift 1;;
       -s | --special) installYouCompleteMe=1; shift 1;;
       -f | --fzf) installFZF=1; shift 1;;
+      -b | --bashIt) installBashIt=1; shift 1;;
       -h | --help  )
           echo "Usage:"
           echo "-p: install docfiles and vim plugin"
@@ -29,7 +30,7 @@ done
 
 # Remove legacy
 rm -f ~/.vim/.vimrc_pluginSettings
-
+rm -rf ~/.sh_tool/z/
 
 touch ~/.bash_host
 cp basic/.* ~/
@@ -207,7 +208,42 @@ if [ "x$INIT" != "x" ] || [ "x$installFZF" != "x" ];  then
     git clone --depth 1 https://github.com/junegunn/fzf.git ~/.sh_tool/fzf
     ~/.sh_tool/fzf/install --all
     ## append (cat ~/machine_list.txt | command grep -v '#' | sed -e 's/^/host /') \  ~/.sh_tool/fzf/shell/completion.bash : _fzf_complete_ssh
-    git clone https://github.com/rupa/z.git ~/.sh_tool/z
+
+    # ------------
+    # Install fasd cd
+    # ------------
+    cd ~/.sh_tool/ ; wget https://github.com/clvv/fasd/tarball/1.0.1
+    tar -zxvf 1.0.1
+    cd clvv-fasd-4822024; PREFIX=$HOME make install
+
 fi
 
+if [ "x$INIT" != "x" ] || [ "x$installBashIt" != "x" ];  then
 
+    # ------------
+    # Install bash-it
+    # ------------
+
+    git clone --depth=1 https://github.com/Bash-it/bash-it.git ~/.bash_it
+    ~/.bash_it/install.sh --no-modify-config --silent
+
+    export BASH_IT="$HOME/.bash_it"
+    source "$BASH_IT"/bash_it.sh
+    complete="bash-it,defaults,dirs,docker,virtualbox,ssh,pip,pip3,makefile,git,git_flow,docker-machine,brew,export,maven,npm"
+    complete=(${complete//,/ });
+    for(( i=0; i<${#complete[@]}; i++ ))
+    do
+        line=${complete[$i]}
+        bash-it enable completion $line
+    done
+
+    plugin="ssh,dirs,java,node"
+    plugin=(${plugin//,/ });
+    for(( i=0; i<${#plugin[@]}; i++ ))
+    do
+        line=${plugin[$i]}
+        bash-it enable plugin $line
+    done
+
+    bash-it disable alias all
+fi

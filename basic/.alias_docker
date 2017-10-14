@@ -5,7 +5,7 @@ alias atslog="atslog_fn"
 
 function mysql_fn() {
     command="/usr/bin/mysql  $@ "
-    docker exec -t -i  puritys-mysql_client bash -c "$command";
+    docker exec -t -i  puritys-command bash -c "$command";
 }
 function mvn_fn() {
     command=" $@ "

@@ -1,6 +1,30 @@
 # .bashrc : do not echo any thing
 #echo "=== Load ~/.bashrc ==="
 
+
+# ------------
+# source bash-it
+# ------------
+# Path to the bash it configuration
+export BASH_IT="/home/puritys/.bash_it"
+
+# Lock and Load a custom theme file
+# location /.bash_it/themes/
+export BASH_IT_THEME='bobby'
+
+# Your place for hosting Git repos. I use this for private repos.
+#export GIT_HOSTING='git@git.domain.com'
+
+# Don't check mail when opening terminal.
+unset MAILCHECK
+
+# Set this to false to turn off version control status checking within the prompt for all themes
+export SCM_CHECK=false
+
+# Load Bash It
+source "$BASH_IT"/bash_it.sh
+
+
 # User specific aliases and functions
 
 # Source global definitions
@@ -24,6 +48,6 @@ export LS_OPTIONS
 
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
-[ -f ~/.sh_tool/z/z.sh ] && source ~/.sh_tool/z/z.sh
+eval "$(fasd --init auto)"
 
 
