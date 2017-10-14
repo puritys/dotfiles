@@ -2,19 +2,19 @@
 #echo "=== Load ~/.bash_profile ==="
 #echo "TERM = $TERM"
 
+export PLATFORM=$(uname -s)
+export SHELL=/bin/bash
+
 # Get the aliases and functions
 if [ -f ~/.bash_host ]; then
 	. ~/.bash_host
 fi
 
-
-export SHELL=/bin/bash
-
 if [ -f ~/.bashrc ]; then
 	. ~/.bashrc
 fi
 
-if [ `uname` == "Darwin" ]; then
+if [ "$PLATFORM" == "Darwin" ]; then
     if [ -f ~/.alias_mac ]; then
         . ~/.alias_mac
     fi
@@ -51,12 +51,6 @@ function start_agent {
 }
 
 getMySSHAgent
-#myname=`whoami`
-#if [ -n "$SSH_AUTH_SOCK" ]; then
-#    true
-#else
-#    source $HOME/.ssh/environment
-#fi
 
 export LANG=en_US.UTF-8
 export LC_CTYPE=en_US.UTF-8
