@@ -52,7 +52,8 @@ defencoding utf8
 #caption always "%{.KW} %-w%{.mW}[%n] %t%{.KW}%+w" # legacy
 #arrowLight=`echo -e "\xee\x82\xb0`
 caption always "%{= kw} %-w%{= bW}%n %t%{-}%+w"
-#caption:  %H hostname, %n window number, K bright black, k black, B blue, W window name, w white
+# https://debian-administration.org/article/560/An_introduction_to_the_visual_features_of_GNU_Screen
+#caption:  %H hostname, %n window number, K bright black, k black, B blue, t window title, W/w white
 # %{-} revert to the last one attr setting, +w next to current window,  -w previous to the current window,
 #
 #caption always "%{= kw}%-w%{= BW}%n %t%{-}%+w %-= @%H - %LD %d %LM - %c"

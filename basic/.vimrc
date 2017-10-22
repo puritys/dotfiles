@@ -10,8 +10,9 @@ syntax on
 ""/usr/share/vim/vim70/lang/
 
 
-"set paste "" Can not put this line after the autoindent, of the  autoindent will be reset, "set paste" will disable hot key on insert mode.
+"set paste" will disable all hot key on insert mode.
 
+set noswapfile
 set nocompatible
 set hlsearch "high light search
 set encoding=utf-8
