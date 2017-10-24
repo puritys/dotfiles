@@ -187,3 +187,9 @@ snippet reg
 snippet splitToList
 	Arrays.asList("aa,aa".split(","));
 
+snippet forFields
+	for (Field f : this.getClass().getDeclaredFields()) {
+		if (f.getName().equals(key)) {
+			return (int) f.get(this);
+		}
+	}
