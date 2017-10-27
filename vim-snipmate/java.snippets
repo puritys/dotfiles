@@ -95,6 +95,9 @@ snippet forMap
 snippet list
 	List<String> status = new ArrayList<>(Arrays.asList("0", "1"));
 
+snippet arrayToList
+	List<String> list = Arrays.asList(args);
+
 snippet map
 	Map<String, String> m = new HashMap<>();
 
@@ -187,9 +190,17 @@ snippet reg
 snippet splitToList
 	Arrays.asList("aa,aa".split(","));
 
+snippet explode
+	str.split("\04");
+
 snippet forFields
 	for (Field f : this.getClass().getDeclaredFields()) {
 		if (f.getName().equals(key)) {
 			return (int) f.get(this);
 		}
+	}
+
+snippet enumFor
+	for (Enum e: Enum.values()) {
+		e.name();
 	}
