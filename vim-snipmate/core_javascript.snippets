@@ -71,10 +71,9 @@ snippet for
 	}
 
 snippet func
-	function ${1}() 
-	{//{{{
-	
-	}//}}}
+	function ${1}() { //{{{
+		${2}
+	} //}}}
 
 snippet re
 	require('${1:fs}');
@@ -89,3 +88,8 @@ snippet strict
 	"use strict";
 snippet time
 	Math.round((new Date).getTime()/1000)
+
+snippet /*
+	/**
+	 *
+	 */
