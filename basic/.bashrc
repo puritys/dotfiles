@@ -22,7 +22,9 @@ unset MAILCHECK
 export SCM_CHECK=false
 
 # Load Bash It
-source "$BASH_IT"/bash_it.sh
+if [ -f "$BASH_IT/bash_it.sh" ]; then
+    source "$BASH_IT"/bash_it.sh
+fi
 
 
 # User specific aliases and functions
@@ -48,6 +50,6 @@ export LS_OPTIONS
 
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
-eval "$(fasd --init auto)"
+[ -f ~/.sh_tool/clvv-fasd-4822024/ ] && eval "$(fasd --init auto)"
 
 
