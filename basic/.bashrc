@@ -50,6 +50,6 @@ export LS_OPTIONS
 
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
-[ -f ~/.sh_tool/clvv-fasd-4822024/ ] && eval "$(fasd --init auto)"
+[ -d ~/.sh_tool/clvv-fasd-4822024/ ] && eval "$(fasd --init auto)"
 
 
