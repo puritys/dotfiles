@@ -6,6 +6,12 @@ snippet multilineString
 	read -r -d '' var  <<EOF
 		echo xx
 	EOF
+
+snippet fileWrite
+	cat <<EOF >> filename.txt
+	xxxzz
+	EOF
+
 snippet func
 	${1} () {
 		param1=\$1
