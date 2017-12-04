@@ -15,6 +15,12 @@ snippet imptest
 	import static org.junit.Assert.assertEquals;
 	import static org.junit.Assert.assertNotEquals;
 	import static org.junit.Assert.assertTrue;
+	import static org.mockito.Matchers.any;
+	import static org.mockito.Matchers.anyInt;
+	import static org.mockito.Matchers.anyString;
+	import static org.mockito.Matchers.anyObject;
+	import static org.mockito.Mockito.when;
+	import static org.mockito.Mockito.doNothing;
 
 snippet impinject
 	import com.google.inject.Inject;
@@ -224,3 +230,9 @@ snippet try
 snippet base64decode
 	Base64.decodeBase64(str);
 
+snippet mockFuture
+	final Future<String> future = mock(Future.class);
+	when(future.get()).thenReturn("xxx");
+
+snippet mockDoNothing
+	doNothing().when(client).disconnect();
