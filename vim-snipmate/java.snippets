@@ -10,7 +10,7 @@ snippet impjson
 	import org.json.JSONObject;
 	import org.json.JSONArray;
 snippet impgson
-	import import com.google.gson.Gson;
+	import com.google.gson.Gson;
 snippet imptest
 	import static org.junit.Assert.assertEquals;
 	import static org.junit.Assert.assertNotEquals;
@@ -40,6 +40,9 @@ snippet impexception
 snippet impapache
 	import org.apache.commons.lang3.builder.ToStringBuilder;
 	import org.apache.commons.lang3.builder.ToStringStyle;
+
+snippet impbase64
+	import org.apache.commons.codec.binary.Base64;
 
 snippet json
 	import org.json.JSONObject;
@@ -217,3 +220,7 @@ snippet try
 	} catch (Exception e) {
 
 	}
+
+snippet base64decode
+	Base64.decodeBase64(str);
+
