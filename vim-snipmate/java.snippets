@@ -56,9 +56,13 @@ snippet impapache
 snippet impbase64
 	import org.apache.commons.codec.binary.Base64;
 
-snippet impguice
+snippet impguicebinder
 	import com.google.inject.AbstractModule;
 	import com.google.inject.Singleton;
+
+snippet impguice
+	import com.google.inject.Guice;
+	import com.google.inject.Injector;
 
 snippet impguavacache
 	import com.google.common.cache.Cache;
@@ -80,7 +84,7 @@ snippet exdate
 		System.out.println("time = " + Integer.toString(d));
 	} catch (Exception ParseException) {
 
-	}   
+	}
 
 snippet itoa
 	Integer.toString(${1});
