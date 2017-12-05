@@ -176,6 +176,7 @@ map align, :Tab /,\zs
 " TagBar
 nmap <ESC>OQ ::TagbarToggle<CR>
 nmap <F2>    :TagbarToggle<CR>
+:set pastetoggle=<F3>
 
 " SyntasticCheck
 nmap sc :SyntasticCheck<CR>
