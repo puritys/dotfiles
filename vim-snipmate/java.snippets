@@ -1,6 +1,12 @@
 snippet log
 	System.out.println(${1});
 
+snippet logger
+	private static final Logger LOG = LoggerFactory.getLogger(${1}.class);
+
+snippet implogger
+	import org.slf4j.Logger;
+	import org.slf4j.LoggerFactory;
 snippet implist
 	import java.util.ArrayList;
 	import java.util.Arrays;
@@ -49,6 +55,15 @@ snippet impapache
 
 snippet impbase64
 	import org.apache.commons.codec.binary.Base64;
+
+snippet impguice
+	import com.google.inject.AbstractModule;
+	import com.google.inject.Singleton;
+
+snippet impguavacache
+	import com.google.common.cache.Cache;
+	import com.google.common.cache.CacheBuilder;
+	import com.google.common.cache.CacheStats;
 
 snippet json
 	import org.json.JSONObject;
@@ -230,9 +245,38 @@ snippet try
 snippet base64decode
 	Base64.decodeBase64(str);
 
+snippet guavacachedef
+	private static Cache<String, String> localMemCache;
+	static {
+		localMemCache = CacheBuilder.newBuilder()
+			.expireAfterWrite(CACHE_TIMEOUT, TimeUnit.SECONDS)
+			.recordStats()
+			.build();
+	}
+
+snippet guavacachecode
+	String token = localMemCache.get(TOKEN_CACHE_PREFIX + Id,
+	new Callable<String>() {
+		@Override
+		public String call() {
+			String t = fetchName(id);
+			return t;
+		}
+	});
+
+snippet guicecode
+	bind(xx.class);
+	bind(xxInterface.class).to(xxImplements.class);
+
+snippet guicecodesingleton
+	bind(xx.class).toInstace(obj);
+
+
+## unit test
 snippet mockFuture
 	final Future<String> future = mock(Future.class);
 	when(future.get()).thenReturn("xxx");
 
 snippet mockDoNothing
 	doNothing().when(client).disconnect();
+
