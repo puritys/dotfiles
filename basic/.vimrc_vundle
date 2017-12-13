@@ -12,8 +12,8 @@ Plugin 'junegunn/fzf' " File finder
 " ----------------
 " UI Plugins
 " ----------------
-Plugin 'vim-airline/vim-airline'
-Plugin 'vim-airline/vim-airline-themes'
+"Plugin 'vim-airline/vim-airline'
+"Plugin 'vim-airline/vim-airline-themes'
 Plugin 'scrooloose/nerdtree'
 Plugin 'jistr/vim-nerdtree-tabs'
 Plugin 'majutsushi/tagbar' " methond/function list menu
