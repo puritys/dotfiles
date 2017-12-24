@@ -1,6 +1,9 @@
 snippet log
 	System.out.println(${1});
 
+snippet logline
+	System.out.println(new Throwable().getStackTrace()[0].getLineNumber());
+
 snippet logger
 	private static final Logger LOG = LoggerFactory.getLogger(${1}.class);
 
@@ -69,9 +72,20 @@ snippet impguavacache
 	import com.google.common.cache.CacheBuilder;
 	import com.google.common.cache.CacheStats;
 
-snippet json
-	import org.json.JSONObject;
+# -----------
+# JSON
+# -----------
+snippet jsonnew
 	JSONObject jsonObject = new JSONObject("{}");
+snippet jsonob
+	JSONObject
+snippet jsonar
+	JSONArray
+snippet jsonarrayfor
+	for (int i = 0; i < json.length(); i++) {
+		JSONObject job = json.optJSONObject(i);
+	}
+
 
 snippet impMap
 	import java.util.Map;
@@ -134,7 +148,7 @@ snippet time
 
 snippet /*
 	/**
-	 *${1}
+	 * ${0}
 	 * @param xxx xxx
 	 * @return String
 	 */
@@ -239,12 +253,6 @@ snippet urlencode
 snippet urldecode
 	java.net.URLDecoder.decode(url, "UTF-8");
 
-snippet try
-	try {
-
-	} catch (Exception e) {
-
-	}
 
 snippet base64decode
 	Base64.decodeBase64(str);
@@ -277,6 +285,45 @@ snippet guicecodesingleton
 
 snippet stringtobuyte
 	"aa".getBytes()
+
+# ------------------
+# Exception Handling
+# ------------------
+
+snippet as
+	assert ${1:test} : "${2:Failure message}";
+snippet ae
+	assertEquals("${1:Failure message}", ${2:expected}, ${3:actual});
+snippet aae
+	assertArrayEquals("${1:Failure message}", ${2:expecteds}, ${3:actuals});
+snippet af
+	assertFalse("${1:Failure message}", ${2:condition});
+snippet at
+	assertTrue("${1:Failure message}", ${2:condition});
+snippet an
+	assertNull("${1:Failure message}", ${2:object});
+snippet ann
+	assertNotNull("${1:Failure message}", ${2:object});
+snippet ass
+	assertSame("${1:Failure message}", ${2:expected}, ${3:actual});
+snippet asns
+	assertNotSame("${1:Failure message}", ${2:expected}, ${3:actual});
+snippet fa
+	fail("${1:Failure message}");
+snippet ca
+	catch(${1:Exception} ${2:e}) ${0}
+snippet thr
+	throw ${0}
+snippet ths
+	throws ${0}
+snippet try
+	try {
+
+	} catch (Exception e) {
+
+	}
+
+
 
 ## unit test
 snippet mockFuture
