@@ -1,3 +1,8 @@
+
+# ------------
+# Bash snippet
+# ------------
+
 snippet multiline
 	cat <<EOF
 		${0}
@@ -93,3 +98,18 @@ snippet ifgt
 		echo "xxx."
 		exit 1
 	fi
+
+snippet path_file
+	filepath=$(readlink -f "$0")
+	dirpath=$(dirname "$filepath")
+
+snippet dirpath
+	filepath=$(readlink -f "$0")
+	dirpath=$(dirname "$filepath")
+
+snippet path_cwd
+	currentPath=$(dirname "$0")
+
+snippet cwd
+	currentPath=$(dirname "$0")
+
