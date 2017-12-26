@@ -1,3 +1,11 @@
+snippet main
+	package main
+
+snippet imppath
+	import "runtime"
+	import "path"
+	import "os"
+
 snippet switch
 	switch ${1:var} {
 	case ${2:value1}:
@@ -57,4 +65,18 @@ snippet crmysql
 		if err := ret.Scan(&id, &email); err != nil {
 			log.Fatal(err);
 		}
-	} 
+	}
+
+snippet path_file
+	_, filename, _, _ := runtime.Caller(1)
+	fmt.Println(filename);
+snippet dirpath
+	_, filename, _, _ := runtime.Caller(1)
+	fmt.Println(path.Dir(filename))
+
+snippet path_cwd
+	cwd, _ := os.Getwd()
+
+snippet cwd
+	cwd, _ := os.Getwd()
+
