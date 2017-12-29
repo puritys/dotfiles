@@ -113,3 +113,7 @@ snippet path_cwd
 snippet cwd
 	currentPath=$(dirname "$0")
 
+snippet strcontains
+	if [[ $str == *"zzz"* ]]; then
+	  echo "zzz"
+	fi

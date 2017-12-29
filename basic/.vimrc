@@ -230,7 +230,9 @@ if has("autocmd")
   autocmd Filetype cpp setlocal omnifunc=omni#cpp#complete#Main
   autocmd Filetype js  setlocal omnifunc=js#CompleteJS
   autocmd Filetype javascript  setlocal omnifunc=js#CompleteJS
-
+  " whitespace
+  autocmd ColorScheme * highlight ExtraWhitespace ctermbg=red guibg=red
+  autocmd BufRead,BufNew * match ExtraWhitespace /\t\+\| \s\+$/
 endif
 
 

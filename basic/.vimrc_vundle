@@ -18,7 +18,7 @@ Plugin 'scrooloose/nerdtree'
 Plugin 'jistr/vim-nerdtree-tabs'
 Plugin 'majutsushi/tagbar' " methond/function list menu
 Plugin 'haya14busa/incsearch.vim' " better search plugin
-Plugin 'ntpeters/vim-better-whitespace' " show tail whitespace
+"Plugin 'ntpeters/vim-better-whitespace' " show tail whitespace
 
 " ----------------
 " Code change Plugins
