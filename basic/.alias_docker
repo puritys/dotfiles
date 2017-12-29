@@ -6,7 +6,9 @@ alias ffmpeg="ffmpeg_fn"
 
 function mysql_fn() {
     command="/usr/bin/mysql  $@ "
-    docker exec -t -i  puritys-command bash -c "$command";
+    dockCommand="docker run -it --rm  puritys/command $command"
+    echo $dockCommand
+    $dockCommand
 }
 function mvn_fn() {
     command=" $@ "
