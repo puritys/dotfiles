@@ -3,15 +3,14 @@
 #echo "TERM = $TERM"
 
 export PLATFORM=$(uname -s)
-export SHELL=/bin/bash
 
 # Get the aliases and functions
 if [ -f ~/.bash_host ]; then
-	. ~/.bash_host
+    . ~/.bash_host
 fi
 
 if [ -f ~/.bashrc ]; then
-	. ~/.bashrc
+    . ~/.bashrc
 fi
 
 if [ "$PLATFORM" == "Darwin" ]; then

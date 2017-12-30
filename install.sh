@@ -14,6 +14,7 @@ while true; do
       -s | --special) installYouCompleteMe=1; shift 1;;
       -f | --fzf) installFZF=1; shift 1;;
       -b | --bashIt) installBashIt=1; shift 1;;
+      --host) remoteHost=$2; shift 2;;
       -h | --help  )
           echo "Usage:"
           echo "-p: install docfiles and vim plugin"
@@ -27,6 +28,18 @@ while true; do
       * ) echo "$1 is not a correct option.";shift 1; ;;
     esac
 done
+
+if [ "x" != "x$remoteHost" ]; then
+    echo "Sync dotfiles to remote host $remoteHost"
+    scp basic/.alias $remoteHost:~/ 
+    scp basic/.alias_common $remoteHost:~/ 
+    scp basic/.bash_common $remoteHost:~/ 
+    scp basic/.bash_profile $remoteHost:~/ 
+    scp basic/.bashrc $remoteHost:~/ 
+    scp bin/exec.sh $remoteHost:~/
+    ssh $remoteHost "sudo mv exec.sh /usr/local/bin/myExec.sh"
+    exit 1
+fi
 
 # Remove legacy
 rm -f ~/.vim/.vimrc_pluginSettings
@@ -55,6 +68,9 @@ if [ "x$DOCKER" == "x" ];then
     echo "Without docker"
     rm -f ~/.alias_docker
 fi
+
+# Install My command
+sudo cp bin/exec.sh  /usr/local/bin/myExec.sh
 
 # Install youCompleteMe
 if [ "x$installYouCompleteMe" == "x1" ]; then

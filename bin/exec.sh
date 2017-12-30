@@ -1,3 +1,15 @@
+#!/bin/bash
+
+help() {
+    echo "Usage:"
+    echo "-p: process, lib, iptables, os, backup"
+    echo "-c: command."
+    echo "-f: file."
+    echo "--db: database name."
+    echo "--user: user name."
+    echo "-d: Enable debug"
+}
+
 while true; do
     if [ "x$1" == "x" ];then
         break;
@@ -7,12 +19,10 @@ while true; do
       -c | --command   ) command=$2; shift 2 ;;
       -f | --file   ) file=$2; shift 2 ;;
       -d | --debug ) DEBUG=true; shift 1 ;;
+      --db ) db=$2; shift 2 ;;
+      --user ) user=$2; shift 2 ;;
       -h | --help  ) 
-          echo "Usage:"
-          echo "-p: process, lib, iptables, os"
-          echo "-c: command."
-          echo "-f: file."
-          echo "-d: Enable debug"
+          help
           shift 1 
           exit 0
           ;;
@@ -20,6 +30,12 @@ while true; do
       * ) echo "$1 is not a correct option.";shift 1; ;;
     esac
 done
+
+if [ "x" == "x$process" ]; then
+    help
+fi
+
+
 # --------
 # common lib
 # --------
@@ -27,12 +43,27 @@ done
 lib_help() {
     echo "lib usage:"
     echo "-p lib -c get_date: To return today's date, variable = date"
+    echo "-p lib -c get_timestamp: To return timestamp"
     echo "-p lib -c zip_file -f file.txt: to gzip file and change the file name"
 
 }
 
+lib_check_empty() {
+    name=$1
+    str=$2
+    if [ "x" == "x$str" ]; then
+        echo "$name can not be empty."
+        exit 1
+    fi
+}
+
 lib_get_date() {
     date=`date +%Y-%m-%d`
+    echo $date
+}
+
+lib_get_timestamp() {
+    date=`date +%s`
     echo $date
 }
 
@@ -66,7 +97,7 @@ lib_gzip_file() {
 os_help() {
     echo "os usage:"
     echo "-p os -c rotate_log: To rotate log, E.g. /var/log/cron, /var/log/messages"
-    echo "-p lib -c clean_log: To clean log file"
+    echo "-p os -c clean_log: To clean log file"
 
 }
 
@@ -82,6 +113,7 @@ os_rotate_log() {
     lib_gzip_file /var/log/mariadb/mariadb.log setEmpty
     if [ -f /var/log/mariadb/mariadb.log ]; then
         sudo chown mysql:root /var/log/mariadb/mariadb.log
+        sudo service mysql restart
     fi
     sudo systemctl start rsyslog
 }
@@ -95,7 +127,40 @@ os_clean_log() {
     rm -f /var/log/yum.log-*
     rm -f /var/log/dmesg.old
     rm -f /var/log/dmesg*.gz
+    rm -rf /var/log/mariadb/mariadb.log*.gz
     sudo yum clean all
+}
+
+# --------
+# Backup command
+# --------
+backup_help() {
+    echo "os usage:"
+    echo "-p backup -c dir -f dirpath: To backup a dir"
+    echo "-p backup -c mysql --db dbname --user user : To backup mysql"
+
+}
+
+backup_dir() {
+    lib_get_date
+    if [ "x" != "x$1" ]; then
+        file=$1
+    fi
+    lib_check_empty file $file
+    if [ ! -d $file ]; then
+        echo "Dir $file not found."
+    fi
+    name=$(basename "$file")
+    sudo tar -zcf ./$name-$date.tar.gz  $file
+}
+
+backup_mysql() {
+    lib_get_date
+    lib_check_empty db $db
+    lib_check_empty user $user
+    mysqldump $db -h localhost -u $user -p  --default-character-set=utf8 > $db.sql
+    lib_gzip_file $db.sql
+
 }
 
 # --------

@@ -1,6 +1,9 @@
 # .bashrc : do not echo any thing
 #echo "=== Load ~/.bashrc ==="
 
+export SHELL=/bin/bash
+export export TERM=xterm
+
 
 # ------------
 # source bash-it

@@ -15,6 +15,7 @@ alias myHelp='fn_help'
 alias ntpSync='sudo ntpdate -s time.stdtime.gov.tw'
 alias gitDeleteBranch='fnGitDeleteBranch'
 alias gitForceCommit='fnGitForceCommit'
+alias c='/usr/local/bin/myExec.sh'
 
 # fasd
 alias a='fasd -a'        # any
