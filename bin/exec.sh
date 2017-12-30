@@ -45,6 +45,7 @@ lib_help() {
     echo "-p lib -c get_date: To return today's date, variable = date"
     echo "-p lib -c get_timestamp: To return timestamp"
     echo "-p lib -c zip_file -f file.txt: to gzip file and change the file name"
+    echo "-p lib -c get_key: To test the keycode from keyboard"
 
 }
 
@@ -89,6 +90,10 @@ lib_gzip_file() {
     if [ "xsetEmpty" == "x$action" ]; then
         touch $file
     fi
+}
+
+lib_get_key() {
+    perl /usr/local/bin/puritys/keys.pl
 }
 
 # --------
