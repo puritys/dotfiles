@@ -79,7 +79,7 @@ os_rotate_log() {
     lib_gzip_file /var/log/wtmp setEmpty
     lib_gzip_file /var/log/yum.log setEmpty
     lib_gzip_file /var/log/dmesg setEmpty
-    lib_gzip_file /var/log/mariadb/mariadb.log
+    lib_gzip_file /var/log/mariadb/mariadb.log setEmpty
     if [ -f /var/log/mariadb/mariadb.log ]; then
         sudo chown mysql:root /var/log/mariadb/mariadb.log
     fi
