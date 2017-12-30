@@ -21,6 +21,11 @@ while true; do
       -d | --debug ) DEBUG=true; shift 1 ;;
       --db ) db=$2; shift 2 ;;
       --user ) user=$2; shift 2 ;;
+      --to ) to=$2; shift 2 ;;
+      --from ) from=$2; shift 2 ;;
+      --subject ) subject=$2; shift 2 ;;
+      --content ) content=$2; shift 2 ;;
+
       -h | --help  ) 
           help
           shift 1 
@@ -103,6 +108,7 @@ os_help() {
     echo "os usage:"
     echo "-p os -c rotate_log: To rotate log, E.g. /var/log/cron, /var/log/messages"
     echo "-p os -c clean_log: To clean log file"
+    echo "-p os -c sendmail --to xxx@gmail.com --subject xxx --from xxx@gmail.com --content xxx: To send a email by sendmail command"
 
 }
 
@@ -136,6 +142,21 @@ os_clean_log() {
     sudo yum clean all
 }
 
+os_sendmail() {
+    lib_check_empty to $to
+    lib_check_empty subject $subject
+    lib_check_empty from $from
+    lib_check_empty content $content
+    cat <<EOF > mail.txt
+To: $to
+Subject: $subject
+Content-Type: text/html;
+From: $from
+
+$content   
+EOF
+    sendmail -t < mail.txt
+}
 # --------
 # Backup command
 # --------
