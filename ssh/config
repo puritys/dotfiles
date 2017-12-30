@@ -1,4 +1,6 @@
 Protocol 2
+GSSAPIAuthentication no
+GSSAPIDelegateCredentials yes
 
 #Host me
 #    HostName www.xxx.xx

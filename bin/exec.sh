@@ -63,15 +63,39 @@ lib_gzip_file() {
 # --------
 # OS Basic command
 # --------
+os_help() {
+    echo "os usage:"
+    echo "-p os -c rotate_log: To rotate log, E.g. /var/log/cron, /var/log/messages"
+    echo "-p lib -c clean_log: To clean log file"
+
+}
 
 os_rotate_log() {
+    sudo systemctl stop rsyslog
     lib_gzip_file /var/log/cron setEmpty
     lib_gzip_file /var/log/messages setEmpty
+    lib_gzip_file /var/log/secure setEmpty
+    lib_gzip_file /var/log/maillog setEmpty
+    lib_gzip_file /var/log/wtmp setEmpty
+    lib_gzip_file /var/log/yum.log setEmpty
+    lib_gzip_file /var/log/dmesg setEmpty
+    lib_gzip_file /var/log/mariadb/mariadb.log
+    if [ -f /var/log/mariadb/mariadb.log ]; then
+        sudo chown mysql:root /var/log/mariadb/mariadb.log
+    fi
+    sudo systemctl start rsyslog
 }
 
 os_clean_log() {
     rm -f /var/log/cron*.gz
     rm -f /var/log/messages*.gz
+    rm -f /var/log/secure*.gz
+    rm -f /var/log/maillog*.gz
+    rm -f /var/log/wtmp*.gz
+    rm -f /var/log/yum.log-*
+    rm -f /var/log/dmesg.old
+    rm -f /var/log/dmesg*.gz
+    sudo yum clean all
 }
 
 # --------
