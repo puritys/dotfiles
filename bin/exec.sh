@@ -206,7 +206,7 @@ mysql_grant_dumpuser() {
     if [ "x" == "x$host" ]; then
         host="localhost"
     fi
-    echo "GRANT SELECT, LOCK TABLES ON *.* TO 'mysqldump'@'localhost' IDENTIFIED BY '$pswd'" | mysql -h $host -uroot -p ;
+    echo "GRANT SELECT, LOCK TABLES ON *.* TO 'mysqldump'@'$host' IDENTIFIED BY '$pswd'" | mysql -h $host -uroot -p ;
 }
 # --------
 # iptables
