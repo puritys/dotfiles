@@ -2,11 +2,13 @@
 
 help() {
     echo "Usage:"
-    echo "-p: process, lib, iptables, os, backup"
+    echo "-p: process, lib, iptables, os, backup, mysql"
     echo "-c: command."
     echo "-f: file."
+    echo "--host: db host"
     echo "--db: database name."
     echo "--user: user name."
+    echo "--pswd: password."
     echo "-d: Enable debug"
 }
 
@@ -19,8 +21,10 @@ while true; do
       -c | --command   ) command=$2; shift 2 ;;
       -f | --file   ) file=$2; shift 2 ;;
       -d | --debug ) DEBUG=true; shift 1 ;;
+      --host ) host=$2; shift 2 ;;
       --db ) db=$2; shift 2 ;;
       --user ) user=$2; shift 2 ;;
+      --pswd ) pswd=$2; shift 2 ;;
       --to ) to=$2; shift 2 ;;
       --from ) from=$2; shift 2 ;;
       --subject ) subject=$2; shift 2 ;;
@@ -163,7 +167,7 @@ EOF
 backup_help() {
     echo "os usage:"
     echo "-p backup -c dir -f dirpath: To backup a dir"
-    echo "-p backup -c mysql --db dbname --user user : To backup mysql"
+    echo "-p backup -c mysql --db dbname --user user --pswd xxx: To backup mysql"
 
 }
 
@@ -184,11 +188,26 @@ backup_mysql() {
     lib_get_date
     lib_check_empty db $db
     lib_check_empty user $user
-    mysqldump $db -h localhost -u $user -p  --default-character-set=utf8 > $db.sql
+    mysqldump $db -h localhost -u $user -p$pswd --default-character-set=utf8 > $db.sql
     lib_gzip_file $db.sql
 
 }
 
+# --------
+# MySQL
+# --------
+mysql_help() {
+    echo "mysql usage:"
+    echo "-p mysql -c grant_dumpuser --pswd : To create a new user for mysqldump"
+
+}
+
+mysql_grant_dumpuser() {
+    if [ "x" == "x$host" ]; then
+        host="localhost"
+    fi
+    echo "GRANT SELECT, LOCK TABLES ON *.* TO 'mysqldump'@'localhost' IDENTIFIED BY '$pswd'" | mysql -h $host -uroot -p ;
+}
 # --------
 # iptables
 # --------
