@@ -120,6 +120,8 @@ EOF
     done
 }
 
-. .bash_docker
+if [ -f ~/.bash_docker ]; then
+    . ~/.bash_docker
+fi
 
 
