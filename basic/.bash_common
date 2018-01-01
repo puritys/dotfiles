@@ -97,16 +97,17 @@ function getMySSHAgent {
     pids=( $pids )
     length=${#pids[@]}
     for(( i=0; i<$length; i++ ))
-    do  
+    do
         pid=${pids[$i]}
         for(( j=0; j<4; j++ ))
-        do  
+        do
             if [[ X"$OS" == X"Darwin" ]]; then
                 # $TMPDIR is environment variable on MAC OS
-                sshagent=$(find $TMPDIR -user `whoami` -type s | grep ssh |grep $pid | xargs ls -rt | awk '{print }')
+                sshagent=`ls $TMPDIR |grep ssh | xargs -n 1 -I%I find $TMPDIR%I -user $myname -type s | grep ssh |grep $pid | xargs ls -rt | awk '{print }'`
+                #sshagent=$(find $TMPDIR -user `whoami` -type s | grep ssh |grep $pid | xargs ls -rt | awk '{print }')
             elif [[ X"$OS" == X"Linux" ]]; then
                 sshagent=$(find /tmp/ssh-* -user `whoami` -type s -printf '%p\n' 2>/dev/null | grep $pid) 
-            fi  
+            fi
             if [ "x$sshagent" != "x" ];then
                 cat <<- EOF > ~/.ssh/environment
                     export SSH_AUTH_SOCK=$sshagent
@@ -114,7 +115,7 @@ function getMySSHAgent {
 EOF
                 source ~/.ssh/environment
                 return 
-            fi  
+            fi
             pid=$(($pid - 1))
         done
     done
