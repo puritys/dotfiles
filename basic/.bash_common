@@ -7,7 +7,7 @@ powerline () {
     local startColor="\[\e[30m\]"
     local arrowColor="\[\e[37m\]"
     #\[\ek\h\e\\\] : display screen hostname
-    PS1="$color[$host]@ \[\e[0m\]"
+    RET="$color[$host]@ \[\e[0m\]"
     local path="$PWD"
     case $path in
       $HOME) path="~";;
@@ -16,7 +16,7 @@ powerline () {
     esac
 
     if [ "x$path" == "x/" ];then
-        PS1="$PS1$color$path $arrowColor$arrow\[\e[0m\]\n"
+        RET="$RET$color$path $arrowColor$arrow\[\e[0m\]\n"
         return ;
     fi
     split=(${path//\// })
@@ -31,7 +31,7 @@ powerline () {
             powPath="$powPath$color$arrowLight \[\e[0m\]"
         fi
     done
-    PS1="$PS1$powPath\n"
+    PS1="$RET$powPath\n"
 }
 
 changePS () {
@@ -57,7 +57,7 @@ changePS () {
         ;;
     esac
     powerline $host $arrow $arrowLight
-    export PS1
+    #export PS1
 }
 
 screen_path() {
