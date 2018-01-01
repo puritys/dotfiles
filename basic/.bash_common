@@ -119,3 +119,7 @@ EOF
         done
     done
 }
+
+. .bash_docker
+
+

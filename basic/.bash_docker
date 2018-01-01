@@ -1,0 +1,72 @@
+# ---------------------
+# Docker alias function
+# ---------------------
+
+function common_docker_set_env() {
+    name=$1
+    eval $(docker-machine env $name)
+}
+
+function mysql_fn() {
+    command="/usr/bin/mysql  $@ "
+    common_docker_set_env "tool"
+    dockCommand="docker run -it --rm  puritys/command $command"
+    echo $dockCommand
+    $dockCommand
+}
+function mvn_fn() {
+    command=" $@ "
+    common_docker_set_env "tool"
+    pwd=`pwd`
+    owner=`whoami`
+    if [ `uname` = "Darwin" ]; then
+        HOME="/Users/$owner"
+    else
+        HOME="/home/$owner"
+    fi 
+    command="docker run -it --rm -v $HOME/.m2:/root/.m2 -v $(pwd):/usr/src/mymaven -w /usr/src/mymaven puritys/command $command"
+    echo $command
+    $command
+}
+
+function javar_fn() {
+    common_docker_set_env "tool"
+    command=" $@ "
+    pwd=`pwd`
+    owner=`whoami`
+    if [ `uname` = "Darwin" ]; then
+        HOME="/Users/$owner"
+    else
+        HOME="/home/$owner"
+    fi 
+    command="docker run -it --rm -v $HOME/.m2:/root/.m2 -v $(pwd):/usr/src/mymaven -w /usr/src/mymaven my/my-mvn $command"
+    echo $command
+    $command
+}
+
+function atslog_fn() {
+    common_docker_set_env "service"
+    pwd=`pwd`
+    command="/usr/local/bin/traffic_logcat $@ "
+    command="docker run -it --rm -v $(pwd):/logs -w /logs  puritys/ats $command"
+    echo $command
+    $command
+}
+
+function ffmpeg_fn() {
+    common_docker_set_env "tool"
+    command=" $@ "
+    pwd=`pwd`
+    owner=`whoami`
+    if [ `uname` = "Darwin" ]; then
+        HOME="/Users/$owner"
+    else
+        HOME="/home/$owner"
+    fi 
+    command="docker run -it --rm  -v $(pwd):/temp_dir -w /temp_dir puritys/ffmpeg ffmpeg $command"
+    echo $command
+    $command
+}
+
+
+

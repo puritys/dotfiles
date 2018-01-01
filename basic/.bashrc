@@ -1,8 +1,57 @@
 # .bashrc : do not echo any thing
 #echo "=== Load ~/.bashrc ==="
 
+export PLATFORM=$(uname -s)
 export SHELL=/bin/bash
 export export TERM=xterm
+export LC_CTYPE=en_US.UTF-8
+export LC_ALL=en_US.UTF-8
+export LANG=zh_TW.UTF-8
+
+PATH=$PATH:$HOME/bin:/usr/local/bin:/sbin:/usr/local/sbin:/usr/sbin
+export PATH
+
+export NODE_PATH=/usr/local/lib/node_modules:/usr/lib/node_modules
+
+# Get the aliases and functions
+if [ -f ~/.bash_host ]; then
+    . ~/.bash_host
+fi
+
+if [ "x$host" == "x" ];then
+    host=`uname -n`
+fi
+
+if [ -f ~/.bash_common ]; then
+    . ~/.bash_common
+fi
+
+if [ "$PLATFORM" == "Darwin" ]; then
+    if [ -f ~/.alias_mac ]; then
+        . ~/.alias_mac
+    fi
+else
+    if [ -f ~/.alias ]; then
+        . ~/.alias
+    fi
+fi
+
+
+SSH_ENV="$HOME/.ssh/environment"
+function start_agent {
+     echo "Initialising new SSH agent..."
+     /usr/bin/ssh-agent | sed 's/^echo/#echo/' > "${SSH_ENV}"
+     echo succeeded
+     chmod 600 "${SSH_ENV}"
+     . "${SSH_ENV}" > /dev/null
+     ls ~/.ssh/ | grep 'rsa\|dsa' | grep -v pub | awk '{printf "/usr/bin/ssh-add ~/.ssh/%s\n",$1}' | sh
+}
+
+getMySSHAgent
+
+
+# enable control-s and control-q
+stty -ixon
 
 
 # ------------
@@ -30,18 +79,6 @@ if [ -f "$BASH_IT/bash_it.sh" ]; then
 fi
 
 
-# User specific aliases and functions
-
-# Source global definitions
-
-if [ "x$host" == "x" ];then
-    host=`uname -n`
-fi
-
-if [ -f ~/.bash_common ]; then
-	. ~/.bash_common
-fi
-#echo "===  ~/.bashrc changePS ==="
 
 changePS
 PROMPT_COMMAND=changePS
@@ -54,5 +91,20 @@ export LS_OPTIONS
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 [ -d ~/.sh_tool/clvv-fasd-4822024/ ] && eval "$(fasd --init auto)"
+
+# ---------
+# Load Customized settings
+# ---------
+if [ -f ~/.ssh/config_customized ]; then
+    alias ssh='ssh -F <(cat .ssh/config ~/.ssh/config_customized)'
+fi
+
+if [ -f ~/.bash_customized ]; then
+    . ~/.bash_customized
+fi
+
+if [ -f ~/.alias_customized ]; then
+    . ~/.alias_customized
+fi
 
 

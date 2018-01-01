@@ -2,13 +2,15 @@
 
 help() {
     echo "Usage:"
-    echo "-p: process, lib, iptables, os, backup, mysql"
+    echo "-p: process, lib, iptables, os, backup, mysql, ffmpeg"
     echo "-c: command."
     echo "-f: file."
+    echo "-o: output file."
     echo "--host: db host"
     echo "--db: database name."
     echo "--user: user name."
     echo "--pswd: password."
+    echo "--machine: Docker machine name."
     echo "-d: Enable debug"
 }
 
@@ -20,6 +22,7 @@ while true; do
       -p | --process   ) process=$2; shift 2 ;;
       -c | --command   ) command=$2; shift 2 ;;
       -f | --file   ) file=$2; shift 2 ;;
+      -o | --output   ) output=$2; shift 2 ;;
       -d | --debug ) DEBUG=true; shift 1 ;;
       --host ) host=$2; shift 2 ;;
       --db ) db=$2; shift 2 ;;
@@ -29,7 +32,7 @@ while true; do
       --from ) from=$2; shift 2 ;;
       --subject ) subject=$2; shift 2 ;;
       --content ) content=$2; shift 2 ;;
-
+      --machine ) machine=$2; shift 2 ;;
       -h | --help  ) 
           help
           shift 1 
@@ -161,6 +164,7 @@ $content
 EOF
     sendmail -t < mail.txt
 }
+
 # --------
 # Backup command
 # --------
@@ -229,6 +233,24 @@ iptables_restore() {
 iptables_save() {
     sudo iptables-save > iptableBackup.rule
 }
+
+# --------
+# ffmpeg command
+# --------
+ffmpeg_help() {
+    echo "ffmpeg usage:"
+    echo "-p ffmpeg -c flv_to_mp4 -f xxx.flv -o xx.mp4: convert flv to mp4"
+
+}
+
+ffmpeg_flv_to_mp4() {
+    # Load docker alias function
+    . ~/.bash_docker
+    lib_check_empty file $file
+    lib_check_empty output $output
+    ffmpeg_fn -i $file -acodec copy -vcodec copy $output
+}
+
 
 
 if [ "x" != "x$process" ] && [ "x" == "x$command" ]; then
