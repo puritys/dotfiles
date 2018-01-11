@@ -32,6 +32,13 @@ snippet unit
 	    }
 	}
 
+snippet unit_private
+	$ref = new ReflectionClass('food');
+	$method = $ref->getMethod('getName');
+	$method->setAccessible(true);
+	$name = $method->invokeArgs($obj, array());
+	$this->assertEquals('chicken', $name);
+
 snippet switch "switch($var) { case 'xyz': ... default: .... }"
 	switch ($${1:variable}) {
 		case '${2:value}':
