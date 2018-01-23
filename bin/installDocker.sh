@@ -11,5 +11,5 @@ EOF
 sudo yum install docker-engine
 sudo service docker start
 sudo gpasswd -a $USER docker
-newgrp docker
+#newgrp docker
 
