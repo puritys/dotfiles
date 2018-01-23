@@ -1,7 +1,7 @@
 wget https://www.python.org/ftp/python/3.5.0/Python-3.5.0.tgz
 tar -zxvf Python-3.5.0.tgz
 cd Python-3.5.0
-./configure --prefix=/usr/local
+./configure --prefix=/usr/local/share/python3.5
 gmake
 sudo gmake install
 wget https://bootstrap.pypa.io/get-pip.py

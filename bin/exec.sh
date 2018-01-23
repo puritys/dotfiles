@@ -2,7 +2,7 @@
 
 help() {
     echo "Usage:"
-    echo "-p: process, lib, iptables, os, backup, mysql, ffmpeg"
+    echo "-p: process, lib, iptables, os, backup, mysql, ffmpeg, python"
     echo "-c: command."
     echo "-f: file."
     echo "-o: output file."
@@ -249,6 +249,21 @@ ffmpeg_flv_to_mp4() {
     lib_check_empty file $file
     lib_check_empty output $output
     ffmpeg_fn -i $file -acodec copy -vcodec copy $output
+}
+
+# --------
+# python command
+# --------
+python_help() {
+    echo "python usage:"
+    echo "-p python -c run -f xxx.py"
+}
+
+python_run() {
+    # Load docker alias function
+    . ~/.bash_docker
+    lib_check_empty file $file
+    python_fn $file
 }
 
 

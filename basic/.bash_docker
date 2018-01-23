@@ -68,5 +68,20 @@ function ffmpeg_fn() {
     $command
 }
 
+function python_fn() {
+    common_docker_set_env "tool"
+    command=" $@ "
+    pwd=`pwd`
+    owner=`whoami`
+    if [ `uname` = "Darwin" ]; then
+        HOME="/Users/$owner"
+    else
+        HOME="/home/$owner"
+    fi 
+    command="docker run -it --rm  -v $(pwd):/temp_dir -w /temp_dir puritys/python python2.7 $command"
+    echo $command
+    $command
+}
+
 
 
