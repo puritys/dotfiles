@@ -10,6 +10,7 @@ EOF
 
 sudo yum install docker-engine
 sudo service docker start
-sudo gpasswd -a $USER docker
+sudo chown `whoami`  /var/run/docker.sock
+#sudo gpasswd -a $USER docker
 #newgrp docker
 
