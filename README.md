@@ -13,6 +13,9 @@ Update dotfiles
 Auto install vim plugins
 * ./install.sh -p
 
+Auto install fzf
+* ./install.sh -f
+
 
 
 ## Install Font

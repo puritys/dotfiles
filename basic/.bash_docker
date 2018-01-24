@@ -85,7 +85,7 @@ function python_fn() {
     command=" $@ "
     pwd=`pwd`
     get_home
-    command="docker run -it --rm  -v $(pwd):/temp_dir -w /temp_dir puritys/python python2.7 $command"
+    command="docker run -it --rm -v /www/python2.7_modules:/usr/local/share/python2.7/lib/python2.7/site-packages  -v $(pwd):/temp_dir -w /temp_dir puritys/python python2.7 $command"
     echo $command
     $command
 }
@@ -95,7 +95,7 @@ function pip_fn() {
     command=" $@ "
     pwd=`pwd`
     get_home
-    command="docker run -it --rm  -v $(pwd):/temp_dir -w /temp_dir puritys/python pip $command"
+    command="docker run -it --rm -v /www/python2.7_modules:/usr/local/share/python2.7/lib/python2.7/site-packages  -v $(pwd):/temp_dir -w /temp_dir puritys/python pip2.7 $command"
     echo $command
     $command
 }
