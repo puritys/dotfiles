@@ -1,16 +1,15 @@
 # centos
-sudo tee /etc/yum.repos.d/docker.repo <<-EOF
-[dockerrepo]
-name=Docker Repository
-baseurl=https://yum.dockerproject.org/repo/main/centos/6
-enabled=1
-gpgcheck=1
-gpgkey=https://yum.dockerproject.org/gpg
-EOF
+sudo yum install -y yum-utils \
+  device-mapper-persistent-data \
+  lvm2
 
-sudo yum install docker-engine
+sudo yum-config-manager \
+    --add-repo \
+    https://download.docker.com/linux/centos/docker-ce.repo
+
+sudo yum-config-manager --enable docker-ce-edge
+sudo yum install docker-ce
+
 sudo service docker start
 sudo chown `whoami`  /var/run/docker.sock
-#sudo gpasswd -a $USER docker
-#newgrp docker
 
