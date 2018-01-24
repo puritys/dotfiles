@@ -1,4 +1,4 @@
-sudo yum install screen vim git wget
+sudo yum install screen vim git wget telnet
 
 acount=`whoami`
 # install node

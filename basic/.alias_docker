@@ -3,5 +3,7 @@ alias mvn="mvn_fn"
 alias javar="javar_fn"
 alias atslog="atslog_fn"
 alias ffmpeg="ffmpeg_fn"
+alias python="python_fn"
+alias pip="pip_fn"
 
 

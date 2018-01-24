@@ -2,9 +2,21 @@
 # Docker alias function
 # ---------------------
 
+function get_home() {
+    owner=`whoami`
+    if [ `uname` = "Darwin" ]; then
+        HOME="/Users/$owner"
+    else
+        HOME="/home/$owner"
+    fi 
+
+}
+
 function common_docker_set_env() {
     name=$1
-    eval $(docker-machine env $name)
+    if [ "x" != "x`command -v docker-machine`" ]; then
+        eval $(docker-machine env $name)
+    fi
 }
 
 function mysql_fn() {
@@ -72,16 +84,20 @@ function python_fn() {
     common_docker_set_env "tool"
     command=" $@ "
     pwd=`pwd`
-    owner=`whoami`
-    if [ `uname` = "Darwin" ]; then
-        HOME="/Users/$owner"
-    else
-        HOME="/home/$owner"
-    fi 
+    get_home
     command="docker run -it --rm  -v $(pwd):/temp_dir -w /temp_dir puritys/python python2.7 $command"
     echo $command
     $command
 }
 
+function pip_fn() {
+    common_docker_set_env "tool"
+    command=" $@ "
+    pwd=`pwd`
+    get_home
+    command="docker run -it --rm  -v $(pwd):/temp_dir -w /temp_dir puritys/python pip $command"
+    echo $command
+    $command
+}
 
 
