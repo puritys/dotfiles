@@ -39,7 +39,6 @@ changePS () {
         screen*)
             arrow=`echo -e "\xee\x82\xb0"`
             arrowLight=`echo -e  "\xee\x82\xb1"`
-            screen_title;
             ;;
         xterm*)
             if [ `uname` == "Darwin" ]; then
@@ -56,6 +55,7 @@ changePS () {
             arrowLight=`echo -e "\xee\x82\xb1"`
         ;;
     esac
+    screen_title;
     powerline $host $arrow $arrowLight
     #export PS1
 }
