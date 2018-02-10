@@ -103,8 +103,16 @@ snippet exdate
 
 	}
 
+snippet dateExample
+	Calendar i = Calendar.getInstance();
+	i.setTimeInMillis((long)time * 1000);
+	i.set(Calendat.YEAR, xxx);
+	System.out.println("Year =" + i.get(Calendar.YEAR) + " month = " + i.get(Calendar.MONTH));
+
 snippet itoa
 	Integer.toString(${1});
+snippet itof
+	(float) ${1};
 
 snippet atoi
 	Integer.parseInt(${1});
@@ -139,6 +147,9 @@ snippet forMap
 
 snippet list
 	List<String> status = new ArrayList<>(Arrays.asList("0", "1"));
+
+snippet set
+	Set<String> m = new HashSet<String>();
 
 snippet arrayToList
 	List<String> list = Arrays.asList(args);
