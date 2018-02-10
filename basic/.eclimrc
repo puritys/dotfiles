@@ -1,0 +1,7 @@
+# Bind eclimd to all interfaces
+nailgun.server.host=0.0.0.0
+
+nailgun.server.port=9091
+
+-Xmx256M
+
