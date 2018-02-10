@@ -180,7 +180,7 @@ cd $pwd
 if [ "x$JAVA" != "x" ]; then
     #install Xvfb
     if [[ `uname` != 'Darwin' ]]; then
-        sudo yum install xorg-x11-server-Xvfb -y
+        sudo yum install xorg-x11-server-Xvfb gtk2 -y
     fi
 
     if [ -f "/usr/share/X11/xkb/symbols/inet" ]; then
@@ -210,6 +210,7 @@ if [ "x$JAVA" != "x" ]; then
 
 
     #echo "\n\n=== Start eclimd ===\n\n"
+    # log ~/workspace/.metadata/.log
     DISPLAY=:1 $eclipseHome/eclimd -b
     sleep 20
 
