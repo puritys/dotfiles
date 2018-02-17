@@ -97,8 +97,7 @@ if (exists("g:forceUseTab") && g:forceUseTab == 1)
     nmap m :tabn<CR>
     nmap <C-[>a :tabp<CR>
     nmap <C-[>s :tabn<CR>
-    nmap <ESC>[2;1 :tabp<CR>
-    nmap <ESC>[2;2 :tabn<CR>
+
     "vim tab
     nmap <ESC>[1;2D :tabp<CR> " shift + left
     nmap <ESC>[1;2C :tabn<CR> " shift + right
@@ -118,8 +117,7 @@ else
     nmap m :bn<CR>
     nmap <C-[>a :bp<CR>
     nmap <C-[>s :bn<CR>
-    nmap <ESC>[2;1 :bp<CR>
-    nmap <ESC>[2;2 :bn<CR>
+
     "vim tab
     nmap <ESC>[1;2D :bp<CR> " shift + left
     nmap <ESC>[1;2C :bn<CR> " shift + right
@@ -214,7 +212,7 @@ au BufRead,BufNewFile *.phtml set filetype=php
 au BufRead,BufNewFile *.inc set filetype=php
 
 function! Tab_Or_Complete()
-  if col('.')>1 && strpart( getline('.'), col('.')-2, 3 ) =~ '^\w'
+  if col('.')>1 && strpart( getline('.'), col('.')-2, 3 ) =~ '\(^\w\|>$\|:$\)'
     return "\<C-X>\<C-O>"
   else
     return "\<Tab>"
@@ -225,7 +223,7 @@ endfunction
 
 
 if has("autocmd")
-"  autocmd Filetype java setlocal omnifunc=javacomplete#Complete
+  "autocmd Filetype java setlocal omnifunc=javacomplete#Complete
   autocmd Filetype php setlocal omnifunc=phpcomplete#CompletePHP
   autocmd Filetype cpp setlocal omnifunc=omni#cpp#complete#Main
   autocmd Filetype js  setlocal omnifunc=js#CompleteJS
