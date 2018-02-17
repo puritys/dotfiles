@@ -37,6 +37,8 @@ Plugin 'vim-json-line-format' " JSON Parse
 "Plugin 'ervandew/supertab'
 "Plugin 'Valloric/YouCompleteMe'
 Plugin '1995eaton/vim-better-javascript-completion'
+Plugin 'shawncplus/phpcomplete.vim'
+
 " Snippet
 Plugin 'MarcWeber/vim-addon-mw-utils'
 Plugin 'tomtom/tlib_vim'
@@ -267,5 +269,10 @@ let g:vimjs#chromeapis = 0
 :vnoremap <C-e> :QuickRun -mode v<CR>
 
 
-
-
+" --------------
+" PHP Auto Complete
+" shawncplus/phpcomplete.vim
+" --------------
+let g:phpcomplete_min_num_of_chars_for_namespace_completion = 1
+let g:phpcomplete_cache_taglists = 1
+let g:phpcomplete_enhance_jump_to_definition = 0

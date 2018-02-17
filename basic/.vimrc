@@ -9,7 +9,6 @@ set rtp+=~/.fzf
 syntax on
 ""/usr/share/vim/vim70/lang/
 
-
 "set paste" will disable all hot key on insert mode.
 
 set noswapfile
@@ -185,31 +184,42 @@ nnoremap <silent> ,y :new<CR>:call setline(1,getregtype())<CR>o<Esc>P:wq! ~/.vim
 map <silent> ,p :sview ~/.vim_clipboard.txt<CR>"zdddG:q!<CR>:call setreg('"', @", @z)<CR>p
 map <silent> ,P :sview ~/.vim_clipboard.txt<CR>"zdddG:q!<CR>:call setreg('"', @", @z)<CR>P
 
-" OmniCppComplete
-set tags+=~/.vim/tags/cpp
-"map <C-F12> :!ctags -R --sort=yes --c++-kinds=+p --fields=+iaS --extra=+q .<CR>
-let OmniCpp_NamespaceSearch = 1
-let OmniCpp_GlobalScopeSearch = 1
-let OmniCpp_ShowAccess = 1
-let OmniCpp_ShowPrototypeInAbbr = 1 " show function parameters
-let OmniCpp_MayCompleteDot = 1 " autocomplete after .
-let OmniCpp_MayCompleteArrow = 1 " autocomplete after ->
-let OmniCpp_MayCompleteScope = 1 " autocomplete after ::
-let OmniCpp_DefaultNamespaces = ["std", "_GLIBCXX_STD"]
 " automatically open and close the popup menu / preview window
 au CursorMovedI,InsertLeave * if pumvisible() == 0|silent! pclose|endif
 set completeopt=menuone,menu,preview "
+
+function! INIT_CPP()
+    set filetype=cpp
+    " OmniCppComplete
+    set tags+=~/.vim/tags/cpp
+    "map <C-F12> :!ctags -R --sort=yes --c++-kinds=+p --fields=+iaS --extra=+q .<CR>
+    let OmniCpp_NamespaceSearch = 1
+    let OmniCpp_GlobalScopeSearch = 1
+    let OmniCpp_ShowAccess = 1
+    let OmniCpp_ShowPrototypeInAbbr = 1 " show function parameters
+    let OmniCpp_MayCompleteDot = 1 " autocomplete after .
+    let OmniCpp_MayCompleteArrow = 1 " autocomplete after ->
+    let OmniCpp_MayCompleteScope = 1 " autocomplete after ::
+    let OmniCpp_DefaultNamespaces = ["std", "_GLIBCXX_STD"]
+endfunction
+
+
+function! INIT_PHP()
+    set filetype=php
+    set tags+=~/.vim/php_tags
+endfunction
 
 au BufRead,BufNewFile *.sjs set filetype=javascript
 au BufRead,BufNewFile *.js set filetype=javascript
 au BufRead,BufNewFile *.html set filetype=html
 au BufRead,BufNewFile *.go set filetype=go
 au BufRead,BufNewFile *.java set filetype=java
-au BufRead,BufNewFile *.cc set filetype=cpp
-au BufRead,BufNewFile *.c set filetype=cpp
-au BufRead,BufNewFile *.php set filetype=php
-au BufRead,BufNewFile *.phtml set filetype=php
-au BufRead,BufNewFile *.inc set filetype=php
+au BufRead,BufNewFile *.cc  call INIT_CPP()
+au BufRead,BufNewFile *.c   call INIT_CPP() 
+au BufRead,BufNewFile *.cpp   call INIT_CPP() 
+au BufRead,BufNewFile *.php call INIT_PHP()
+au BufRead,BufNewFile *.phtml call INIT_PHP()
+au BufRead,BufNewFile *.inc call INIT_PHP()
 
 function! Tab_Or_Complete()
   if col('.')>1 && strpart( getline('.'), col('.')-2, 3 ) =~ '\(^\w\|>$\|:$\)'
@@ -228,6 +238,7 @@ if has("autocmd")
   autocmd Filetype cpp setlocal omnifunc=omni#cpp#complete#Main
   autocmd Filetype js  setlocal omnifunc=js#CompleteJS
   autocmd Filetype javascript  setlocal omnifunc=js#CompleteJS
+  autocmd Filetype go setlocal omnifunc=gocomplete#Complete
   " whitespace
   autocmd ColorScheme * highlight ExtraWhitespace ctermbg=red guibg=red
   autocmd BufRead,BufNew * match ExtraWhitespace /\t\+\| \s\+$/

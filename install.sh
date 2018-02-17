@@ -8,6 +8,7 @@ while true; do
       -p | --vimPlugin   ) installVimPlugin=1; shift 1 ;;
       -d | --debug ) DEBUG=true; shift 1 ;;
       -j | --jave ) JAVA=true; shift 1 ;;
+      --ctags ) CTAGS=true; shift 1 ;;
       -ujc | --updateJaveConfig ) UPDATE_JAVA_CONFIG=true; shift 1 ;;
       -k | --docker) DOCKER=true; shift 1;;
       -i | --init) INIT=true; installVimPlugin=1; shift 1;;
@@ -272,3 +273,24 @@ if [ "x$INIT" != "x" ] || [ "x$installBashIt" != "x" ];  then
 
     bash-it disable alias all
 fi
+
+
+# -------------------------------
+# Install ctags for auto complete
+# -------------------------------
+if [ "x" != "x$CTAGS" ]; then
+    if [ "x" != "x`command -v yum`" ]; then
+        sudo yum install -y ctags
+    fi
+    if [ -d /www ];then
+        cd /www
+        ctags -R --fields=+laimS --languages=php -f ~/.vim/php_tags  -a 
+        cd -
+    fi
+    cd ~/
+    ctags -R --fields=+laimS --languages=php -f ~/.vim/php_tags  -a 
+    cd -
+
+fi
+
+

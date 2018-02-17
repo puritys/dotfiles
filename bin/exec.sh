@@ -2,10 +2,11 @@
 
 help() {
     echo "Usage:"
-    echo "-p: process, lib, iptables, os, backup, mysql, ffmpeg, python"
+    echo "-p: process, lib, iptables, os, backup, mysql, ffmpeg, python, docker"
     echo "-c: command."
     echo "-f: file."
     echo "-o: output file."
+    echo "-s: service"
     echo "--host: db host"
     echo "--db: database name."
     echo "--user: user name."
@@ -24,6 +25,7 @@ while true; do
       -f | --file   ) file=$2; shift 2 ;;
       -o | --output   ) output=$2; shift 2 ;;
       -d | --debug ) DEBUG=true; shift 1 ;;
+      -s | --service ) service=$2; shift 1 ;;
       --host ) host=$2; shift 2 ;;
       --db ) db=$2; shift 2 ;;
       --user ) user=$2; shift 2 ;;
@@ -266,13 +268,20 @@ python_run() {
     python_fn $file
 }
 
+# --------
+# docker command
+# --------
+docker_help() {
+    echo "docker usage:"
+    echo "-p docker -s dev -c start"
+}
 
 
-if [ "x" != "x$process" ] && [ "x" == "x$command" ]; then
+if [ "x" != "x$process" ] && [ "x" != "x$service" ] && [ "x" != "x$command" ]; then
+    $process"_"$service"_"$command
+elif [ "x" != "x$process" ] && [ "x" == "x$command" ]; then
     $process"_help"
-fi
-
-if [ "x" != "x$process" ] && [ "x" != "x$command" ]; then
+elif [ "x" != "x$process" ] && [ "x" != "x$command" ]; then
     $process"_"$command
 fi 
 

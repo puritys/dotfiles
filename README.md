@@ -76,3 +76,6 @@ Attentions.
 
 
 
+## Auto Complete
+
+* PHP: ctags -R --fields=+laimS --languages=php
