@@ -67,6 +67,10 @@ echo $DOCKER
 if [ "x$DOCKER" == "x" ];then
     echo "Without docker"
     rm -f ~/.alias_docker
+else 
+    if [ -d /usr/local/bin/ ]; then
+        sudo cp bin/docker_php /usr/local/bin/php
+    fi
 fi
 
 # ------------------
