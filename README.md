@@ -1,4 +1,4 @@
-# unix_environment
+# dotfiles
 My ssh config, vimrc, .screenrc, alias
 
 
@@ -55,21 +55,21 @@ host=MacMini
 | vim-syntastic/syntastic        | sc       | syntax check                                        |
 | garbas/vim-snipmate            |          | Auto complete script                                |
 |1995eaton/vim-better-javascript-completion| |Javascript auto complete function|
-| Valloric/YouCompleteMe  |               | Auto complete function for c/c++/ruby/... |
-| google/vim-codefmt      |               | Auto fix java code formatter/indent       |
-| vim-airline/vim-airline |               | Beautiful status bar and tab              |
-| godlygeek/tabular       | align,<Enter> | Auto align code                           |
-| vim-json-line-format    | ,jp ,jw       | JSON Parser (support unicode)             |
+| Valloric/YouCompleteMe     |               | Auto complete function for c/c++/ruby/... |
+| google/vim-codefmt         |               | Auto fix java code formatter/indent       |
+| vim-airline/vim-airline    |               | Beautiful status bar and tab              |
+| godlygeek/tabular          | align,<Enter> | Auto align code                           |
+| vim-json-line-format       | ,jp ,jw       | JSON Parser (support unicode)             |
+| shawncplus/phpcomplete.vim |               | PHP Auto Complete                         |
 
 Attentions.
-* ctags is needed by vim-nerdtree-tabs.
+* ctags is needed by vim-nerdtree-tabs and shawncplus/phpcomplete.vim.
 
 ### Included plugins
 |plugin | shortcut| description|
 |:---|:---|:---|
 | vim/plugin/JavaImp.vim        | :JI/:JIS | Auto import java packages     |
 | vim/plugin/tabline.vim        |          | Menu                          |
-| vim/autoload/phpcomplete.vim  |          | Auto complete PHP function    |
 | vim/autoload/javacomplete.vim |          | Auto complete Java function   |
 | vim/autoload/gocomplete.vim   |          | Auto complete golang function |
 | vim/autoload/omni/            |          | Auto complete C/C++ function  |
