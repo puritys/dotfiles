@@ -1,12 +1,12 @@
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
 
+let php_sync_method=-1
+
+call plug#begin('~/.vim/plugged')
 " ----------------
 " Basic plugins
 " ----------------
-Plugin 'VundleVim/Vundle.vim'
-Plugin 'google/vim-maktaba'
-Plugin 'junegunn/fzf' " File finder
+Plug 'google/vim-maktaba'
+Plug 'junegunn/fzf' " File finder
 
 
 " ----------------
@@ -14,18 +14,22 @@ Plugin 'junegunn/fzf' " File finder
 " ----------------
 "Plugin 'vim-airline/vim-airline'
 "Plugin 'vim-airline/vim-airline-themes'
-Plugin 'scrooloose/nerdtree'
-Plugin 'jistr/vim-nerdtree-tabs'
-Plugin 'majutsushi/tagbar' " methond/function list menu
-Plugin 'haya14busa/incsearch.vim' " better search plugin
+Plug 'scrooloose/nerdtree'
+Plug 'jistr/vim-nerdtree-tabs'
+Plug 'majutsushi/tagbar' " methond/function list menu
+Plug 'haya14busa/incsearch.vim' 
+"   , {'do': function('IncsearchEnable')} " better search plugin
+"Plug 'airblade/vim-gitgutter'
 "Plugin 'ntpeters/vim-better-whitespace' " show tail whitespace
 
 " ----------------
 " Code change Plugins
 " ----------------
 "http://vimcasts.org/episodes/aligning-text-with-tabular-vim/
-Plugin 'godlygeek/tabular' " align code
-Plugin 'vim-json-line-format' " JSON Parse
+Plug 'godlygeek/tabular' " align code
+Plug 'vim-scripts/vim-json-line-format' " JSON Parse
+Plug 'vim-scripts/PDV--phpDocumentor-for-Vim', {'for': 'php'}
+
 "" code format
 "Plugin 'google/vim-codefmt'
 "Plugin 'google/vim-glaive'
@@ -36,24 +40,24 @@ Plugin 'vim-json-line-format' " JSON Parse
 " -------------
 "Plugin 'ervandew/supertab'
 "Plugin 'Valloric/YouCompleteMe'
-Plugin '1995eaton/vim-better-javascript-completion'
-Plugin 'shawncplus/phpcomplete.vim'
+Plug '1995eaton/vim-better-javascript-completion'
+Plug 'shawncplus/phpcomplete.vim', {'for': 'php'} 
 
 " Snippet
-Plugin 'MarcWeber/vim-addon-mw-utils'
-Plugin 'tomtom/tlib_vim'
-Plugin 'garbas/vim-snipmate'
+Plug 'MarcWeber/vim-addon-mw-utils'
+Plug 'tomtom/tlib_vim'
+Plug 'garbas/vim-snipmate'
 
 " ----------------
 " Execute command
 " ----------------
 " Execute self file
-Plugin 'thinca/vim-quickrun'
+Plug 'thinca/vim-quickrun'
 
 " ----------------
 " Others
 " ----------------
-Plugin 'vim-syntastic/syntastic' " syntax check
+Plug 'vim-syntastic/syntastic' " syntax check
 
 
 " others
@@ -66,7 +70,8 @@ Plugin 'vim-syntastic/syntastic' " syntax check
 " Menu to remember command
 "Plugin 'skywind3000/quickmenu.vim'
 
-call vundle#end()
+
+call plug#end()
 
 " =============== "
 " Plugin Settings "
@@ -122,6 +127,19 @@ let g:vroom_logger = maktaba#log#Logger('DEFAULT')
 "  autocmd FileType python AutoFormatBuffer yapf
 "  " Alternative: autocmd FileType python AutoFormatBuffer autopep8
 "augroup END
+
+" incsearch
+if has_key(g:plugs, "incsearch.vim")
+    if has("unix")
+        let s:uname = system("uname -s")
+        if s:uname == "Darwin\n"
+        else
+            set hlsearch
+            let g:incsearch#auto_nohlsearch = 0 " 0: keep hightlight when mouse cursor move
+            map /  <Plug>(incsearch-forward)
+        endif
+    endif
+endif
 
 
 " -----------------
@@ -209,17 +227,6 @@ let g:syntastic_mode_map={'mode': 'passive'}
 "let g:javascript_plugin_ngdoc = 1
 "let g:javascript_plugin_flow = 1
 "" pangloss/vim-javascript end
-
-" incsearch
-if has("unix")
-    let s:uname = system("uname -s")
-    if s:uname == "Darwin\n"
-    else
-        set hlsearch
-        let g:incsearch#auto_nohlsearch = 0 " 0: keep hightlight when mouse cursor move
-        map /  <Plug>(incsearch-forward)
-    endif
-endif
 
 
 "" Tagbar Command

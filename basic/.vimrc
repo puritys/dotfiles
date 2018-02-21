@@ -246,4 +246,4 @@ if has("autocmd")
 endif
 
 
-source ~/.vimrc_vundle
+source ~/.vimrc_plugins

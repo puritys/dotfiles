@@ -83,14 +83,14 @@ sudo cp bin/*.pl  /usr/local/bin/puritys/
 
 # Install youCompleteMe
 if [ "x$installYouCompleteMe" == "x1" ]; then
-if [ ! -d ~/.vim/bundle/YouCompleteMe ]; then
+if [ ! -d ~/.vim/plugged/YouCompleteMe ]; then
     echo "Install YouCompleteMe: need cmake and python-devel-2.7 or 3 "
     #if [ -f /usr/bin/yum ];then
     #    sudo yum -y install https://centos7.iuscommunity.org/ius-release.rpm
     #    sudo yum install build-essential cmake python-devel python3-devel
     #fi
-    git clone git@github.com:Valloric/YouCompleteMe.git ~/.vim/bundle/YouCompleteMe
-    cd ~/.vim/bundle/YouCompleteMe
+    git clone git@github.com:Valloric/YouCompleteMe.git ~/.vim/plugged/YouCompleteMe
+    cd ~/.vim/plugged/YouCompleteMe
     git submodule update --init --recursive
     python2 ./install.py --all
 fi
@@ -100,23 +100,27 @@ fi
 # Install vim Plugin
 if [ "x$installVimPlugin" != "x" ];then
 
-    if [ -d ~/.vim/bundle/Vundle.vim ]; then
-        $sudo rm -rf ~/.vim/bundle/Vundle.vim
+    if [ -d ~/.vim/bundle ]; then
+        $sudo rm -rf ~/.vim/bundle
+        $sudo rm -rf ~/.vim/.vimrc_vundle
     fi
-    git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
-    sudo rm -rf ~/.vim/bundle/vim-snipmate/
-    echo "\n" | vim -c :PluginInstall +qall
+
+    curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
+    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+
+    sudo rm -rf ~/.vim/plugged/vim-snipmate/
+    echo "\n" | vim -c :PlugInstall +qall
 fi
 
 
 # Update snippet script
-if [ ! -d ~/.vim/bundle/vim-snipmate/snippets ]; then
-    mkdir -p ~/.vim/bundle/vim-snipmate/snippets
+if [ ! -d ~/.vim/plugged/vim-snipmate/snippets ]; then
+    mkdir -p ~/.vim/plugged/vim-snipmate/snippets
 fi
 
-$sudo rm -f ~/.vim/bundle/vim-snipmate/snippets/*
+$sudo rm -f ~/.vim/plugged/vim-snipmate/snippets/*
 
-cp vim-snipmate/*.snippets ~/.vim/bundle/vim-snipmate/snippets/
+cp vim-snipmate/*.snippets ~/.vim/plugged/vim-snipmate/snippets/
 
 # install google java code format
 if [ -d /usr/local/lib/ ]; then
