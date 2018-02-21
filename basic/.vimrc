@@ -207,6 +207,7 @@ endfunction
 function! INIT_PHP()
     set filetype=php
     set tags+=~/.vim/php_tags
+    nmap doc :call PhpDocSingle()<CR>
 endfunction
 
 au BufRead,BufNewFile *.sjs set filetype=javascript
