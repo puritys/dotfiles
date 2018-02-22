@@ -24,12 +24,6 @@ filetype plugin on
 
 "set nois " quick search
 
-" indent
-set nocindent
-set noautoindent
-set nosmartindent
-au FileType cpp,c,cc,java,sh,pl,php,phtml,asp,xml,javascript  set nosmartindent nocindent noautoindent
-
 set showcmd
 set bg=dark
 set backspace=2
@@ -247,3 +241,10 @@ endif
 
 
 source ~/.vimrc_plugins
+
+" indent
+set nocindent
+set noautoindent
+set nosmartindent
+au FileType cpp,c,cc,java,sh,pl,php,phtml,asp,xml,javascript  set nosmartindent nocindent noautoindent
+filetype indent off
