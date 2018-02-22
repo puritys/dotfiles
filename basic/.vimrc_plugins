@@ -274,8 +274,10 @@ let g:vimjs#chromeapis = 0
 " ----------------
 " Qickrun settings
 " ----------------
-:nnoremap <C-e> <CR>:QuickRun<CR>
-:vnoremap <C-e> :QuickRun -mode v<CR>
+if !empty(glob("~/.vim/plugged/vim-quickrun"))
+    :nnoremap <C-e> <CR>:QuickRun<CR>
+    :vnoremap <C-e> :QuickRun -mode v<CR>
+endif
 
 
 " --------------
