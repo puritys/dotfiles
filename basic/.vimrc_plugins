@@ -6,7 +6,7 @@ call plug#begin('~/.vim/plugged')
 " Basic plugins
 " ----------------
 Plug 'google/vim-maktaba'
-Plug 'junegunn/fzf' " File finder
+Plug 'junegunn/fzf', { 'do': './install --all' } " File finder
 
 
 " ----------------
@@ -17,8 +17,7 @@ Plug 'junegunn/fzf' " File finder
 Plug 'scrooloose/nerdtree'
 Plug 'jistr/vim-nerdtree-tabs'
 Plug 'majutsushi/tagbar' " methond/function list menu
-Plug 'haya14busa/incsearch.vim' 
-"   , {'do': function('IncsearchEnable')} " better search plugin
+Plug 'haya14busa/incsearch.vim' " better search plugin
 "Plug 'airblade/vim-gitgutter'
 "Plugin 'ntpeters/vim-better-whitespace' " show tail whitespace
 
@@ -107,11 +106,12 @@ let g:airline_theme='minimalist'
 " ---------------------------------
 " Enable maktabe / codeformat / log
 " ---------------------------------
+" Initializes all maktaba plugins.
 let g:maktaba = maktaba#Maktaba()
 let g:vroom_logger = maktaba#log#Logger('DEFAULT')
-"call g:maktaba#log#SetNotificationLevel(g:maktaba#log#LEVELS.ERROR)
-"call g:vroom_logger.Debug('Test')
+"call g:vroom_logger.log().SetNotificationLevel(g:maktaba#log#LEVELS.ERROR)
 "call g:vroom_logger.Error('my')
+"call g:vroom_logger.Debug('Test')
 
 "call glaive#Install()
 "Glaive codefmt plugin[mappings]
@@ -129,7 +129,8 @@ let g:vroom_logger = maktaba#log#Logger('DEFAULT')
 "augroup END
 
 " incsearch
-if has_key(g:plugs, "incsearch.vim")
+"if exists('g:loaded_incsearch')
+if !empty(glob("~/.vim/plugged/incsearch.vim"))
     if has("unix")
         let s:uname = system("uname -s")
         if s:uname == "Darwin\n"
