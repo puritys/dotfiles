@@ -36,28 +36,32 @@ powerline () {
 
 changePS () {
     case $TERM in
+        tmux*)
+            getArrow
+            screen_title;
+        ;;
         screen*)
-            arrow=`echo -e "\xee\x82\xb0"`
-            arrowLight=`echo -e  "\xee\x82\xb1"`
-            ;;
+            getArrow
+            screen_title;
+        ;;
         xterm*)
-            if [ `uname` == "Darwin" ]; then
-                arrow=`perl -e 'print "\xee\x82\xb0"'`
-                arrowLight=`perl -e 'print "\xee\x82\xb1"'`
-            else
-                arrow=`echo -e "\xee\x82\xb0"`
-                arrowLight=`echo -e "\xee\x82\xb1"`
-            fi
+            getArrow
         ;;
         *)
-            #echo "TERM = $TERM"
-            arrow=`echo -e "\xee\x82\xb0"`
-            arrowLight=`echo -e "\xee\x82\xb1"`
+            getArrow
         ;;
     esac
-    screen_title;
     powerline $host $arrow $arrowLight
-    #export PS1
+}
+
+getArrow() {
+    if [ `uname` == "Darwin" ]; then
+        arrow=`perl -e 'print "\xee\x82\xb0"'`
+        arrowLight=`perl -e 'print "\xee\x82\xb1"'`
+    else
+        arrow=`echo -e "\xee\x82\xb0"`
+        arrowLight=`echo -e "\xee\x82\xb1"`
+    fi
 }
 
 screen_path() {
@@ -119,6 +123,19 @@ EOF
             pid=$(($pid - 1))
         done
     done
+}
+
+setTerm() {
+    if [ "x" != "x$TMUX" ]; then
+        term="tmux-256color"
+    fi
+
+    if [[ "x$TERMCAP" = *"screen"* ]];then
+        term="screen-256color"
+    fi
+    if [ "x" == "x$term" ]; then
+        term="xterm"
+    fi
 }
 
 if [ -f ~/.bash_docker ]; then

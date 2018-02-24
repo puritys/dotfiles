@@ -3,11 +3,9 @@
 
 export PLATFORM=$(uname -s)
 export SHELL=/bin/bash
-export export TERM=xterm
 export LC_CTYPE=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
 export LANG=zh_TW.UTF-8
-
 PATH=$PATH:$HOME/bin:/usr/local/bin:/sbin:/usr/local/sbin:/usr/sbin
 export PATH
 
@@ -36,6 +34,8 @@ else
     fi
 fi
 
+setTerm
+export TERM=$term
 
 SSH_ENV="$HOME/.ssh/environment"
 function start_agent {

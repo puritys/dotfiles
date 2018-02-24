@@ -1,3 +1,4 @@
+alias tmux='fnTmux'
 alias plog='tail -f /tmp/php.log'
 alias s='source ~/.bash_profile  '
 alias ecliStart='fn_eclim_start'
@@ -126,4 +127,13 @@ fnDate() {
 
     fi
 
+}
+
+fnTmux() {
+    c=$1
+    if [ "xls" == "x$c" ]; then
+        /usr/bin/tmux $c
+    else
+        /usr/bin/tmux attach -t $1 || /usr/bin/tmux new -s $1
+    fi
 }
