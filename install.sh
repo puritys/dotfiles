@@ -80,6 +80,7 @@ fi
 sudo cp bin/exec.sh  /usr/local/bin/myExec.sh
 sudo mkdir -p /usr/local/bin/puritys/
 sudo cp bin/*.pl  /usr/local/bin/puritys/
+sudo cp bin/*.sh  /usr/local/bin/puritys/
 
 # Install youCompleteMe
 if [ "x$installYouCompleteMe" == "x1" ]; then
