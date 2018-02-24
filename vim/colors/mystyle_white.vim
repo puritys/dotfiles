@@ -19,41 +19,48 @@ let g:colors_name = "mystyle_white"
 " ------
 " define basic color
 " -----
-hi OptionSel  ctermfg=255  ctermbg=234
-hi Option     ctermfg=240  ctermbg=253
+hi OptionSel  ctermfg=255 ctermbg=234
+hi Option     ctermfg=240 ctermbg=253
+hi OptionHeavy ctermfg=253 ctermbg=243
+
+hi ErrorText  ctermfg=196 ctermbg=252
+hi NoticeText ctermfg=131 ctermbg=251
+hi TextType   ctermfg=18
+hi Unknown    ctermfg=255 ctermbg=232
 
 " ---------
 " Set theme
 " ---------
-hi TextMain ctermfg=18  cterm=none ctermbg=none
-hi TextSub  ctermfg=236 ctermbg=none
-hi TextBold cterm=none ctermfg=88 ctermbg=none
-hi TextEmphasize cterm=none ctermfg=0  ctermbg=251
+hi TextMain      ctermfg=18  ctermbg=none
+hi TextSub       ctermfg=236 ctermbg=none
+hi TextBold      ctermfg=88  ctermbg=none
+hi TextEmphasize ctermfg=13  ctermbg=none
+hi TextDesc      ctermfg=239  ctermbg=none
 
-hi Test ctermfg=124
-
-hi TabLineFill cterm=none ctermfg=black ctermbg=240
-hi TabLine     cterm=none ctermfg=247   ctermbg=240
-hi TabLineSel  cterm=none ctermfg=black ctermbg=230
-hi TabLineSelRightIcon     cterm=none ctermfg=230   ctermbg=240
-hi TabLineRightIcon     cterm=none ctermfg=240   ctermbg=230
+hi TabLineFill   ctermfg=black ctermbg=240
+hi TabLine       ctermfg=247   ctermbg=240
+hi TabLineSel    ctermfg=black ctermbg=230
+hi TabLineSelRightIcon  ctermfg=230   ctermbg=240
+hi TabLineRightIcon     ctermfg=240   ctermbg=230
 
 hi Normal   ctermfg=238  ctermbg=none
 
 " Number line
 hi LineNr   cterm=none  ctermfg=240 ctermbg=254 
 " The number line which cursor on it.
-hi CursorLineNr guibg=lightblue cterm=none ctermfg=0 ctermbg=252
+hi CursorLineNr cterm=none ctermfg=none ctermbg=252
+hi CursorLine   cterm=none ctermfg=none ctermbg=252
+
 
 "  "xxxxxx" 
-hi Constant cterm=none  ctermfg=202  ctermbg=none
+"hi Constant cterm=none  ctermfg=202  ctermbg=none
+hi! link Constant TextDesc
 
-hi Exception ctermfg=124
-hi IncSearch    cterm=none  ctermfg=0   ctermbg=223
-
-hi Search   cterm=none  ctermfg=255  ctermbg=242  
-hi ErrorMsg cterm=none  ctermfg=160 ctermbg=17  
-hi WarningMsg   cterm=none  ctermfg=196 ctermbg=none
+hi! link Exception ErrorText
+hi! link IncSearch OptionSel
+hi! link Search    OptionHeavy
+hi! link ErrorMsg  ErrorText
+hi! link WarningMsg  NoticeText
 hi ModeMsg  cterm=none  ctermfg=fg  ctermbg=none
 hi MoreMsg  cterm=none  ctermfg=242 ctermbg=none
 
@@ -83,19 +90,13 @@ hi Comment  cterm=none  ctermfg=34  ctermbg=none
 """ WARM
 
 " variable  $vb
-hi Identifier   cterm=none  ctermfg=124 ctermbg=none 
+hi! link Identifier  TextEmphasize
 
 "c++ bool ...
-hi Type ctermfg=18
-
-"foreach  exist for var ...
-"hi Keyword     ctermfg=18
-
-" = ->   $aa->
-"hi Statement  cterm=none  ctermfg=18  ctermbg=none
+hi! link Type TextType
 
 "->
-"hi Function cterm=none  ctermfg=15  ctermbg=none
+hi! link Function  TextType
 
 " ( ) {}  
 hi Delimiter    cterm=none  ctermfg=18  ctermbg=none 
@@ -105,69 +106,80 @@ hi Underlined   cterm=underline ctermfg=39  ctermbg=none
 
 
 "unknow
-hi SpecialKey   cterm=none  ctermfg=124  ctermbg=none  gui=none
+hi! link SpecialKey Unknown
 
-hi CursorLine guibg=lightblue cterm=none ctermbg=252
 
 "" Auto Complete
 hi! link Pmenu     Option
 hi! link PmenuSel  OptionSel
 
-hi! link Statement Test
-hi! link Error  ErrorMsg
-hi! link PreProc Statement
+hi! link Statement TextType
+hi! link Error     ErrorMsg
+hi! link PreProc   Statement
 hi! link Exception       Statement
 hi! link Include         PreProc
 hi! link Define          PreProc
 hi! link Macro           PreProc
 hi! link PreCondit       PreProc
-hi! link StorageClass    Type
-hi! link Structure       Type
-hi! link Keyword     TextMain
-hi! link SignColumn  PreProc
+hi! link StorageClass    TextType
+hi! link Structure       TextType
+hi! link Keyword         TextMain
+hi! link SignColumn      PreProc
 hi! link Tag             Special
 hi! link SpecialChar     Special
 hi! link Delimiter       Special
 hi! link SpecialComment  Special
 hi! link Debug           Special
-"=!========php ============
+hi! link Label           TextDesc
+" ----------
+" php 
+" ----------
+hi! link phpTodo       TextEmphasize 
 hi! link phpIdentifier TextSub
-hi! link phpOperator TextBold
-" !function name    
-hi! link phpRegion Normal
+hi! link phpOperator   TextBold
+" function name    
+hi! link phpRegion      TextDesc
 hi! link phpVarSelector TextSub
-" !var const  method
+" var const  method
 hi! link phpKeyword TextMain
-hi! link phpDefine phpKeyword
-" !<<<
-hi! link phpHereDoc Constant
-" !=
+hi! link phpDefine  phpKeyword
+" <<<
+hi! link phpHereDoc    TextDesc
+hi! link phpMethodsVar TextType
+hi! link phpNowDoc     TextType
+hi! link phpIdentifierComplex TextType
+hi! link phpIdentifierSimply  TextType
+hi! link phpStructure  TextType
+" =
 hi! link phpSpecialFunction phpKeyword
-" !>
-hi! link phpFunctions phpKeyword
-" !->
-hi! link phpMemberSelector phpKwyword
-" !break return 
-hi! link phpStatement TextBold
-" !if else switch
+" >
+hi! link phpFunctions       phpKeyword
+" ->
+hi! link phpMemberSelector  phpKwyword
+" break return 
+hi! link phpStatement   TextBold
+" if else switch
 hi! link phpConditional TextBold
-hi! link phpException TextBold
-" !case
+hi! link phpException   TextBold
+" case
 hi! link phpLabel TextBold
-" !true false
+" true false
 hi! link phpBoolean TextBold
 hi! link phpComparison TextBold
 hi! link phpComment Comment
-"f!loat bool 
-hi! link phpType Test
-" !`cat /etc`
+" float bool 
+hi! link phpType TextType
+" `cat /etc`
 hi! link phpBacktick TextEmphasize
 hi! link phpFoldHtmlInside Normal
-" !======== c & cpp  ===========
+
+" ---------------------
+" c & cpp
+" ---------------------
 hi! link cParen TextMain
 hi! link cppStatement Statement
 hi! link cFormat         Statement
-hi! link cType  Type
+hi! link cType   TextType
 hi! link cMultiGroup PreProc
 hi! link cNumber  TextSub  
 hi! link Operator TextSub
