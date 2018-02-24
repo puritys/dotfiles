@@ -35,7 +35,7 @@ powerline () {
 }
 
 changePS () {
-    case $TERM in
+    case $term in
         tmux*)
             getArrow
             screen_title;
