@@ -134,6 +134,6 @@ fnTmux() {
     if [ "xls" == "x$c" ]; then
         /usr/bin/tmux $c
     else
-        /usr/bin/tmux attach -t $1 || /usr/bin/tmux new -s $1
+        /usr/bin/tmux -2 attach -t $1 || /usr/bin/tmux -2 new -s $1
     fi
 }
