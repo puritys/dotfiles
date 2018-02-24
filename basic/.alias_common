@@ -132,13 +132,13 @@ fnDate() {
 fnTmux() {
     c=$1
     cmd="/usr/bin/tmux"
-    if [ ! -f $cmd]; then
+    if [ ! -f $cmd ]; then
         cmd="/usr/local/bin/tmux"
     fi
     if [ "xls" == "x$c" ] || [ "xsource-file" == "x$c" ]; then
         $cmd $c $2
     else
         $cmd source-file ~/.tmux.conf
-        $cmd -2 attach -t $1 || /usr/bin/tmux -2 new -s $1
+        $cmd -2 attach -t $1 || $cmd -2 new -s $1
     fi
 }
