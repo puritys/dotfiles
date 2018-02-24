@@ -239,6 +239,14 @@ if [ "x$INIT" != "x" ] || [ "x$installFZF" != "x" ];  then
     ~/.sh_tool/fzf/install --all
     ## append (cat ~/machine_list.txt | command grep -v '#' | sed -e 's/^/host /') \  ~/.sh_tool/fzf/shell/completion.bash : _fzf_complete_ssh
 
+    ## Basic package
+    if [ "x" != "x`command -v yum`" ]; then
+        sudo yum install -y screen tmux
+    elif [[ `uname` == 'Darwin' ]]; then
+        ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)" < /dev/null 2> /dev/null
+        brew install tmux
+    fi
+
     # ------------
     # Install fasd cd
     # ------------
