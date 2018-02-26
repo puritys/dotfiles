@@ -33,8 +33,8 @@ hi Unknown    ctermfg=255 ctermbg=232
 " ---------
 hi TextMain      ctermfg=18  ctermbg=none
 hi TextSub       ctermfg=236 ctermbg=none
-hi TextBold      ctermfg=88  ctermbg=none
-hi TextEmphasize ctermfg=13  ctermbg=none
+hi TextBold      ctermfg=160  ctermbg=none guifg=#d70000 guibg=none
+hi TextEmphasize ctermfg=94  ctermbg=none guifg=#875f00 guibg=none
 hi TextDesc      ctermfg=239  ctermbg=none
 
 hi TabLineFill   ctermfg=black ctermbg=240
@@ -54,7 +54,7 @@ hi CursorLine   cterm=none ctermfg=none ctermbg=252
 
 "  "xxxxxx" 
 "hi Constant cterm=none  ctermfg=202  ctermbg=none
-hi! link Constant TextDesc
+hi! link Constant TextBold
 
 hi! link Exception ErrorText
 hi! link IncSearch OptionSel
