@@ -33,8 +33,8 @@ hi Unknown    ctermfg=255 ctermbg=232
 " ---------
 hi TextMain      ctermfg=18  ctermbg=none
 hi TextSub       ctermfg=236 ctermbg=none
-hi TextBold      ctermfg=160  ctermbg=none guifg=#d70000 guibg=none
-hi TextEmphasize ctermfg=94  ctermbg=none guifg=#875f00 guibg=none
+hi TextBold      ctermfg=160 ctermbg=none guifg=#d70000
+hi TextEmphasize ctermfg=94  ctermbg=none guifg=#875f00
 hi TextDesc      ctermfg=239  ctermbg=none
 
 hi TabLineFill   ctermfg=black ctermbg=240
