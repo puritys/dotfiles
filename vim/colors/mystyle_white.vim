@@ -25,17 +25,19 @@ hi OptionHeavy ctermfg=253 ctermbg=243
 
 hi ErrorText  ctermfg=196 ctermbg=252
 hi NoticeText ctermfg=131 ctermbg=251
-hi TextType   ctermfg=18
 hi Unknown    ctermfg=255 ctermbg=232
+
+" /* axxxxxxxxx*/ // # 
+hi Comment  cterm=none  ctermfg=28  ctermbg=none guifg=#ff5f5f
 
 " ---------
 " Set theme
 " ---------
 hi TextMain      ctermfg=18  ctermbg=none
-hi TextSub       ctermfg=236 ctermbg=none
-hi TextBold      ctermfg=160 ctermbg=none guifg=#d70000
+hi TextSub       ctermfg=232 ctermbg=none
+hi TextBold      ctermfg=166 ctermbg=none guifg=#d75f00
 hi TextEmphasize ctermfg=94  ctermbg=none guifg=#875f00
-hi TextDesc      ctermfg=239  ctermbg=none
+hi TextDesc      ctermfg=23  ctermbg=none
 
 hi TabLineFill   ctermfg=black ctermbg=240
 hi TabLine       ctermfg=247   ctermbg=240
@@ -43,7 +45,11 @@ hi TabLineSel    ctermfg=black ctermbg=230
 hi TabLineSelRightIcon  ctermfg=230   ctermbg=240
 hi TabLineRightIcon     ctermfg=240   ctermbg=230
 
+hi ExtraWhitespace ctermfg=none ctermbg=252
+
 hi Normal   ctermfg=238  ctermbg=none
+
+hi! link  TextType  TextMain
 
 " Number line
 hi LineNr   cterm=none  ctermfg=240 ctermbg=254 
@@ -83,8 +89,6 @@ hi Directory    cterm=none  ctermfg=0  ctermbg=none
 hi Title    cterm=none  ctermfg=0   ctermbg=184 
 hi Visual   cterm=none  ctermfg=255 ctermbg=244 
 
-" /* axxxxxxxxx*/
-hi Comment  cterm=none  ctermfg=34  ctermbg=none
 
 
 """ WARM
@@ -101,8 +105,6 @@ hi! link Function  TextType
 " ( ) {}  
 hi Delimiter    cterm=none  ctermfg=18  ctermbg=none 
 hi Underlined   cterm=underline ctermfg=39  ctermbg=none  
-
-"hi cNumber ctermfg=18
 
 
 "unknow
@@ -136,7 +138,7 @@ hi! link Label           TextDesc
 " ----------
 hi! link phpTodo       TextEmphasize 
 hi! link phpIdentifier TextSub
-hi! link phpOperator   TextBold
+hi! link phpOperator   TextDesc
 " function name    
 hi! link phpRegion      TextDesc
 hi! link phpVarSelector TextSub
@@ -157,12 +159,12 @@ hi! link phpFunctions       phpKeyword
 " ->
 hi! link phpMemberSelector  phpKwyword
 " break return 
-hi! link phpStatement   TextBold
+hi! link phpStatement   phpKeyword
 " if else switch
-hi! link phpConditional TextBold
+hi! link phpConditional phpKeyword
 hi! link phpException   TextBold
 " case
-hi! link phpLabel TextBold
+hi! link phpLabel phpKeyword
 " true false
 hi! link phpBoolean TextBold
 hi! link phpComparison TextBold

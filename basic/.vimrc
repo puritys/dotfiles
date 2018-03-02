@@ -235,7 +235,6 @@ if has("autocmd")
   autocmd Filetype javascript  setlocal omnifunc=js#CompleteJS
   autocmd Filetype go setlocal omnifunc=gocomplete#Complete
   " whitespace
-  autocmd ColorScheme * highlight ExtraWhitespace ctermbg=red guibg=red
   autocmd BufRead,BufNew * match ExtraWhitespace /\t\+\| \s\+$/
 endif
 

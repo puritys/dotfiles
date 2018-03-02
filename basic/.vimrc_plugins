@@ -201,10 +201,6 @@ let g:snipMate.scope_aliases['java'] = 'java'
 "call s:map_if_not_mapped('<Tab>', '<Plug>snipMateVisual', 'x')
 
 
-"" ntpeters/vim-better-whitespace start
-highlight ExtraWhitespace ctermbg=251
-"" ntpeters/vim-better-whitespace end
-
 " -------------
 " eclim
 " -------------
