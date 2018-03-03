@@ -7,9 +7,6 @@ let g:forceUseTab = 1
 set rtp+=~/.fzf
 
 syntax on
-""/usr/share/vim/vim70/lang/
-
-"set paste" will disable all hot key on insert mode.
 
 set noswapfile
 set nocompatible
@@ -18,10 +15,6 @@ set encoding=utf-8
 set nu
 set tabstop=4 shiftwidth=4  softtabstop=0 expandtab
 set nosmarttab
-filetype plugin on
-"filetype plugin indent on
-"filetype plugin indent off " this will break eclim validate
-
 "set nois " quick search
 
 set showcmd
@@ -32,11 +25,7 @@ source $VIMRUNTIME/macros/matchit.vim
 set foldmethod=marker
 set tabpagemax=100
 
-"tab setting
-hi TabLine guifg=#2f2f2f guibg=#a050a0     ctermfg=248 ctermbg=233
-hi TabLineSel guifg=#2f2f2f guibg=#a050a0     ctermfg=white ctermbg=69
 colorscheme mystyle_white
-"" mystyle  molokai
 
 "出現水平線
 set cursorline
@@ -245,5 +234,16 @@ source ~/.vimrc_plugins
 set nocindent
 set noautoindent
 set nosmartindent
-au FileType cpp,c,cc,java,sh,pl,php,phtml,asp,xml,javascript  set nosmartindent nocindent noautoindent
 filetype indent off
+
+if has("autocmd")
+    au FileType php,phtml,java set cindent autoindent
+    au FileType php,phtml filetype indent on
+    au FileType cpp,c,cc  set cindent autoindent
+endif
+
+
+
+
+
+

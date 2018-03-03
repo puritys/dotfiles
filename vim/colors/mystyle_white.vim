@@ -16,16 +16,18 @@ endif
 
 let g:colors_name = "mystyle_white"
 
+set fillchars=
+
 " ------
 " define basic color
 " -----
-hi OptionSel  ctermfg=255 ctermbg=234
-hi Option     ctermfg=240 ctermbg=253
-hi OptionHeavy ctermfg=253 ctermbg=243
+hi OptionSel  cterm=none ctermfg=255 ctermbg=234
+hi Option     cterm=none ctermfg=240 ctermbg=253
+hi OptionHeavy cterm=none ctermfg=253 ctermbg=243
 
-hi ErrorText  ctermfg=196 ctermbg=252
-hi NoticeText ctermfg=131 ctermbg=251
-hi Unknown    ctermfg=255 ctermbg=232
+hi ErrorText  cterm=none ctermfg=196 ctermbg=252
+hi NoticeText cterm=none ctermfg=131 ctermbg=251
+hi Unknown    cterm=none ctermfg=255 ctermbg=232
 
 " /* axxxxxxxxx*/ // # 
 hi Comment  cterm=none  ctermfg=28  ctermbg=none guifg=#ff5f5f
@@ -33,28 +35,29 @@ hi Comment  cterm=none  ctermfg=28  ctermbg=none guifg=#ff5f5f
 " ---------
 " Set theme
 " ---------
-hi TextMain      ctermfg=18  ctermbg=none
-hi TextSub       ctermfg=232 ctermbg=none
-hi TextBold      ctermfg=166 ctermbg=none guifg=#d75f00
-hi TextEmphasize ctermfg=94  ctermbg=none guifg=#875f00
-hi TextDesc      ctermfg=23  ctermbg=none
+hi TextMain      cterm=none ctermfg=18  ctermbg=none
+hi TextSub       cterm=none ctermfg=232 ctermbg=none
+hi TextBold      cterm=none ctermfg=166 ctermbg=none guifg=#d75f00
+hi TextEmphasize cterm=none ctermfg=88  ctermbg=none guifg=#875f00
+hi TextDesc      cterm=none ctermfg=23  ctermbg=none
 
-hi TabLineFill   ctermfg=black ctermbg=240
-hi TabLine       ctermfg=247   ctermbg=240
-hi TabLineSel    ctermfg=black ctermbg=230
-hi TabLineSelRightIcon  ctermfg=230   ctermbg=240
-hi TabLineRightIcon     ctermfg=240   ctermbg=230
+hi TabLineFill   cterm=none ctermfg=none  ctermbg=240
+hi TabLine       cterm=none ctermfg=247   ctermbg=240
+hi TabLineSel    cterm=none ctermfg=16    ctermbg=230
+hi TabLineSelRightIcon  cterm=none ctermfg=230   ctermbg=240
+hi TabLineRightIcon     cterm=none ctermfg=240   ctermbg=230
 
-hi ExtraWhitespace ctermfg=none ctermbg=252
+hi ExtraWhitespace cterm=none ctermfg=none ctermbg=252
 
-hi Normal   ctermfg=238  ctermbg=none
+hi Normal cterm=none ctermfg=238  ctermbg=none
 
 hi! link  TextType  TextMain
 
 " Number line
 hi LineNr   cterm=none  ctermfg=240 ctermbg=254 
+
 " The number line which cursor on it.
-hi CursorLineNr cterm=none ctermfg=none ctermbg=252
+hi CursorLineNr cterm=none ctermfg=black ctermbg=252
 hi CursorLine   cterm=none ctermfg=none ctermbg=252
 
 
@@ -110,6 +113,12 @@ hi Underlined   cterm=underline ctermfg=39  ctermbg=none
 "unknow
 hi! link SpecialKey Unknown
 
+" Buffer Status Line
+hi StatusLine   cterm=none ctermfg=230 ctermbg=240
+hi! link StatusLineNC TabLine
+hi! link StatusLineTerm TabLineSel
+hi! link StatusLineTermNC TabLine
+hi! link VertSplit TabLine
 
 "" Auto Complete
 hi! link Pmenu     Option
@@ -133,6 +142,7 @@ hi! link Delimiter       Special
 hi! link SpecialComment  Special
 hi! link Debug           Special
 hi! link Label           TextDesc
+
 " ----------
 " php 
 " ----------
@@ -201,7 +211,7 @@ hi! link cInclude  TextMain
 hi! link cDefine TextMain
 hi! link cPreCondit TextSub
 
-" !===========javascript =========
+"" !===========javascript =========
 hi! link javaScriptFunction TextMain
 hi! link javaScriptBoolean TextBold
 hi! link javaScriptNumber Constant

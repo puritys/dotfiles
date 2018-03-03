@@ -5,7 +5,7 @@ endif
 let g:loaded_tabline_xx = 1
 
 function! tabline#render()
-  let s = ''
+  let s = '%#TabLineFill#'
   let tabCount = len(range(tabpagenr('$')))
   let currentPage = tabpagenr()
   let start = currentPage - 2
@@ -59,26 +59,20 @@ function! tabline#render()
     endif
 
     if i + 1 == currentPage
-      let s .= '%#TabLineSel# ' .tab . ':'
-      let s .= bufname
+      let s .= '%#TabLineSel# ' .tab . ':' . bufname
       if bufmodified
         let s .= '[+] '
       endif
-
-      if i + 1 != tabCount
-          let s .=  '%#TabLineSelRightIcon#' . arrow
-      endif
-
+      let s .=  '%#TabLineSelRightIcon#' . arrow
     else
-      let s .= '%#TabLine# ' .tab.':'
-      let s .= bufname
+      let s .= '%#TabLine# ' .tab.':' . bufname
       if bufmodified
         let s .= '[+] '
       endif
 
       if i + 2 == currentPage
         let s .=  "%#TabLineRightIcon#".arrow
-      elseif i+ 1 != tabCount
+      else
         let s .= arrowLight
       endif
     endif

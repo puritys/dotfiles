@@ -32,7 +32,7 @@ Plug 'vim-scripts/PDV--phpDocumentor-for-Vim', {'for': 'php'}
 "" code format
 "Plugin 'google/vim-codefmt'
 "Plugin 'google/vim-glaive'
-
+Plug '2072/PHP-Indenting-for-VIm', {'for': 'php'}
 
 " -------------
 " Auto Complete
