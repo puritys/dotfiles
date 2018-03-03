@@ -5,12 +5,12 @@ alias sudo='sudo -E '
 alias timestamp='date +%s -d '
 
 
-if [ -f .alias_common ]; then
-    source .alias_common
+if [ -f ~/.alias_common ]; then
+    source ~/.alias_common
 fi
 
-if [ -f .alias_docker ]; then
-    source .alias_docker
+if [ -f ~/.alias_docker ]; then
+    source ~/.alias_docker
 fi
 
 
