@@ -21,44 +21,44 @@ set fillchars=
 " ------
 " define basic color
 " -----
-hi OptionSel  cterm=none ctermfg=255 ctermbg=234
-hi Option     cterm=none ctermfg=240 ctermbg=253
-hi OptionHeavy cterm=none ctermfg=253 ctermbg=243
+hi OptionSel cterm=none ctermfg=255 ctermbg=234 guifg=#eeeeee guibg=#1c1c1c
+hi Option cterm=none ctermfg=240 ctermbg=253 guifg=#585858 guibg=#dadada
+hi OptionHeavy cterm=none ctermfg=253 ctermbg=243 guifg=#dadada guibg=#767676
 
-hi ErrorText  cterm=none ctermfg=196 ctermbg=252
-hi NoticeText cterm=none ctermfg=131 ctermbg=251
-hi Unknown    cterm=none ctermfg=255 ctermbg=232
+hi ErrorText cterm=none ctermfg=196 ctermbg=252 guifg=#ff0000 guibg=#d0d0d0
+hi NoticeText cterm=none ctermfg=131 ctermbg=251 guifg=#af5f5f guibg=#c6c6c6
+hi Unknown cterm=none ctermfg=255 ctermbg=232 guifg=#eeeeee guibg=#080808
 
 " /* axxxxxxxxx*/ // # 
-hi Comment  cterm=none  ctermfg=28  ctermbg=none guifg=#ff5f5f
+hi Comment cterm=none ctermfg=28 ctermbg=none guifg=#008700 guibg=none
 
 " ---------
 " Set theme
 " ---------
-hi TextMain      cterm=none ctermfg=18  ctermbg=none
-hi TextSub       cterm=none ctermfg=232 ctermbg=none
-hi TextBold      cterm=none ctermfg=166 ctermbg=none guifg=#d75f00
-hi TextEmphasize cterm=none ctermfg=88  ctermbg=none guifg=#875f00
+hi TextMain cterm=none ctermfg=18 ctermbg=none guifg=#000087 guibg=none
+hi TextSub cterm=none ctermfg=232 ctermbg=none guifg=#080808 guibg=none
+hi TextBold cterm=none ctermfg=166 ctermbg=none guifg=#d75f00 guibg=none
+hi TextEmphasize cterm=none ctermfg=88 ctermbg=none guifg=#870000 guibg=none
 hi TextDesc      cterm=none ctermfg=23  ctermbg=none
 
-hi TabLineFill   cterm=none ctermfg=none  ctermbg=240
-hi TabLine       cterm=none ctermfg=247   ctermbg=240
-hi TabLineSel    cterm=none ctermfg=16    ctermbg=230
-hi TabLineSelRightIcon  cterm=none ctermfg=230   ctermbg=240
-hi TabLineRightIcon     cterm=none ctermfg=240   ctermbg=230
+hi TabLineFill cterm=none ctermfg=none ctermbg=240 guifg=none guibg=#585858
+hi TabLine cterm=none ctermfg=247 ctermbg=240 guifg=#9e9e9e guibg=#585858
+hi TabLineSel cterm=none ctermfg=16 ctermbg=230 guifg=#000000 guibg=#ffffd7
+hi TabLineSelRightIcon cterm=none ctermfg=230 ctermbg=240 guifg=#ffffd7 guibg=#585858
+hi TabLineRightIcon cterm=none ctermfg=240 ctermbg=230 guifg=#585858 guibg=#ffffd7
 
-hi ExtraWhitespace cterm=none ctermfg=none ctermbg=252
+hi ExtraWhitespace cterm=none ctermfg=none ctermbg=252 guifg=none guibg=#d0d0d0
 
-hi Normal cterm=none ctermfg=238  ctermbg=none
+hi Normal cterm=none ctermfg=238 ctermbg=none guifg=#444444 guibg=none
 
 hi! link  TextType  TextMain
 
 " Number line
-hi LineNr   cterm=none  ctermfg=240 ctermbg=254 
+hi LineNr cterm=none ctermfg=240 ctermbg=254 guifg=#585858 guibg=#e4e4e4
 
 " The number line which cursor on it.
-hi CursorLineNr cterm=none ctermfg=black ctermbg=252
-hi CursorLine   cterm=none ctermfg=none ctermbg=252
+hi CursorLineNr cterm=none ctermfg=none ctermbg=252 guifg=none guibg=#d0d0d0
+hi CursorLine cterm=none ctermfg=none ctermbg=252 guifg=none guibg=#d0d0d0
 
 
 "  "xxxxxx" 

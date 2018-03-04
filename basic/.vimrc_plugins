@@ -20,6 +20,7 @@ Plug 'majutsushi/tagbar' " methond/function list menu
 Plug 'haya14busa/incsearch.vim' " better search plugin
 "Plug 'airblade/vim-gitgutter'
 "Plugin 'ntpeters/vim-better-whitespace' " show tail whitespace
+Plug 'ap/vim-css-color' " show color for color ticket
 
 " ----------------
 " Code change Plugins
@@ -28,6 +29,7 @@ Plug 'haya14busa/incsearch.vim' " better search plugin
 Plug 'godlygeek/tabular' " align code
 Plug 'vim-scripts/vim-json-line-format' " JSON Parse
 Plug 'vim-scripts/PDV--phpDocumentor-for-Vim', {'for': 'php'}
+Plug 'puritys/vim-cterm-to-gui', {'for': 'vim'}
 
 "" code format
 "Plugin 'google/vim-codefmt'
@@ -191,6 +193,8 @@ let g:snipMate.scope_aliases['php'] = 'core_php,core_html'
 let g:snipMate.scope_aliases['inc'] = 'core_php'
 let g:snipMate.scope_aliases['xml'] = 'mvn_pom'
 let g:snipMate.scope_aliases['java'] = 'java'
+let g:snipMate.scope_aliases['python'] = 'py'
+let g:snipMate.scope_aliases['vim'] = 'vim,sh'
 
 " snippet remap
 "let g:snips_no_mappings = 1

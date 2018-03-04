@@ -49,7 +49,7 @@ function start_agent {
 getMySSHAgent
 
 
-# enable control-s and control-q
+# disable control-s and control-q
 stty -ixon
 
 

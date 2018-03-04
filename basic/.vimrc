@@ -198,6 +198,8 @@ au BufRead,BufNewFile *.js set filetype=javascript
 au BufRead,BufNewFile *.html set filetype=html
 au BufRead,BufNewFile *.go set filetype=go
 au BufRead,BufNewFile *.java set filetype=java
+au BufRead,BufNewFile *.py set filetype=python
+au BufRead,BufNewFile *.vim set filetype=vim
 au BufRead,BufNewFile *.cc  call INIT_CPP()
 au BufRead,BufNewFile *.c   call INIT_CPP() 
 au BufRead,BufNewFile *.cpp   call INIT_CPP() 
