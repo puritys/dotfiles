@@ -21,48 +21,48 @@ set fillchars=
 " ------
 " define basic color
 " -----
-hi OptionSel cterm=none ctermfg=255 ctermbg=234 guifg=#eeeeee guibg=#1c1c1c
-hi Option cterm=none ctermfg=240 ctermbg=253 guifg=#585858 guibg=#dadada
-hi OptionHeavy cterm=none ctermfg=253 ctermbg=243 guifg=#dadada guibg=#767676
+hi OptionSel cterm=NONE ctermfg=255 ctermbg=234 guifg=#eeeeee guibg=#1c1c1c
+hi Option cterm=NONE ctermfg=240 ctermbg=253 guifg=#585858 guibg=#dadada
+hi OptionHeavy cterm=NONE ctermfg=253 ctermbg=243 guifg=#dadada guibg=#767676
 
-hi ErrorText cterm=none ctermfg=196 ctermbg=252 guifg=#ff0000 guibg=#d0d0d0
-hi NoticeText cterm=none ctermfg=131 ctermbg=251 guifg=#af5f5f guibg=#c6c6c6
-hi Unknown cterm=none ctermfg=255 ctermbg=232 guifg=#eeeeee guibg=#080808
+hi ErrorText cterm=NONE ctermfg=196 ctermbg=252 guifg=#ff0000 guibg=#d0d0d0
+hi NoticeText cterm=NONE ctermfg=131 ctermbg=251 guifg=#af5f5f guibg=#c6c6c6
+hi Unknown cterm=NONE ctermfg=255 ctermbg=232 guifg=#eeeeee guibg=#080808
 
 " /* axxxxxxxxx*/ // # 
-hi Comment cterm=none ctermfg=28 ctermbg=none guifg=#008700 guibg=none
+hi Comment cterm=NONE ctermfg=28 ctermbg=NONE guifg=#008700 guibg=NONE
 
 " ---------
 " Set theme
 " ---------
-hi TextMain cterm=none ctermfg=18 ctermbg=none guifg=#000087 guibg=none
-hi TextSub cterm=none ctermfg=232 ctermbg=none guifg=#080808 guibg=none
-hi TextBold cterm=none ctermfg=166 ctermbg=none guifg=#d75f00 guibg=none
-hi TextEmphasize cterm=none ctermfg=88 ctermbg=none guifg=#870000 guibg=none
-hi TextDesc      cterm=none ctermfg=23  ctermbg=none
+hi TextMain cterm=NONE ctermfg=18 ctermbg=NONE guifg=#000087 guibg=NONE
+hi TextSub cterm=NONE ctermfg=232 ctermbg=NONE guifg=#080808 guibg=NONE
+hi TextBold cterm=NONE ctermfg=166 ctermbg=NONE guifg=#d75f00 guibg=NONE
+hi TextEmphasize cterm=NONE ctermfg=88 ctermbg=NONE guifg=#870000 guibg=NONE
+hi TextDesc      cterm=NONE ctermfg=23  ctermbg=NONE
 
-hi TabLineFill cterm=none ctermfg=none ctermbg=240 guifg=none guibg=#585858
-hi TabLine cterm=none ctermfg=247 ctermbg=240 guifg=#9e9e9e guibg=#585858
-hi TabLineSel cterm=none ctermfg=16 ctermbg=230 guifg=#000000 guibg=#ffffd7
-hi TabLineSelRightIcon cterm=none ctermfg=230 ctermbg=240 guifg=#ffffd7 guibg=#585858
-hi TabLineRightIcon cterm=none ctermfg=240 ctermbg=230 guifg=#585858 guibg=#ffffd7
+hi TabLineFill cterm=NONE ctermfg=NONE ctermbg=240 guifg=NONE guibg=#585858
+hi TabLine cterm=NONE ctermfg=247 ctermbg=240 guifg=#9e9e9e guibg=#585858
+hi TabLineSel cterm=NONE ctermfg=16 ctermbg=230 guifg=#000000 guibg=#ffffd7
+hi TabLineSelRightIcon cterm=NONE ctermfg=230 ctermbg=240 guifg=#ffffd7 guibg=#585858
+hi TabLineRightIcon cterm=NONE ctermfg=240 ctermbg=230 guifg=#585858 guibg=#ffffd7
 
-hi ExtraWhitespace cterm=none ctermfg=none ctermbg=252 guifg=none guibg=#d0d0d0
+hi ExtraWhitespace cterm=NONE ctermfg=NONE ctermbg=252 guifg=NONE guibg=#d0d0d0
 
-hi Normal cterm=none ctermfg=238 ctermbg=none guifg=#444444 guibg=none
+hi Normal cterm=NONE ctermfg=238 ctermbg=NONE guifg=#444444 guibg=NONE
 
 hi! link  TextType  TextMain
 
 " Number line
-hi LineNr cterm=none ctermfg=240 ctermbg=254 guifg=#585858 guibg=#e4e4e4
+hi LineNr cterm=NONE ctermfg=240 ctermbg=254 guifg=#585858 guibg=#e4e4e4
 
 " The number line which cursor on it.
-hi CursorLineNr cterm=none ctermfg=none ctermbg=252 guifg=none guibg=#d0d0d0
-hi CursorLine cterm=none ctermfg=none ctermbg=252 guifg=none guibg=#d0d0d0
+hi CursorLineNr cterm=NONE ctermfg=NONE ctermbg=252 guifg=NONE guibg=#d0d0d0
+hi CursorLine cterm=NONE ctermfg=NONE ctermbg=252 guifg=NONE guibg=#d0d0d0
 
 
 "  "xxxxxx" 
-"hi Constant cterm=none  ctermfg=202  ctermbg=none
+"hi Constant cterm=NONE  ctermfg=202  ctermbg=NONE
 hi! link Constant TextBold
 
 hi! link Exception ErrorText
@@ -70,27 +70,27 @@ hi! link IncSearch OptionSel
 hi! link Search    OptionHeavy
 hi! link ErrorMsg  ErrorText
 hi! link WarningMsg  NoticeText
-hi ModeMsg  cterm=none  ctermfg=fg  ctermbg=none
-hi MoreMsg  cterm=none  ctermfg=242 ctermbg=none
+hi ModeMsg  cterm=NONE  ctermfg=fg  ctermbg=NONE
+hi MoreMsg  cterm=NONE  ctermfg=242 ctermbg=NONE
 
-"hi StatusLine   cterm=none  ctermfg=fg  ctermbg=242 
-"hi StatusLineNC cterm=none  ctermfg=fg  ctermbg=237 
+"hi StatusLine   cterm=NONE  ctermfg=fg  ctermbg=242 
+"hi StatusLineNC cterm=NONE  ctermfg=fg  ctermbg=237 
 hi VertSplit    cterm=reverse   ctermfg=fg  ctermbg=240
 
-"hi WildMenu cterm=none  ctermfg=0   ctermbg=184 gui=none    guifg=#000000   guibg=#dfdf00
+"hi WildMenu cterm=NONE  ctermfg=0   ctermbg=184 gui=NONE    guifg=#000000   guibg=#dfdf00
 
-hi Folded   cterm=none  ctermfg=234 ctermbg=253
-hi FoldColumn   cterm=none  ctermfg=248 ctermbg=58 
-hi SignColumn   cterm=none  ctermfg=248 ctermbg=58 
+hi Folded   cterm=NONE  ctermfg=234 ctermbg=253
+hi FoldColumn   cterm=NONE  ctermfg=248 ctermbg=58 
+hi SignColumn   cterm=NONE  ctermfg=248 ctermbg=58 
 
 " open  dir  text color
-hi Directory    cterm=none  ctermfg=0  ctermbg=none 
+hi Directory    cterm=NONE  ctermfg=0  ctermbg=NONE 
 
 "left Line number
-"hi NonText  cterm=none  ctermfg=233 ctermbg=none
+"hi NonText  cterm=NONE  ctermfg=233 ctermbg=NONE
 
-hi Title    cterm=none  ctermfg=0   ctermbg=184 
-hi Visual   cterm=none  ctermfg=255 ctermbg=244 
+hi Title    cterm=NONE  ctermfg=0   ctermbg=184 
+hi Visual   cterm=NONE  ctermfg=255 ctermbg=244 
 
 
 
@@ -106,15 +106,15 @@ hi! link Type TextType
 hi! link Function  TextType
 
 " ( ) {}  
-hi Delimiter    cterm=none  ctermfg=18  ctermbg=none 
-hi Underlined   cterm=underline ctermfg=39  ctermbg=none  
+hi Delimiter    cterm=NONE  ctermfg=18  ctermbg=NONE 
+hi Underlined   cterm=underline ctermfg=39  ctermbg=NONE  
 
 
 "unknow
 hi! link SpecialKey Unknown
 
 " Buffer Status Line
-hi StatusLine   cterm=none ctermfg=230 ctermbg=240
+hi StatusLine   cterm=NONE ctermfg=230 ctermbg=240
 hi! link StatusLineNC TabLine
 hi! link StatusLineTerm TabLineSel
 hi! link StatusLineTermNC TabLine
