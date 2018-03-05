@@ -1,0 +1,38 @@
+snippet itoa
+	str(2)
+
+snippet atoi
+	int("ss")
+
+snippet function
+	def ${0}()
+		return "aaa"
+
+snippet log
+	print getframeinfo(currentframe()).lineno
+
+snippet regular
+	reg = '[^\d]+'
+	str = re.sub(reg, '', str);
+
+sinppet match
+	re.compile("[a-z]").match(str)
+	
+snippet count
+	len(array)
+
+snippet importBasic
+	import sys
+	import re
+
+snippet options
+	param = {}
+	com = re.compile("^--")
+	for index, str in enumerate(sys.argv):
+		if com.match(str):
+			name = str.replace("-", "") 
+			index = index + 1 
+			value = sys.argv[index]
+			param[name] = value
+
+
