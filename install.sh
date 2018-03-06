@@ -38,7 +38,8 @@ if [ "x" != "x$remoteHost" ]; then
     scp basic/.bash_profile $remoteHost:~/ 
     scp basic/.bashrc $remoteHost:~/ 
     scp bin/exec.sh $remoteHost:~/
-    ssh $remoteHost "sudo mv exec.sh /usr/local/bin/myExec.sh"
+    ssh $remoteHost "sudo mv exec.sh /usr/local/bin/myExec.sh; mkdir -p ~/.vim/plugged/vim-snipmate/snippets/"
+    scp vim-snipmate/*.snippets $remoteHost:~/.vim/plugged/vim-snipmate/snippets/
     exit 1
 fi
 
