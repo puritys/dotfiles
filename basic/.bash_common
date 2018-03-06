@@ -84,14 +84,20 @@ screen_path() {
 }
 
 screen_title () {
-    #local arrow=`echo -e "\xee\x82\xb0"`
-    #local arrowLight=`echo -e "\xee\x82\xb1"`
-    #local arrowLeftLight="<"#`echo -e "\xee\x82\xb3"`
     screen_path;
-    local title=`uname -n | cut -c1-5`
-    screenPath=`echo $screenPath | cut -c1-10` 
-    title="$title:$screenPath"
-    printf '\ek%s\e\\' "$title"
+    screenPath=`echo $screenPath | cut -c1-13` 
+    if [ "xtmux-256color" == "x$term" ]; then
+        if [ -f "/usr/bin/tmux" ]; then
+            tmux="/usr/bin/tmux";
+        elif [ -f "/usr/bin/local/tmux" ]; then
+            tmux="/usr/bin/local/tmux"
+        fi
+        $tmux rename-window `hostname`:$screenPath;
+    else
+        local title=`uname -n | cut -c1-5`
+        title="$title:$screenPath"
+        printf '\ek%s\e\\' "$title"
+    fi
 }
 
 function getMySSHAgent {
@@ -135,6 +141,22 @@ setTerm() {
     fi
     if [ "x" == "x$term" ]; then
         term="xterm"
+    fi
+}
+
+ssh() {
+    if [ -f "/usr/bin/tmux" ]; then
+        tmux="/usr/bin/tmux";
+    elif [ -f "/usr/bin/local/tmux" ]; then
+        tmux="/usr/bin/local/tmux"
+    fi
+
+    if [ "$(ps -p $(ps -p $$ -o ppid=) -o comm=)" = "tmux" ]; then
+        $tmux rename-window "$*"
+        command ssh "$@"
+        #$tmux set-window-option automatic-rename "on" 1>/dev/null
+    else
+        command ssh "$@"
     fi
 }
 
