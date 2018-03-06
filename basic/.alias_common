@@ -74,7 +74,7 @@ fn_eclim_stop() {
 }
 
 ecliUpdate() {
-    sudo mvn eclipse:clean eclipse:eclipse -Dmaven.pmd.skip=true -Dmaven.checkstyle.skip=true -Dmaven.cpd-check.skip=true -Dmaven.cpd.skip=true -Dcheckstyle.skip -Dmaven.javadoc.skip=true
+    sudo mvn eclipse:clean eclipse:eclipse -Dmaven.pmd.skip=true -Dmaven.checkstyle.skip=true -Dmaven.cpd-check.skip=true -Dmaven.cpd.skip=true -Dcheckstyle.skip -Dmaven.javadoc.skip=true -Dpmd.skip=true
     sudo chmod 777 .classpath
     sed 's/kind="var"/kind="lib"/' -i .classpath
     h=`echo $HOME | sed 's/\//\\\\\//g'`
