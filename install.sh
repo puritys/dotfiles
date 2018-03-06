@@ -236,10 +236,19 @@ if [ ! -d ~/.eclim/ ];  then mkdir ~/.eclim/; fi
 if [ "x$INIT" != "x" ] || [ "x$installFZF" != "x" ];  then
     if [ ! -d ~/.sh_tool ]; then
         mkdir ~/.sh_tool
+        git clone --depth 1 https://github.com/junegunn/fzf.git ~/.sh_tool/fzf
+        ~/.sh_tool/fzf/install --all
+        ## append (cat ~/machine_list.txt | command grep -v '#' | sed -e 's/^/host /') \  ~/.sh_tool/fzf/shell/completion.bash : _fzf_complete_ssh
+
+
+        # ------------
+        # Install fasd cd
+        # ------------
+        cd ~/.sh_tool/ ; wget https://github.com/clvv/fasd/tarball/1.0.1
+        tar -zxvf 1.0.1
+        cd clvv-fasd-4822024; PREFIX=$HOME make install
+        cd ../../
     fi
-    git clone --depth 1 https://github.com/junegunn/fzf.git ~/.sh_tool/fzf
-    ~/.sh_tool/fzf/install --all
-    ## append (cat ~/machine_list.txt | command grep -v '#' | sed -e 's/^/host /') \  ~/.sh_tool/fzf/shell/completion.bash : _fzf_complete_ssh
 
     ## Basic package
     if [ "x" != "x`command -v yum`" ]; then
@@ -249,21 +258,14 @@ if [ "x$INIT" != "x" ] || [ "x$installFZF" != "x" ];  then
         brew install tmux
     fi
 
-    # ------------
-    # Install fasd cd
-    # ------------
-    cd ~/.sh_tool/ ; wget https://github.com/clvv/fasd/tarball/1.0.1
-    tar -zxvf 1.0.1
-    cd clvv-fasd-4822024; PREFIX=$HOME make install
-
     # -----------
     # Install ag
     # -----------
     echo -e "Install ag \n"
-    if [ "x" != "x`command -v ag`" ]; then
+    if [ "x" == "x`command -v ag`" ]; then
         installedAg=0
         if [ -f /etc/redhat-release ]; then
-            v=cat /etc/redhat-release
+            v=`cat /etc/redhat-release`
             if [[ $v == *"7."* ]]; then
                 sudo yum install -y the_silver_searcher
                 installedAg=1
@@ -278,9 +280,9 @@ if [ "x$INIT" != "x" ] || [ "x$installFZF" != "x" ];  then
             ./build.sh
             make
             sudo make install
+            cd ..
         fi
     fi 
-  
 fi
 
 if [ "x$INIT" != "x" ] || [ "x$installBashIt" != "x" ];  then
