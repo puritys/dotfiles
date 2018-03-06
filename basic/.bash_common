@@ -94,7 +94,9 @@ screen_title () {
             tmux="/usr/local/bin/tmux"
         fi
         if [ "x" != "x$tmux" ]; then
-            $tmux rename-window `hostname`:$screenPath;
+            hostname=`hostname`
+            hostname=`echo $hostname | cut -c1-6`
+            $tmux rename-window $hostname:$screenPath;
             isSetTitle=1;
         fi
     fi
@@ -153,17 +155,17 @@ setTerm() {
 ssh() {
     if [ -f "/usr/bin/tmux" ]; then
         tmux="/usr/bin/tmux";
-    elif [ -f "/usr/bin/local/tmux" ]; then
-        tmux="/usr/bin/local/tmux"
+    elif [ -f "/usr/local/bin/tmux" ]; then
+        tmux="/usr/local/bin/tmux"
+    fi
+    if [ "x" != "x$tmux" ]; then
+        if [ "$(ps -p $(ps -p $$ -o ppid=) -o comm=)" = "tmux" ]; then
+            $tmux rename-window "$*"
+            #$tmux set-window-option automatic-rename "on" 1>/dev/null
+        fi
     fi
 
-    if [ "$(ps -p $(ps -p $$ -o ppid=) -o comm=)" = "tmux" ]; then
-        $tmux rename-window "$*"
-        command ssh "$@"
-        #$tmux set-window-option automatic-rename "on" 1>/dev/null
-    else
-        command ssh "$@"
-    fi
+    command ssh "$@"
 }
 
 if [ -f ~/.bash_docker ]; then
