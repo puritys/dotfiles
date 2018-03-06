@@ -255,6 +255,31 @@ if [ "x$INIT" != "x" ] || [ "x$installFZF" != "x" ];  then
     tar -zxvf 1.0.1
     cd clvv-fasd-4822024; PREFIX=$HOME make install
 
+    # -----------
+    # Install ag
+    # -----------
+    echo -e "Install ag \n"
+    if [ "x" != "x`command -v ag`" ]; then
+        installedAg=0
+        if [ -f /etc/redhat-release ]; then
+            v=cat /etc/redhat-release
+            if [[ $v == *"7."* ]]; then
+                sudo yum install -y the_silver_searcher
+                installedAg=1
+            fi
+        elif [[ `uname` == 'Darwin' ]]; then
+            brew install the_silver_searcher
+            installedAg=1;
+        fi
+        if [ "x0" == "x$installedAg" ];then
+            git clone https://github.com/ggreer/the_silver_searcher.git
+            cd the_silver_searcher
+            ./build.sh
+            make
+            sudo make install
+        fi
+    fi 
+  
 fi
 
 if [ "x$INIT" != "x" ] || [ "x$installBashIt" != "x" ];  then
