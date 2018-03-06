@@ -86,14 +86,20 @@ screen_path() {
 screen_title () {
     screen_path;
     screenPath=`echo $screenPath | cut -c1-13` 
+    isSetTitle=0;
     if [ "xtmux-256color" == "x$term" ]; then
         if [ -f "/usr/bin/tmux" ]; then
             tmux="/usr/bin/tmux";
-        elif [ -f "/usr/bin/local/tmux" ]; then
-            tmux="/usr/bin/local/tmux"
+        elif [ -f "/usr/local/bin/tmux" ]; then
+            tmux="/usr/local/bin/tmux"
         fi
-        $tmux rename-window `hostname`:$screenPath;
-    else
+        if [ "x" != "x$tmux" ]; then
+            $tmux rename-window `hostname`:$screenPath;
+            isSetTitle=1;
+        fi
+    fi
+
+    if [ "x0" == "x$isSetTitle" ]; then
         local title=`uname -n | cut -c1-5`
         title="$title:$screenPath"
         printf '\ek%s\e\\' "$title"
