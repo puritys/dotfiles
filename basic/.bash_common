@@ -159,7 +159,7 @@ ssh() {
         tmux="/usr/local/bin/tmux"
     fi
     if [ "x" != "x$tmux" ]; then
-        if [ "$(ps -p $(ps -p $$ -o ppid=) -o comm=)" = "tmux" ]; then
+        if [[ "$(ps -p $(ps -p $$ -o ppid=) -o comm=)" == *"tmux"* ]]; then
             $tmux rename-window "$*"
             #$tmux set-window-option automatic-rename "on" 1>/dev/null
         fi
