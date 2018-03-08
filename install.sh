@@ -1,5 +1,6 @@
 #!/bin/bash
 installYouCompleteMe=0
+
 while true; do
     if [ "x$1" == "x" ];then
         break;

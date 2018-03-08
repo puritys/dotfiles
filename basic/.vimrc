@@ -225,6 +225,7 @@ if has("autocmd")
   autocmd Filetype js  setlocal omnifunc=js#CompleteJS
   autocmd Filetype javascript  setlocal omnifunc=js#CompleteJS
   autocmd Filetype go setlocal omnifunc=gocomplete#Complete
+
   " whitespace
   autocmd BufRead,BufNew * match ExtraWhitespace /\t\+\| \s\+$/
 endif
@@ -242,6 +243,7 @@ if has("autocmd")
     au FileType php,phtml,java set cindent autoindent
     au FileType php,phtml filetype indent on
     au FileType cpp,c,cc  set cindent autoindent
+    au BufRead,BufNewFile *.alias*,*.bash* setlocal ft=sh
 endif
 
 

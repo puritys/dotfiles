@@ -100,14 +100,35 @@ fnGitForceCommit() {
 }
 
 fnDate() {
-    act=$1
+    while true; do
+        if [ "x$1" == "x" ];then
+            break;
+        fi
+        case "$1" in
+          -t | --timestamp   ) timestamp=$2; shift 2 ;;
+          -d | --date ) date=$2; shift 2 ;;
+          -o | --output ) output=$2; shift 2 ;;
+          -h | --help  ) 
+              echo "Usage:"
+              echo "mydate -d 20170101 -o time"
+              echo "-t: timestamp, ex: -t 12312 "
+              echo "-d: date, ex: -d 20170301"
+              echo "-o: date/timestamp/time, ex: -o time"
+              shift 1 
+              return
+              ;;
+          --) echo "-- is not a correct option.";shift 1; ;;
+          * ) echo "$1 is not a correct option.";shift 1; ;;
+        esac
+    done
+
     os=`uname`
     if [ "x$os" == "xDarwin" ]; then
-        case "$act" in
-        "-timestamp")
+        case "$output" in
+        time*)
             echo `date +%s`
         ;;
-        "-date")
+        date)
             echo `date "+%Y/%m/%d %H:%M:%S"`
         ;;
         *)
@@ -115,19 +136,27 @@ fnDate() {
         ;;
         esac
     else
-        case "$act" in
-        "-timestamp")
-            echo `date +%s`
+        case "$output" in
+        time*)
+            # date +%s -d "20180305"
+            if [ "x" != "x$date" ]; then
+                date=" -d $date"
+            fi
+            cmd="date +%s $date"
         ;;
-        "-date")
+        date)
             echo `date "+%Y/%m/%d %H:%M:%S"`
+            return
         ;;
         *)
-            echo `date -d@$1`
+            echo "Please use mydate -h"
+            return
         ;;
         esac
 
     fi
+    echo "$cmd"
+    echo `$cmd`
 
 }
 

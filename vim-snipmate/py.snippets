@@ -35,4 +35,13 @@ snippet options
 			value = sys.argv[index]
 			param[name] = value
 
+snippet __DIR__
+	os.path.dirname(path)
+
+snippet mkdir
+	os.makedirs(dir)
+snippet file_write
+	file = open(path, "w")
+	file.write(content)
+	file.close()
 

@@ -69,6 +69,7 @@ host=MacMini
 | godlygeek/tabular          | align,<Enter> | Auto align code                           |
 | vim-json-line-format       | ,jp ,jw       | JSON Parser (support unicode)             |
 | shawncplus/phpcomplete.vim |               | PHP Auto Complete                         |
+| Yggdroot/indentLine        |               | Display indent line                       |
 
 Attentions.
 * ctags is needed by vim-nerdtree-tabs and shawncplus/phpcomplete.vim.
