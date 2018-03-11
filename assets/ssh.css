@@ -2,47 +2,64 @@ body {
     background: #F1E7D0;
 }
 
-/* cyrillic-ext */
 
+/*
+ * -----------------
+ * Set Font
+ * -----------------
+ */
 @font-face {
   font-family: 'PT Mono';
   font-style: normal;
   font-weight: 400;
-  src: local('PT Mono'), local('PTMono-Regular'), url(https://fonts.gstatic.com/s/ptmono/v4/rFGHhFPYIVvC08PGjJIN1_Y6323mHUZFJMgTvxaG2iE.woff2) format('woff2');
-  unicode-range: U+0460-052F, U+20B4, U+2DE0-2DFF, U+A640-A69F;
+  src: local('PT Mono'), url("https://www.puritys.me/filemanage/fonts/PT Mono.woff") format('woff');
 }
 
-/* cyrillic */
-
 @font-face {
-  font-family: 'PT Mono';
+  font-family: 'IBMPlex Mono';
   font-style: normal;
   font-weight: 400;
-  src: local('PT Mono'), local('PTMono-Regular'), url(https://fonts.gstatic.com/s/ptmono/v4/CaVdAWGUSxTocbxGJLiki_Y6323mHUZFJMgTvxaG2iE.woff2) format('woff2');
-  unicode-range: U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+  src: local('IBMPlex Mono'), url("https://www.puritys.me/filemanage/fonts/IBMPlexMono-Regular-Latin1.woff2") format('woff2');
+  /* unicode number 1-9*/
+  unicode-range: U+0031-0039;
 }
 
-/* latin */
 
 @font-face {
-  font-family: 'PT Mono';
-  font-style: normal;
-  font-weight: 400;
-  src: local('PT Mono'), local('PTMono-Regular'), url(https://fonts.gstatic.com/s/ptmono/v4/h6kfiL-5Ady2K9sB3hOqcw.woff2) format('woff2');
-  /*unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215, U+E0FF, U+EFFD, U+F000;*/
-  unicode-range: U+0061-007A, U+0041-005A, U+0030-0039;
+  font-family:'SF Mono';
+  font-style:normal;
+  font-weight:400;
+  src:local('SF Mono'), url("https://www.puritys.me/filemanage/fonts/SFMono-Regular.woff") format("woff");
 }
 
 @font-face {
   font-family: 'PowerlineSymbols';
   font-style: normal;
   font-weight: 400;
-  src: local('PowerlineSymbols'), url(https://www.puritys.me/filemanage/PowerlineSymbols.woff) format('woff');
+  src: local('PowerlineSymbols'), url(https://www.puritys.me/filemanage/fonts/PowerlineSymbols.woff) format('woff');
+}
+
+@font-face {
+  font-family: 'Roboto Mono for Powerline';
+  font-style: normal;
+  font-weight: 200;
+  src: local('Roboto Mono for Powerline'), url(https://www.puritys.me/filemanage/fonts/Roboto\ Mono\ for\ Powerline.woff) format('woff');
 }
 
 
 body, body x-screen x-row {
-  font-family: "PT Mono","Monaco","PowerlineSymbols","微軟正黑體";
   font-weight: 400;
   -webkit-font-smoothing: antialiased;
+}
+
+/*SF Mono*/
+/*
+body, body x-screen x-row {
+  font-family: "SF Mono", "Roboto Mono for Powerline", "微軟正黑體";
+"PT Mono", "Roboto Mono for Powerline"
+}*/
+
+/*PT Mono + IBM Plex Mono */
+body, body x-screen x-row {
+  font-family: "IBMPlex Mono", "PT Mono", "Monaco", "Roboto Mono for Powerline", "PowerlineSymbols", "Monaco", "微軟正黑體";
 }
