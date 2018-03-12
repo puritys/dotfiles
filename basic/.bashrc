@@ -87,7 +87,8 @@ LS_COLORS='no=00:fi=00:di=2;34:ln=36:pi=33:so=35:do=35:bd=33:cd=33:or=31:ex=32:*
 LS_OPTIONS="-b --color=auto"
 export LS_COLORS
 export LS_OPTIONS
-
+GREP_COLORS='ms=01;31:mc=01;31:sl=:cx=:fn=35:ln=32:bn=32:se=36'
+export GREP_COLORS
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 [ -d ~/.sh_tool/clvv-fasd-4822024/ ] && eval "$(fasd --init auto)"
