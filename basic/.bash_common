@@ -1,5 +1,5 @@
 # powerline
-# ⮑  ⮐ ➞  ♺
+# ⮑  ⮐ ➞  ♺ │
 #
 powerline () {
     host=$1
@@ -13,13 +13,8 @@ powerline () {
     local color="\e[38;5;$fg\e[48;5;$bg"
     local arrowColor="\e[38;5;$bg"
     #\[\ek\h\e\\\] : display screen hostname
-    setTerm
-    if [[ $term == *"tmux"* ]]; then
-        local s1=
-    else
-        local s1=♥
-        local arrowLight=➞
-    fi
+    local s1=♥
+    local arrowLight=-►
     RET="$hostColor$s1 $host $hostColorArrow$arrow\[\e[0m\]"
     local path="$PWD"
     case $path in
