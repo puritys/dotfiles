@@ -33,14 +33,19 @@ done
 
 if [ "x" != "x$remoteHost" ]; then
     echo "Sync dotfiles to remote host $remoteHost"
-    scp basic/.alias $remoteHost:~/ 
-    scp basic/.alias_common $remoteHost:~/ 
-    scp basic/.bash_common $remoteHost:~/ 
-    scp basic/.bash_profile $remoteHost:~/ 
-    scp basic/.bashrc $remoteHost:~/ 
-    scp bin/exec.sh $remoteHost:~/
-    ssh $remoteHost "sudo mv exec.sh /usr/local/bin/myExec.sh; mkdir -p ~/.vim/plugged/vim-snipmate/snippets/"
+    scp basic/.alias basic/.alias_common \
+        basic/.bash_common basic/.bash_profile basic/.inputrc \
+        basic/.bashrc bin/exec.sh basic/.vimrc basic/.vimrc_plugins \
+        basic/.eclimrc $remoteHost:~/ 
+
+    ssh $remoteHost " \
+        sudo mv exec.sh /usr/local/bin/myExec.sh; mkdir -p ~/.vim/plugged/vim-snipmate/snippets/; \
+        if [ ! -f ~/.vim/autoload/plug.vim ]; then \
+            curl -fLo ~/.vim/autoload/plug.vim --create-dirs  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim; \
+        fi"
+
     scp vim-snipmate/*.snippets $remoteHost:~/.vim/plugged/vim-snipmate/snippets/
+    scp -r vim/colors vim/autoload vim/plugin $remoteHost:~/.vim/
     exit 1
 fi
 
