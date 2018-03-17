@@ -5,7 +5,7 @@ body, body x-screen[style], body x-screen > div {
 
 /* cursor color */
 .cursor-node[style][focus=true] {
-    background-color: #2393f4 !important;
+    background-color: rgba(35,147,244,0.5) !important; // #2393f4
 }
 
 .cursor-node[style][focus=false] {
