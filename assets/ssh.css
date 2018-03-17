@@ -1,11 +1,30 @@
-body {
-    background: #F1E7D0;
+body, body x-screen[style], body x-screen > div {
+    background: #F1E7D0 !important;
+    color: black !important;
 }
 
+/* cursor color */
+.cursor-node[style][focus=true] {
+    background-color: #2393f4 !important;
+}
+
+.cursor-node[style][focus=false] {
+    border-color: #2393f4 !important;
+}
+
+/*
+ *  Make span of row has 100% height to fix different font-size, if you use multi fonts at the same time.
+ **/
+/*body x-screen x-row span {
+    display: inline-block;
+    height: 100%;
+    vertical-align: top;
+}*/
 
 /*
  * -----------------
  * Set Font
+ * Create Font Tool: http://www.glyphrstudio.com/online/
  * -----------------
  */
 @font-face {
@@ -13,6 +32,8 @@ body {
   font-style: normal;
   font-weight: 400;
   src: local('PT Mono'), url("https://www.puritys.me/filemanage/fonts/PT Mono.woff") format('woff');
+  /* unicode number 0-9,a-z,A-Z*/
+  unicode-range: U+0001-0080;
 }
 
 @font-face {
@@ -30,21 +51,37 @@ body {
   font-style:normal;
   font-weight:400;
   src:local('SF Mono'), url("https://www.puritys.me/filemanage/fonts/SFMono-Regular.woff") format("woff");
+  /* unicode number 0-9,a-z,A-Z*/
+  unicode-range: U+0001-0080;
 }
 
 @font-face {
-  font-family: 'PowerlineSymbols';
-  font-style: normal;
-  font-weight: 400;
-  src: local('PowerlineSymbols'), url(https://www.puritys.me/filemanage/fonts/PowerlineSymbols.woff) format('woff');
+  font-family:'Cust SF Mono';
+  font-style:normal;
+  font-weight:400;
+  src:local('Cust SF Mono'), url("https://www.puritys.me/filemanage/fonts/CustFont-SFMono.woff2") format("woff2");
+  /* unicode number 0-9,a-z,A-Z*/
+  unicode-range: U+0001-0080;
 }
+
+/*
+ * PowerLine
+ */
 
 @font-face {
   font-family: 'Roboto Mono for Powerline';
   font-style: normal;
-  font-weight: 200;
+  font-weight: 400;
   src: local('Roboto Mono for Powerline'), url(https://www.puritys.me/filemanage/fonts/Roboto\ Mono\ for\ Powerline.woff) format('woff');
 }
+
+@font-face {
+  font-family: 'Cust SF Mono Powerline';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Cust SF Mono Powerline'), url(https://www.puritys.me/filemanage/fonts/CustFont-SFMono-Powerline.woff) format('woff');
+}
+
 
 
 body, body x-screen x-row {
@@ -53,13 +90,13 @@ body, body x-screen x-row {
 }
 
 /*SF Mono*/
-/*
+
 body, body x-screen x-row {
-  font-family: "SF Mono", "Roboto Mono for Powerline", "微軟正黑體";
-"PT Mono", "Roboto Mono for Powerline"
-}*/
+  font-family: "Cust SF Mono", "Monaco", "Cust SF Mono Powerline", "微軟正黑體";
+}
 
 /*PT Mono + IBM Plex Mono */
+/*
 body, body x-screen x-row {
-  font-family: "IBMPlex Mono", "PT Mono", "Monaco", "Roboto Mono for Powerline", "PowerlineSymbols", "Monaco", "微軟正黑體";
-}
+  font-family: "IBMPlex Mono", "PT Mono", "Monaco", "Roboto Mono for Powerline", "微軟正黑體";
+}*/
