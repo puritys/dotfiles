@@ -9,13 +9,16 @@ powerline () {
     local bg=30m
     local fg=253m
     local hostColor="\e[38;5;$fg\e[48;5;31m"
-    local hostColorArrow="\e[38;5;31m\e[48;5;$bg"
+    local hostColorArrow="\e[38;5;31m\e[48;5;230m"
+    local hostColorArrow2="\e[38;5;230m\e[48;5;$bg"
+
     local color="\e[38;5;$fg\e[48;5;$bg"
     local arrowColor="\e[38;5;$bg"
     #\[\ek\h\e\\\] : display screen hostname
     local s1=""
 
     RET="$hostColor$s1 $host $hostColorArrow$arrow\[\e[0m\]"
+    RET="$RET$hostColorArrow2$arrow\[\e[0m\]"
     local path="$PWD"
     case $path in
       $HOME) path="~";;
