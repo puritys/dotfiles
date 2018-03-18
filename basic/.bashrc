@@ -91,8 +91,8 @@ GREP_COLORS='ms=01;31:mc=01;31:sl=:cx=:fn=35:ln=32:bn=32:se=36'
 export GREP_COLORS
 
 export FZF_DEFAULT_OPTS='
-  --color fg:0,hl:202,fg+:16,bg+:230,hl+:202
-  --color info:52,prompt:196,spinner:208,pointer:196,marker:208
+  --color light,hl:124,fg+:242,bg+:230,hl+:33
+  --color info:52,prompt:245,spinner:245,pointer:245,marker:208
 '
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 [ -d ~/.sh_tool/clvv-fasd-4822024/ ] && eval "$(fasd --init auto)"
