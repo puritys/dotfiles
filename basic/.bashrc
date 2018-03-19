@@ -83,11 +83,11 @@ fi
 setTerm
 PROMPT_COMMAND=changePS
 
-LS_COLORS='no=00:fi=00:di=2;34:ln=36:pi=33:so=35:do=35:bd=33:cd=33:or=31:ex=32:*.cmd=32:*.exe=32:*.com=32:*.btm=32:*.bat=32:*.sh=32:*.csh=32:*.tar=31:*.tgz=1;31:*.arj=31:*.taz=31:*.lzh=31:*.zip=1;30:*.z=31:*.Z=31:*.gz=1;31:*.bz2=31:*.bz=31:*.tz=31:*.rpm=36:*.cpio=31:*.jpg=1;30:*.gif=1;30:*.bmp=1;30:*.xbm=35:*.xpm=35:*.png=1;30:*.jpeg=1;30:*.tif=35:*.h=1;35:*.jar=35:*.php=32:*.inc=32:*.sjs=32:*.js=32:*.sql=32:*.html=36:*.htm=36:*.xml=36:*.yicf=36'
+LS_COLORS='no=00:fi=00:di=38;5;26:ln=36:pi=33:so=35:do=35:bd=33:cd=33:or=31:ex=32:*.cmd=32:*.exe=32:*.com=32:*.bat=32:*.sh=32:*.csh=32:*.tar=31:*.tgz=1;31:*.taz=31:*.zip=1;30:*.gz=1;31:*.bz2=31:*.bz=31:*.tz=31:*.rpm=36:*.jpg=1;30:*.gif=1;30:*.bmp=1;30:*.png=1;30:*.jpeg=1;30:*.tif=35:*.h=1;35:*.jar=35:*.php=32:*.inc=32:*.sjs=32:*.js=32:*.sql=32:*.html=36:*.htm=36:*.xml=36'
 LS_OPTIONS="-b --color=auto"
 export LS_COLORS
 export LS_OPTIONS
-GREP_COLORS='ms=01;31:mc=01;31:sl=:cx=:fn=35:ln=32:bn=32:se=36'
+GREP_COLORS='mt=38;5;166:ms=01;31:mc=01;31:sl=:cx=:fn=35:ln=32:bn=32:se=36'
 export GREP_COLORS
 
 export FZF_DEFAULT_OPTS='
