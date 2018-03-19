@@ -79,7 +79,7 @@ body, body x-screen[style], body x-screen > div {
   font-family: 'Cust SF Mono Powerline';
   font-style: normal;
   font-weight: 400;
-  src: local('Cust SF Mono Powerline'), url(https://www.puritys.me/filemanage/fonts/CustFont-SFMono-Powerline.woff) format('woff');
+  src: local('Cust SF Mono Powerline'), url(https://www.puritys.me/filemanage/fonts/CustFont-SFMono-Powerline.woff2) format('woff2');
 }
 
 
