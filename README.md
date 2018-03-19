@@ -1,6 +1,7 @@
 # dotfiles
 My ssh config, vimrc, .screenrc, alias
 
+<img src="https://www.puritys.me/filemanage/blog_files/file_361.jpg" width="500" alt="Chrome SSH terminal" />
 
 # How to install
 
