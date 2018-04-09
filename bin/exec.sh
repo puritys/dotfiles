@@ -242,6 +242,8 @@ iptables_save() {
 ffmpeg_help() {
     echo "ffmpeg usage:"
     echo "-p ffmpeg -c flv_to_mp4 -f xxx.flv -o xx.mp4: convert flv to mp4"
+    echo "-p ffmpeg -c mp4_resize -f xxx.mp4 -o xx.mp4: resize"
+
 
 }
 
@@ -251,6 +253,14 @@ ffmpeg_flv_to_mp4() {
     lib_check_empty file $file
     lib_check_empty output $output
     ffmpeg_fn -i $file -acodec copy -vcodec copy $output
+}
+
+ffmpeg_mp4_resize() {
+    # Load docker alias function
+    . ~/.bash_docker
+    lib_check_empty file $file
+    lib_check_empty output $output
+    ffmpeg_fn -i $file -vf scale=640:360  $output
 }
 
 # --------
