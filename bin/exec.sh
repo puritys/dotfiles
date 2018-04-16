@@ -242,7 +242,9 @@ iptables_save() {
 ffmpeg_help() {
     echo "ffmpeg usage:"
     echo "-p ffmpeg -c flv_to_mp4 -f xxx.flv -o xx.mp4: convert flv to mp4"
-    echo "-p ffmpeg -c mp4_resize -f xxx.mp4 -o xx.mp4: resize"
+    echo "-p ffmpeg -c resize -f xxx.mp4 -o xx.mp4: resize"
+    echo "-p ffmpeg -c speed_up -f xxx.mp4 -o xx.mp4: speed up"
+    echo "-p ffmpeg -c crop -f xxx.mp4 -o xx.mp4: crop"
 
 
 }
@@ -255,12 +257,29 @@ ffmpeg_flv_to_mp4() {
     ffmpeg_fn -i $file -acodec copy -vcodec copy $output
 }
 
-ffmpeg_mp4_resize() {
+ffmpeg_resize() {
     # Load docker alias function
     . ~/.bash_docker
     lib_check_empty file $file
     lib_check_empty output $output
     ffmpeg_fn -i $file -vf scale=640:360  $output
+}
+
+ffmpeg_speed_up() {
+    # Load docker alias function
+    . ~/.bash_docker
+    lib_check_empty file $file
+    lib_check_empty output $output
+    ffmpeg_fn -i $file -filter:v "setpts=0.5*PTS"  $output
+}
+
+ffmpeg_crop() {
+    # Load docker alias function
+    . ~/.bash_docker
+    lib_check_empty file $file
+    lib_check_empty output $output
+    # "crop=out_w:out_h:x:y" 
+    ffmpeg_fn -i $file -filter:v "crop=90:90:0:0"  $output
 }
 
 # --------
