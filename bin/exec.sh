@@ -245,7 +245,7 @@ ffmpeg_help() {
     echo "-p ffmpeg -c resize -f xxx.mp4 -o xx.mp4: resize"
     echo "-p ffmpeg -c speed_up -f xxx.mp4 -o xx.mp4: speed up"
     echo "-p ffmpeg -c crop -f xxx.mp4 -o xx.mp4: crop"
-    echo "ffmpeg_fn -i -vf scale=640:360 -filter:v 'setpts=0.5*PTS' -an -filter:v 'crop=90:90:0:0'  input output"
+    echo "ffmpeg_fn -i input -vf scale=640:360  -an -filter:v 'crop=90:90:0:0,setpts=0.5*PTS'   -ss 00:30 -to 00:40 -t 10 output"
 
 
 }
