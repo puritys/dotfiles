@@ -245,6 +245,7 @@ ffmpeg_help() {
     echo "-p ffmpeg -c resize -f xxx.mp4 -o xx.mp4: resize"
     echo "-p ffmpeg -c speed_up -f xxx.mp4 -o xx.mp4: speed up"
     echo "-p ffmpeg -c crop -f xxx.mp4 -o xx.mp4: crop"
+    echo "ffmpeg_fn -i -vf scale=640:360 -filter:v 'setpts=0.5*PTS' -an -filter:v 'crop=90:90:0:0'  input output"
 
 
 }
@@ -270,7 +271,7 @@ ffmpeg_speed_up() {
     . ~/.bash_docker
     lib_check_empty file $file
     lib_check_empty output $output
-    ffmpeg_fn -i $file -filter:v "setpts=0.5*PTS"  $output
+    ffmpeg_fn -i $file -filter:v "setpts=0.5*PTS" -an $output
 }
 
 ffmpeg_crop() {
