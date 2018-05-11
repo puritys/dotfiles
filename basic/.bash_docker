@@ -71,6 +71,21 @@ function php_fn() {
     $command
 }
 
+function php7_fn() {
+    common_docker_set_env "tool"
+    command=" $@ "
+    pwd=`pwd`
+    owner=`whoami`
+    if [ `uname` = "Darwin" ]; then
+        HOME="/Users/$owner"
+    else
+        HOME="/home/$owner"
+    fi 
+    command="docker run -it --rm -v /www:/www -v $(pwd):/usr/src/myphp -w /usr/src/myphp puritys/phplatest $command"
+    echo $command
+    $command
+}
+
 function atslog_fn() {
     common_docker_set_env "service"
     pwd=`pwd`

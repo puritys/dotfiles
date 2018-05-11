@@ -78,7 +78,10 @@ if [ "x$DOCKER" == "x" ];then
 else 
     if [ -d /usr/local/bin/ ]; then
         sudo cp bin/docker_php /usr/local/bin/php
+        sudo cp bin/docker_php7 /usr/local/bin/php7
+        sudo chmod 755 /usr/local/bin/php /usr/local/bin/php7
     fi
+
 fi
 
 # ------------------
