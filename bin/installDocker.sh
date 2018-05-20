@@ -1,3 +1,7 @@
+# RHEL
+# sudo yum -y install docker docker-registry
+
+
 # centos
 sudo yum install -y yum-utils \
   device-mapper-persistent-data \
