@@ -23,6 +23,7 @@ while true; do
           echo "-k: install docker alias"
           echo "-j: install docfiles and some vim plugins for java, eclipse"
           echo "-i: install docfiles and vim plugins"
+          echo "--host: install dotfiles to remote host."
           shift 1
           exit 1
           ;;
@@ -36,7 +37,7 @@ if [ "x" != "x$remoteHost" ]; then
     scp basic/.alias basic/.alias_common \
         basic/.bash_common basic/.bash_profile basic/.inputrc \
         basic/.bashrc bin/exec.sh basic/.vimrc basic/.vimrc_plugins \
-        basic/.eclimrc $remoteHost:~/ 
+        basic/.eclimrc basic/.screenrc $remoteHost:~/ 
 
     ssh $remoteHost " \
         sudo mv exec.sh /usr/local/bin/myExec.sh; mkdir -p ~/.vim/plugged/vim-snipmate/snippets/; \
