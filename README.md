@@ -71,7 +71,7 @@ host=MacMini
 | vim-json-line-format       | ,jp ,jw       | JSON Parser (support unicode)             |
 | shawncplus/phpcomplete.vim |               | PHP Auto Complete                         |
 | Yggdroot/indentLine        |               | Display indent line                       |
-
+| vim-scripts/PDV--phpDocumentor-for-Vim| doc | generate php document |
 Attentions.
 * ctags is needed by vim-nerdtree-tabs and shawncplus/phpcomplete.vim.
 

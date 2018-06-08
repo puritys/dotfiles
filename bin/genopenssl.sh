@@ -29,10 +29,10 @@ makecertv2() {
 
   $OPENSSL genrsa -out ${name}.key 2048
   $OPENSSL req -new -key ${name}.key -out ${name}.csr \
-    -subj /C=US/ST=CA/L=Norm/O=TrafficServer/OU=Test/CN=${name}.com
+    -subj /C=US/ST=CA/L=Norm/O=TrafficServer/OU=Test/CN=${name}
   $OPENSSL x509 -req -days 365 \
     -in ${name}.csr -signkey ${name}.key -out ${name}.crt
   cat ${name}.crt ${name}.key > ${name}.pem
 }
-makecertv2 "test"
+makecertv2 "test.com"
 

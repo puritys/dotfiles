@@ -13,6 +13,7 @@ _encode() {
 if [ "x" == "x$1" ];then
     echo -e "No Input\n"
 else
+    echo -e "\n"
     _encode $1
     echo -e "\n"
 fi
