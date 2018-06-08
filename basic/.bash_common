@@ -163,6 +163,7 @@ setTerm() {
 }
 
 ssh() {
+    title=$*
     if [ -f "/usr/bin/tmux" ]; then
         tmux="/usr/bin/tmux";
     elif [ -f "/usr/local/bin/tmux" ]; then
@@ -170,8 +171,11 @@ ssh() {
     fi
     if [ "x" != "x$tmux" ]; then
         if [[ "$(ps -p $(ps -p $$ -o ppid=) -o comm=)" == *"tmux"* ]]; then
-            $tmux rename-window "$*"
+            echo "rename"
+            $tmux rename-window "$title"
             #$tmux set-window-option automatic-rename "on" 1>/dev/null
+        else
+            echo -ne "\ek${title}\e\\"
         fi
     fi
 
