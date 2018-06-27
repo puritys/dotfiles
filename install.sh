@@ -246,7 +246,7 @@ if [ ! -d ~/.eclim/ ];  then mkdir ~/.eclim/; fi
 if [ "x$INIT" != "x" ] || [ "x$installFZF" != "x" ];  then
     if [ ! -d ~/.sh_tool ]; then
         mkdir ~/.sh_tool
-        git clone --depth 1 https://github.com/junegunn/fzf.git ~/.sh_tool/fzf
+        git clone --depth 1 git@github.com:junegunn/fzf.git ~/.sh_tool/fzf
         ~/.sh_tool/fzf/install --all
         ## append (cat ~/machine_list.txt | command grep -v '#' | sed -e 's/^/host /') \  ~/.sh_tool/fzf/shell/completion.bash : _fzf_complete_ssh
 
@@ -254,6 +254,11 @@ if [ "x$INIT" != "x" ] || [ "x$installFZF" != "x" ];  then
         # ------------
         # Install fasd cd
         # ------------
+        if [ "x" = "x`command -v wget`" ]; then
+            if [ "x" != "x`command -v yum`" ]; then
+                sudo yum install -y wget
+            fi
+        fi
         cd ~/.sh_tool/ ; wget https://github.com/clvv/fasd/tarball/1.0.1
         tar -zxvf 1.0.1
         cd clvv-fasd-4822024; PREFIX=$HOME make install
@@ -272,11 +277,11 @@ if [ "x$INIT" != "x" ] || [ "x$installFZF" != "x" ];  then
     # Install ag
     # -----------
     echo -e "Install ag \n"
-    if [ "x" == "x`command -v ag`" ]; then
+    if [ "x" == "x`command -v /usr/local/bin/ag`" ]; then
         installedAg=0
         if [ -f /etc/redhat-release ]; then
             v=`cat /etc/redhat-release`
-            if [[ $v == *"7."* ]]; then
+            if [[ "$v" == *"7."* ]]; then
                 sudo yum install -y the_silver_searcher
                 installedAg=1
             fi
@@ -301,7 +306,7 @@ if [ "x$INIT" != "x" ] || [ "x$installBashIt" != "x" ];  then
     # Install bash-it
     # ------------
 
-    git clone --depth=1 https://github.com/Bash-it/bash-it.git ~/.bash_it
+    git clone --depth=1 git@github.com:Bash-it/bash-it.git ~/.bash_it
     ~/.bash_it/install.sh --no-modify-config --silent
 
     export BASH_IT="$HOME/.bash_it"
