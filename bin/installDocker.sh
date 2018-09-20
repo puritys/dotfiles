@@ -22,7 +22,7 @@ if [[ $os == *"centos"* ]]; then
     sudo curl --tlsv1.2 -L https://github.com/docker/compose/releases/download/1.21.2/docker-compose-$(uname -s)-$(uname -m) -o /usr/local/bin/docker-compose
     sudo chmod +x /usr/local/bin/docker-compose
 
-elif [[ $str == *"rhel"* ]]; then
+elif [[ $os == *"rhel"* ]]; then
     # RHEL
     sudo yum -y install docker docker-registry
     sudo service docker start
