@@ -47,7 +47,7 @@ if [ "x" != "x$remoteHost" ]; then
 
     scp vim-snipmate/*.snippets $remoteHost:~/.vim/plugged/vim-snipmate/snippets/
     scp -r vim/colors vim/autoload vim/plugin $remoteHost:~/.vim/
-    scp -r ~/.vim/plugged remoteHost:~/.vim/
+    scp -r ~/.vim/plugged $remoteHost:~/.vim/
     exit 1
 fi
 
@@ -98,10 +98,11 @@ sudo cp bin/*.sh  /usr/local/bin/puritys/
 if [ "x$installYouCompleteMe" == "x1" ]; then
 if [ ! -d ~/.vim/plugged/YouCompleteMe ]; then
     echo "Install YouCompleteMe: need cmake and python-devel-2.7 or 3 "
-    #if [ -f /usr/bin/yum ];then
+    if [ -f /usr/bin/yum ];then
+        sudo yum -y install cmake
     #    sudo yum -y install https://centos7.iuscommunity.org/ius-release.rpm
     #    sudo yum install build-essential cmake python-devel python3-devel
-    #fi
+    fi
     git clone git@github.com:Valloric/YouCompleteMe.git ~/.vim/plugged/YouCompleteMe
     cd ~/.vim/plugged/YouCompleteMe
     git submodule update --init --recursive
