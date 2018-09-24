@@ -40,8 +40,8 @@ Plug '2072/PHP-Indenting-for-VIm', {'for': 'php'}
 " -------------
 " Auto Complete
 " -------------
-"Plugin 'ervandew/supertab'
-"Plugin 'Valloric/YouCompleteMe'
+"Plug 'ervandew/supertab'
+Plug 'Valloric/YouCompleteMe'
 Plug '1995eaton/vim-better-javascript-completion', {'for': 'javascript'}
 Plug 'shawncplus/phpcomplete.vim', {'for': 'php'} 
 
@@ -63,14 +63,15 @@ Plug 'vim-syntastic/syntastic' " syntax check
 
 
 " others
-"Plugin 'takac/vim-hardtime' " prevent repeat typing
-"Plugin 'Raimondi/delimitMate'
-"Plugin 'pangloss/vim-javascript' " javascript hightlight, better indent
-"Plugin 'groenewege/vim-less'    " less highlight, indent, autocomplete
-"Plugin 'fatih/vim-go'           " Golang
-"Plugin 'airblade/vim-gitgutter'
+"Plug 'takac/vim-hardtime' " prevent repeat typing
+Plug 'jiangmiao/auto-pairs'
+"Plug 'Raimondi/delimitMate'
+"Plug 'pangloss/vim-javascript' " javascript hightlight, better indent
+"Plug 'groenewege/vim-less'    " less highlight, indent, autocomplete
+"Plug 'fatih/vim-go'           " Golang
+"Plug 'airblade/vim-gitgutter'
 " Menu to remember command
-"Plugin 'skywind3000/quickmenu.vim'
+"Plug 'skywind3000/quickmenu.vim'
 
 
 call plug#end()
@@ -247,16 +248,32 @@ let g:syntastic_mode_map={'mode': 'passive'}
 
 
 
-""" YouCompleteMe
-"let g:ycm_auto_trigger = 1
-"let g:ycm_min_num_of_chars_for_completion = 1
-"let g:ycm_min_num_identifier_candidate_chars = 0
-"let g:ycm_max_num_candidates = 50 " maxmum
-""""let g:ycm_filetype_whitelist = { '*': 1 }
-""let g:ycm_show_diagnostics_ui = 1
-""let g:ycm_complete_in_comments = 1
-""let g:ycm_key_list_previous_completion = ['<C-TAB>']
-"let g:ycm_key_invoke_completion = '<C-d>'
+"""""""""""""""""
+" YouCompleteMe "
+"""""""""""""""""
+if !empty(glob("~/.vim/plugged/YouCompleteMe"))
+    let g:ycm_auto_trigger = 1
+    let g:ycm_min_num_of_chars_for_completion = 1
+    "let g:ycm_min_num_identifier_candidate_chars = 0
+    "let g:ycm_max_num_candidates = 50 " maxmum
+    ""let g:ycm_filetype_whitelist = { '*': 1 }
+    ""let g:ycm_show_diagnostics_ui = 1
+    ""let g:ycm_complete_in_comments = 1
+    ""let g:ycm_key_list_previous_completion = ['<C-TAB>']
+    "let g:ycm_key_invoke_completion = '<C-d>'
+    let g:ycm_key_list_select_completion = ['<TAB>', '<Down>']
+    let g:ycm_key_list_stop_completion = ['<CR>']
+    let g:ycm_disable_for_files_larger_than_kb = 1000
+
+    " debug :YcmDebugInfo
+    let g:ycm_keep_logfiles = 1 
+    let g:ycm_log_level = 'debug'
+endif
+
+"""""""""""""""""
+" Autopair"
+"""""""""""""""""
+let g:AutoPairsMapCR = 0
 
 "" js complete
 let g:vimjs#casesensistive = 1

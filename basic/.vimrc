@@ -219,12 +219,12 @@ endfunction
 
 
 if has("autocmd")
-  "autocmd Filetype java setlocal omnifunc=javacomplete#Complete
-  autocmd Filetype php setlocal omnifunc=phpcomplete#CompletePHP
-  autocmd Filetype cpp setlocal omnifunc=omni#cpp#complete#Main
-  autocmd Filetype js  setlocal omnifunc=js#CompleteJS
-  autocmd Filetype javascript  setlocal omnifunc=js#CompleteJS
-  autocmd Filetype go setlocal omnifunc=gocomplete#Complete
+" autocmd Filetype java setlocal omnifunc=javacomplete#Complete
+"  autocmd Filetype php setlocal omnifunc=phpcomplete#CompletePHP
+"  autocmd Filetype cpp setlocal omnifunc=omni#cpp#complete#Main
+"  autocmd Filetype js  setlocal omnifunc=js#CompleteJS
+"  autocmd Filetype javascript  setlocal omnifunc=js#CompleteJS
+"  autocmd Filetype go setlocal omnifunc=gocomplete#Complete
 
   " whitespace
   autocmd BufRead,BufNew * match ExtraWhitespace /\t\+\| \s\+$/

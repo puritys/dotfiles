@@ -13,7 +13,7 @@ while true; do
       -ujc | --updateJaveConfig ) UPDATE_JAVA_CONFIG=true; shift 1 ;;
       -k | --docker) DOCKER=true; shift 1;;
       -i | --init) INIT=true; installVimPlugin=1; shift 1;;
-      -s | --special) installYouCompleteMe=1; shift 1;;
+      --autoComplete) installYouCompleteMe=1; shift 1;;
       -f | --fzf) installFZF=1; shift 1;;
       -b | --bashIt) installBashIt=1; shift 1;;
       --host) remoteHost=$2; shift 2;;
@@ -47,6 +47,7 @@ if [ "x" != "x$remoteHost" ]; then
 
     scp vim-snipmate/*.snippets $remoteHost:~/.vim/plugged/vim-snipmate/snippets/
     scp -r vim/colors vim/autoload vim/plugin $remoteHost:~/.vim/
+    scp -r ~/.vim/plugged remoteHost:~/.vim/
     exit 1
 fi
 
