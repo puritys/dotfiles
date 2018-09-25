@@ -9,5 +9,6 @@ alias docker_node="node_fn"
 alias docker_npm="npm_fn"
 alias docker_php="php_fn"
 alias docker_php7="php7_fn"
+alias docker_vim="vim_fn"
 
 

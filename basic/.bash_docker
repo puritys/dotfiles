@@ -150,4 +150,18 @@ function npm_fn() {
     $command
 }
 
+function vim_fn() {
+    common_docker_set_env "tool"
+    command=" $@ "
+    pwd=`pwd`
+    get_home
+    r=`docker inspect puritys-vim 2>&1`
+    if [[ $r == *"No such object"* ]]; then
+        docker run -d -t --name puritys-vim -v /:/src  -w /src puritys/vim
+    fi
+    command="docker exec -it -w /src$pwd puritys-vim /usr/bin/vim -p $command"
+    echo $command
+    $command
+}
+
 
