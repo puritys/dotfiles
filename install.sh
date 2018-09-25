@@ -103,7 +103,7 @@ if [ ! -d ~/.vim/plugged/YouCompleteMe ]; then
     #    sudo yum -y install https://centos7.iuscommunity.org/ius-release.rpm
     #    sudo yum install build-essential cmake python-devel python3-devel
     fi
-    git clone git@github.com:Valloric/YouCompleteMe.git ~/.vim/plugged/YouCompleteMe
+    git clone https://github.com/Valloric/YouCompleteMe.git ~/.vim/plugged/YouCompleteMe
     cd ~/.vim/plugged/YouCompleteMe
     git submodule update --init --recursive
     python2 ./install.py --all
