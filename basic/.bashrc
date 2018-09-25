@@ -1,6 +1,7 @@
 # .bashrc : do not echo any thing
 #echo "=== Load ~/.bashrc ==="
 
+export DOCKER_ID_USER=$(whoami)
 export PLATFORM=$(uname -s)
 export SHELL=/bin/bash
 export TERM=xterm-256color

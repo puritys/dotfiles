@@ -99,14 +99,14 @@ if [ "x$installYouCompleteMe" == "x1" ]; then
 if [ ! -d ~/.vim/plugged/YouCompleteMe ]; then
     echo "Install YouCompleteMe: need cmake and python-devel-2.7 or 3 "
     if [ -f /usr/bin/yum ];then
-        sudo yum -y install cmake
+        sudo yum -y install cmake python-devel
     #    sudo yum -y install https://centos7.iuscommunity.org/ius-release.rpm
     #    sudo yum install build-essential cmake python-devel python3-devel
     fi
     git clone https://github.com/Valloric/YouCompleteMe.git ~/.vim/plugged/YouCompleteMe
     cd ~/.vim/plugged/YouCompleteMe
     git submodule update --init --recursive
-    python2 ./install.py --all
+    python2 ./install.py --clang-completer # or --all  --clang-completer --gocode-completer --java-completer
 fi
 fi
 
