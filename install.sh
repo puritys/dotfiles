@@ -94,6 +94,10 @@ sudo mkdir -p /usr/local/bin/puritys/
 sudo cp bin/*.pl  /usr/local/bin/puritys/
 sudo cp bin/*.sh  /usr/local/bin/puritys/
 
+if [ ! -d /tmp/fzf_session ]; then
+    mkdir -p /tmp/fzf_session
+fi
+
 # Install youCompleteMe
 if [ "x$installYouCompleteMe" == "x1" ]; then
 if [ ! -d ~/.vim/plugged/YouCompleteMe ]; then

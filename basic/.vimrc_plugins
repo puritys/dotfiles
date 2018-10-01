@@ -22,6 +22,8 @@ Plug 'haya14busa/incsearch.vim' " better search plugin
 "Plugin 'ntpeters/vim-better-whitespace' " show tail whitespace
 Plug 'ap/vim-css-color' " show color for color ticket
 
+Plug 'tpope/vim-obsession'
+Plug 'dominickng/fzf-session.vim'
 
 " ----------------
 " Code change Plugins
@@ -306,4 +308,6 @@ let g:phpcomplete_min_num_of_chars_for_namespace_completion = 1
 let g:phpcomplete_cache_taglists = 1
 let g:phpcomplete_enhance_jump_to_definition = 0
 
+" fzf-session
+let g:fzf_session_path="/tmp/fzf_session"
 

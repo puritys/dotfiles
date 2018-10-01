@@ -143,7 +143,7 @@ nmap <ESC>[B <C-w>l " ctrl + down arrow : move to up split window
 :nmap :T :t
 :nmap :W :w
 :nmap :Q :q
-
+:nmap :ss<CR> :Sessions<CR>
 
 " plugin hot key
 nmap ,tree :NERDTree<CR> " NERDTree plugin
