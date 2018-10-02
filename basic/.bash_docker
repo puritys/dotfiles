@@ -155,11 +155,14 @@ function vim_fn() {
     command=" $@ "
     pwd=`pwd`
     get_home
-    r=`docker inspect puritys-vim 2>&1`
-    if [[ $r == *"No such object"* ]]; then
-        docker run -d -t --name puritys-vim -v /:/src  -w /src puritys/vim
-    fi
-    command="docker exec -it -w /src$pwd puritys-vim /usr/bin/vim -p $command"
+    command="docker run -ti -v /:/src  -v /tmp:/tmp -w /src$pwd puritys/vim /usr/bin/vim -p $command"
+    # --detach-keys 'ctrl-z'
+    #r=`docker inspect puritys-vim 2>&1`
+    #if [[ $r == *"No such object"* ]]; then
+    #    # --detach-keys 'ctrl-z'
+    #    docker run -d -t  --name puritys-vim  -v /:/src  -v /tmp:/tmp -w /src$pwd puritys/vim
+    #fi
+    #command="docker exec -it -w /src$pwd puritys-vim /usr/bin/vim -p $command"
     echo $command
     $command
 }
