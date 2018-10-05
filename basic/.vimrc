@@ -214,7 +214,12 @@ function! Tab_Or_Complete()
     return "\<Tab>"
   endif
 endfunction
-:inoremap <C-d> <C-R>=Tab_Or_Complete()<CR>
+
+if !empty(glob("~/.vim/plugged/YouCompleteMe"))
+    imap <C-d> <Plug>snipMateTrigger
+else
+    :inoremap <C-d> <C-R>=Tab_Or_Complete()<CR>
+endif
 "":set dictionary="/usr/dict/words"
 
 

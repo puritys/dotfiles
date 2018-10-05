@@ -155,16 +155,27 @@ function vim_fn() {
     command=" $@ "
     pwd=`pwd`
     get_home
-    command="docker run -ti -v /:/src  -v /tmp:/tmp -w /src$pwd puritys/vim /usr/bin/vim -p $command"
+    #command="docker run -ti -v /:/src  -v /tmp:/tmp -w /src$pwd puritys/vim /bin/bash -c \"source /root/.bash_profile ; /usr/bin/vim -p $command \""
+
     # --detach-keys 'ctrl-z'
-    #r=`docker inspect puritys-vim 2>&1`
-    #if [[ $r == *"No such object"* ]]; then
-    #    # --detach-keys 'ctrl-z'
-    #    docker run -d -t  --name puritys-vim  -v /:/src  -v /tmp:/tmp -w /src$pwd puritys/vim
-    #fi
-    #command="docker exec -it -w /src$pwd puritys-vim /usr/bin/vim -p $command"
+    r=`docker inspect puritys-vim 2>&1`
+    if [[ $r == *"No such object"* ]]; then
+        # --detach-keys 'ctrl-z'
+        docker run -d -t  --name puritys-vim  -v /:/src  -v /tmp:/tmp -w /src$pwd puritys/vim
+    fi
+    command="docker exec -it -w /src$pwd puritys-vim /bin/bash -c \"source /root/.bash_profile ; /usr/bin/vim -p $command\""
     echo $command
-    $command
+    eval $command
 }
+
+function vim_in_fn() {
+    common_docker_set_env "tool"
+    command=" $@ "
+    pwd=`pwd`
+    command="docker run -ti -v /:/src  -v /tmp:/tmp -w /src$pwd puritys/vim /bin/bash"
+    echo $command
+    eval $command
+}
+
 
 

@@ -66,8 +66,7 @@ Plug 'vim-syntastic/syntastic' " syntax check
 
 " others
 "Plug 'takac/vim-hardtime' " prevent repeat typing
-Plug 'jiangmiao/auto-pairs'
-"Plug 'Raimondi/delimitMate'
+Plug 'Raimondi/delimitMate'
 "Plug 'pangloss/vim-javascript' " javascript hightlight, better indent
 "Plug 'groenewege/vim-less'    " less highlight, indent, autocomplete
 "Plug 'fatih/vim-go'           " Golang
