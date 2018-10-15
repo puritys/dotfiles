@@ -73,8 +73,10 @@ host=MacMini
 | Yggdroot/indentLine        |               | Display indent line                       |
 | vim-scripts/PDV--phpDocumentor-for-Vim| doc | generate php document |
 | nathanaelkane/vim-indent-guides | :indent<Enter> | toggle indent guide |
-| Valloric/YouCompleteMe | [Ctrl+d]| trigger auto complete |
-| dominickng/fzf-session.vim|:ss | fuzzle find vim session|
+| Valloric/YouCompleteMe | [Ctrl+d] | trigger auto complete |
+| dominickng/fzf-session.vim|:ss    | fuzzle find vim session |
+
+
 Attentions.
 * ctags is needed by vim-nerdtree-tabs and shawncplus/phpcomplete.vim.
 
