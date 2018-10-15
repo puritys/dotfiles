@@ -138,7 +138,7 @@ snippet /*
 	 * ${1}
 	 */ 
 
-snippet curl
+snippet curl_init
 	$c = curl_init();
 	curl_setopt($c, CURLOPT_URL, $url);
 	curl_setopt($c, CURLOPT_RETURNTRANSFER, true);
@@ -146,6 +146,14 @@ snippet curl
 	$data = curl_exec($c);
 	$httpCode = curl_getinfo($c, CURLINFO_HTTP_CODE);
 	curl_close($c);
+
+snippet curl_post
+	curl_setopt($c, CURLOPT_POST, true);
+	curl_setopt($c, CURLOPT_POSTFIELDS, http_build_query(array("x"=>"v"))); 
+
+snippet curl_header
+	curl_setopt($ch, CURLOPT_HTTPHEADER, array("cookie: xxx"));
+
 
 snippet empty
 	empty

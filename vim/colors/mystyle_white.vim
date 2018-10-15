@@ -21,7 +21,7 @@ set fillchars=
 " ------
 " define basic color
 " -----
-hi OptionSel cterm=NONE ctermfg=255 ctermbg=234 guifg=#eeeeee guibg=#1c1c1c
+hi OptionSel cterm=NONE ctermfg=255 ctermbg=18 guifg=#eeeeee guibg=#000087
 hi Option cterm=NONE ctermfg=240 ctermbg=253 guifg=#585858 guibg=#dadada
 hi OptionHeavy cterm=NONE ctermfg=253 ctermbg=243 guifg=#dadada guibg=#767676
 
@@ -108,7 +108,6 @@ hi! link Function  TextType
 " ( ) {}  
 hi Delimiter    cterm=NONE  ctermfg=18  ctermbg=NONE 
 hi Underlined   cterm=underline ctermfg=39  ctermbg=NONE  
-
 
 "unknow
 hi! link SpecialKey Unknown
@@ -215,3 +214,13 @@ hi! link cPreCondit TextSub
 hi! link javaScriptFunction TextMain
 hi! link javaScriptBoolean TextBold
 hi! link javaScriptNumber Constant
+
+
+" ===============
+"  Plugin
+" ===============
+
+" indent guide
+hi IndentGuidesOdd cterm=NONE ctermfg=NONE ctermbg=254 guifg=NONE guibg=#e4e4e4
+hi IndentGuidesEven cterm=NONE ctermfg=NONE ctermbg=252 guifg=NONE guibg=#d0d0d0
+

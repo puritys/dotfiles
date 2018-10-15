@@ -21,6 +21,7 @@ Plug 'haya14busa/incsearch.vim' " better search plugin
 "Plug 'airblade/vim-gitgutter'
 "Plugin 'ntpeters/vim-better-whitespace' " show tail whitespace
 Plug 'ap/vim-css-color' " show color for color ticket
+Plug 'nathanaelkane/vim-indent-guides'
 
 Plug 'tpope/vim-obsession'
 Plug 'dominickng/fzf-session.vim'
@@ -253,7 +254,7 @@ let g:syntastic_mode_map={'mode': 'passive'}
 " YouCompleteMe "
 """""""""""""""""
 if !empty(glob("~/.vim/plugged/YouCompleteMe"))
-    let g:ycm_auto_trigger = 1
+    let g:ycm_auto_trigger = 0
     let g:ycm_min_num_of_chars_for_completion = 1
     "let g:ycm_min_num_identifier_candidate_chars = 0
     "let g:ycm_max_num_candidates = 50 " maxmum
@@ -261,14 +262,14 @@ if !empty(glob("~/.vim/plugged/YouCompleteMe"))
     ""let g:ycm_show_diagnostics_ui = 1
     ""let g:ycm_complete_in_comments = 1
     ""let g:ycm_key_list_previous_completion = ['<C-TAB>']
-    "let g:ycm_key_invoke_completion = '<C-d>'
+    let g:ycm_key_invoke_completion = '<C-d>'
     let g:ycm_key_list_select_completion = ['<TAB>', '<Down>']
     let g:ycm_key_list_stop_completion = ['<CR>']
     let g:ycm_disable_for_files_larger_than_kb = 1000
 
     " debug :YcmDebugInfo
-    let g:ycm_keep_logfiles = 1 
-    let g:ycm_log_level = 'debug'
+    "let g:ycm_keep_logfiles = 1 
+    "let g:ycm_log_level = 'debug'
 endif
 
 """""""""""""""""
@@ -309,4 +310,12 @@ let g:phpcomplete_enhance_jump_to_definition = 0
 
 " fzf-session
 let g:fzf_session_path="/tmp/fzf_session"
+
+
+
+if !empty(glob("~/.vim/plugged/vim-indent-guides"))
+    let g:indent_guides_auto_colors = 0
+    let g:indent_guides_guide_size = 1
+    map :indent<CR> :IndentGuidesToggle<CR>
+endif
 
