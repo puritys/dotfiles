@@ -20,7 +20,7 @@ alias urlencode='sh /usr/local/bin/puritys/urlencode.sh '
 alias urldecode='sh /usr/local/bin/puritys/urldecode.sh '
 alias so='source ~/.bash_profile'
 
-if [ command -v "ag" ]; then
+if [ -f /usr/bin/ag ]; then
     alias grep='ag --color-line-number "38;5;241" --color-match "38;5;166" --color-path "38;5;29" '
     alias Grep='ag --color-line-number "38;5;241" --color-match "38;5;166" --color-path "38;5;29" '
     alias ag='ag --color-line-number "38;5;241" --color-match "38;5;166" --color-path "38;5;29" '
