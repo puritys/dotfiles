@@ -216,7 +216,7 @@ function! Tab_Or_Complete()
 endfunction
 
 if !empty(glob("~/.vim/plugged/YouCompleteMe"))
-
+    " set C-d in vimrc_plugins
 else
     :inoremap <C-d> <C-R>=Tab_Or_Complete()<CR>
 endif
