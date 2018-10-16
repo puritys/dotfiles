@@ -157,11 +157,10 @@ function vim_fn() {
     get_home
     #command="docker run -ti -v /:/src  -v /tmp:/tmp -w /src$pwd puritys/vim /bin/bash -c \"source /root/.bash_profile ; /usr/bin/vim -p $command \""
 
-    # --detach-keys 'ctrl-z'
-    r=`docker inspect puritys-vim 2>&1`
-    if [[ $r == *"No such object"* ]]; then
-        # --detach-keys 'ctrl-z'
-        docker run -d -t  --name puritys-vim  -v /:/src  -v /tmp:/tmp -w /src$pwd puritys/vim
+    r=`docker ps --filter="name=puritys-vim" 2>&1 | wc -l`
+    if [ "x1" == "x$r" ]; then
+        docker rm puritys-vim 2>&1
+        docker run -d -t  --name puritys-vim  -v /:/src -v ~/.m2:/root/.m2 -v /tmp:/tmp -w /src$pwd puritys/vim
     fi
     command="docker exec -it -w /src$pwd puritys-vim /bin/bash -c \"source /root/.bash_profile ; /usr/bin/vim -p $command\""
     echo $command
@@ -175,11 +174,11 @@ function vim_in_fn() {
 
     # Create a docker container each time
     # command="docker run -ti -v /:/src  -v /tmp:/tmp -w /src$pwd puritys/vim /bin/bash"
-
-    r=`docker inspect puritys-vim 2>&1`
-    if [[ $r == *"No such object"* ]]; then
+    r=`docker ps --filter="name=puritys-vim" 2>&1 | wc -l`
+    if [ "x1" == "x$r" ]; then
         # --detach-keys 'ctrl-z'
-        docker run -d -t  --name puritys-vim  -v /:/src  -v /tmp:/tmp -w /src$pwd puritys/vim
+        docker rm puritys-vim 2>&1
+        docker run -d -t --rm --name puritys-vim  -v /:/src  -v /tmp:/tmp -v ~/.m2:/root/.m2  -w /src$pwd puritys/vim
     fi
     command="docker exec -it -w /src$pwd puritys-vim /bin/bash "
 

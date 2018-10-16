@@ -171,7 +171,6 @@ if [ "x$JAVA" != "x" ] || [ "x$UPDATE_JAVA_CONFIG" != "x" ]; then
             exit 1
         fi
         if [ ! -d $HOME/.vim/Eclipse.app ]; then
-            # Add hostname into /etc/hosts. e.g. 127.0.0.1 xxxHost
             #http://www.eclipse.org/downloads/packages/eclipse-ide-java-ee-developers/mars2
             cd ~/ && wget http://mirror.rise.ph/eclipse/technology/epp/downloads/release/mars/2/eclipse-jee-mars-2-macosx-cocoa-x86_64.tar.gz
             if [ -d $HOME/.vim/eclipse ]; then rm -rf ~/.vim/eclipse; fi
@@ -181,9 +180,12 @@ if [ "x$JAVA" != "x" ] || [ "x$UPDATE_JAVA_CONFIG" != "x" ]; then
 
     else
         if [ ! -d $HOME/.vim/eclipse ]; then
-            # Add hostname into /etc/hosts. e.g. 127.0.0.1 xxxHost
             #http://www.eclipse.org/downloads/packages/eclipse-ide-java-ee-developers/mars2
-            cd ~/ && wget http://mirror.downloadvn.com/eclipse//technology/epp/downloads/release/mars/2/eclipse-jee-mars-2-linux-gtk-x86_64.tar.gz
+            fileId="1VEd_hsvWHcAJvcfP8lEv4vNTSCRkPCpl"
+            wget --save-cookies=/tmp/cookie "https://drive.google.com/uc?export=download&id=${fileId}" --output-document /tmp/g
+            #confirmId=`curl -c /tmp/cookie -s -L "https://drive.google.com/uc?export=download&id=${fileId}" | grep -o "confirm=[^&]*" | sed 's/confirm=//'`
+            confirmId=`cat /tmp/g | grep -o "confirm=[^&]*" | sed 's/confirm=//'`
+            cd ~/ && wget --load-cookies=/tmp/cookie --no-check-certificate "https://drive.google.com/uc?export=download&confirm=${confirmId}&id=1VEd_hsvWHcAJvcfP8lEv4vNTSCRkPCpl" --output-document eclipse-jee-mars-2-linux-gtk-x86_64.tar.gz
             if [ -d $HOME/.vim/eclipse ]; then rm -rf ~/.vim/eclipse; fi
             cd ~/ && tar -zxvf eclipse-jee-mars-2-linux-gtk-x86_64.tar.gz
             mv ~/eclipse ~/.vim/
