@@ -25,7 +25,6 @@ source $VIMRUNTIME/macros/matchit.vim
 set foldmethod=marker
 set tabpagemax=100
 
-colorscheme mystyle_white
 
 "出現水平線
 set cursorline
@@ -216,7 +215,7 @@ function! Tab_Or_Complete()
 endfunction
 
 if !empty(glob("~/.vim/plugged/YouCompleteMe"))
-    " set C-d in vimrc_plugins
+
 else
     :inoremap <C-d> <C-R>=Tab_Or_Complete()<CR>
 endif

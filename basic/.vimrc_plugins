@@ -27,6 +27,12 @@ Plug 'tpope/vim-obsession'
 Plug 'dominickng/fzf-session.vim'
 
 " ----------------
+" Themes
+" ----------------
+Plug 'dracula/vim', { 'as': 'dracula' }
+
+
+" ----------------
 " Code change Plugins
 " ----------------
 "http://vimcasts.org/episodes/aligning-text-with-tabular-vim/
@@ -82,6 +88,9 @@ call plug#end()
 " Plugin Settings "
 " =============== "
 
+
+""" Theme
+colors mystyle_white " dracula
 
 """" Git Gutter
 "map <F3> :GitGutterToggle<CR>
