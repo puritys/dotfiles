@@ -64,19 +64,18 @@ host=MacMini
 | vim-syntastic/syntastic        | sc       | syntax check                                        |
 | garbas/vim-snipmate            |          | Auto complete script                                |
 |1995eaton/vim-better-javascript-completion| |Javascript auto complete function|
-| Valloric/YouCompleteMe     |               | Auto complete function for c/c++/ruby/... |
+| Valloric/YouCompleteMe     |  [Ctrl+d]     | Auto complete function for c/c++/ruby/... |
 | google/vim-codefmt         |               | Auto fix java code formatter/indent       |
-| vim-airline/vim-airline    |               | Beautiful status bar and tab              |
+| vim-airline/vim-airline    |               | Beautiful status bar and tab(disabled)    |
 | godlygeek/tabular          | align,<Enter> | Auto align code                           |
 | vim-json-line-format       | ,jp ,jw       | JSON Parser (support unicode)             |
 | shawncplus/phpcomplete.vim |               | PHP Auto Complete                         |
 | Yggdroot/indentLine        |               | Display indent line                       |
 | vim-scripts/PDV--phpDocumentor-for-Vim| doc | generate php document |
 | nathanaelkane/vim-indent-guides | :indent<Enter> | toggle indent guide |
-| Valloric/YouCompleteMe | [Ctrl+d] | trigger auto complete |
 | dominickng/fzf-session.vim|:ss    | fuzzle find vim session |
-
-
+| tpope/vim-obsession       |       | session management|
+| scrooloose/nerdtree       |       | file/dir list         |
 Attentions.
 * ctags is needed by vim-nerdtree-tabs and shawncplus/phpcomplete.vim.
 
