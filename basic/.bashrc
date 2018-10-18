@@ -95,6 +95,7 @@ export FZF_DEFAULT_OPTS='
   --color light,hl:124,fg+:242,bg+:230,hl+:33
   --color info:52,prompt:245,spinner:245,pointer:245,marker:208
 '
+export _FASD_DATA=/tmp/.fasd
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 [ -d ~/.sh_tool/clvv-fasd-4822024/ ] && eval "$(fasd --init auto)"
 

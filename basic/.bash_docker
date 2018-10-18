@@ -177,8 +177,18 @@ function vim_in_fn() {
     r=`docker ps --filter="name=puritys-vim" 2>&1 | wc -l`
     if [ "x1" == "x$r" ]; then
         # --detach-keys 'ctrl-z'
+        mkdir -p ~/docker_tmp ~/docker_tmp/fzf_session
+        touch ~/docker_tmp/.bash_history
+
         docker rm puritys-vim 2>&1
-        docker run -d -t --rm --name puritys-vim  -v /:/src  -v /tmp:/tmp -v ~/.m2:/root/.m2  -w /src$pwd puritys/vim
+        docker run -d -t --rm --name puritys-vim  \
+            -e VIM_THEME=mystyle_white \
+            -v /:/src  \
+            -v ~/docker_tmp:/tmp \
+            -v ~/docker_tmp/.bash_history:/root/.bash_history \
+            -v ~/.m2:/root/.m2 \
+            -w /src$pwd \
+            puritys/vim
     fi
     command="docker exec -it -w /src$pwd puritys-vim /bin/bash "
 

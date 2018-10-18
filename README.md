@@ -73,7 +73,7 @@ host=MacMini
 | Yggdroot/indentLine        |               | Display indent line                       |
 | vim-scripts/PDV--phpDocumentor-for-Vim| doc | generate php document |
 | nathanaelkane/vim-indent-guides | :indent<Enter> | toggle indent guide |
-| dominickng/fzf-session.vim|:ss    | fuzzle find vim session |
+| dominickng/fzf-session.vim|:ss, :Session, :SDelete   | fuzzle find vim session |
 | tpope/vim-obsession       |       | session management|
 | scrooloose/nerdtree       |       | file/dir list         |
 Attentions.
