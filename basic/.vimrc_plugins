@@ -30,7 +30,7 @@ Plug 'dominickng/fzf-session.vim'
 " Themes
 " ----------------
 Plug 'dracula/vim', { 'as': 'dracula' }
-
+Plug 'junegunn/seoul256.vim'
 
 " ----------------
 " Code change Plugins
@@ -90,7 +90,7 @@ call plug#end()
 
 
 """ Theme
-colors mystyle_white " dracula
+colors mystyle_white "dracula, seoul256, seoul256-light
 
 """" Git Gutter
 "map <F3> :GitGutterToggle<CR>

@@ -232,6 +232,7 @@ if has("autocmd")
 
   " whitespace
   autocmd BufRead,BufNew * match ExtraWhitespace /\t\+\| \s\+$/
+    hi ExtraWhitespace cterm=NONE ctermfg=NONE ctermbg=252 guifg=NONE guibg=#d0d0d0
 endif
 
 
