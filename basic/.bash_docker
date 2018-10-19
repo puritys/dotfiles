@@ -181,7 +181,7 @@ function vim_in_fn() {
         touch ~/docker_tmp/.bash_history
 
         docker rm puritys-vim 2>&1
-        docker run -d -t --rm --name puritys-vim  \
+        docker run -d -t --name puritys-vim  \
             -e VIM_THEME=mystyle_white \
             -v /:/src  \
             -v ~/docker_tmp:/tmp \
@@ -190,11 +190,48 @@ function vim_in_fn() {
             -w /src$pwd \
             puritys/vim
     fi
-    command="docker exec -it -w /src$pwd puritys-vim /bin/bash "
+    dockerVersion=`docker -v |grep -o "[0-9\.]*" | head -n 1`
+    vercomp $dockerVersion 1.7.99999
+    if [ "x2" == "x$verRet" ]; then
+        command="docker exec -it puritys-vim /bin/bash ";
+    else
+        command="docker exec -it -w /src$pwd puritys-vim /bin/bash ";
+    fi
 
     echo $command
     eval $command
 }
 
 
-
+vercomp () {
+    if [[ $1 == $2 ]]
+    then
+        return 0
+    fi
+    local IFS=.
+    local i ver1=($1) ver2=($2)
+    # fill empty fields in ver1 with zeros
+    for ((i=${#ver1[@]}; i<${#ver2[@]}; i++))
+    do
+        ver1[i]=0
+    done
+    for ((i=0; i<${#ver1[@]}; i++))
+    do
+        if [[ -z ${ver2[i]} ]]
+        then
+            # fill empty fields in ver2 with zeros
+            ver2[i]=0
+        fi
+        if ((10#${ver1[i]} > 10#${ver2[i]}))
+        then
+            verRet=1
+            return 1
+        fi
+        if ((10#${ver1[i]} < 10#${ver2[i]}))
+        then
+            verRet=2
+            return 2
+        fi
+    done
+    return 0
+}
