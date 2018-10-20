@@ -184,6 +184,7 @@ function vim_in_fn() {
         docker run -d -t --name puritys-vim  \
             -e VIM_THEME=mystyle_white \
             -v /:/src  \
+            -v ~/:/puritys \
             -v ~/docker_tmp:/tmp \
             -v ~/docker_tmp/.bash_history:/root/.bash_history \
             -v ~/.m2:/root/.m2 \

@@ -69,7 +69,7 @@ Plug 'thinca/vim-quickrun'
 " Others
 " ----------------
 Plug 'vim-syntastic/syntastic' " syntax check
-
+Plug 'w0rp/ale'
 
 " others
 "Plug 'takac/vim-hardtime' " prevent repeat typing
@@ -327,4 +327,12 @@ if !empty(glob("~/.vim/plugged/vim-indent-guides"))
     let g:indent_guides_guide_size = 1
     map :indent<CR> :IndentGuidesToggle<CR>
 endif
+
+" --------------
+" ale 
+" --------------
+let g:ale_lint_delay = 1000
+let g:airline#extensions#ale#enabled=0
+let g:ale_sign_warning = 'W>'
+let g:ale_sign_error = 'E>'
 

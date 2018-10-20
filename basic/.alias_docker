@@ -12,4 +12,4 @@ alias docker_php7="php7_fn"
 alias dvim="vim_fn"
 alias dv="vim_in_fn"
 alias dps="docker ps --no-trunc"
-
+alias docker_clean="docker  images |grep none | awk '{print \$3}' | xargs -t -n 1 docker rmi -f ; docker rm -v \$(docker ps -a -q -f status=exited)"
