@@ -183,6 +183,7 @@ function vim_in_fn() {
         docker rm puritys-vim 2>&1
         docker run -d -t --name puritys-vim  \
             -e VIM_THEME=mystyle_white \
+            -v $(readlink -f $SSH_AUTH_SOCK):/ssh-agent -e SSH_AUTH_SOCK=/ssh-agent \
             -v /:/src  \
             -v ~/:/puritys \
             -v ~/docker_tmp:/tmp \
