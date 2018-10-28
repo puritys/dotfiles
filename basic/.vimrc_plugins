@@ -22,6 +22,7 @@ Plug 'haya14busa/incsearch.vim' " better search plugin
 "Plugin 'ntpeters/vim-better-whitespace' " show tail whitespace
 Plug 'ap/vim-css-color' " show color for color ticket
 Plug 'nathanaelkane/vim-indent-guides'
+"Plug 'itchyny/lightline.vim'
 
 Plug 'tpope/vim-obsession'
 Plug 'dominickng/fzf-session.vim'
@@ -335,4 +336,36 @@ let g:ale_lint_delay = 1000
 let g:airline#extensions#ale#enabled=0
 let g:ale_sign_warning = 'W>'
 let g:ale_sign_error = 'E>'
+
+
+" --------------
+" light line
+" --------------
+
+if !empty(glob("~/.vim/plugged/lightline.vim"))
+
+let g:lightline = {
+      \ 'colorscheme': 'jellybeans',
+      \ 'active': {
+      \   'left': [ [ 'mode', 'paste' ],
+      \             [ 'readonly', 'filename' ] ],
+      \ },
+      \   'right': [ [ 'lineinfo' ],
+      \              [ 'percent' ],
+      \              [ 'fileformat', 'fileencoding', 'filetype', 'charvaluehex' ] ],
+      \ 'component_function': {
+      \   'filename': 'LightlineFilename',
+      \ },
+      \ }
+let g:lightline.enable = {
+            \ 'statusline': 1,
+            \ 'tabline': 1
+            \ }
+endif
+
+function! LightlineFilename()
+  let filename = expand('%:t') !=# '' ? expand('%:t') : '[No Name]'
+  let modified = &modified ? ' +' : ''
+  return filename . modified
+endfunction
 

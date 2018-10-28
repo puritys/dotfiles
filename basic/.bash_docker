@@ -150,19 +150,15 @@ function npm_fn() {
     $command
 }
 
-function vim_fn() {
+function vim_ssh_fn() {
     common_docker_set_env "tool"
+    port="39901"
     command=" $@ "
     pwd=`pwd`
-    get_home
-    #command="docker run -ti -v /:/src  -v /tmp:/tmp -w /src$pwd puritys/vim /bin/bash -c \"source /root/.bash_profile ; /usr/bin/vim -p $command \""
+    vim_start
+    vercomp $dockerVersion 1.7.99999
+    command="ssh -t -e ] root@localhost -p$port \"cd /src$pwd && vim \"";
 
-    r=`docker ps --filter="name=puritys-vim" 2>&1 | wc -l`
-    if [ "x1" == "x$r" ]; then
-        docker rm puritys-vim 2>&1
-        docker run -d -t  --name puritys-vim  -v /:/src -v ~/.m2:/root/.m2 -v /tmp:/tmp -w /src$pwd puritys/vim
-    fi
-    command="docker exec -it -w /src$pwd puritys-vim /bin/bash -c \"source /root/.bash_profile ; /usr/bin/vim -p $command\""
     echo $command
     eval $command
 }
@@ -179,18 +175,8 @@ function vim_in_fn() {
         # --detach-keys 'ctrl-z'
         mkdir -p ~/docker_tmp ~/docker_tmp/fzf_session
         touch ~/docker_tmp/.bash_history
-
+        vim_start
         docker rm puritys-vim 2>&1
-        docker run -d -t --name puritys-vim  \
-            -e VIM_THEME=mystyle_white \
-            -v $(readlink -f $SSH_AUTH_SOCK):/ssh-agent -e SSH_AUTH_SOCK=/ssh-agent \
-            -v /:/src  \
-            -v ~/:/puritys \
-            -v ~/docker_tmp:/tmp \
-            -v ~/docker_tmp/.bash_history:/root/.bash_history \
-            -v ~/.m2:/root/.m2 \
-            -w /src$pwd \
-            puritys/vim
     fi
     dockerVersion=`docker -v |grep -o "[0-9\.]*" | head -n 1`
     vercomp $dockerVersion 1.7.99999
@@ -236,4 +222,26 @@ vercomp () {
         fi
     done
     return 0
+}
+
+function vim_start() {
+    port="39901"
+    r=`docker ps --filter="name=puritys-vim" 2>&1 | wc -l`
+    if [ "x1" == "x$r" ]; then
+        pwd=`pwd`
+        docker rm puritys-vim 2>&1
+        docker run -d -t --name puritys-vim  \
+            -e VIM_THEME=mystyle_white \
+            -p $port:22 \
+            -v $(readlink -f $SSH_AUTH_SOCK):/ssh-agent -e SSH_AUTH_SOCK=/ssh-agent \
+            -v /:/src  \
+            -v ~/:/puritys \
+            -v ~/docker_tmp:/tmp \
+            -v ~/docker_tmp/.bash_history:/root/.bash_history \
+            -v ~/.m2:/root/.m2 \
+            -w /src$pwd \
+            puritys/vim
+
+        docker exec -d puritys-vim sh /root/start.sh
+    fi
 }
