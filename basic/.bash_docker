@@ -134,7 +134,6 @@ function node_fn() {
     common_docker_set_env "tool"
     command=" $@ "
     pwd=`pwd`
-    get_home
     command="docker run -it --rm  -v $(pwd):/temp_dir -v /www/node8Modules:/node/lib/node_modules -w /temp_dir puritys/node node $command"
     echo $command
     $command
@@ -144,7 +143,6 @@ function npm_fn() {
     common_docker_set_env "tool"
     command=" $@ "
     pwd=`pwd`
-    get_home
     command="docker run -it --rm  -v $(pwd):/temp_dir -v /www/node8Modules:/node/lib/node_modules -w /temp_dir puritys/node npm $command"
     echo $command
     $command
@@ -156,7 +154,6 @@ function vim_ssh_fn() {
     command=" $@ "
     pwd=`pwd`
     vim_start
-    vercomp $dockerVersion 1.7.99999
     command="ssh -t -e ] root@localhost -p$port \"cd /src$pwd && vim \"";
 
     echo $command
@@ -176,7 +173,6 @@ function vim_in_fn() {
         mkdir -p ~/docker_tmp ~/docker_tmp/fzf_session
         touch ~/docker_tmp/.bash_history
         vim_start
-        docker rm puritys-vim 2>&1
     fi
     dockerVersion=`docker -v |grep -o "[0-9\.]*" | head -n 1`
     vercomp $dockerVersion 1.7.99999
