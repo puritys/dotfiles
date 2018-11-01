@@ -228,6 +228,7 @@ function vim_start() {
         docker rm puritys-vim 2>&1
         docker run -d -t --name puritys-vim  \
             -e VIM_THEME=mystyle_white \
+            -e VIMRC_CUSTOMIZED=0 \
             -p $port:22 \
             -v $(readlink -f $SSH_AUTH_SOCK):/ssh-agent -e SSH_AUTH_SOCK=/ssh-agent \
             -v /:/src  \
