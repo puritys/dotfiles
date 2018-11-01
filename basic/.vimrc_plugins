@@ -22,7 +22,10 @@ Plug 'haya14busa/incsearch.vim' " better search plugin
 "Plugin 'ntpeters/vim-better-whitespace' " show tail whitespace
 Plug 'ap/vim-css-color' " show color for color ticket
 Plug 'nathanaelkane/vim-indent-guides'
-"Plug 'itchyny/lightline.vim'
+
+if g:enablePluginsLightLine == 1
+    Plug 'itchyny/lightline.vim'
+endif
 
 Plug 'tpope/vim-obsession'
 Plug 'dominickng/fzf-session.vim'
@@ -51,7 +54,9 @@ Plug '2072/PHP-Indenting-for-VIm', {'for': 'php'}
 " Auto Complete
 " -------------
 "Plug 'ervandew/supertab'
-Plug 'Valloric/YouCompleteMe'
+if version > 800
+    Plug 'Valloric/YouCompleteMe'
+endif
 Plug '1995eaton/vim-better-javascript-completion', {'for': 'javascript'}
 Plug 'shawncplus/phpcomplete.vim', {'for': 'php'} 
 

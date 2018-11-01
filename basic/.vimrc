@@ -1,4 +1,8 @@
+" ============
+" Set Default Value
+" ============
 let g:forceUseTab = 1
+let g:enablePluginsLightLine = 0
 
 " vim log
 "set verbosefile=/tmp/vim.log
@@ -235,6 +239,9 @@ if has("autocmd")
     hi ExtraWhitespace cterm=NONE ctermfg=NONE ctermbg=252 guifg=NONE guibg=#d0d0d0
 endif
 
+if !empty(glob("~/.vim_customized"))
+    source ~/.vim_customized
+endif
 
 source ~/.vimrc_plugins
 
