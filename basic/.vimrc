@@ -239,8 +239,8 @@ if has("autocmd")
     hi ExtraWhitespace cterm=NONE ctermfg=NONE ctermbg=252 guifg=NONE guibg=#d0d0d0
 endif
 
-if !empty(glob("~/.vim_customized"))
-    source ~/.vim_customized
+if !empty(glob("~/.vimrc_customized"))
+    source ~/.vimrc_customized
 endif
 
 source ~/.vimrc_plugins
