@@ -233,6 +233,7 @@ function vim_start() {
             -v $(readlink -f $SSH_AUTH_SOCK):/ssh-agent -e SSH_AUTH_SOCK=/ssh-agent \
             -v /:/src  \
             -v ~/:/puritys \
+            -v ~/:/home/puritys \
             -v ~/docker_tmp:/tmp \
             -v ~/docker_tmp/.bash_history:/root/.bash_history \
             -v ~/.m2:/root/.m2 \
