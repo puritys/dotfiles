@@ -167,13 +167,7 @@ function vim_in_fn() {
 
     # Create a docker container each time
     # command="docker run -ti -v /:/src  -v /tmp:/tmp -w /src$pwd puritys/vim /bin/bash"
-    r=`docker ps --filter="name=puritys-vim" 2>&1 | wc -l`
-    if [ "x1" == "x$r" ]; then
-        # --detach-keys 'ctrl-z'
-        mkdir -p ~/docker_tmp ~/docker_tmp/fzf_session
-        touch ~/docker_tmp/.bash_history
-        vim_start
-    fi
+    vim_start
     dockerVersion=`docker -v |grep -o "[0-9\.]*" | head -n 1`
     vercomp $dockerVersion 1.7.99999
     if [ "x2" == "x$verRet" ]; then
@@ -224,6 +218,9 @@ function vim_start() {
     port="39901"
     r=`docker ps --filter="name=puritys-vim" 2>&1 | wc -l`
     if [ "x1" == "x$r" ]; then
+        mkdir -p ~/docker_tmp ~/docker_tmp/fzf_session
+        touch ~/docker_tmp/.bash_history
+
         pwd=`pwd`
         docker rm puritys-vim 2>&1
         docker run -d -t --name puritys-vim  \
