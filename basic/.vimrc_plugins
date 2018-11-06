@@ -152,18 +152,21 @@ endif
 
 " incsearch
 "if exists('g:loaded_incsearch')
-if !empty(glob("~/.vim/plugged/incsearch.vim"))
-    if has("unix")
-        let s:uname = system("uname -s")
-        if s:uname == "Darwin\n"
-        else
-            set hlsearch
-            let g:incsearch#auto_nohlsearch = 0 " 0: keep hightlight when mouse cursor move
-            map /  <Plug>(incsearch-forward)
+
+if version > 720
+    if !empty(glob("~/.vim/plugged/incsearch.vim"))
+
+        if has("unix")
+            let s:uname = system("uname -s")
+            if s:uname == "Darwin\n"
+            else
+                set hlsearch
+                let g:incsearch#auto_nohlsearch = 0 " 0: keep hightlight when mouse cursor move
+                map /  <Plug>(incsearch-forward)
+            endif
         endif
     endif
 endif
-
 
 " -----------------
 " NerdTree settings
