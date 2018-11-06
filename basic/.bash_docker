@@ -220,7 +220,7 @@ function vim_start() {
     r=`docker ps --filter="name=puritys-vim" 2>&1 | wc -l`
     if [ "x1" == "x$r" ]; then
         mkdir -p ~/docker_tmp ~/docker_tmp/fzf_session
-        touch ~/docker_tmp/.bash_history
+        touch ~/docker_tmp/.bash_history ~/docker_tmp/ssh-agent
 
         pwd=`pwd`
         docker rm puritys-vim 2>&1
@@ -228,7 +228,9 @@ function vim_start() {
             -e VIM_THEME=mystyle_white \
             -e VIMRC_CUSTOMIZED=0 \
             -p $port:22 \
-            -v $(readlink -f $SSH_AUTH_SOCK):/ssh-agent -e SSH_AUTH_SOCK=/ssh-agent \
+#            -v $(readlink -f $SSH_AUTH_SOCK):/ssh-agent -e SSH_AUTH_SOCK=/ssh-agent \
+            -v ~/docker_tmp/ssh-agent -e SSH_AUTH_SOCK=/ssh-agent \
+
             -v /:/src  \
             -v ~/:/puritys \
             -v ~/:/home/puritys \
