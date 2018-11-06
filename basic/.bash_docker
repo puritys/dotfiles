@@ -154,6 +154,7 @@ function vim_ssh_fn() {
     command=" $@ "
     pwd=`pwd`
     vim_start
+    sleep 2
     command="ssh -t -e ] root@localhost -p$port \"cd /src$pwd; /bin/bash\";";
 
     echo $command
