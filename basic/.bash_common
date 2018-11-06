@@ -56,6 +56,7 @@ changePS () {
         ;;
         xterm*)
             getArrow
+            screen_title;
         ;;
         *)
             getArrow
@@ -110,10 +111,15 @@ screen_title () {
             isSetTitle=1;
         fi
     fi
-
     if [ "x0" == "x$isSetTitle" ]; then
-        local title=`uname -n | cut -c1-5`
-        title="$title:$screenPath"
+        if [ "x" != "x$host" ]; then
+            text=`echo $host | cut -c1-5` 
+            local title="$text:$screenPath"
+        else
+            local title=`uname -n | cut -c1-8`
+            title="$title:$screenPath"
+
+        fi
         printf '\ek%s\e\\' "$title"
     fi
 }
