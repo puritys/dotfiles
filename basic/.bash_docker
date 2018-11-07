@@ -228,7 +228,6 @@ function vim_start() {
             -e VIM_THEME=mystyle_white \
             -e VIMRC_CUSTOMIZED=0 \
             -p $port:22 \
-#            -v $(readlink -f $SSH_AUTH_SOCK):/ssh-agent -e SSH_AUTH_SOCK=/ssh-agent \
             -v ~/docker_tmp/ssh-agent:/ssh-agent \
             -e SSH_AUTH_SOCK=/ssh-agent \
             -v /:/src  \
