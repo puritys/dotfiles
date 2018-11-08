@@ -75,7 +75,9 @@ Plug 'thinca/vim-quickrun'
 " Others
 " ----------------
 Plug 'vim-syntastic/syntastic' " syntax check
-Plug 'w0rp/ale'
+if version > 800
+    Plug 'w0rp/ale'
+endif
 
 " others
 "Plug 'takac/vim-hardtime' " prevent repeat typing
@@ -344,7 +346,12 @@ let g:ale_lint_delay = 1000
 let g:airline#extensions#ale#enabled=0
 let g:ale_sign_warning = 'W>'
 let g:ale_sign_error = 'E>'
-
+let g:ale_lint_on_enter = 1
+if version > 800
+    if !empty(glob("~/.vim/plugged/ale"))
+        autocmd FileType java nmap sc :ALELint<CR>
+    endif
+endif
 
 " --------------
 " light line
