@@ -154,7 +154,9 @@ function vim_ssh_fn() {
     command=" $@ "
     pwd=`pwd`
     vim_start
-    sleep 4
+    if [ "x1" == "x$startVimDocker" ];then
+        sleep 4
+    fi
     command="ssh -t -e ] root@localhost -p$port \"cd /src$pwd; /bin/bash\";";
 
     echo $command
@@ -216,9 +218,11 @@ vercomp () {
 }
 
 function vim_start() {
+    startVimDocker=0
     port="39901"
     r=`docker ps --filter="name=puritys-vim" 2>&1 | wc -l`
     if [ "x1" == "x$r" ]; then
+        startVimDocker=1
         mkdir -p ~/docker_tmp ~/docker_tmp/fzf_session
         touch ~/docker_tmp/.bash_history ~/docker_tmp/ssh-agent
 
