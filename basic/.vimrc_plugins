@@ -377,3 +377,5 @@ function! LightlineFilename()
   return filename . modified
 endfunction
 
+let g:JavaImpDataDir="/tmp/JavaImp"
+
