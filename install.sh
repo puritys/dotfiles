@@ -9,6 +9,7 @@ while true; do
       -p | --vimPlugin   ) installVimPlugin=1; shift 1 ;;
       -d | --debug ) DEBUG=true; shift 1 ;;
       -j | --jave ) JAVA=true; shift 1 ;;
+      --javaImp ) JAVAIMP=true; shift 1 ;;
       --ctags ) CTAGS=true; shift 1 ;;
       -ujc | --updateJaveConfig ) UPDATE_JAVA_CONFIG=true; shift 1 ;;
       -k | --docker) DOCKER=true; shift 1;;
@@ -151,8 +152,14 @@ fi
 # install  JavaImp
 # http://www.vim.org/scripts/script.php?script_id=325
 # Java JDK http://download.java.net/openjdk/jdk7/promoted/b147/openjdk-7-fcs-src-b147-27_jun_2011.zip
-
+downloadOpenJdk=0
 if [ "x$JAVA" != "x" ] && [ ! -d "$HOME/openjdk" ]; then
+    downloadOpenJdk=1
+fi
+if [ "x$JAVAIMP" != "x" ] && [ ! -d "$HOME/openjdk" ]; then
+    downloadOpenJdk=1
+fi
+if [ "x$downloadOpenJdk" == "x1" ]; then
     wget http://download.java.net/openjdk/jdk7/promoted/b147/openjdk-7-fcs-src-b147-27_jun_2011.zip
     mkdir ~/.vim/JavaImp
     mkdir ~/openjdk
