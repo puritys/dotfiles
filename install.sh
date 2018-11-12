@@ -165,6 +165,7 @@ if [ "x$downloadOpenJdk" == "x1" ]; then
     mkdir ~/openjdk
     mv openjdk-7-fcs-src-b147-27_jun_2011.zip ~/openjdk/
     cd ~/openjdk && unzip openjdk-7-fcs-src-b147-27_jun_2011.zip
+    cd -
 fi
 
 # install eclim:

@@ -155,7 +155,7 @@ endif
 " incsearch
 "if exists('g:loaded_incsearch')
 
-if version > 720
+if version > 703
     if !empty(glob("~/.vim/plugged/incsearch.vim"))
 
         if has("unix")
