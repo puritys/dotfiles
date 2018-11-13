@@ -344,7 +344,7 @@ endif
 " --------------
 " ale 
 " --------------
-if g:enableEclim == 1
+if g:enablePluginEclim == 1
     au BufRead,BufNewFile *.java call DisableAle()
     au BufRead,BufNewFile *.java call DisableSyntastic()
 

@@ -16,8 +16,8 @@ let g:enablePluginsLightLine = 0
 if !exists("g:enablePluginYouCompleteMe")
     let g:enablePluginYouCompleteMe = 0
 endif
-if !exists("g:enableEclim")
-    let g:enableEclim = 1
+if !exists("g:enablePluginEclim")
+    let g:enablePluginEclim = 1
 endif
 
 " vim log
