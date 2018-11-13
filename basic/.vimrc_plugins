@@ -55,7 +55,9 @@ Plug '2072/PHP-Indenting-for-VIm', {'for': 'php'}
 " -------------
 "Plug 'ervandew/supertab'
 if version > 800
-    Plug 'Valloric/YouCompleteMe'
+    if g:enablePluginYouCompleteMe == 1
+        Plug 'Valloric/YouCompleteMe'
+    endif
 endif
 Plug '1995eaton/vim-better-javascript-completion', {'for': 'javascript'}
 Plug 'shawncplus/phpcomplete.vim', {'for': 'php'} 
@@ -342,16 +344,24 @@ endif
 " --------------
 " ale 
 " --------------
-let g:ale_lint_delay = 1000
-let g:airline#extensions#ale#enabled=0
-let g:ale_sign_warning = 'W>'
-let g:ale_sign_error = 'E>'
-let g:ale_lint_on_enter = 1
-if version > 800
-    if !empty(glob("~/.vim/plugged/ale"))
-        autocmd FileType java nmap sc :ALELint<CR>
+if g:enableEclim == 1
+    au BufRead,BufNewFile *.java call DisableAle()
+    au BufRead,BufNewFile *.java call DisableSyntastic()
+
+else
+    let g:ale_lint_delay = 300
+    let g:airline#extensions#ale#enabled=0
+    let g:ale_sign_warning = 'W>'
+    let g:ale_sign_error = 'E>'
+    let g:ale_lint_on_enter = 0
+    if version > 800
+        if !empty(glob("~/.vim/plugged/ale"))
+            autocmd FileType java nmap sc :ALELint<CR>
+        endif
     endif
+
 endif
+
 
 " --------------
 " light line
@@ -385,4 +395,6 @@ function! LightlineFilename()
 endfunction
 
 let g:JavaImpDataDir="/tmp/JavaImp"
+
+
 
