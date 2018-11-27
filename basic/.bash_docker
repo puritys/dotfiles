@@ -157,7 +157,7 @@ function vim_ssh_fn() {
     if [ "x1" == "x$startVimDocker" ];then
         sleep 4
     fi
-    command="ssh -t -e ] root@localhost -p$port \"cd /src$pwd; /bin/bash\";";
+    command="ssh -t -e ] vim@localhost -p$port \"cd /src$pwd; /bin/bash\";";
 
     echo $command
     eval $command
@@ -223,7 +223,7 @@ function vim_start() {
     r=`docker ps --filter="name=puritys-vim" 2>&1 | wc -l`
     if [ "x1" == "x$r" ]; then
         startVimDocker=1
-        mkdir -p ~/docker_tmp ~/docker_tmp/fzf_session
+        mkdir -p ~/docker_tmp ~/docker_tmp/fzf_session ~/docker_tmp/eclim_projects
         touch ~/docker_tmp/.bash_history ~/docker_tmp/ssh-agent
 
         pwd=`pwd`
@@ -231,6 +231,9 @@ function vim_start() {
         docker run -d -t --name puritys-vim  \
             -e VIM_THEME=mystyle_white \
             -e VIMRC_CUSTOMIZED=0 \
+            -e VIM_PLUGIN_Eclim=1 \
+            -e VIM_PLUGIN_LightLine=0 \
+            -e VIM_PLUGIN_YouCompleteMe=1 \
             -p $port:22 \
             -v ~/docker_tmp/ssh-agent:/ssh-agent \
             -e SSH_AUTH_SOCK=/ssh-agent \
@@ -240,6 +243,7 @@ function vim_start() {
             -v ~/docker_tmp:/tmp \
             -v ~/docker_tmp/.bash_history:/root/.bash_history \
             -v ~/.m2:/root/.m2 \
+            -v ~/docker_tmp/eclim_projects:/root/workspace/.metadata/.plugins/org.eclipse.core.resources/.projects \
             -w /src$pwd \
             puritys/vim
 

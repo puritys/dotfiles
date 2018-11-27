@@ -239,6 +239,7 @@ if [ "x$JAVA" != "x" ]; then
 
     else
         DISPLAY=:1 ~/.vim/eclipse/eclipse -nosplash -consolelog -debug -application org.eclipse.equinox.p2.director   -repository http://download.eclipse.org/releases/juno      -installIU org.eclipse.wst.web_ui.feature.feature.group &
+        sleep 5
         echo "\n\n=== Install eclim ===\n\n"
         java -Dvim.files=$HOME/.vim  -Declipse.home=$HOME/.vim/eclipse/  -jar ./vim/javaPlugin/eclim_2.6.0.jar install
 
