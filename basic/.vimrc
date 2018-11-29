@@ -234,11 +234,6 @@ function! Tab_Or_Complete()
   endif
 endfunction
 
-if !empty(glob("~/.vim/plugged/YouCompleteMe"))
-
-else
-    :inoremap <C-d> <C-R>=Tab_Or_Complete()<CR>
-endif
 "":set dictionary="/usr/dict/words"
 
 
@@ -257,6 +252,12 @@ endif
 
 if !empty(glob("~/.vimrc_customized"))
     source ~/.vimrc_customized
+endif
+
+if !empty(glob("~/.vim/plugged/YouCompleteMe")) && 1 == g:enablePluginYouCompleteMe
+
+else
+    :inoremap <C-d> <C-R>=Tab_Or_Complete()<CR>
 endif
 
 source ~/.vimrc_plugins

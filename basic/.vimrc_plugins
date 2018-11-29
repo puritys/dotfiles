@@ -276,7 +276,7 @@ let g:syntastic_mode_map={'mode': 'passive'}
 " YouCompleteMe "
 """""""""""""""""
 if !empty(glob("~/.vim/plugged/YouCompleteMe"))
-    let g:ycm_auto_trigger = 0
+    let g:ycm_auto_trigger = 1
     let g:ycm_min_num_of_chars_for_completion = 1
     "let g:ycm_min_num_identifier_candidate_chars = 0
     "let g:ycm_max_num_candidates = 50 " maxmum
@@ -345,10 +345,8 @@ endif
 " ale 
 " --------------
 if g:enablePluginEclim == 1
-    au BufRead,BufNewFile *.java call DisableAle()
-    au BufRead,BufNewFile *.java call DisableSyntastic()
-    let g:ale_lint_on_enter = 0
-    let g:ale_lint_on_text_changed = 'never'
+    au FileType java call DisableAle()
+    au FileType java call DisableSyntastic()
 else
     let g:ale_lint_delay = 300
     let g:airline#extensions#ale#enabled=0
