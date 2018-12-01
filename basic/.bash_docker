@@ -157,7 +157,7 @@ function vim_ssh_fn() {
     if [ "x1" == "x$startVimDocker" ];then
         sleep 4
     fi
-    command="ssh -t -e ] vim@localhost -p$port \"cd /src$pwd; /bin/bash\";";
+    command="ssh -t -e ] root@localhost -p$port \"cd /src$pwd; /bin/bash\";";
 
     echo $command
     eval $command
@@ -230,7 +230,6 @@ function vim_start() {
         docker rm puritys-vim 2>&1
         docker run -d -t --name puritys-vim  \
             -e VIM_THEME=mystyle_white \
-            -e VIMRC_CUSTOMIZED=0 \
             -e VIM_PLUGIN_Eclim=1 \
             -e VIM_PLUGIN_LightLine=0 \
             -e VIM_PLUGIN_YouCompleteMe=1 \
