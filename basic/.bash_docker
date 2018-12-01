@@ -221,9 +221,9 @@ function vim_start() {
     startVimDocker=0
     port="39901"
     r=`docker ps --filter="name=puritys-vim" 2>&1 | wc -l`
-    if [ "x1" == "x$r" ]; then
+    if [[ $r == *"1"* ]]; then
         startVimDocker=1
-        mkdir -p ~/docker_tmp ~/docker_tmp/fzf_session ~/docker_tmp/eclim_projects
+        mkdir -p ~/docker_tmp ~/docker_tmp/fzf_session ~/docker_tmp/eclim_projects ~/.m2
         touch ~/docker_tmp/.bash_history ~/docker_tmp/ssh-agent
 
         pwd=`pwd`
