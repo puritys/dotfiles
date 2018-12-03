@@ -56,7 +56,7 @@ Plug '2072/PHP-Indenting-for-VIm', {'for': 'php'}
 "Plug 'ervandew/supertab'
 if version > 800
     if g:enablePluginYouCompleteMe == 1
-      Plug 'Valloric/YouCompleteMe'
+        Plug 'Valloric/YouCompleteMe'
     endif
 endif
 Plug '1995eaton/vim-better-javascript-completion', {'for': 'javascript'}
