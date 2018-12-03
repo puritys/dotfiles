@@ -162,3 +162,44 @@ snippet pom-plugin-add-source
 	</plugin>
 
 
+snippet pom-plugin-codecoverage
+	<!-- code coverage -->
+	<plugin>
+		<groupId>org.jacoco</groupId>
+		<artifactId>jacoco-maven-plugin</artifactId>
+		<version>0.8.0</version>
+		<executions>
+			<execution>
+				<id>jacoco-initialize</id>
+				<goals>
+					<goal>prepare-agent</goal>
+				</goals>
+			</execution>
+			<execution>
+				<id>jacoco-generate-report</id>
+				<phase>package</phase>
+				<goals>
+					<goal>report</goal>
+				</goals>
+			</execution>
+		</executions>
+		<configuration>
+			<propertyName>surefireArgLine</propertyName>
+		</configuration>
+	</plugin>
+
+snippet pom-plugin-unittest
+	<!-- unit test -->
+	<plugin>
+		<groupId>org.apache.maven.plugins</groupId>
+		<artifactId>maven-surefire-plugin</artifactId>
+		<version>2.20.1</version>
+		<configuration>
+			<!--parallel>classes</parallel>
+			<threadCount>10</threadCount-->
+			<argLine>${surefireArgLine}</argLine>
+			<systemPropertyVariables>
+				<!--xxx>zz</xxx>
+			</systemPropertyVariables>
+		</configuration>
+	</plugin>
