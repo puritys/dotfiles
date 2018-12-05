@@ -160,6 +160,9 @@ if [ "x$JAVAIMP" != "x" ] && [ ! -d "$HOME/openjdk" ]; then
     downloadOpenJdk=1
 fi
 if [ "x$downloadOpenJdk" == "x1" ]; then
+    if [ "x" != "x`command -v yum`" ]; then
+        sudo yum install unzip -y
+    fi
     wget http://download.java.net/openjdk/jdk7/promoted/b147/openjdk-7-fcs-src-b147-27_jun_2011.zip
     mkdir ~/.vim/JavaImp
     mkdir ~/openjdk
