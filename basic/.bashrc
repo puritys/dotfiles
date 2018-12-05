@@ -8,7 +8,7 @@ export TERM=xterm-256color
 export LC_CTYPE=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
 export LANG=zh_TW.UTF-8
-PATH=$PATH:$HOME/bin:/usr/local/bin:/sbin:/usr/local/sbin:/usr/sbin
+PATH=$PATH:$HOME/bin:/usr/local/bin:/sbin:/usr/local/sbin:/usr/sbin:/usr/local/go/bin
 export PATH
 
 export NODE_PATH=/usr/local/lib/node_modules:/usr/lib/node_modules
