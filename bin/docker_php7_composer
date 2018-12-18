@@ -1,0 +1,3 @@
+#!/bin/bash
+source /home/`whoami`/.bash_docker
+php7_fn composer $@
