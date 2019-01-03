@@ -143,6 +143,7 @@ snippet curl_init
 	curl_setopt($c, CURLOPT_URL, $url);
 	curl_setopt($c, CURLOPT_RETURNTRANSFER, true);
 	curl_setopt($c, CURLOPT_FOLLOWLOCATION, true);
+	curl_setopt($c, CURLOPT_SSLVERSION, 6); //tls1.2
 	$data = curl_exec($c);
 	$httpCode = curl_getinfo($c, CURLINFO_HTTP_CODE);
 	curl_close($c);
@@ -173,3 +174,13 @@ snippet path_cwd
 snippet cwd
 	getcwd()
 
+snippet date_format
+	$fmt = new IntlDateFormatter(
+		'zh-Hant-TW',
+		IntlDateFormatter::FULL,
+		IntlDateFormatter::FULL,
+		'Asia/Taipei',
+		IntlDateFormatter::GREGORIAN,
+		"YYYY/MM/dd"
+	);
+	$date = $fmt->format(time());
