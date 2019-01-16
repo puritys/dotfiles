@@ -322,7 +322,7 @@ if [ "x$INIT" != "x" ] || [ "x$installFZF" != "x" ];  then
     fi 
 fi
 
-if [ "x$INIT" != "x" ] || [ "x$installBashIt" != "x" ];  then
+if [ "x$installBashIt" != "x" ];  then
 
     # ------------
     # Install bash-it
