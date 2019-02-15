@@ -1,3 +1,4 @@
+# http://git.eclipse.org/c/platform/eclipse.platform.swt.git/plain/examples/org.eclipse.swt.examples.browser.demos/.settings/org.eclipse.jdt.core.prefs
 cat <<TEXT
 eclipse.preferences.version=1
 org.eclipse.jdt.core.classpathVariable.M2_REPO=$HOME/.m2/repository
@@ -21,5 +22,6 @@ org.eclipse.jdt.core.compiler.problem.missingOverrideAnnotationForInterfaceMetho
 org.eclipse.jdt.core.compiler.problem.nullAnnotationInferenceConflict=ignore
 org.eclipse.jdt.core.compiler.problem.uncheckedTypeOperation=ignore
 org.eclipse.jdt.core.compiler.problem.rawTypeReference=ignore
+org.eclipse.jdt.core.compiler.problem.unusedWarningToken=ignore  
 org.eclipse.jdt.core.compiler.source=1.8
 TEXT
