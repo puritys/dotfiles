@@ -74,10 +74,10 @@ unset MAILCHECK
 export SCM_CHECK=false
 
 # Load Bash It
-if [ -f "$BASH_IT/bash_it.sh" ]; then
+if [ -f "$BASH_IT/bash_it.sh" ] && [ -z "$HAS_LOAD_BASH_IT" ]; then
     source "$BASH_IT"/bash_it.sh
+    export HAS_LOAD_BASH_IT=true
 fi
-
 
 
 #changePS
