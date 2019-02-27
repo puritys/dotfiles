@@ -82,6 +82,9 @@ snippet impreg
 	import java.util.regex.Matcher;
 	import java.util.regex.Pattern;
 
+snippet impclone
+	import org.apache.commons.lang.SerializationUtils;
+
 snippet sleep
 	TimeUnit.SECONDS.sleep(3);
 
@@ -326,6 +329,9 @@ snippet guicecodesingleton
 
 snippet stringtobuyte
 	"aa".getBytes()
+
+snippet clone
+	Object new = (Object) SerializationUtils.clone(old);
 
 # ------------------
 # Exception Handling
