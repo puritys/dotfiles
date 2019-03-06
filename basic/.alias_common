@@ -83,6 +83,9 @@ fn_eclim_stop() {
 }
 
 ecliUpdate() {
+    mkdir -p .settings/
+    cp $HOME/.settings/org.eclipse.jdt.core.prefs .settings/
+
     sudo mvn eclipse:clean eclipse:eclipse -Dmaven.pmd.skip=true -Dmaven.checkstyle.skip=true -Dmaven.cpd-check.skip=true -Dmaven.cpd.skip=true -Dcheckstyle.skip -Dmaven.javadoc.skip=true -Dpmd.skip=true
     sudo chmod 777 .classpath
     sed 's/kind="var"/kind="lib"/' -i .classpath

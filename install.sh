@@ -218,6 +218,9 @@ if [ "x$JAVA" != "x" ] || [ "x$UPDATE_JAVA_CONFIG" != "x" ]; then
     sudo cp vim/javaPlugin/checkstyle.xml /usr/local/etc/
 fi
 
+mkdir -p $HOME/.settings
+sh vim/javaPlugin/eclipse_config/org.eclipse.jdt.core.prefs.sh > $HOME/.settings/org.eclipse.jdt.core.prefs
+
 cd $pwd
 if [ "x$JAVA" != "x" ]; then
     #install Xvfb
