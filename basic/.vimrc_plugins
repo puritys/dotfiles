@@ -287,9 +287,16 @@ if !empty(glob("~/.vim/plugged/YouCompleteMe"))
     let g:ycm_key_list_select_completion = ['<Down>']
     let g:ycm_key_list_stop_completion = ['<CR>']
     let g:ycm_disable_for_files_larger_than_kb = 1000
-    let g:ycm_show_diagnostics_ui = 0
-    let g:ycm_enable_diagnostic_signs = 0
-    let g:ycm_enable_diagnostic_highlighting = 0
+
+    if g:enablePluginYouCompleteMeSyntax == 1
+        let g:ycm_show_diagnostics_ui = 1
+        let g:ycm_enable_diagnostic_signs = 1
+        let g:ycm_enable_diagnostic_highlighting = 1
+    else
+        let g:ycm_show_diagnostics_ui = 0
+        let g:ycm_enable_diagnostic_signs = 0
+        let g:ycm_enable_diagnostic_highlighting = 0
+    endif
 
     " debug :YcmDebugInfo
     "let g:ycm_keep_logfiles = 1 
@@ -346,10 +353,9 @@ endif
 " --------------
 " ale 
 " --------------
-if g:enablePluginEclim == 1
+if g:enablePluginEclim == 1 || g:enablePluginYouCompleteMeSyntax == 1
     au FileType java call DisableAle()
     au FileType java call DisableSyntastic()
-
 else
     let g:ale_lint_delay = 300
     let g:airline#extensions#ale#enabled=0

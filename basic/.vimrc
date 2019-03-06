@@ -6,6 +6,7 @@ function! DisableAle()
     let g:ale_lint_on_text_changed = 'never'
     let g:ale_lint_on_save = 0
     let g:ale_linters = {'java': []}
+    let g:ale_completion_enabled = 0
    "" let g:ale_linters_explicit = 1
 endfunction
 
@@ -20,6 +21,9 @@ if !exists("g:enablePluginYouCompleteMe")
 endif
 if !exists("g:enablePluginEclim")
     let g:enablePluginEclim = 1
+endif
+if !exists("g:enablePluginYouCompleteMeSyntax")
+    let g:enablePluginYouCompleteMeSyntax = 0
 endif
 
 " vim log
@@ -281,4 +285,6 @@ endif
 
 
 
-
+" disable paste bracket mode
+" https://unix.stackexchange.com/questions/196098/copy-paste-in-xfce4-terminal-adds-0-and-1/196574#196574?newreg=50a3302c8f334958bfbe56d4f03cc548
+set t_BE=
