@@ -248,7 +248,7 @@ function vim_start() {
             -v ~/.m2:/root/.m2 \
             -v ~/docker_tmp/eclim_projects:/root/workspace/.metadata/.plugins/org.eclipse.core.resources \
             -w /src$pwd \
-            puritys/vim
+            puritys/vim:8.0
 
             #-e USER=puritys \
         docker exec -d puritys-vim sh /root/start.sh
@@ -266,8 +266,8 @@ function vim_start2() {
         touch ~/docker_tmp/.bash_history ~/docker_tmp/ssh-agent
 
         pwd=`pwd`
-        docker rm puritys-vim 2>&1
-        docker run -d -t --name puritys-vim  \
+        docker rm puritys-vim2 2>&1
+        docker run -d -t --name puritys-vim2  \
             -e VIM_THEME=mystyle_white \
             -e VIM_PLUGIN_Eclim=0 \
             -e VIM_PLUGIN_LightLine=0 \
@@ -283,9 +283,9 @@ function vim_start2() {
             -v ~/.m2:/root/.m2 \
             -v ~/docker_tmp/eclim_projects:/root/workspace/.metadata/.plugins/org.eclipse.core.resources \
             -w /src$pwd \
-            puritys/vim
+            puritys/vim:8.0.1
 
             #-e USER=puritys \
-        docker exec -d puritys-vim sh /root/start.sh
+        docker exec -d puritys-vim2 sh /root/start.sh
     fi
 }
