@@ -72,6 +72,7 @@ Plug 'garbas/vim-snipmate'
 " ----------------
 " Execute self file
 Plug 'thinca/vim-quickrun'
+Plug 'skywind3000/asyncrun.vim'
 
 " ----------------
 " Others
@@ -406,6 +407,14 @@ function! LightlineFilename()
 endfunction
 
 let g:JavaImpDataDir="/tmp/JavaImp"
+
+
+" --------------
+" async run
+" :AsyncRun -raw=1 g++ % -o ./a.out
+" --------------
+:let g:asyncrun_open = 8
+nmap ar :AsyncRun -raw=1 
 
 
 
