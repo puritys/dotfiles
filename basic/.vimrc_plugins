@@ -353,14 +353,17 @@ endif
 " --------------
 " ale 
 " --------------
+
+let g:ale_cpp_clang_options="-std=c++11 -Wall"
+let g:ale_sign_warning = 'W>'
+let g:ale_sign_error = 'E>'
+let g:ale_lint_delay = 300
+
 if g:enablePluginEclim == 1 || g:enablePluginYouCompleteMeSyntax == 1
     au FileType java call DisableAle()
     au FileType java call DisableSyntastic()
 else
-    let g:ale_lint_delay = 300
     let g:airline#extensions#ale#enabled=0
-    let g:ale_sign_warning = 'W>'
-    let g:ale_sign_error = 'E>'
     let g:ale_lint_on_enter = 0
     if version > 800
         if !empty(glob("~/.vim/plugged/ale"))
