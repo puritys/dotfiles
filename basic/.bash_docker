@@ -249,7 +249,7 @@ function vim_start() {
             -v ~/.m2:/root/.m2 \
             -v ~/docker_tmp/eclim_projects:/root/workspace/.metadata/.plugins/org.eclipse.core.resources \
             -w /src$pwd \
-            puritys/vim:8.0
+            puritys/vim:stable
 
             #-e USER=puritys \
         docker exec -d puritys-vim1 sh /root/start.sh
