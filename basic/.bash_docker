@@ -154,6 +154,7 @@ function vim_ssh_fn() {
     command=" $@ "
     pwd=`pwd`
     if [ "x2" == "x$1" ];then
+        port="39902"
         vim_start2
     else
         vim_start
@@ -224,15 +225,15 @@ vercomp () {
 function vim_start() {
     startVimDocker=0
     port="39901"
-    r=`docker ps --filter="name=puritys-vim" 2>&1 | wc -l`
+    r=`docker ps --filter="name=puritys-vim1" 2>&1 | wc -l`
     if [[ $r == *"1"* ]]; then
         startVimDocker=1
         mkdir -p ~/docker_tmp ~/docker_tmp/fzf_session ~/docker_tmp/eclim_projects ~/.m2
         touch ~/docker_tmp/.bash_history ~/docker_tmp/ssh-agent
 
         pwd=`pwd`
-        docker rm puritys-vim 2>&1
-        docker run -d -t --name puritys-vim  \
+        docker rm puritys-vim1 2>&1
+        docker run -d -t --name puritys-vim1  \
             -e VIM_THEME=mystyle_white \
             -e VIM_PLUGIN_Eclim=1 \
             -e VIM_PLUGIN_LightLine=0 \
@@ -251,15 +252,15 @@ function vim_start() {
             puritys/vim:8.0
 
             #-e USER=puritys \
-        docker exec -d puritys-vim sh /root/start.sh
+        docker exec -d puritys-vim1 sh /root/start.sh
     fi
 }
 
 # v2: use you complete me
 function vim_start2() {
     startVimDocker=0
-    port="39901"
-    r=`docker ps --filter="name=puritys-vim" 2>&1 | wc -l`
+    port="39902"
+    r=`docker ps --filter="name=puritys-vim2" 2>&1 | wc -l`
     if [[ $r == *"1"* ]]; then
         startVimDocker=1
         mkdir -p ~/docker_tmp ~/docker_tmp/fzf_session ~/docker_tmp/eclim_projects ~/.m2
