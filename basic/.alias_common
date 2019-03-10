@@ -83,7 +83,7 @@ fn_eclim_stop() {
 }
 
 fn_ecliUpdate() {
-    if [ -f build.grade ]; then
+    if [ -f build.gradle ]; then
         gradle eclipse
     else
         sudo mvn eclipse:clean eclipse:eclipse -Dmaven.pmd.skip=true -Dmaven.checkstyle.skip=true -Dmaven.cpd-check.skip=true -Dmaven.cpd.skip=true -Dcheckstyle.skip -Dmaven.javadoc.skip=true -Dpmd.skip=true
