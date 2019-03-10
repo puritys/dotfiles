@@ -3,7 +3,7 @@ alias plog='tail -f /tmp/php.log'
 alias s='source ~/.bash_profile  '
 alias ecliStart='fn_eclim_start'
 alias ecliStop='fn_eclim_stop'
-alias ecliUpdate='ecliUpdate'
+alias ecliUpdate='fn_ecliUpdate'
 alias f='findFile'
 alias vi='vim -p'
 alias vim='vim -p'
@@ -82,15 +82,21 @@ fn_eclim_stop() {
     ps aux |grep -i Xvfb |grep -v grep | awk '{printf "kill -9 %s\n",$2}' | sudo sh
 }
 
-ecliUpdate() {
-    mkdir -p .settings/
-    cp $HOME/.settings/org.eclipse.jdt.core.prefs .settings/
-
-    sudo mvn eclipse:clean eclipse:eclipse -Dmaven.pmd.skip=true -Dmaven.checkstyle.skip=true -Dmaven.cpd-check.skip=true -Dmaven.cpd.skip=true -Dcheckstyle.skip -Dmaven.javadoc.skip=true -Dpmd.skip=true
+fn_ecliUpdate() {
+    if [ -f build.grade ]; then
+        gradle eclipse
+    else
+        sudo mvn eclipse:clean eclipse:eclipse -Dmaven.pmd.skip=true -Dmaven.checkstyle.skip=true -Dmaven.cpd-check.skip=true -Dmaven.cpd.skip=true -Dcheckstyle.skip -Dmaven.javadoc.skip=true -Dpmd.skip=true
+    fi
     sudo chmod 777 .classpath
     sed 's/kind="var"/kind="lib"/' -i .classpath
     h=`echo $HOME | sed 's/\//\\\\\//g'`
     sed "s/M2_REPO/$h\/.m2\/repository/" -i .classpath
+
+    mkdir -p .settings/
+    cp $HOME/workspace/.metadata/.plugins/org.eclipse.core.runtime/.settings/org.eclipse.jdt.core.prefs .settings/
+
+
 }
 
 

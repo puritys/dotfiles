@@ -173,6 +173,16 @@ if [ "x$downloadOpenJdk" == "x1" ]; then
     cd -
 fi
 
+# JAVA settings
+if [ ! -d "$HOME/workspace/.metadata/.plugins/org.eclipse.core.runtime/.settings/" ];then
+    mkdir -p $HOME/workspace/.metadata/.plugins/org.eclipse.core.runtime/.settings/;
+fi
+cp vim/javaPlugin/eclipse_config/org.eclipse.jdt.core.prefs.sh ~/workspace/.metadata/.plugins/org.eclipse.core.runtime/.settings/
+pwd2="$HOME/workspace/.metadata/.plugins/org.eclipse.core.runtime/.settings"
+sh $pwd2/org.eclipse.jdt.core.prefs.sh > $pwd2/org.eclipse.jdt.core.prefs
+sudo cp vim/javaPlugin/google_checks.xml /usr/local/etc/
+sudo cp vim/javaPlugin/checkstyle.xml /usr/local/etc/
+
 # install eclim:
 # http://www.eclipse.org/downloads/packages/eclipse-ide-java-ee-developers/mars2
 if [ "x$JAVA" != "x" ] || [ "x$UPDATE_JAVA_CONFIG" != "x" ]; then
@@ -205,21 +215,10 @@ if [ "x$JAVA" != "x" ] || [ "x$UPDATE_JAVA_CONFIG" != "x" ]; then
         fi
     fi
 
-    if [ ! -d "$HOME/workspace/.metadata/.plugins/org.eclipse.core.runtime/.settings/" ];then
-        mkdir -p $HOME/workspace/.metadata/.plugins/org.eclipse.core.runtime/.settings/;
-    fi
 
     cd $pwd
     cp vim/javaPlugin/eclim_settings ~/workspace/.metadata/.plugins/org.eclipse.core.runtime/.settings/org.eclim.prefs
-    cp vim/javaPlugin/eclipse_config/org.eclipse.jdt.core.prefs.sh ~/workspace/.metadata/.plugins/org.eclipse.core.runtime/.settings/
-    pwd2="$HOME/workspace/.metadata/.plugins/org.eclipse.core.runtime/.settings"
-    sh $pwd2/org.eclipse.jdt.core.prefs.sh > $pwd2/org.eclipse.jdt.core.prefs
-    sudo cp vim/javaPlugin/google_checks.xml /usr/local/etc/
-    sudo cp vim/javaPlugin/checkstyle.xml /usr/local/etc/
 fi
-
-mkdir -p $HOME/.settings
-sh vim/javaPlugin/eclipse_config/org.eclipse.jdt.core.prefs.sh > $HOME/.settings/org.eclipse.jdt.core.prefs
 
 cd $pwd
 if [ "x$JAVA" != "x" ]; then
