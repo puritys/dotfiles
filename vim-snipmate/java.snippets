@@ -161,6 +161,11 @@ snippet forMap
 	    System.out.println(entry.getKey() + "/" + entry.getValue());
 	}
 
+snippet random
+	import java.util.Random;
+	Random ran = new Random();
+	ran.nextInt(42);
+
 snippet list
 	List<String> status = new ArrayList<>(Arrays.asList("0", "1"));
 
@@ -172,6 +177,13 @@ snippet arrayToList
 
 snippet map
 	Map<String, String> m = new HashMap<>();
+
+snippet map-initialize
+	import com.google.common.collect.ImmutableMap;
+	private static Map<String, String> m = ImmutableMap.<String, String>builder() 
+		.put("id", "id")
+		.put("image", "image")
+	.build();
 
 snippet time
 	System.currentTimeMillis();
