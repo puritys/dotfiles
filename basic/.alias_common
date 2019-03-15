@@ -13,6 +13,7 @@ alias mem="ps aux | awk '{printf \"%s %s\n\",\$4,\$0}' | sort -n"
 alias memSum="ps aux | awk '{sum += \$4} END {print sum}' "
 alias myHelp='fn_help'
 alias ntpSync='sudo ntpdate -s time.stdtime.gov.tw'
+alias gitDeleteTag='fnGitDeleteTag'
 alias gitDeleteBranch='fnGitDeleteBranch'
 alias gitForceCommit='fnGitForceCommit'
 alias c='/usr/local/bin/myExec.sh'
@@ -115,6 +116,13 @@ fnGitDeleteBranch() {
 fnGitForceCommit() {
     echo -e "git commit -m "$1" --no-verify\n"
     git commit -m "$1" --no-verify
+}
+
+fnGitDeleteTag() {
+    echo -e "git tag -d $1\n"
+    echo -e "git push --delete origin $1\n"
+    git tag -d $1
+    git push --delete origin $1
 }
 
 fnDate() {
