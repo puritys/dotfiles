@@ -263,7 +263,7 @@ endif
 if !empty(glob("~/.vim/plugged/YouCompleteMe")) && 1 == g:enablePluginYouCompleteMe
 
 else
-    :inoremap <C-d> <C-R>=Tab_Or_Complete()<CR>
+    :inoremap <C-d> <C-x><C-o>
 endif
 
 source ~/.vimrc_plugins
