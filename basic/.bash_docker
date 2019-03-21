@@ -229,6 +229,7 @@ function vim_start() {
     if [[ $r == *"1"* ]]; then
         startVimDocker=1
         mkdir -p ~/docker_tmp ~/docker_tmp/fzf_session ~/docker_tmp/eclim_projects ~/.m2
+        rm -rf ~/docker_tmp/ssh-agent
         touch ~/docker_tmp/.bash_history ~/docker_tmp/ssh-agent
 
         pwd=`pwd`
@@ -239,6 +240,7 @@ function vim_start() {
             -e VIM_PLUGIN_LightLine=0 \
             -e VIM_PLUGIN_YouCompleteMe=1 \
             -e VIM_PLUGIN_YouCompleteMe_ENABLE_SYNTAX=0 \
+            -e VIM_PLUGIN_YouCompleteMe_auto_trigger=0 \
             -p $port:22 \
             -v ~/docker_tmp/ssh-agent:/ssh-agent \
             -e SSH_AUTH_SOCK=/ssh-agent \
