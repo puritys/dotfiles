@@ -185,7 +185,10 @@ if !empty(glob("~/.vim/plugged/YouCompleteMe"))
     let g:ycm_key_list_select_completion = []
     let g:ycm_key_list_stop_completion = ['<CR>']
     let g:ycm_disable_for_files_larger_than_kb = 1000
-
+    let g:ycm_filetype_blacklist = {
+          \ 'xml': 1,
+          \ 'mvn_pom': 1,
+          \}
     if g:enablePluginYouCompleteMeSyntax == 1
         let g:ycm_show_diagnostics_ui = 1
         let g:ycm_enable_diagnostic_signs = 1
