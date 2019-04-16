@@ -172,9 +172,12 @@ let g:syntastic_mode_map={'mode': 'passive'}
 " YouCompleteMe "
 """""""""""""""""
 if !empty(glob("~/.vim/plugged/YouCompleteMe"))
-    if !exists("g:ycm_auto_trigger")
-        let g:ycm_auto_trigger = 1
-    endif
+    " fixme g:ycm_key_invoke_completion not work
+    "if !exists("g:ycm_auto_trigger")
+    "    let g:ycm_auto_trigger = 1
+    "endif
+    let g:ycm_auto_trigger = 1
+
     let g:ycm_min_num_of_chars_for_completion = 1
     "let g:ycm_min_num_identifier_candidate_chars = 0
     "let g:ycm_max_num_candidates = 50 " maxmum
