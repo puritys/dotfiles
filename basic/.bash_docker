@@ -222,10 +222,12 @@ vercomp () {
     return 0
 }
 
-function vim_start() {
+# legacy version
+function vim_start2() {
     startVimDocker=0
     port="39901"
-    r=`docker ps --filter="name=puritys-vim1" 2>&1 | wc -l`
+    containerName="puritys-vim2"
+    r=`docker ps --filter="name=$containerName" 2>&1 | wc -l`
     if [[ $r == *"1"* ]]; then
         startVimDocker=1
         mkdir -p ~/docker_tmp ~/docker_tmp/fzf_session ~/docker_tmp/eclim_projects ~/.m2
@@ -233,8 +235,8 @@ function vim_start() {
         touch ~/docker_tmp/.bash_history ~/docker_tmp/ssh-agent
 
         pwd=`pwd`
-        docker rm puritys-vim1 2>&1
-        docker run -d -t --name puritys-vim1  \
+        docker rm $containerName 2>&1
+        docker run -d -t --name $containerName  \
             -e VIM_THEME=mystyle_white \
             -e VIM_PLUGIN_Eclim=1 \
             -e VIM_PLUGIN_LightLine=0 \
@@ -254,23 +256,24 @@ function vim_start() {
             puritys/vim:stable
 
             #-e USER=puritys \
-        docker exec -d puritys-vim1 sh /root/start.sh
+        docker exec -d $containerName sh /root/start.sh
     fi
 }
 
-# v2: use you complete me
-function vim_start2() {
+# latest version: use you complete me
+function vim_start() {
     startVimDocker=0
     port="39902"
-    r=`docker ps --filter="name=puritys-vim2" 2>&1 | wc -l`
+    containerName="puritys-vim2" 
+    r=`docker ps --filter="name=$containerName" 2>&1 | wc -l`
     if [[ $r == *"1"* ]]; then
         startVimDocker=1
         mkdir -p ~/docker_tmp ~/docker_tmp/fzf_session ~/docker_tmp/eclim_projects ~/.m2
         touch ~/docker_tmp/.bash_history ~/docker_tmp/ssh-agent
 
         pwd=`pwd`
-        docker rm puritys-vim2 2>&1
-        docker run -d -t --name puritys-vim2  \
+        docker rm $containerName 2>&1
+        docker run -d -t --name $containerName  \
             -e VIM_THEME=mystyle_white \
             -e VIM_PLUGIN_Eclim=0 \
             -e VIM_PLUGIN_LightLine=0 \
@@ -287,9 +290,9 @@ function vim_start2() {
             -v ~/.m2:/root/.m2 \
             -v ~/docker_tmp/eclim_projects:/root/workspace/.metadata/.plugins/org.eclipse.core.resources \
             -w /src$pwd \
-            puritys/vim:8.0.1
+            puritys/vim:latest
 
             #-e USER=puritys \
-        docker exec -d puritys-vim2 sh /root/start.sh
+        docker exec -d $containerName sh /root/start.sh
     fi
 }

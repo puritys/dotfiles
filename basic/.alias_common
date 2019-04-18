@@ -89,10 +89,12 @@ fn_ecliUpdate() {
     else
         sudo mvn eclipse:clean eclipse:eclipse -Dmaven.pmd.skip=true -Dmaven.checkstyle.skip=true -Dmaven.cpd-check.skip=true -Dmaven.cpd.skip=true -Dcheckstyle.skip -Dmaven.javadoc.skip=true -Dpmd.skip=true
     fi
-    sudo chmod 777 .classpath
-    sed 's/kind="var"/kind="lib"/' -i .classpath
-    h=`echo $HOME | sed 's/\//\\\\\//g'`
-    sed "s/M2_REPO/$h\/.m2\/repository/" -i .classpath
+    if [ -f .classpath ]; then
+        sudo chmod 777 .classpath
+        sed 's/kind="var"/kind="lib"/' -i .classpath
+        h=`echo $HOME | sed 's/\//\\\\\//g'`
+        sed "s/M2_REPO/$h\/.m2\/repository/" -i .classpath
+    fi
 
     mkdir -p .settings/
     cp $HOME/workspace/.metadata/.plugins/org.eclipse.core.runtime/.settings/org.eclipse.jdt.core.prefs .settings/
