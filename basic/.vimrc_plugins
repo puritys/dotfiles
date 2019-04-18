@@ -336,8 +336,8 @@ Plug 'junegunn/fzf', { 'do': './install --all' } " File finder
 " ----------------
 "Plugin 'vim-airline/vim-airline'
 "Plugin 'vim-airline/vim-airline-themes'
-Plug 'scrooloose/nerdtree'
-Plug 'jistr/vim-nerdtree-tabs'
+Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
+Plug 'jistr/vim-nerdtree-tabs', { 'on': 'NERDTreeToggle' }
 Plug 'majutsushi/tagbar' " methond/function list menu
 Plug 'haya14busa/incsearch.vim' " better search plugin
 "Plug 'airblade/vim-gitgutter'
@@ -378,7 +378,9 @@ Plug '2072/PHP-Indenting-for-VIm', {'for': 'php'}
 "Plug 'ervandew/supertab'
 if version > 800
     if g:enablePluginYouCompleteMe == 1
-        Plug 'Valloric/YouCompleteMe'
+        if !empty(glob("~/.vim/plugged/vim-maktaba"))
+            Plug '~/.vim/plugged/YouCompleteMe', { 'on': [] }
+        endif
     endif
 endif
 Plug '1995eaton/vim-better-javascript-completion', {'for': 'javascript'}
@@ -393,13 +395,13 @@ Plug 'garbas/vim-snipmate'
 " Execute command
 " ----------------
 " Execute self file
-Plug 'thinca/vim-quickrun'
-Plug 'skywind3000/asyncrun.vim'
+Plug 'thinca/vim-quickrun', {'on': 'QuickRun'}
+Plug 'skywind3000/asyncrun.vim', {'on': 'AsyncRun'}
 
 " ----------------
 " Others
 " ----------------
-Plug 'vim-syntastic/syntastic' " syntax check
+Plug 'vim-syntastic/syntastic', {'on': 'SyntasticCheck'} " syntax check
 if version > 800
     Plug 'w0rp/ale'
 endif
@@ -417,6 +419,16 @@ Plug 'Raimondi/delimitMate'
 
 call plug#end()
 
+if version > 800
+    if g:enablePluginYouCompleteMe == 1
+        if !empty(glob("~/.vim/plugged/vim-maktaba"))
+            augroup load_ycm
+                autocmd!
+                autocmd InsertEnter * call plug#load('YouCompleteMe') | autocmd! load_ycm
+            augroup END
+        endif
+    endif
+endif
 
 " ---------------------------------
 " Enable maktabe / codeformat / log
