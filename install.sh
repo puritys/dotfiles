@@ -272,7 +272,9 @@ if [ "x$INIT" != "x" ] || [ "x$installFZF" != "x" ];  then
         mkdir ~/.sh_tool
         git clone --depth 1 git@github.com:junegunn/fzf.git ~/.sh_tool/fzf
         ~/.sh_tool/fzf/install --all
-        ## append (cat ~/machine_list.txt | command grep -v '#' | sed -e 's/^/host /') \  ~/.sh_tool/fzf/shell/completion.bash : _fzf_complete_ssh
+        ## append
+        #  <(cat ~/machine_list.txt | command grep -v '#' | sed -e 's/^host //') \ 
+        #  to ~/.sh_tool/fzf/shell/completion.bash : _fzf_complete_ssh
 
 
         # ------------
