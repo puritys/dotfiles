@@ -22,6 +22,7 @@ org.eclipse.jdt.core.compiler.problem.missingOverrideAnnotationForInterfaceMetho
 org.eclipse.jdt.core.compiler.problem.nullAnnotationInferenceConflict=ignore
 org.eclipse.jdt.core.compiler.problem.uncheckedTypeOperation=ignore
 org.eclipse.jdt.core.compiler.problem.rawTypeReference=ignore
-org.eclipse.jdt.core.compiler.problem.unusedWarningToken=ignore  
+org.eclipse.jdt.core.compiler.problem.unusedWarningToken=ignore
 org.eclipse.jdt.core.compiler.source=1.8
+org.eclipse.jdt.core.compiler.taskCaseSensitive=idonotuseitxx
 TEXT
