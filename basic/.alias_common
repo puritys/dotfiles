@@ -4,6 +4,7 @@ alias s='source ~/.bash_profile  '
 alias ecliStart='fn_eclim_start'
 alias ecliStop='fn_eclim_stop'
 alias ecliUpdate='fn_ecliUpdate'
+alias ecliConfig='fn_ecliConfig'
 alias f='findFile'
 alias vi='vim -p'
 alias vim='vim -p'
@@ -84,9 +85,6 @@ fn_eclim_stop() {
 }
 
 fn_ecliUpdate() {
-    mkdir -p .settings/
-    cp $HOME/workspace/.metadata/.plugins/org.eclipse.core.runtime/.settings/org.eclipse.jdt.core.prefs .settings/
-
     if [ -f build.gradle ]; then
         gradle eclipse
     else
@@ -98,11 +96,12 @@ fn_ecliUpdate() {
         h=`echo $HOME | sed 's/\//\\\\\//g'`
         sed "s/M2_REPO/$h\/.m2\/repository/" -i .classpath
     fi
-
-
-
 }
 
+fn_ecliConfig() {
+    mkdir -p .settings/
+    cp $HOME/workspace/.metadata/.plugins/org.eclipse.core.runtime/.settings/org.eclipse.jdt.core.prefs .settings/
+}
 
 findFile () {
     text="*$@*"
