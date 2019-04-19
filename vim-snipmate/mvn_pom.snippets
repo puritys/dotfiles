@@ -203,3 +203,17 @@ snippet pom-plugin-unittest
 			</systemPropertyVariables>
 		</configuration>
 	</plugin>
+
+snippet pom-plugin-ide
+	<!-- IDE -->
+	<plugin>
+		<artifactId>maven-war-plugin</artifactId>
+		<configuration>
+			<archive>
+				<manifest>
+					<addClasspath>true</addClasspath>
+					<classpathPrefix>target/generated-sources/java</classpathPrefix>
+				</manifest>
+			</archive>
+		</configuration>
+	</plugin>
