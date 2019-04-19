@@ -84,6 +84,9 @@ fn_eclim_stop() {
 }
 
 fn_ecliUpdate() {
+    mkdir -p .settings/
+    cp $HOME/workspace/.metadata/.plugins/org.eclipse.core.runtime/.settings/org.eclipse.jdt.core.prefs .settings/
+
     if [ -f build.gradle ]; then
         gradle eclipse
     else
@@ -96,8 +99,6 @@ fn_ecliUpdate() {
         sed "s/M2_REPO/$h\/.m2\/repository/" -i .classpath
     fi
 
-    mkdir -p .settings/
-    cp $HOME/workspace/.metadata/.plugins/org.eclipse.core.runtime/.settings/org.eclipse.jdt.core.prefs .settings/
 
 
 }
