@@ -99,7 +99,7 @@ fn_ecliUpdate() {
 }
 
 fn_ecliConfig() {
-    sh /usr/loca/bin/appendJavaClasspath.sh
+    sh /usr/local/bin/appendJavaClasspath.sh
     mkdir -p .settings/
     cp $HOME/workspace/.metadata/.plugins/org.eclipse.core.runtime/.settings/org.eclipse.jdt.core.prefs .settings/
 }
