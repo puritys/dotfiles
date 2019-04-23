@@ -14,6 +14,7 @@ alias mem="ps aux | awk '{printf \"%s %s\n\",\$4,\$0}' | sort -n"
 alias memSum="ps aux | awk '{sum += \$4} END {print sum}' "
 alias myHelp='fn_help'
 alias ntpSync='sudo ntpdate -s time.stdtime.gov.tw'
+alias gitCloneBranch='fnGitCloneBranch'
 alias gitDeleteTag='fnGitDeleteTag'
 alias gitDeleteBranch='fnGitDeleteBranch'
 alias gitForceCommit='fnGitForceCommit'
@@ -139,6 +140,12 @@ fnGitDeleteTag() {
     git tag -d $1
     git push --delete origin $1
 }
+
+fnGitCloneBranch() {
+    echo -e "git clone --branch $2 --single-branch $1\n"
+    git clone --branch $2 --single-branch $1
+}
+
 
 fnDate() {
     while true; do
