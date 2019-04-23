@@ -17,6 +17,7 @@ alias ntpSync='sudo ntpdate -s time.stdtime.gov.tw'
 alias gitDeleteTag='fnGitDeleteTag'
 alias gitDeleteBranch='fnGitDeleteBranch'
 alias gitForceCommit='fnGitForceCommit'
+alias gitCreateEmptyBranch='fnGitCreateEmptyBranch'
 alias c='/usr/local/bin/myExec.sh'
 alias urlencode='sh /usr/local/bin/puritys/urlencode.sh '
 alias urldecode='sh /usr/local/bin/puritys/urldecode.sh '
@@ -107,6 +108,13 @@ fn_ecliConfig() {
 findFile () {
     text="*$@*"
     find ./ -iname  $text
+}
+
+fnGitCreateEmptyBranch() {
+    echo -e "git checkout --orphan $1\n"
+    echo -e "git rm --cached -r .\n"
+    git checkout --orphan $1
+    git rm --cached -r .
 }
 
 fnGitDeleteBranch() {
