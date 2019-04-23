@@ -122,6 +122,10 @@ fnGitDeleteBranch() {
     echo -e "git push origin --delete $1\n"
     git branch -D $1
     git push origin --delete $1
+    echo "Empty Branch" >> README.md
+    git add README.md
+    git commit -m "Create a empty branch"
+    git push --set-upstream origin pregenData
 }
 
 fnGitForceCommit() {
