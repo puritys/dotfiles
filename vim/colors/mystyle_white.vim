@@ -224,3 +224,7 @@ hi! link javaScriptNumber Constant
 hi IndentGuidesOdd cterm=NONE ctermfg=NONE ctermbg=254 guifg=NONE guibg=#e4e4e4
 hi IndentGuidesEven cterm=NONE ctermfg=NONE ctermbg=252 guifg=NONE guibg=#d0d0d0
 
+
+" Valloric/MatchTagAlways
+hi! link MatchTag OptionHeavy
+

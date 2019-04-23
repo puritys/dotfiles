@@ -10,9 +10,6 @@ function! DisableAle()
    "" let g:ale_linters_explicit = 1
 endfunction
 
-function! DisableSyntastic()
-    nmap sc <CR>
-endfunction
 
 let g:forceUseTab = 1
 let g:enablePluginsLightLine = 0
@@ -183,8 +180,6 @@ nmap <ESC>OQ ::TagbarToggle<CR>
 nmap <F2>    :TagbarToggle<CR>
 :set pastetoggle=<F3>
 
-" SyntasticCheck
-nmap sc :SyntasticCheck<CR>
 
 " Copy/Paste : http://vim.wikia.com/wiki/Copy_and_paste_between_Vim_instances
 vnoremap <silent> ,y y:new<CR>:call setline(1,getregtype())<CR>o<Esc>P:wq! ~/.vim_clipboard.txt<CR>

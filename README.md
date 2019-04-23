@@ -76,6 +76,10 @@ host=MacMini
 | dominickng/fzf-session.vim|:ss, :Session, :SDelete   | fuzzle find vim session |
 | tpope/vim-obsession       |       | session management|
 | scrooloose/nerdtree       |       | file/dir list         |
+| Valloric/MatchTagAlways   | jumptag | Jump to the matched start/end tag         |
+
+
+
 Attentions.
 * ctags is needed by vim-nerdtree-tabs and shawncplus/phpcomplete.vim.
 
