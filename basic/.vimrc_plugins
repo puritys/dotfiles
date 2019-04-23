@@ -429,7 +429,6 @@ Plug 'garbas/vim-snipmate'
 " Execute self file
 Plug 'thinca/vim-quickrun', {'on': 'QuickRun'}
 Plug 'skywind3000/asyncrun.vim', {'on': 'AsyncRun'}
-Plug 'Rename'  " :saveas xxx
 
 
 " ----------------
