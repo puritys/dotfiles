@@ -167,6 +167,30 @@ let g:syntastic_mode_map={'mode': 'passive'}
 
 
 
+" --------------
+" ale 
+" --------------
+
+let g:ale_cpp_clang_options="-std=c++11 -Wall"
+let g:ale_sign_warning = 'W>'
+let g:ale_sign_error = 'E>'
+let g:ale_lint_delay = 300
+
+if g:enablePluginEclim == 1 || g:enablePluginYouCompleteMeSyntax == 1
+    au FileType java call DisableAle()
+else
+    let g:airline#extensions#ale#enabled=0
+    let g:ale_lint_on_enter = 0
+    if version > 800
+        if !empty(glob("~/.vim/plugged/ale"))
+            autocmd FileType java nmap sc :ALELint<CR>
+        else
+            " SyntasticCheck
+            nmap sc :SyntasticCheck<CR>
+        endif
+    endif
+
+endif
 
 """""""""""""""""
 " YouCompleteMe "
@@ -205,7 +229,36 @@ if !empty(glob("~/.vim/plugged/YouCompleteMe"))
     " debug :YcmDebugInfo
     "let g:ycm_keep_logfiles = 1 
     "let g:ycm_log_level = 'debug'
+
+    if version > 800
+        if g:enablePluginYouCompleteMe == 1
+            augroup load_ycm
+                autocmd!
+                autocmd InsertEnter * call plug#load('YouCompleteMe') | autocmd! load_ycm
+            augroup END
+            nmap sc :YcmForceCompileAndDiagnostics<CR>
+            nmap :ycmlist :YcmDiags<CR>
+        endif
+    endif
+
 endif
+
+" ---------------------------------
+" Valloric/MatchTagAlways
+" ---------------------------------
+let g:mta_use_matchparen_group = 0
+let g:mta_set_default_matchtag_color = 0
+
+nmap jumptag :MtaJumpToOtherTag<CR>
+
+let g:mta_filetypes = {
+    \ 'html' : 1,
+    \ 'xhtml' : 1,
+    \ 'xml' : 1,
+    \ 'php' : 1,
+    \ 'js' : 1,
+    \}
+
 
 """""""""""""""""
 " Autopair"
@@ -254,28 +307,6 @@ if !empty(glob("~/.vim/plugged/vim-indent-guides"))
     map :indent<CR> :IndentGuidesToggle<CR>
 endif
 
-" --------------
-" ale 
-" --------------
-
-let g:ale_cpp_clang_options="-std=c++11 -Wall"
-let g:ale_sign_warning = 'W>'
-let g:ale_sign_error = 'E>'
-let g:ale_lint_delay = 300
-
-if g:enablePluginEclim == 1 || g:enablePluginYouCompleteMeSyntax == 1
-    au FileType java call DisableAle()
-    au FileType java call DisableSyntastic()
-else
-    let g:airline#extensions#ale#enabled=0
-    let g:ale_lint_on_enter = 0
-    if version > 800
-        if !empty(glob("~/.vim/plugged/ale"))
-            autocmd FileType java nmap sc :ALELint<CR>
-        endif
-    endif
-
-endif
 
 
 " --------------
@@ -344,6 +375,7 @@ Plug 'haya14busa/incsearch.vim' " better search plugin
 "Plugin 'ntpeters/vim-better-whitespace' " show tail whitespace
 Plug 'ap/vim-css-color' " show color for color ticket
 Plug 'nathanaelkane/vim-indent-guides'
+Plug 'Valloric/MatchTagAlways', {'for': ['php', 'html', 'js', 'xml']}
 
 if g:enablePluginsLightLine == 1
     Plug 'itchyny/lightline.vim'
@@ -397,6 +429,8 @@ Plug 'garbas/vim-snipmate'
 " Execute self file
 Plug 'thinca/vim-quickrun', {'on': 'QuickRun'}
 Plug 'skywind3000/asyncrun.vim', {'on': 'AsyncRun'}
+Plug 'Rename'  " :saveas xxx
+
 
 " ----------------
 " Others
@@ -419,16 +453,6 @@ Plug 'Raimondi/delimitMate'
 
 call plug#end()
 
-if version > 800
-    if g:enablePluginYouCompleteMe == 1
-        if !empty(glob("~/.vim/plugged/vim-maktaba"))
-            augroup load_ycm
-                autocmd!
-                autocmd InsertEnter * call plug#load('YouCompleteMe') | autocmd! load_ycm
-            augroup END
-        endif
-    endif
-endif
 
 " ---------------------------------
 " Enable maktabe / codeformat / log
@@ -440,4 +464,6 @@ if !empty(glob("~/.vim/plugged/vim-maktaba"))
     "call g:vroom_logger.Error('my')
     "call g:vroom_logger.Debug('Test')
 endif
+
+
 
