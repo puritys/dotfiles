@@ -4,8 +4,6 @@
 
 let php_sync_method=-1
 
-""" Theme
-colors mystyle_white "dracula, seoul256, seoul256-light
 
 """" Git Gutter
 "map <F3> :GitGutterToggle<CR>
@@ -465,4 +463,6 @@ if !empty(glob("~/.vim/plugged/vim-maktaba"))
 endif
 
 
+""" Theme
+colors mystyle_white "dracula, seoul256, seoul256-light
 
