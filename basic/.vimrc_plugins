@@ -205,6 +205,7 @@ if !empty(glob("~/.vim/plugged/YouCompleteMe"))
     "let g:ycm_max_num_candidates = 50 " maxmum
     ""let g:ycm_filetype_whitelist = { '*': 1 }
     ""let g:ycm_complete_in_comments = 1
+    let g:ycm_always_populate_location_list = 1
     let g:ycm_key_list_previous_completion = []
     let g:ycm_key_invoke_completion = '<C-d>'
     let g:ycm_key_list_select_completion = []
@@ -236,6 +237,7 @@ if !empty(glob("~/.vim/plugged/YouCompleteMe"))
             augroup END
             nmap sc :YcmForceCompileAndDiagnostics<CR>
             nmap :ycmlist :YcmDiags<CR>
+            nmap <C-g> :YcmCompleter GoTo<CR>
         endif
     endif
 
