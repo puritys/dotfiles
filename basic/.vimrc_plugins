@@ -168,11 +168,19 @@ let g:syntastic_mode_map={'mode': 'passive'}
 " --------------
 " ale 
 " --------------
-
-let g:ale_cpp_clang_options="-std=c++11 -Wall"
+let s:php_language_server=$HOME. "/vendor/bin/php-language-server.php"
+if !empty(glob(s:php_language_server))
+    let g:ale_php_langserver_executable=s:php_language_server
+endif
+let g:ale_cpp_clang_options="-std=c++11 -Wall -I./"
 let g:ale_sign_warning = 'W>'
 let g:ale_sign_error = 'E>'
 let g:ale_lint_delay = 300
+let g:ale_completion_enabled = 0
+let s:eclipse = $HOME. "/eclipse.jdt.ls"
+if !empty(glob(s:eclipse))
+    let g:ale_java_eclipselsp_path = s:eclipse
+endif
 
 if g:enablePluginEclim == 1 || g:enablePluginYouCompleteMeSyntax == 1
     au FileType java call DisableAle()
@@ -181,7 +189,9 @@ else
     let g:ale_lint_on_enter = 0
     if version > 800
         if !empty(glob("~/.vim/plugged/ale"))
-            autocmd FileType java nmap sc :ALELint<CR>
+            nmap sc :ALELint<CR>
+            inoremap <C-d> <C-\><C-O>:ALEComplete<CR>
+            " ALEFix
         else
             " SyntasticCheck
             nmap sc :SyntasticCheck<CR>
@@ -435,6 +445,7 @@ Plug 'skywind3000/asyncrun.vim', {'on': 'AsyncRun'}
 " Others
 " ----------------
 Plug 'vim-syntastic/syntastic', {'on': 'SyntasticCheck'} " syntax check
+Plug 'danro/rename.vim'
 if version > 800
     Plug 'w0rp/ale'
 endif
