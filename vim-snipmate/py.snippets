@@ -5,17 +5,27 @@ snippet atoi
 	int("ss")
 
 snippet function
-	def ${0}()
+	def ${0}():
 		return "aaa"
 
 snippet log
 	print getframeinfo(currentframe()).lineno
 
-snippet regular
+snippet print
+	print "%s - %s " %(str, str2)
+
+snippet reg-replace
 	reg = '[^\d]+'
 	str = re.sub(reg, '', str);
 
-sinppet match
+snippet reg-finall
+	mats = re.findall('^([^:]+)', content, re.MULTILINE);
+
+sinppet reg-seaach
+	mats = re.search("[a-z]+", str)
+	print mats.group(1)
+
+sinppet reg-match
 	re.compile("[a-z]").match(str)
 	
 snippet count
@@ -24,6 +34,7 @@ snippet count
 snippet importBasic
 	import sys
 	import re
+	import os.path
 
 snippet options
 	param = {}
@@ -35,13 +46,32 @@ snippet options
 			value = sys.argv[index]
 			param[name] = value
 
+snippet for-in
+	for letter in 'Python':
+		print 'let %s' %(letter)
+
+snippet exit
+	sys.exit(0)
+
+snippet split
+	str.split(",")
+
+
 snippet __DIR__
 	os.path.dirname(path)
 
 snippet mkdir
 	os.makedirs(dir)
+
 snippet file_write
 	file = open(path, "w")
 	file.write(content)
 	file.close()
+
+snippet file_read
+	f = open("/xx", "r")
+	print(f.read())
+
+snippet if_file
+	if not os.path.isfile(file):
 

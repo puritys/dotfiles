@@ -30,6 +30,12 @@ snippet if
 	#else
 	#    echo "else"
 	fi 
+
+snippet if-command
+	if ! [ -x "$(command -v node)" ]; then
+		${1}
+	fi
+
 snippet option
 	while true; do
 		if [ "x\$1" == "x" ];then
