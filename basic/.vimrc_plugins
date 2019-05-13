@@ -176,17 +176,19 @@ let g:ale_cpp_clang_options="-std=c++11 -Wall -I./"
 let g:ale_sign_warning = 'W>'
 let g:ale_sign_error = 'E>'
 let g:ale_lint_delay = 300
-let g:ale_completion_enabled = 0
+if g:enablePluginAleAutoComplete == 1
+    let g:ale_completion_enabled = 1
+else
+    let g:ale_completion_enabled = 0   
+fi
 let s:eclipse = $HOME. "/eclipse.jdt.ls"
 if !empty(glob(s:eclipse))
     let g:ale_java_eclipselsp_path = s:eclipse
 endif
+let g:airline#extensions#ale#enabled=0
+let g:ale_lint_on_enter = 0
 
-if g:enablePluginEclim == 1 || g:enablePluginYouCompleteMeSyntax == 1
-    au FileType java call DisableAle()
-else
-    let g:airline#extensions#ale#enabled=0
-    let g:ale_lint_on_enter = 0
+if g:enablePluginAle == 1
     if version > 800
         if !empty(glob("~/.vim/plugged/ale"))
             nmap sc :ALELint<CR>
@@ -197,7 +199,6 @@ else
             nmap sc :SyntasticCheck<CR>
         endif
     endif
-
 endif
 
 """""""""""""""""

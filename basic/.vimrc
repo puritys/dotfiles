@@ -17,11 +17,18 @@ if !exists("g:enablePluginYouCompleteMe")
     let g:enablePluginYouCompleteMe = 0
 endif
 if !exists("g:enablePluginEclim")
-    let g:enablePluginEclim = 1
+    let g:enablePluginEclim = 0
 endif
 if !exists("g:enablePluginYouCompleteMeSyntax")
     let g:enablePluginYouCompleteMeSyntax = 0
 endif
+if !exists("g:enablePluginAle")
+    let g:enablePluginAle = 1
+endif
+if !exists("g:enablePluginAleAutoComplete")
+    let g:enablePluginAleAutoComplete = 0
+endif
+
 
 " vim log
 "set verbosefile=/tmp/vim.log
