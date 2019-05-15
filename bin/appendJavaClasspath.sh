@@ -11,7 +11,7 @@ appendClasspath () {
     preSpace="        "
     if [ $hasPath -eq 0 ];then
         echo "To append $appendPath"
-        command="sed 's/<\/classpath>/$preSpace<classpathentry kind=\"src\" path=\"$appendPathSlash\" \/>\n<\/classpath>/'  -i $file"
+        command="sed 's/<\/classpath>/$preSpace<classpathentry kind=\"src\" path=\"$appendPathSlash\" including=\"**\/*.java\" \/>\n<\/classpath>/'  -i $file"
         echo $command
         eval $command
     fi
