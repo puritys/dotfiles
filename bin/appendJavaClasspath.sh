@@ -14,13 +14,20 @@ appendClasspath () {
         command="sed 's/<\/classpath>/$preSpace<classpathentry kind=\"src\" path=\"$appendPathSlash\" \/>\n<\/classpath>/'  -i $file"
         echo $command
         eval $command
-    fi  
+    fi
 }
 
 
-
-
-
+if [ ! -f $file ]; then
+cat <<EOF >> $file
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+    <classpathentry kind="src" path="src"/>
+    <classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+    <classpathentry kind="output" path="bin"/>
+</classpath>
+EOF
+fi
 
 appendPathList=(${appendPaths//,/ }); 
 for(( i=0; i<${#appendPathList[@]}; i++ ))
