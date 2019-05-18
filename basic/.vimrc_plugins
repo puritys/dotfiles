@@ -184,9 +184,7 @@ endif
 
 let g:ale_linters = {'java': ['checkstyle', 'eclipselsp', 'pmd']}
 
-" Could not correctly compile on centos 7 and java 11
-"let s:eclipse = $HOME. "/eclipse.jdt.ls"
-let s:eclipse = "/root/.vim/plugged/YouCompleteMe/third_party/ycmd/third_party/eclipse.jdt.ls/"
+let s:eclipse = $HOME. "/eclipse.jdt.ls"
 if !empty(glob(s:eclipse))
     let g:ale_java_eclipselsp_path = s:eclipse
 endif
