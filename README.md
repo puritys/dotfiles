@@ -32,6 +32,9 @@ On the other side, I suggest you to install a pretty font called "PT Mono".
 How to let these two fonts exist on the terminal?
 In software iTerm2, you can open it's preferences interface and change the regular font to be "PT Mono" and the Non-ASCII font to be "Powerline symbols"
 
+Online font creator
+- http://www.glyphrstudio.com/
+
 ## customized
 
 You can customzied any alias and env variable by just create these three dotfiles.
