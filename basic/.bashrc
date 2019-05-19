@@ -12,7 +12,9 @@ PATH=$PATH:$HOME/bin:/usr/local/bin:/sbin:/usr/local/sbin:/usr/sbin:/usr/local/g
 export PATH
 
 export NODE_PATH=/usr/local/lib/node_modules:/usr/lib/node_modules
-
+if [ -f ~/.custEnv ]; then
+   . ~/.custEnv
+fi
 # Get the aliases and functions
 if [ -f ~/.bash_host ]; then
     . ~/.bash_host

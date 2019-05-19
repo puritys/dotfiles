@@ -15,6 +15,7 @@ while true; do
       -k | --docker) DOCKER=true; shift 1;;
       -i | --init) INIT=true; installVimPlugin=1; shift 1;;
       --autoComplete) installYouCompleteMe=1; shift 1;;
+      --cf) enableCustFont=1; shift 1;;
       -f | --fzf) installFZF=1; shift 1;;
       -b | --bashIt) installBashIt=1; shift 1;;
       --host) remoteHost=$2; shift 2;;
@@ -32,6 +33,26 @@ while true; do
       * ) echo "$1 is not a correct option.";shift 1; ;;
     esac
 done
+
+custEnvList="enableCustFont"
+custEnvList=(${custEnvList// / });
+custEnvFile="$HOME/.custEnv"
+declare -a custEnv
+if [ ! -f $custEnvFile ]; then
+    touch $custEnvFile
+else
+    i=0;
+    while read line
+    do
+        if [ ! -z $line ];then
+            s=(${line//=/ });
+            custEnv[${s[0]}]="${s[1]}"
+        fi
+        i=$(( $i + 1 ))
+    done < $custEnvFile
+
+fi
+
 
 if [ "x" != "x$remoteHost" ]; then
     echo "Sync dotfiles to remote host $remoteHost"
@@ -376,4 +397,13 @@ if [ "x" != "x$CTAGS" ]; then
 
 fi
 
+if [ ! -z $enableCustFont ]; then
+    custEnv["enableCustFont"]="1"
+fi
 
+content=""
+for key in "${custEnvList[@]}"
+do
+    content="\n$key=${custEnv[$key]}"
+done
+echo -e $content > $custEnvFile

@@ -14,8 +14,12 @@ powerline () {
 
     local color="\e[38;5;$fg\e[48;5;$bg"
     local arrowColor="\e[38;5;$bg"
-    #\[\ek\h\e\\\] : display screen hostname
-    local s1=`perl -e 'print "\xee\x82\xa3 "'`
+    if [ ! -z $enableCustFont ]; then
+        #\[\ek\h\e\\\] : display screen hostname
+        local s1=`perl -e 'print "\xee\x82\xa3 "'`
+    else
+        local s1=""
+    fi
     RET="$hostColor$s1$host$hostColorArrow$arrow\[\e[0m\]"
     RET="$RET$hostColorArrow2$arrow\[\e[0m\]"
     local path="$PWD"
@@ -33,14 +37,21 @@ powerline () {
     length=${#split[@]}
     for ((i=0; i<$length;i++))
     do
-        powPath="$powPath$color${split[$i]} \[\e[0m\]"
-        j=$((i+1))
-        if [ "$j" == "$length" ];then
-            powPath="$powPath$arrowColor$arrow\[\e[0m\]"
+        if [ ! -z $enableCustFont ]; then
+            powPath="$powPath$color${split[$i]} \[\e[0m\]"
+            j=$((i+1))
+            if [ "$j" == "$length" ];then
+                powPath="$powPath$arrowColor$arrow\[\e[0m\]"
+            else
+                powPath="$powPath$color$arrowLight \[\e[0m\]"
+            fi
         else
-            powPath="$powPath$color$arrowLight \[\e[0m\]"
+            powPath="$powPath$color/${split[$i]}\[\e[0m\]"
         fi
     done
+    if [ -z $enableCustFont ]; then
+        powPath="$powPath$color \[\e[0m\]"
+    fi
     PS1="$RET$powPath\n"
 }
 
@@ -66,12 +77,17 @@ changePS () {
 }
 
 getArrow() {
-    if [ `uname` == "Darwin" ]; then
-        arrow=`perl -e 'print "\xee\x82\xb0"'`
-        arrowLight=`perl -e 'print "\xee\x82\xb1"'`
+    if [ ! -z $enableCustFont ]; then
+        if [ `uname` == "Darwin" ]; then
+            arrow=`perl -e 'print "\xee\x82\xb0"'`
+            arrowLight=`perl -e 'print "\xee\x82\xb1"'`
+        else
+            arrow=`echo -e "\xee\x82\xb0"`
+            arrowLight=`echo -e "\xee\x82\xb1"`
+        fi
     else
-        arrow=`echo -e "\xee\x82\xb0"`
-        arrowLight=`echo -e "\xee\x82\xb1"`
+        arrow=""
+        arrowLight=""
     fi
 }
 
