@@ -35,6 +35,9 @@ In software iTerm2, you can open it's preferences interface and change the regul
 Online font creator
 - http://www.glyphrstudio.com/
 
+powerline font range:
+- `0xE000 - 0xF8FF`
+
 ## customized
 
 You can customzied any alias and env variable by just create these three dotfiles.
