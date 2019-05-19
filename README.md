@@ -21,22 +21,22 @@ Auto install fzf
 
 ## Install Font
 
-The bashrc will use powerline font, so you have to install this font by yourselves. The font is on the dir "assets" named "Meslo LG M Regular for Powerline.otf".
-
-* assets/Meslo LG M Regular for Powerline.otf
+The bashrc will use powerline font, so you have to install this font by yourselves. The font is on the dir "assets" named "Cust SF Mono" and "Cust SF Mono Powerline".
 
 
-On the other side, I suggest you to install a pretty font called "PT Mono".
-* https://fonts.google.com/specimen/PT+Mono
-
-How to let these two fonts exist on the terminal?
-In software iTerm2, you can open it's preferences interface and change the regular font to be "PT Mono" and the Non-ASCII font to be "Powerline symbols"
+- https://github.com/puritys/dotfiles/blob/master/assets/CustSFMono-Regular.otf
+- https://github.com/puritys/dotfiles/blob/master/assets/CustSFMonoPowerline-Regular.otf
 
 Online font creator
 - http://www.glyphrstudio.com/
 
 powerline font range:
 - `0xE000 - 0xF8FF`
+
+
+How to let these two fonts exist on the terminal?
+In software iTerm2, you can open it's preferences interface and change the regular font to be "Cust SF Mono" and the Non-ASCII font to be "Cust SF Mono Powerline""
+
 
 ## customized
 
