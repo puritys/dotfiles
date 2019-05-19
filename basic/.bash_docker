@@ -284,6 +284,7 @@ function vim_start2() {
             -e VIM_PLUGIN_YouCompleteMe_ENABLE_SYNTAX=0 \
             -e VIM_PLUGIN_YouCompleteMe_auto_trigger=0 \
             -e VIM_PLUGIN_ALE=0 \
+            -e CUST_FONT=1 \
             -p $port:22 \
             -v ~/docker_tmp/ssh-agent:/ssh-agent \
             -e SSH_AUTH_SOCK=/ssh-agent \
@@ -323,6 +324,7 @@ function vim_start() {
             -e VIM_PLUGIN_YouCompleteMe_auto_trigger=0 \
             -e VIM_PLUGIN_ALE=1 \
             -e VIM_PLUGIN_ALE_AUTO_COMPLETE=0 \
+            -e CUST_FONT=1 \
             -p $port:22 \
             -v ~/docker_tmp/ssh-agent:/ssh-agent \
             -e SSH_AUTH_SOCK=/ssh-agent \

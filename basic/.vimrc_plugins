@@ -392,7 +392,7 @@ Plug 'ap/vim-css-color' " show color for color ticket
 Plug 'nathanaelkane/vim-indent-guides'
 Plug 'Valloric/MatchTagAlways', {'for': ['php', 'html', 'js', 'xml']}
 
-if g:enablePluginsLightLine == 1
+if g:enablePluginLightLine == 1
     Plug 'itchyny/lightline.vim'
 endif
 
