@@ -10,13 +10,25 @@ snippet fat-jar
 
 
 snippet fat-application
-	jar {
-		manifest {
-			attributes(
-					'Main-Class': 'com.Test'
-			)   
-		}   
-		from {
-			configurations.runtimeClasspath.collect { it.isDirectory() ? it : zipTree(it) }
-		}   
+	buildscript {
+		dependencies {
+			classpath 'com.github.jengelman.gradle.plugins:shadow:5.0.0'
+		}
+	}
+	plugins {
+		id 'com.github.johnrengelman.shadow' version '5.0.0'
+		id 'java'
+	}
+	shadowJar {
+		baseName = 'shadow'
+		classifier = null
+		version = null
+	}
+
+snippet main
+	plugins {
+		id 'application'
+	}
+	application {
+		mainClassName = 'com.Test'
 	}
