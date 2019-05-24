@@ -85,6 +85,10 @@ snippet impreg
 snippet impclone
 	import org.apache.commons.lang.SerializationUtils;
 
+snippet implog
+	import org.slf4j.Logger;
+	import org.slf4j.LoggerFactory;
+
 snippet sleep
 	TimeUnit.SECONDS.sleep(3);
 
@@ -165,6 +169,11 @@ snippet random
 	import java.util.Random;
 	Random ran = new Random();
 	ran.nextInt(42);
+
+snippet random-uuid
+	import java.util.UUID;
+	UUID uuid = UUID.randomUUID();
+	String id = uuid.toString();
 
 snippet list
 	List<String> status = new ArrayList<>(Arrays.asList("0", "1"));
@@ -391,4 +400,5 @@ snippet mockFuture
 
 snippet mockDoNothing
 	doNothing().when(client).disconnect();
+
 

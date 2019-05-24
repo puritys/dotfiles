@@ -281,8 +281,8 @@ function vim_start2() {
             -e VIM_PLUGIN_Eclim=0 \
             -e VIM_PLUGIN_LightLine=0 \
             -e VIM_PLUGIN_YouCompleteMe=1 \
-            -e VIM_PLUGIN_YouCompleteMe_ENABLE_SYNTAX=0 \
-            -e VIM_PLUGIN_YouCompleteMe_auto_trigger=0 \
+            -e VIM_PLUGIN_YouCompleteMe_ENABLE_SYNTAX=1 \
+            -e VIM_PLUGIN_YouCompleteMe_auto_trigger=1 \
             -e VIM_PLUGIN_ALE=0 \
             -e CUST_FONT=1 \
             -p $port:22 \

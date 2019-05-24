@@ -185,6 +185,7 @@ endif
 
 let g:ale_linters = {'java': ['checkstyle', 'eclipselsp', 'pmd']}
 
+let g:ale_java_eclipselsp_workspace_path=$HOME . "/workspace"
 let s:eclipse = $HOME. "/eclipse.jdt.ls"
 if !empty(glob(s:eclipse))
     let g:ale_java_eclipselsp_path = s:eclipse
@@ -192,6 +193,11 @@ endif
 
 let g:airline#extensions#ale#enabled=0
 let g:ale_lint_on_enter = 0
+
+let g:ale_fixers = {
+\   '*': ['remove_trailing_lines', 'trim_whitespace'],
+\   'javascript': ['eslint'],
+\}
 
 if g:enablePluginAle == 1
     if version > 800
@@ -210,12 +216,13 @@ endif
 " YouCompleteMe "
 """""""""""""""""
 if !empty(glob("~/.vim/plugged/YouCompleteMe"))
+    " settings: https://github.com/Valloric/ycmd/blob/bb58a436f698e41a69c67590fea5ebc5b05fcb66/ycmd/default_settings.json
     " fixme g:ycm_key_invoke_completion not work
     "if !exists("g:ycm_auto_trigger")
     "    let g:ycm_auto_trigger = 1
     "endif
     let g:ycm_auto_trigger = 1
-
+    let g:ycm_java_jdtls_use_clean_workspace=0
     let g:ycm_min_num_of_chars_for_completion = 1
     "let g:ycm_min_num_identifier_candidate_chars = 0
     "let g:ycm_max_num_candidates = 50 " maxmum
