@@ -17,6 +17,7 @@ while true; do
       --autoComplete) installYouCompleteMe=1; shift 1;;
       --cf) enableCustFont=1; shift 1;;
       -f | --fzf) installFZF=1; shift 1;;
+      --tmux) installTmux=1; shift 1;;
       -b | --bashIt) installBashIt=1; shift 1;;
       --host) remoteHost=$2; shift 2;;
       -h | --help  )
@@ -118,6 +119,28 @@ sudo mkdir -p /usr/local/bin/puritys/
 sudo cp bin/*.pl  /usr/local/bin/puritys/
 sudo cp bin/*.sh  /usr/local/bin/puritys/
 sudo cp bin/appendJavaClasspath.sh /usr/local/bin/
+
+installTmux () {
+
+    if [ "x" != "x`command -v yum`" ]; then
+        sudo yum install -y screen tmux
+        ## install the latest tmux
+        version=2.9
+        sudo yum install -y gcc kernel-devel make ncurses-devel libevent-devel
+        wget https://github.com/tmux/tmux/releases/download/$version/tmux-$version.tar.gz
+        tar -xvzf tmux-$version.tar.gz
+        cd tmux-$version
+        LDFLAGS="-L/usr/local/lib -Wl,-rpath=/usr/local/lib" ./configure --prefix=/usr/
+        make
+        sudo make install
+
+    elif [[ `uname` == 'Darwin' ]]; then
+        ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)" < /dev/null 2> /dev/null
+        brew install tmux
+    fi
+
+
+}
 
 if [ ! -d /tmp/fzf_session ]; then
     mkdir -p /tmp/fzf_session
@@ -314,19 +337,7 @@ if [ "x$INIT" != "x" ] || [ "x$installFZF" != "x" ];  then
     fi
 
     ## Basic package
-    if [ "x" != "x`command -v yum`" ]; then
-        sudo yum install -y screen tmux
-        ## install the latest tmux
-        wget https://github.com/tmux/tmux/releases/download/2.6/tmux-2.6.tar.gz
-        tar -xvzf tmux-2.6.tar.gz
-        cd tmux-2.6
-        LDFLAGS="-L/usr/local/lib -Wl,-rpath=/usr/local/lib" ./configure --prefix=/usr/local
-        make
-        sudo make install
-    elif [[ `uname` == 'Darwin' ]]; then
-        ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)" < /dev/null 2> /dev/null
-        brew install tmux
-    fi
+    installTmux
 
     # -----------
     # Install ag
@@ -406,6 +417,10 @@ fi
 
 if [ ! -z $enableCustFont ]; then
     custEnv["enableCustFont"]="1"
+fi
+
+if [ 1 == "$installTmux" ];then
+    installTmux
 fi
 
 content=""
