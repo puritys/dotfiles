@@ -316,6 +316,13 @@ if [ "x$INIT" != "x" ] || [ "x$installFZF" != "x" ];  then
     ## Basic package
     if [ "x" != "x`command -v yum`" ]; then
         sudo yum install -y screen tmux
+        ## install the latest tmux
+        wget https://github.com/tmux/tmux/releases/download/2.6/tmux-2.6.tar.gz
+        tar -xvzf tmux-2.6.tar.gz
+        cd tmux-2.6
+        LDFLAGS="-L/usr/local/lib -Wl,-rpath=/usr/local/lib" ./configure --prefix=/usr/local
+        make
+        sudo make install
     elif [[ `uname` == 'Darwin' ]]; then
         ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)" < /dev/null 2> /dev/null
         brew install tmux

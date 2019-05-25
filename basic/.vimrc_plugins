@@ -177,6 +177,15 @@ let g:ale_cpp_clang_options="-std=c++11 -Wall -I./"
 let g:ale_sign_warning = 'W>'
 let g:ale_sign_error = 'E>'
 let g:ale_lint_delay = 300
+let g:ale_open_list = 1
+let g:ale_keep_list_window_open = 0
+
+let g:ale_set_loclist = 0
+let g:ale_set_quickfix = 1
+
+let g:ale_list_vertical = 1
+let g:ale_list_window_size = 35
+
 if g:enablePluginAleAutoComplete == 1
     let g:ale_completion_enabled = 1
 else
@@ -203,7 +212,12 @@ if g:enablePluginAle == 1
     if version > 800
         if !empty(glob("~/.vim/plugged/ale"))
             nmap sc :ALELint<CR>
+            nmap af :ALEFix<CR>
+            nmap ah :ALEHover<CR>
+            nmap as :ALESymbolSearch 
+            nmap ag :ALEGoToDefinition<CR>
             inoremap <C-d> <C-\><C-O>:ALEComplete<CR>
+
             " ALEFix
         else
             " SyntasticCheck
@@ -490,5 +504,10 @@ endif
 
 
 """ Theme
+if version > 742
+    if has("termguicolors")
+        set termguicolors
+    endif
+endif
 colors mystyle_white "dracula, seoul256, seoul256-light
 
