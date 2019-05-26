@@ -25,7 +25,7 @@ hi OptionSel cterm=NONE ctermfg=255 ctermbg=18 guifg=#eeeeee guibg=#000087
 hi Option cterm=NONE ctermfg=240 ctermbg=253 guifg=#585858 guibg=#dadada
 hi OptionHeavy cterm=NONE ctermfg=253 ctermbg=243 guifg=#dadada guibg=#767676
 
-hi ErrorText cterm=NONE ctermfg=196 ctermbg=252 guifg=#ff0000 guibg=#d0d0d0
+hi ErrorText cterm=NONE ctermfg=196 ctermbg=252 guifg=#dd0000 guibg=#d0d0d0
 hi NoticeText cterm=NONE ctermfg=131 ctermbg=251 guifg=#af5f5f guibg=#c6c6c6
 hi Unknown cterm=NONE ctermfg=255 ctermbg=232 guifg=#eeeeee guibg=#080808
 
@@ -71,7 +71,7 @@ hi! link Search    OptionHeavy
 hi! link ErrorMsg  ErrorText
 hi! link WarningMsg  NoticeText
 hi ModeMsg  cterm=NONE  ctermfg=fg  ctermbg=NONE
-hi MoreMsg  cterm=NONE  ctermfg=242 ctermbg=NONE
+hi MoreMsg cterm=NONE ctermfg=242 ctermbg=NONE guifg=#6c6c6c guibg=NONE
 
 "hi StatusLine   cterm=NONE  ctermfg=fg  ctermbg=242 
 "hi StatusLineNC cterm=NONE  ctermfg=fg  ctermbg=237 
@@ -79,9 +79,9 @@ hi VertSplit    cterm=reverse   ctermfg=fg  ctermbg=240
 
 "hi WildMenu cterm=NONE  ctermfg=0   ctermbg=184 gui=NONE    guifg=#000000   guibg=#dfdf00
 
-hi Folded   cterm=NONE  ctermfg=234 ctermbg=253
-hi FoldColumn   cterm=NONE  ctermfg=248 ctermbg=58 
-hi SignColumn   cterm=NONE  ctermfg=248 ctermbg=58 
+hi Folded cterm=NONE ctermfg=234 ctermbg=253 guifg=#1c1c1c guibg=#dadada
+hi FoldColumn cterm=NONE ctermfg=248 ctermbg=58 guifg=#a8a8a8 guibg=#5f5f00
+hi SignColumn cterm=NONE ctermfg=248 ctermbg=58 guifg=#a8a8a8 guibg=#5f5f00
 
 " open  dir  text color
 hi Directory    cterm=NONE  ctermfg=0  ctermbg=NONE 
@@ -89,8 +89,8 @@ hi Directory    cterm=NONE  ctermfg=0  ctermbg=NONE
 "left Line number
 "hi NonText  cterm=NONE  ctermfg=233 ctermbg=NONE
 
-hi Title    cterm=NONE  ctermfg=0   ctermbg=184 
-hi Visual   cterm=NONE  ctermfg=255 ctermbg=244 
+hi Title cterm=NONE ctermfg=0 ctermbg=184 guifg=#000000 guibg=#d7d700
+hi Visual cterm=NONE ctermfg=255 ctermbg=244 guifg=#eeeeee guibg=#808080
 
 
 
@@ -106,14 +106,14 @@ hi! link Type TextType
 hi! link Function  TextType
 
 " ( ) {}  
-hi Delimiter    cterm=NONE  ctermfg=18  ctermbg=NONE 
-hi Underlined   cterm=underline ctermfg=39  ctermbg=NONE  
+hi Delimiter cterm=NONE ctermfg=18 ctermbg=NONE guifg=#000087 guibg=NONE
+hi Underlined cterm=underline ctermfg=39 ctermbg=NONE guifg=#00afff guibg=NONE
 
 "unknow
 hi! link SpecialKey Unknown
 
 " Buffer Status Line
-hi StatusLine   cterm=NONE ctermfg=230 ctermbg=240
+hi StatusLine cterm=NONE ctermfg=230 ctermbg=240 guifg=#F1E7D0 guibg=#585858
 hi! link StatusLineNC TabLine
 hi! link StatusLineTerm TabLineSel
 hi! link StatusLineTermNC TabLine
