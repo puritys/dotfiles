@@ -49,7 +49,7 @@ hi TabLineRightIcon cterm=NONE ctermfg=240 ctermbg=230 guifg=#585858 guibg=#ffff
 
 hi ExtraWhitespace cterm=NONE ctermfg=NONE ctermbg=252 guifg=NONE guibg=#d0d0d0
 
-hi Normal cterm=NONE ctermfg=238 ctermbg=NONE guifg=#444444 guibg=NONE
+hi Normal cterm=NONE ctermfg=238 ctermbg=NONE guifg=#444444 guibg=#F1E7D0
 
 hi! link  TextType  TextMain
 
@@ -59,6 +59,10 @@ hi LineNr cterm=NONE ctermfg=240 ctermbg=254 guifg=#585858 guibg=#e4e4e4
 " The number line which cursor on it.
 hi CursorLineNr cterm=NONE ctermfg=NONE ctermbg=252 guifg=NONE guibg=#d0d0d0
 hi CursorLine cterm=NONE ctermfg=NONE ctermbg=252 guifg=NONE guibg=#d0d0d0
+hi Cursor cterm=NONE ctermfg=NONE ctermbg=252 guifg=NONE guibg=#d0d0d0
+hi iCursor cterm=NONE ctermfg=NONE ctermbg=252 guifg=NONE guibg=#d0d0d0
+hi vCursor cterm=NONE ctermfg=NONE ctermbg=252 guifg=NONE guibg=#d0d0d0
+hi lCursor cterm=NONE ctermfg=NONE ctermbg=252 guifg=NONE guibg=#d0d0d0
 
 
 "  "xxxxxx" 
@@ -70,12 +74,14 @@ hi! link IncSearch OptionSel
 hi! link Search    OptionHeavy
 hi! link ErrorMsg  ErrorText
 hi! link WarningMsg  NoticeText
-hi ModeMsg  cterm=NONE  ctermfg=fg  ctermbg=NONE
+
+" -- INSERT -- 
+hi ModeMsg cterm=NONE ctermfg=NONE ctermbg=NONE guifg=NONE guibg=NONE
 hi MoreMsg cterm=NONE ctermfg=242 ctermbg=NONE guifg=#6c6c6c guibg=NONE
 
 "hi StatusLine   cterm=NONE  ctermfg=fg  ctermbg=242 
 "hi StatusLineNC cterm=NONE  ctermfg=fg  ctermbg=237 
-hi VertSplit    cterm=reverse   ctermfg=fg  ctermbg=240
+hi VertSplit cterm=reverse ctermfg=NONE ctermbg=240 guifg=NONE guibg=#585858
 
 "hi WildMenu cterm=NONE  ctermfg=0   ctermbg=184 gui=NONE    guifg=#000000   guibg=#dfdf00
 
@@ -84,7 +90,7 @@ hi FoldColumn cterm=NONE ctermfg=248 ctermbg=58 guifg=#a8a8a8 guibg=#5f5f00
 hi SignColumn cterm=NONE ctermfg=248 ctermbg=58 guifg=#a8a8a8 guibg=#5f5f00
 
 " open  dir  text color
-hi Directory    cterm=NONE  ctermfg=0  ctermbg=NONE 
+hi Directory cterm=NONE ctermfg=0 ctermbg=NONE guifg=#000000 guibg=NONE
 
 "left Line number
 "hi NonText  cterm=NONE  ctermfg=233 ctermbg=NONE
