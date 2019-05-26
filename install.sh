@@ -133,7 +133,7 @@ installTmux () {
         LDFLAGS="-L/usr/local/lib -Wl,-rpath=/usr/local/lib" ./configure --prefix=/usr/
         make
         sudo make install
-
+        rm -rf tmux*
     elif [[ `uname` == 'Darwin' ]]; then
         ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)" < /dev/null 2> /dev/null
         brew install tmux
