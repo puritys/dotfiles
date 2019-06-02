@@ -390,9 +390,6 @@ if !empty(glob("~/.vim/plugged/lightline.vim"))
     endif
 endif
 
-let g:JavaImpDataDir="/tmp/JavaImp"
-
-
 " --------------
 " async run
 " :AsyncRun -raw=1 g++ % -o ./a.out
