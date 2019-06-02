@@ -30,6 +30,7 @@ snippet imptest
 	import static org.mockito.Matchers.anyObject;
 	import static org.mockito.Mockito.when;
 	import static org.mockito.Mockito.doNothing;
+	import static org.mockito.Mockito.doReturn;
 
 snippet impinject
 	import com.google.inject.Inject;
@@ -401,4 +402,5 @@ snippet mockFuture
 snippet mockDoNothing
 	doNothing().when(client).disconnect();
 
-
+snippet doReturn
+	doReturn("xx").when(obj).getNxxx(anyString());

@@ -75,3 +75,33 @@ snippet file_read
 snippet if_file
 	if not os.path.isfile(file):
 
+snippet fetchUrl
+	import urllib
+
+	link = "http://wwwz.zcfz/fzsf4"
+	f = urllib.urlopen(link)
+	contente = f.read()
+	print(contente)
+
+snippet json_parse
+	import json
+	j = json.loads(str)
+
+snippet image_size
+	import requests
+	h = { 'User-Agent': 'Neo'}
+	r = requests.get("https://images.freeimages.com/images/large-previews/85c/football-1442407.jpg", headers=h)
+
+	from PIL import Image
+	from io import BytesIO
+	# create image from binary content
+	i = Image.open(BytesIO(r.content))
+
+
+	width, height = i.size
+	print(width, height)
+	i = i.resize((100,100))
+	display(i)
+
+snippet null
+	None
