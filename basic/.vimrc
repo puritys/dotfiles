@@ -30,6 +30,9 @@ endif
 if !exists("g:enablePluginAleAutoComplete")
     let g:enablePluginAleAutoComplete = 0
 endif
+if !exists("g:enablePluginAirline")
+    let g:enablePluginAirline = 0
+endif
 
 
 " vim log
