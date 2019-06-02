@@ -79,8 +79,6 @@ hi! link WarningMsg  NoticeText
 hi ModeMsg cterm=NONE ctermfg=NONE ctermbg=NONE guifg=NONE guibg=NONE
 hi MoreMsg cterm=NONE ctermfg=242 ctermbg=NONE guifg=#6c6c6c guibg=NONE
 
-"hi StatusLine   cterm=NONE  ctermfg=fg  ctermbg=242 
-"hi StatusLineNC cterm=NONE  ctermfg=fg  ctermbg=237 
 hi VertSplit cterm=reverse ctermfg=NONE ctermbg=240 guifg=NONE guibg=#585858
 
 "hi WildMenu cterm=NONE  ctermfg=0   ctermbg=184 gui=NONE    guifg=#000000   guibg=#dfdf00
@@ -99,8 +97,6 @@ hi Title cterm=NONE ctermfg=0 ctermbg=184 guifg=#000000 guibg=#d7d700
 hi Visual cterm=NONE ctermfg=255 ctermbg=244 guifg=#eeeeee guibg=#808080
 
 
-
-""" WARM
 
 " variable  $vb
 hi! link Identifier  TextEmphasize
@@ -199,6 +195,7 @@ hi! link cFormat         Statement
 hi! link cType   TextType
 hi! link cMultiGroup PreProc
 hi! link cNumber  TextSub  
+" + - * /
 hi! link Operator TextSub
 hi! link cOperator TextSub
 hi! link cppOperator TextSub
