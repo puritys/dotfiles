@@ -24,9 +24,17 @@ set laststatus=2   " Always show the statusline
 set encoding=utf-8 " Necessary to show Unicode glyphs
 set term=xterm-256color
 set termencoding=utf-8
-let g:airline_extensions = ['syntastic', 'tagbar']
+let g:airline_extensions = ['branch', 'ale']
 let g:airline_powerline_fonts = 1
 let g:airline_theme='minimalist'
+let g:airline_detect_paste=1
+let g:airline#extensions#ale#enabled = 1
+let g:airline#extensions#ale#error_symbol = 'E:'
+let g:airline#extensions#ale#warning_symbol = 'W:'
+let g:airline#extensions#ale#show_line_numbers = 1
+let g:airline#extensions#ale#open_lnum_symbol = '(L'
+let g:airline#extensions#ale#close_lnum_symbol = ')'
+let g:airline#extensions#coc#enabled = 1
 "let g:airline#extensions#tabline#enabled=1
 "let g:airline#extensions#tabline#fnamemod=':t' "only show the filaname
 "let g:airline#extensions#whitespace#enabled=0 "disable whitespace trailing
@@ -407,8 +415,11 @@ Plug 'junegunn/fzf', { 'do': './install --all' } " File finder
 " ----------------
 " UI Plugins
 " ----------------
-"Plugin 'vim-airline/vim-airline'
-"Plugin 'vim-airline/vim-airline-themes'
+if g:enablePluginAirline == 1
+    Plug 'vim-airline/vim-airline'
+    Plug 'vim-airline/vim-airline-themes'
+endif
+
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 Plug 'jistr/vim-nerdtree-tabs', { 'on': 'NERDTreeToggle' }
 Plug 'majutsushi/tagbar' " methond/function list menu
