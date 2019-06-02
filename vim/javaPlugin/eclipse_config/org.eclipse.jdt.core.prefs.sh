@@ -1,4 +1,5 @@
 # http://git.eclipse.org/c/platform/eclipse.platform.swt.git/plain/examples/org.eclipse.swt.examples.browser.demos/.settings/org.eclipse.jdt.core.prefs
+# https://help.eclipse.org/oxygen/index.jsp?topic=%2Forg.eclipse.jdt.doc.isv%2Freference%2Fapi%2Forg%2Feclipse%2Fjdt%2Fcore%2FJavaCore.html&anchor=COMPILER_TASK_TAGS
 cat <<TEXT
 eclipse.preferences.version=1
 org.eclipse.jdt.core.classpathVariable.M2_REPO=$HOME/.m2/repository
