@@ -12,7 +12,7 @@ endfunction
 
 
 let g:forceUseTab = 1
-if !exists("g:enablePluginYouCompleteMe")
+if !exists("g:enablePluginLightLine")
     let g:enablePluginLightLine = 0
 endif
 if !exists("g:enablePluginYouCompleteMe")
