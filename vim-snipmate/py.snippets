@@ -105,3 +105,9 @@ snippet image_size
 
 snippet null
 	None
+
+snippet encoding
+	import os; 
+	import locale;
+	os.environ["PYTHONIOENCODING"] = "utf-8";
+	myLocale=locale.setlocale(category=locale.LC_ALL, locale="en_US.UTF-8");
