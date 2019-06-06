@@ -19,6 +19,7 @@ alias gitDeleteTag='fnGitDeleteTag'
 alias gitDeleteBranch='fnGitDeleteBranch'
 alias gitForceCommit='fnGitForceCommit'
 alias gitCreateEmptyBranch='fnGitCreateEmptyBranch'
+alias gitMergeCommit='fnGitMergeCommit'
 alias c='/usr/local/bin/myExec.sh'
 alias urlencode='sh /usr/local/bin/puritys/urlencode.sh '
 alias urldecode='sh /usr/local/bin/puritys/urldecode.sh '
@@ -150,6 +151,10 @@ fnGitDeleteTag() {
 fnGitCloneBranch() {
     echo -e "git clone --branch $2 --single-branch $1\n"
     git clone --branch $2 --single-branch $1
+}
+fnGitMergeCommit() {
+    git reset --soft $1
+    git commit -c ORIG_HEAD
 }
 
 
