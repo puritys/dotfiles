@@ -1,5 +1,5 @@
-alias ll='ls -la --color=auto'
-alias ls='ls --color=auto'
+alias ll='ls -la --time-style=long-iso --indicator-style=file-type --color=auto'
+alias ls='ls --time-style=long-iso --indicator-style=file-type --group-directories-first --color=auto'
 alias sudo='sudo -E '
 
 alias timestamp='date +%s -d '

@@ -96,7 +96,8 @@ fileGreen="38;2;6;115;87"
 fileRed="38;2;169;56;56"
 fileGrey="38;2;84;97;105"
 fileOrange="38;2;148;86;5"
-LS_COLORS="no=00:fi=00:di=$dirColor:ow=$dirColor:tw=$dirColor:st=$dirColor:ln=36:pi=33:so=35:do=35:bd=33:cd=33:or=31:ex=$fileGreen:*.tgz=$fileRed:*.zip=$fileRed:*.gz=$fileRed:*.bz2=$fileRed:*.bz=$fileRed:*error=$fileGrey:*.log=$fileGrey:*.jpg=$fileOrange:*.gif=$fileOrange:*.bmp=$fileOrange:*.png=$fileOrange:*.jpeg=$fileOrange:*.tif=$fileOrange:*.h=fileGrey"
+filePurple="38;2;124;18;175"
+LS_COLORS="no=00:fi=00:di=$dirColor:ow=$dirColor:tw=$dirColor:st=$dirColor:ln=36:pi=33:so=35:do=35:bd=33:cd=33:or=0:ex=0:*.tgz=$fileRed:*.zip=$fileRed:*.gz=$fileRed:*.bz2=$fileRed:*.bz=$fileRed:*error=$fileGrey:*.log=$fileGrey:*.jpg=$fileOrange:*.gif=$fileOrange:*.bmp=$fileOrange:*.png=$fileOrange:*.jpeg=$fileOrange:*.tif=$fileOrange:*.h=$fileGrey:*.c=$filePurple:*.cc=$filePurple:*.cpp=$filePurple:*.php=$filePurple:*.inc=$filePurple:*.js=$filePurple:*.ts=$filePurple:*.css=$filePurple:*.java=$filePurple:*.py=$filePurple:*.pl=$filePurple:*.sh=$filePurple:*.json=$fileGreen:*.yaml=$fileGreen:*.yml=$fileGreen:*.xml=$fileGreen:*.sql=$fileGreen"
 LS_OPTIONS="-b --color=auto"
 export LS_COLORS
 export LS_OPTIONS
