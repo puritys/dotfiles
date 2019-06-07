@@ -25,12 +25,13 @@ hi OptionSel cterm=NONE ctermfg=255 ctermbg=18 guifg=#eeeeee guibg=#000087
 hi Option cterm=NONE ctermfg=240 ctermbg=253 guifg=#585858 guibg=#dadada
 hi OptionHeavy cterm=NONE ctermfg=253 ctermbg=243 guifg=#dadada guibg=#767676
 
-hi ErrorText cterm=NONE ctermfg=196 ctermbg=252 guifg=#dd0000 guibg=#d0d0d0
+hi ErrorText cterm=NONE ctermfg=196 ctermbg=252 guifg=#ffffff guibg=#a93838
 hi NoticeText cterm=NONE ctermfg=131 ctermbg=251 guifg=#af5f5f guibg=#c6c6c6
 hi Unknown cterm=NONE ctermfg=255 ctermbg=232 guifg=#eeeeee guibg=#080808
 
 " /* axxxxxxxxx*/ // # 
 hi Comment cterm=NONE ctermfg=28 ctermbg=NONE guifg=#008700 guibg=NONE
+hi CommentKey cterm=NONE ctermfg=28 ctermbg=NONE guifg=#008700 guibg=NONE
 
 " ---------
 " Set theme
@@ -64,6 +65,10 @@ hi iCursor cterm=NONE ctermfg=NONE ctermbg=252 guifg=NONE guibg=#d0d0d0
 hi vCursor cterm=NONE ctermfg=NONE ctermbg=252 guifg=NONE guibg=#d0d0d0
 hi lCursor cterm=NONE ctermfg=NONE ctermbg=252 guifg=NONE guibg=#d0d0d0
 
+" Validation error
+hi! link SpellBad ErrorText
+" Validation Warning
+hi! link SpellCap NoticeText
 
 "  "xxxxxx" 
 "hi Constant cterm=NONE  ctermfg=202  ctermbg=NONE
@@ -96,6 +101,13 @@ hi Directory cterm=NONE ctermfg=0 ctermbg=NONE guifg=#000000 guibg=NONE
 hi Title cterm=NONE ctermfg=0 ctermbg=184 guifg=#000000 guibg=#d7d700
 hi Visual cterm=NONE ctermfg=255 ctermbg=244 guifg=#eeeeee guibg=#808080
 
+" comment
+hi! link SpecialComment Comment
+" comment @param, @return 
+hi! link Special Comment
+
+" unknown
+hi! link SpecialKey Unknown
 
 
 " variable  $vb
@@ -110,9 +122,6 @@ hi! link Function  TextType
 " ( ) {}  
 hi Delimiter cterm=NONE ctermfg=18 ctermbg=NONE guifg=#000087 guibg=NONE
 hi Underlined cterm=underline ctermfg=39 ctermbg=NONE guifg=#00afff guibg=NONE
-
-"unknow
-hi! link SpecialKey Unknown
 
 " Buffer Status Line
 hi StatusLine cterm=NONE ctermfg=230 ctermbg=240 guifg=#F1E7D0 guibg=#585858
@@ -137,10 +146,9 @@ hi! link StorageClass    TextType
 hi! link Structure       TextType
 hi! link Keyword         TextMain
 hi! link SignColumn      PreProc
-hi! link Tag             Special
+hi! link Tag             Comment
 hi! link SpecialChar     Special
 hi! link Delimiter       Special
-hi! link SpecialComment  Special
 hi! link Debug           Special
 hi! link Label           TextDesc
 
