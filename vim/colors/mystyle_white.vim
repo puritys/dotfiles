@@ -21,7 +21,7 @@ set fillchars=
 " ------
 " define basic color
 " -----
-hi OptionSel cterm=NONE ctermfg=255 ctermbg=18 guifg=#eeeeee guibg=#000087
+hi OptionSel cterm=NONE ctermfg=255 ctermbg=18 guifg=#eeeeee guibg=#045fa5
 hi Option cterm=NONE ctermfg=240 ctermbg=253 guifg=#585858 guibg=#dadada
 hi OptionHeavy cterm=NONE ctermfg=253 ctermbg=243 guifg=#dadada guibg=#767676
 
@@ -30,13 +30,13 @@ hi NoticeText cterm=NONE ctermfg=131 ctermbg=251 guifg=#af5f5f guibg=#c6c6c6
 hi Unknown cterm=NONE ctermfg=255 ctermbg=232 guifg=#eeeeee guibg=#080808
 
 " /* axxxxxxxxx*/ // # 
-hi Comment cterm=NONE ctermfg=28 ctermbg=NONE guifg=#008700 guibg=NONE
+hi Comment cterm=NONE ctermfg=28 ctermbg=NONE guifg=#039037 guibg=NONE
 hi CommentKey cterm=NONE ctermfg=28 ctermbg=NONE guifg=#008700 guibg=NONE
 
 " ---------
 " Set theme
 " ---------
-hi TextMain cterm=NONE ctermfg=18 ctermbg=NONE guifg=#000087 guibg=NONE
+hi TextMain cterm=NONE ctermfg=18 ctermbg=NONE guifg=#045fa5 guibg=NONE
 hi TextSub cterm=NONE ctermfg=232 ctermbg=NONE guifg=#080808 guibg=NONE
 hi TextBold cterm=NONE ctermfg=166 ctermbg=NONE guifg=#d75f00 guibg=NONE
 hi TextEmphasize cterm=NONE ctermfg=88 ctermbg=NONE guifg=#870000 guibg=NONE
@@ -103,8 +103,11 @@ hi Visual cterm=NONE ctermfg=255 ctermbg=244 guifg=#eeeeee guibg=#808080
 
 " comment
 hi! link SpecialComment Comment
-" comment @param, @return 
-hi! link Special Comment
+
+" <CR> \"  \ xxx
+hi! link Special TextBold
+
+hi! link Todo NoticeText
 
 " unknown
 hi! link SpecialKey Unknown
@@ -194,6 +197,8 @@ hi! link phpType TextType
 hi! link phpBacktick TextEmphasize
 hi! link phpFoldHtmlInside Normal
 
+hi! link htmlLink TextMain
+
 " ---------------------
 " c & cpp
 " ---------------------
@@ -226,6 +231,9 @@ hi! link javaScriptFunction TextMain
 hi! link javaScriptBoolean TextBold
 hi! link javaScriptNumber Constant
 
+"" =========== java ============
+" comment @param, @return 
+hi! link javaDocTags Comment
 
 " ===============
 "  Plugin
