@@ -91,11 +91,12 @@ PROMPT_COMMAND=changePS
 # ow: o+w
 # st: Directory with the sticky bit set (+t) and not other-writable
 # ex: executable
-dirBG="48;2;255;240;203"
-dirGreen="38;2;1;123;"
-dirOrange="38;2;241;82;3"
-fileGreen="38;2;8;136;26"
-LS_COLORS="no=00:fi=00:di=$dirOrange;$dirBG:ow=$dirGreen;$dirBG:tw=38;2;0;205;205:ln=36:pi=33:so=35:do=35:bd=33:cd=33:or=31:ex=$fileGreen:*.cmd=32:*.exe=32:*.com=32:*.bat=32:*.sh=32:*.csh=32:*.tar=31:*.tgz=1;31:*.taz=31:*.zip=1;30:*.gz=1;31:*.bz2=31:*.bz=31:*.tz=31:*.rpm=36:*.jpg=1;30:*.gif=1;30:*.bmp=1;30:*.png=1;30:*.jpeg=1;30:*.tif=35:*.h=1;35:*.jar=35:*.php=32:*.inc=32:*.sjs=32:*.js=32:*.sql=32:*.html=36:*.htm=36:*.xml=36"
+dirColor="38;2;0;119;193"
+fileGreen="38;2;6;115;87"
+fileRed="38;2;169;56;56"
+fileGrey="38;2;84;97;105"
+fileOrange="38;2;148;86;5"
+LS_COLORS="no=00:fi=00:di=$dirColor:ow=$dirColor:tw=$dirColor:st=$dirColor:ln=36:pi=33:so=35:do=35:bd=33:cd=33:or=31:ex=$fileGreen:*.tgz=$fileRed:*.zip=$fileRed:*.gz=$fileRed:*.bz2=$fileRed:*.bz=$fileRed:*error=$fileGrey:*.log=$fileGrey:*.jpg=$fileOrange:*.gif=$fileOrange:*.bmp=$fileOrange:*.png=$fileOrange:*.jpeg=$fileOrange:*.tif=$fileOrange:*.h=fileGrey"
 LS_OPTIONS="-b --color=auto"
 export LS_COLORS
 export LS_OPTIONS
