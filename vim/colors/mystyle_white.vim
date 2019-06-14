@@ -29,16 +29,17 @@ hi ErrorText cterm=NONE ctermfg=196 ctermbg=252 guifg=#ffffff guibg=#a93838
 hi NoticeText cterm=NONE ctermfg=131 ctermbg=251 guifg=#af5f5f guibg=#c6c6c6
 hi Unknown cterm=NONE ctermfg=255 ctermbg=232 guifg=#eeeeee guibg=#080808
 
+" todo #f1066e link #0085c1
 " /* axxxxxxxxx*/ // # 
-hi Comment cterm=NONE ctermfg=28 ctermbg=NONE guifg=#039037 guibg=NONE
+hi Comment cterm=NONE ctermfg=28 ctermbg=NONE guifg=#056900 guibg=NONE
 hi CommentKey cterm=NONE ctermfg=28 ctermbg=NONE guifg=#008700 guibg=NONE
 
 " ---------
 " Set theme
 " ---------
-hi TextMain cterm=NONE ctermfg=18 ctermbg=NONE guifg=#045fa5 guibg=NONE
+hi TextMain cterm=NONE ctermfg=18 ctermbg=NONE guifg=#004e8a guibg=NONE
 hi TextSub cterm=NONE ctermfg=232 ctermbg=NONE guifg=#080808 guibg=NONE
-hi TextBold cterm=NONE ctermfg=166 ctermbg=NONE guifg=#d75f00 guibg=NONE
+hi TextBold cterm=NONE ctermfg=166 ctermbg=NONE guifg=#c55700 guibg=NONE
 hi TextEmphasize cterm=NONE ctermfg=88 ctermbg=NONE guifg=#870000 guibg=NONE
 hi TextDesc      cterm=NONE ctermfg=23  ctermbg=NONE
 

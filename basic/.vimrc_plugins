@@ -122,7 +122,7 @@ let g:snipMate.scope_aliases['xml'] = 'mvn_pom'
 let g:snipMate.scope_aliases['java'] = 'java'
 let g:snipMate.scope_aliases['python'] = 'py'
 let g:snipMate.scope_aliases['vim'] = 'vim'
-let g:snipMate.scope_aliases['gradle'] = 'gradle'
+let g:snipMate.scope_aliases['groovy'] = 'gradle'
 
 " snippet remap
 "let g:snips_no_mappings = 1
