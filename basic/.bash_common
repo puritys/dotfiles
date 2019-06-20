@@ -1,43 +1,13 @@
 # powerline
 # ⮑  ⮐ ➞  ♺ │☠⚡♥
 #
-powerline () {
-    host=$1
-    arrow=$2
-    arrowLight=$3
 
-    local powPath=""
-    local bg=30m
-    local fg=253m
-    local hostColor="\e[38;5;$fg\e[48;5;31m"
-    local hostColorArrow="\e[38;5;31m\e[48;5;230m"
-    local hostColorArrow2="\e[38;5;230m\e[48;5;$bg"
-
-    local color="\e[38;5;$fg\e[48;5;$bg"
-    local arrowColor="\e[38;5;$bg"
-    if [ ! -z $enableCustFont ]; then
-        #\[\ek\h\e\\\] : display screen hostname
-        local s1=`perl -e 'print "\xee\x82\xa3 "'`
-    else
-        local s1=""
-    fi
-    RET="$hostColor$s1$host $hostColorArrow2$arrowLight\[\e[0m\]"
-    local path="$PWD"
-    case $path in
-      $HOME) path="~";;
-      $HOME/*) path="~${path#$HOME}";;
-      *) powPath="$color \[\e[0m\]";;
-    esac
-
-    RET="$RET$color $path \[\e[0m\]$arrowColor$arrow\[\e[0m\]"
-    PS1="$RET\n"
-}
-
-# legacy 
-#powerline () {
+# path /a/b/c
+#powerline_v2 () {
 #    host=$1
 #    arrow=$2
 #    arrowLight=$3
+#
 #    local powPath=""
 #    local bg=30m
 #    local fg=253m
@@ -53,8 +23,7 @@ powerline () {
 #    else
 #        local s1=""
 #    fi
-#    RET="$hostColor$s1$host$hostColorArrow$arrow\[\e[0m\]"
-#    RET="$RET$hostColorArrow2$arrow\[\e[0m\]"
+#    RET="$hostColor$s1$host $hostColorArrow2$arrowLight\[\e[0m\]"
 #    local path="$PWD"
 #    case $path in
 #      $HOME) path="~";;
@@ -62,31 +31,64 @@ powerline () {
 #      *) powPath="$color \[\e[0m\]";;
 #    esac
 #
-#    if [ "x$path" == "x/" ];then
-#        RET="$RET$color$path $arrowColor$arrow\[\e[0m\]\n"
-#        return ;
-#    fi
-#    split=(${path//\// })
-#    length=${#split[@]}
-#    for ((i=0; i<$length;i++))
-#    do
-#        if [ ! -z $enableCustFont ]; then
-#            powPath="$powPath$color${split[$i]} \[\e[0m\]"
-#            j=$((i+1))
-#            if [ "$j" == "$length" ];then
-#                powPath="$powPath$arrowColor$arrow\[\e[0m\]"
-#            else
-#                powPath="$powPath$color$arrowLight \[\e[0m\]"
-#            fi
-#        else
-#            powPath="$powPath$color/${split[$i]}\[\e[0m\]"
-#        fi
-#    done
-#    if [ -z $enableCustFont ]; then
-#        powPath="$powPath$color \[\e[0m\]"
-#    fi
-#    PS1="$RET$powPath\n"
+#    RET="$RET$color $path \[\e[0m\]$arrowColor$arrow\[\e[0m\]"
+#    PS1="$RET\n"
 #}
+
+# path: a>b>c
+powerline () {
+    host=$1
+    arrow=$2
+    arrowLight=$3
+    local powPath=""
+    local bg=30m
+    local fg=253m
+    local hostColor="\e[38;5;$fg\e[48;5;31m"
+    local hostColorArrow="\e[38;5;31m\e[48;5;230m"
+    local hostColorArrow2="\e[38;5;230m\e[48;5;$bg"
+
+    local color="\e[38;5;$fg\e[48;5;$bg"
+    local arrowColor="\e[38;5;$bg"
+    if [ ! -z $enableCustFont ]; then
+        #\[\ek\h\e\\\] : display screen hostname
+        local s1=`perl -e 'print "\xee\x82\xa3 "'`
+    else
+        local s1=""
+    fi
+    RET="$hostColor$s1$host$hostColorArrow$arrow\[\e[0m\]"
+    RET="$RET$hostColorArrow2$arrow\[\e[0m\]"
+    local path="$PWD"
+    case $path in
+      $HOME) path="~";;
+      $HOME/*) path="~${path#$HOME}";;
+      *) powPath="$color \[\e[0m\]";;
+    esac
+
+    if [ "x$path" == "x/" ];then
+        RET="$RET$color$path $arrowColor$arrow\[\e[0m\]\n"
+        return ;
+    fi
+    split=(${path//\// })
+    length=${#split[@]}
+    for ((i=0; i<$length;i++))
+    do
+        if [ ! -z $enableCustFont ]; then
+            powPath="$powPath$color${split[$i]} \[\e[0m\]"
+            j=$((i+1))
+            if [ "$j" == "$length" ];then
+                powPath="$powPath$arrowColor$arrow\[\e[0m\]"
+            else
+                powPath="$powPath$color$arrowLight \[\e[0m\]"
+            fi
+        else
+            powPath="$powPath$color/${split[$i]}\[\e[0m\]"
+        fi
+    done
+    if [ -z $enableCustFont ]; then
+        powPath="$powPath$color \[\e[0m\]"
+    fi
+    PS1="$RET$powPath\n"
+}
 
 changePS () {
     case $term in

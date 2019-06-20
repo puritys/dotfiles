@@ -142,11 +142,16 @@ snippet empty
 	StringUtils.isEmpty(${1});
 
 snippet main
-	public class ${1/*classname*/} {
+	public class ${0/*classname*/} {
 
 		public static void main (String[] args) {
-			${2}
+			${1}
 		}
+	}
+
+snippet enum
+	public enum ${0} {
+		{1}
 	}
 
 snippet sw
