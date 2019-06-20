@@ -201,7 +201,12 @@ map <silent> ,P :sview ~/.vim_clipboard.txt<CR>"zdddG:q!<CR>:call setreg('"', @"
 
 " automatically open and close the popup menu / preview window
 au CursorMovedI,InsertLeave * if pumvisible() == 0|silent! pclose|endif
-set completeopt=menuone,menu,noinsert,longest"
+
+if version > 800
+    set completeopt=menuone,menu,noinsert,longest"
+else
+    set completeopt=menuone,menu"
+endif
 
 function! INIT_CPP()
     set filetype=cpp
