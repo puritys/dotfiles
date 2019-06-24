@@ -9,6 +9,7 @@ while true; do
       -p | --vimPlugin   ) installVimPlugin=1; shift 1 ;;
       -d | --debug ) DEBUG=true; shift 1 ;;
       -j | --jave ) JAVA=true; shift 1 ;;
+      --installVim ) INSTALL_VIM=true; shift 1 ;;
       --javaImp ) JAVAIMP=true; shift 1 ;;
       --ctags ) CTAGS=true; shift 1 ;;
       --nodejs ) NODEJS=true; shift 1 ;;
@@ -145,7 +146,14 @@ installTmux () {
 
 installVim () {
     wget https://github.com/vim/vim/archive/v8.1.1317.tar.gz
-
+    tar -zxvf v8.1.1317.tar.gz 
+    mv vim-8.1.1317 vim_src;
+    cd vim_src
+         ./configure --enable-multibyte --enable-pythoninterp=yes --prefix=/usr; \
+        gmake
+        sudo gmake install
+    cd -
+    rm -rf v8*.gz
 }
 
 if [ ! -d /tmp/fzf_session ]; then
@@ -436,6 +444,10 @@ fi
 
 if [ ! -z $enableCustFont ]; then
     custEnv["enableCustFont"]="1"
+fi
+
+if [ ! -z $INSTALL_VIM ] && [ true == "$INSTALL_VIM" ];then
+    installVim
 fi
 
 if [ 1 == "$installTmux" ];then

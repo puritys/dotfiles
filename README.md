@@ -53,7 +53,7 @@ host=MacMini
 ## Useful Tool
 
 - fasd: Recent directories / files finder
-- fzf: file fuzzy finder 
+- fzf: file fuzzy finder
 - ag: better grep command
 - bashIt: Similar to Oh My Zsh,  it support auto complete command.
 - eclim: Integrate eclipse
