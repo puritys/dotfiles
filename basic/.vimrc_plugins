@@ -35,6 +35,10 @@ let g:airline#extensions#ale#show_line_numbers = 1
 let g:airline#extensions#ale#open_lnum_symbol = '(L'
 let g:airline#extensions#ale#close_lnum_symbol = ')'
 let g:airline#extensions#coc#enabled = 1
+if !exists('g:airline_symbols')
+    let g:airline_symbols = {} 
+    let g:airline_symbols.linenr = ''
+endif 
 "let g:airline#extensions#tabline#enabled=1
 "let g:airline#extensions#tabline#fnamemod=':t' "only show the filaname
 "let g:airline#extensions#whitespace#enabled=0 "disable whitespace trailing
