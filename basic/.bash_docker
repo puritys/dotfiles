@@ -253,7 +253,6 @@ function vim_start3() {
             -v ~/docker_tmp:/tmp \
             -v ~/docker_tmp/.bash_history:/root/.bash_history \
             -v ~/.m2:/root/.m2 \
-            #-v ~/docker_tmp/eclim_projects:/root/workspace/.metadata/.plugins/org.eclipse.core.resources \
             -w /src$pwd \
             puritys/vim:latest
 
@@ -293,7 +292,6 @@ function vim_start2() {
             -v ~/docker_tmp:/tmp \
             -v ~/docker_tmp/.bash_history:/root/.bash_history \
             -v ~/.m2:/root/.m2 \
-            #-v ~/docker_tmp/eclim_projects:/root/workspace/.metadata/.plugins/org.eclipse.core.resources \
             -w /src$pwd \
             puritys/vim:latest
 
@@ -333,10 +331,10 @@ function vim_start() {
             -v ~/docker_tmp:/tmp \
             -v ~/docker_tmp/.bash_history:/root/.bash_history \
             -v ~/.m2:/root/.m2 \
-            #-v ~/docker_tmp/eclim_projects:/root/workspace/.metadata/.plugins/org.eclipse.core.resources \
             -w /src$pwd \
             puritys/vim:latest
 
+            #-v ~/docker_tmp/eclim_projects:/root/workspace/.metadata/.plugins/org.eclipse.core.resources \
             #-e USER=puritys \
         docker exec -d $containerName sh /root/start.sh
     fi
