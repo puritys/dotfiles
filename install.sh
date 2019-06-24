@@ -143,6 +143,11 @@ installTmux () {
 
 }
 
+installVim () {
+    wget https://github.com/vim/vim/archive/v8.1.1317.tar.gz
+
+}
+
 if [ ! -d /tmp/fzf_session ]; then
     mkdir -p /tmp/fzf_session
 fi
