@@ -12,9 +12,10 @@ while true; do
       -d | --debug ) DEBUG=true; shift 1 ;;
       -j | --jave ) JAVA=true; shift 1 ;;
       --installVim ) INSTALL_VIM=true; shift 1 ;;
+      --installJava ) INSTALL_JAVA=true; shift 1 ;;
       --javaImp ) JAVAIMP=true; shift 1 ;;
       --ctags ) CTAGS=true; shift 1 ;;
-      --nodejs ) NODEJS=true; shift 1 ;;
+      --installNode ) INSTALL_NODE=true; shift 1 ;;
       -ujc | --updateJaveConfig ) UPDATE_JAVA_CONFIG=true; shift 1 ;;
       -k | --docker) DOCKER=true; shift 1;;
       -i | --init) INIT=true; installVimPlugin=1; shift 1;;
@@ -245,6 +246,7 @@ sudo cp vim/javaPlugin/google_checks.xml /usr/local/etc/
 sudo cp vim/javaPlugin/checkstyle.xml /usr/local/etc/
 
 source ./scripts/eclim.sh
+source ./scripts/installCommonCommand.sh
 
 if [ "x$INIT" != "x" ] || [ "x$installFZF" != "x" ];  then
     if [ ! -d ~/.sh_tool ]; then
@@ -330,19 +332,6 @@ if [ "x$installBashIt" != "x" ];  then
     bash-it disable alias all
 fi
 
-if [ ! -z $NODEJS ] &&  [ "true" == "$NODEJS" ];then
-    if [ ! -d node ]; then
-        wget https://nodejs.org/dist/v10.16.0/node-v10.16.0-linux-x64.tar.xz
-        tar -xf node-v10.16.0-linux-x64.tar.xz 
-        mv node-v10.16.0-linux-x64.tar.xz node
-        sudo cp -r node/lib/node_modules/npm/ /usr/local/lib/node_modules/
-        sudo cp node/bin/npm  /usr/local/bin/
-        sudo cp node/bin/node  /usr/local/bin/
-        sudo ln -sf  /usr/local/lib/node_modules/npm/bin/npm-cli.js  /usr/local/bin/npm
-        rm -rf node node*.xz
-
-    fi
-fi
 
 # -------------------------------
 # Install ctags for auto complete
