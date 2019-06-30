@@ -97,6 +97,13 @@ let g:NERDTreeGlyphReadOnly=0
 let g:NERDTreeDirArrowExpandable=1
 let g:NERDTreeDirArrowCollapsible=1
 
+" -----------------
+" Netrw settings
+"
+" - Airline and some plugins will require netrw and use it, so I can not disable it.
+" - netrw will replace the NerdTree file explore.
+" -----------------
+let g:netrw_liststyle = 3
 
 " ----------------
 " JavaImp settings

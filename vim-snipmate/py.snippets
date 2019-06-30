@@ -57,6 +57,9 @@ snippet split
 	str.split(",")
 
 
+snippet dirname
+	os.path.dirname(path)
+
 snippet __DIR__
 	os.path.dirname(path)
 
@@ -71,6 +74,9 @@ snippet file_write
 snippet file_read
 	f = open("/xx", "r")
 	print(f.read())
+
+snippet file_exist
+	if not os.path.exists(file):
 
 snippet if_file
 	if not os.path.isfile(file):

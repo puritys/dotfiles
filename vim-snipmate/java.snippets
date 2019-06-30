@@ -162,6 +162,22 @@ snippet enum
 		{1}
 	}
 
+snippet enumof
+	private static Map<String, Class> enumMap = new HashMap<>(); 
+	static {
+		for (Clas c: Class.values()) {
+			enumMap.put(c.name(), c);
+		}
+	} 
+	public static Class of(String val) {
+		if (!enumMap.containsKey(val)) {
+			throw new IllegalArgumentException(
+			"No enum constant " + val);
+		} else {
+			return enumMap.get(val);
+		}
+	}
+
 snippet sw
 	switch(${1}) {
 		case 1:
@@ -190,7 +206,10 @@ snippet random-uuid
 	String id = uuid.toString();
 
 snippet list
-	List<String> status = new ArrayList<>(Arrays.asList("0", "1"));
+	List<String> status = Arrays.asList("0", "1");
+
+snippet listempty
+	List<String> status = new ArrayList<>();
 
 snippet set
 	Set<String> m = new HashSet<String>();

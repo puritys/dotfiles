@@ -5,11 +5,11 @@ body, body x-screen[style], body x-screen > div {
 
 /* cursor color */
 .cursor-node[style][focus=true] {
-    background-color: rgba(35,147,244,0.5) !important; // #2393f4
+    background-color: rgba(255,0,0,0.5) !important; // #ff0000
 }
 
 .cursor-node[style][focus=false] {
-    border-color: #2393f4 !important;
+    border-color: #ff0000 !important;
 }
 
 /*
