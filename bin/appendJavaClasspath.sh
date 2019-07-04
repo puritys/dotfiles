@@ -17,7 +17,8 @@ while true; do
       * ) echo "$1 is not a correct option.";shift 1; ;;
     esac
 done
-appendPaths="target/generated-sources/java,target/generated-sources/annotations"
+#appendPaths="target/generated-sources/java,target/generated-sources/annotations"
+appendPaths="src/generated-sources/java"
 
 
 appendClasspath () {
