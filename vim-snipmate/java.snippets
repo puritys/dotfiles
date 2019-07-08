@@ -20,7 +20,8 @@ snippet impjson
 	import org.json.JSONArray;
 snippet impgson
 	import com.google.gson.Gson;
-snippet imptest
+
+snippet impmockito
 	import static org.junit.Assert.assertEquals;
 	import static org.junit.Assert.assertNotEquals;
 	import static org.junit.Assert.assertTrue;
@@ -433,6 +434,17 @@ snippet mockFuture
 
 snippet mockDoNothing
 	doNothing().when(client).disconnect();
+
+snippet mockinject
+	@Mock private o o;
+	@Spy private o2 o2;
+	@InjectMocks private o3 o3;
+	@Before
+	public void setUp() throws Exception {
+		o = mock(o.class); 
+		o2 = new o2();
+		MockitoAnnotations.initMocks(this); 
+	}
 
 snippet unitprodvier
 	@RunWith(DataProviderRunner.class)
