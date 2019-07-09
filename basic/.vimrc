@@ -61,8 +61,10 @@ set foldmethod=marker
 set tabpagemax=100
 
 
-"出現水平線
-set cursorline
+" vim version is smaller than 8 the cursorline performance is bad
+if version > 800
+    set cursorline
+endif
 
 "use mouse
 "set mouse=a
