@@ -138,10 +138,10 @@ fnGitForceCommit() {
 }
 
 fnGitDeleteTag() {
-    echo -e "git tag -d $1\n"
-    echo -e "git push --delete origin $1\n"
-    git tag -d $1
-    git push --delete origin $1
+    echo -e "git tag -d $@\n"
+    echo -e "git push --delete origin $@\n"
+    echo "$@" | sed 's/ /\n/' | xargs -t -n 1 -P8 --no-run-if-empty  git tag -d
+    echo "$@" | xargs -t -n 1 -P8 --no-run-if-empty  git push --delete origin 
 }
 
 fnGitCloneBranch() {

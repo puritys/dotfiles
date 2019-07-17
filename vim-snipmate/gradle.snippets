@@ -8,6 +8,21 @@ snippet fat-jar
 		with jar
 	}
 
+snippet application
+	buildscript {
+		dependencies {
+			classpath 'com.github.jengelman.gradle.plugins:shadow:5.0.0'
+		}
+	}
+	plugins {
+		id 'com.github.johnrengelman.shadow' version '5.0.0'
+		id 'java'
+	}
+	shadowJar {
+		baseName = 'shadow'
+		classifier = null
+		version = null
+	}
 
 snippet fat-application
 	buildscript {

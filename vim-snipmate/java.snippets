@@ -38,6 +38,12 @@ snippet impmockito
 	import org.mockito.Spy;
 	import org.mockito.MockitoAnnotations;
 
+snippet imppowermock
+	import static org.powermock.api.mockito.PowerMockito.when;
+	import org.powermock.core.classloader.annotations.PrepareForTest;
+	import org.powermock.modules.junit4.PowerMockRunner;
+	import org.powermock.api.mockito.PowerMockito;
+
 snippet impprovider
 	import org.junit.*
 	import com.tngtech.java.junit.dataprovider.DataProvider;
@@ -502,4 +508,15 @@ snippet options
 snippet sync
 	synchronized (xx) {
 
+	}
+
+snippet powermock
+	@RunWith(PowerMockRunner.class)
+	@PrepareForTest(StaticClass.class)
+	public class XXclassrTest {
+		@Test
+		public void testStatic() {
+			PowerMockito.mockStatic(StaticClass.class);
+			when(StaticClass.run("xxx")).thenReturn("zzzzz");
+		}
 	}
