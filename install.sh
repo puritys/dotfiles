@@ -52,6 +52,7 @@ else
     do
         if [ ! -z $line ];then
             s=(${line//=/ });
+echo $s
             custEnv[${s[0]}]="${s[1]}"
         fi
         i=$(( $i + 1 ))
@@ -65,7 +66,7 @@ if [ "x" != "x$remoteHost" ]; then
     scp basic/.alias basic/.alias_common \
         basic/.bash_common basic/.bash_profile basic/.inputrc \
         basic/.bashrc bin/exec.sh basic/.vimrc basic/.vimrc_plugins \
-        basic/.eclimrc basic/.screenrc $remoteHost:~/ 
+        basic/.eclimrc basic/.screenrc $remoteHost:~/
 
     ssh $remoteHost " \
         sudo mv exec.sh /usr/local/bin/myExec.sh; mkdir -p ~/.vim/plugged/vim-snipmate/snippets/; \
@@ -105,7 +106,7 @@ echo $DOCKER
 if [ "x$DOCKER" == "x" ];then
     echo "Without docker"
     rm -f ~/.alias_docker
-else 
+else
     if [ -d /usr/local/bin/ ]; then
         sudo cp bin/docker_php /usr/local/bin/php
         sudo cp bin/docker_php7 /usr/local/bin/php7
@@ -149,7 +150,7 @@ installTmux () {
 
 installVim () {
     wget https://github.com/vim/vim/archive/v8.1.1317.tar.gz
-    tar -zxvf v8.1.1317.tar.gz 
+    tar -zxvf v8.1.1317.tar.gz
     mv vim-8.1.1317 vim_src;
     cd vim_src
          ./configure --enable-multibyte --enable-pythoninterp=yes --prefix=/usr; \
@@ -254,7 +255,7 @@ if [ "x$INIT" != "x" ] || [ "x$installFZF" != "x" ];  then
         git clone --depth 1 git@github.com:junegunn/fzf.git ~/.sh_tool/fzf
         ~/.sh_tool/fzf/install --all
         ## append
-        #  <(cat ~/machine_list.txt | command grep -v '#' | sed -e 's/^/host /') \ 
+        #  <(cat ~/machine_list.txt | command grep -v '#' | sed -e 's/^/host /') \
         #  to ~/.sh_tool/fzf/shell/completion.bash : _fzf_complete_ssh
 
 
@@ -299,7 +300,7 @@ if [ "x$INIT" != "x" ] || [ "x$installFZF" != "x" ];  then
             sudo make install
             cd ..
         fi
-    fi 
+    fi
 fi
 
 if [ "x$installBashIt" != "x" ];  then
@@ -342,11 +343,11 @@ if [ "x" != "x$CTAGS" ]; then
     fi
     if [ -d /www ];then
         cd /www
-        ctags -R --fields=+laimS --languages=php -f ~/.vim/php_tags  -a 
+        ctags -R --fields=+laimS --languages=php -f ~/.vim/php_tags  -a
         cd -
     fi
     cd ~/
-    ctags -R --fields=+laimS --languages=php -f ~/.vim/php_tags  -a 
+    ctags -R --fields=+laimS --languages=php -f ~/.vim/php_tags  -a
     cd -
 
 fi
@@ -368,4 +369,4 @@ for key in "${custEnvList[@]}"
 do
     content="\n$key=${custEnv[$key]}"
 done
-echo -e $content > $custEnvFile
+echo $content > $custEnvFile
