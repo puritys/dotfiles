@@ -147,6 +147,32 @@ installTmux () {
 
 }
 
+installFzf () {
+    if [ ! -d ~/.sh_tool ]; then
+        mkdir ~/.sh_tool
+        git clone --depth 1 git@github.com:junegunn/fzf.git ~/.sh_tool/fzf
+        ~/.sh_tool/fzf/install --all
+        ## append
+        #  <(cat ~/machine_list.txt | command grep -v '#' | sed -e 's/^/host /') \ 
+        #  to ~/.sh_tool/fzf/shell/completion.bash : _fzf_complete_ssh
+
+
+        # ------------
+        # Install fasd cd
+        # ------------
+        if [ "x" = "x`command -v wget`" ]; then
+            if [ "x" != "x`command -v yum`" ]; then
+                sudo yum install -y wget
+            fi
+        fi
+        cd ~/.sh_tool/ ; wget https://github.com/clvv/fasd/tarball/1.0.1
+        tar -zxvf 1.0.1
+        cd clvv-fasd-4822024; PREFIX=$HOME make install
+        cd ../../
+    fi
+
+}
+
 installVim () {
     wget https://github.com/vim/vim/archive/v8.1.1317.tar.gz
     tar -zxvf v8.1.1317.tar.gz 
@@ -248,31 +274,13 @@ sudo cp vim/javaPlugin/checkstyle.xml /usr/local/etc/
 source ./scripts/eclim.sh
 source ./scripts/installCommonCommand.sh
 
+if [ "x$installFZF" != "x" ];  then 
+    installFzf
+fi
+
 if [ "x$INIT" != "x" ] || [ "x$installFZF" != "x" ];  then
-    if [ ! -d ~/.sh_tool ]; then
-        mkdir ~/.sh_tool
-        git clone --depth 1 git@github.com:junegunn/fzf.git ~/.sh_tool/fzf
-        ~/.sh_tool/fzf/install --all
-        ## append
-        #  <(cat ~/machine_list.txt | command grep -v '#' | sed -e 's/^/host /') \ 
-        #  to ~/.sh_tool/fzf/shell/completion.bash : _fzf_complete_ssh
-
-
-        # ------------
-        # Install fasd cd
-        # ------------
-        if [ "x" = "x`command -v wget`" ]; then
-            if [ "x" != "x`command -v yum`" ]; then
-                sudo yum install -y wget
-            fi
-        fi
-        cd ~/.sh_tool/ ; wget https://github.com/clvv/fasd/tarball/1.0.1
-        tar -zxvf 1.0.1
-        cd clvv-fasd-4822024; PREFIX=$HOME make install
-        cd ../../
-    fi
-
     ## Basic package
+    installFzf
     installTmux
 
     # -----------
