@@ -257,7 +257,7 @@ if [ "x$INIT" != "x" ] || [ "x$installFZF" != "x" ];  then
         ## append
         #  <(cat ~/machine_list.txt | command grep -v '#' | sed -e 's/^/host /') \
         #  to ~/.sh_tool/fzf/shell/completion.bash : _fzf_complete_ssh
-
+        #  or add ~/machine_list.txt to original cat command, make sure the value format of ~/machine_list.txt should be "host xx"
 
         # ------------
         # Install fasd cd
