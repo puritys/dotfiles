@@ -224,7 +224,10 @@ snippet listempty
 	List<String> status = new ArrayList<>();
 
 snippet set
-	Set<String> m = new HashSet<String>();
+	Set<String> m = new HashSet<String>(Arrays.asList("0", "1"));
+
+snippet classname
+	this.getClass().getSimpleName();
 
 snippet arrayToList
 	List<String> list = Arrays.asList(args);
