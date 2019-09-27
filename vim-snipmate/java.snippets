@@ -329,8 +329,14 @@ snippet upperCase
 snippet pmdSkip
 	@SuppressWarnings({"PMD.NPathComplexity", "PMD.ExcessiveMethodLength", "PMD.NonStaticInitializer"})
 
+snippet pmdSkipDefault
+	@SuppressWarnings({"PMD.SwitchStmtsShouldHaveDefault"})
+
 snippet pmdSkipEnum
 	@SuppressWarnings({"PMD.TooFewBranchesForASwitchStatement"})
+
+snippet pmdmagicnumber
+	@SuppressWarnings({"checkstyle:magicnumber"})
 
 snippet jsonType
 	if (json.has("zzz")) {
