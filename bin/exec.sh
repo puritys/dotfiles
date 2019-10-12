@@ -242,11 +242,11 @@ iptables_save() {
 ffmpeg_help() {
     echo "ffmpeg usage:"
     echo "-p ffmpeg -c flv_to_mp4 -f xxx.flv -o xx.mp4: convert flv to mp4"
-    echo "-p ffmpeg -c resize -f xxx.mp4 -o xx.mp4: resize"
+    echo "-p ffmpeg -c resize -f xxx.mp4 -o xx.mp4: resize, 16:9 -> 640:360, 800:450, 1920:1080"
     echo "-p ffmpeg -c speed_up -f xxx.mp4 -o xx.mp4: speed up"
     echo "-p ffmpeg -c crop -f xxx.mp4 -o xx.mp4: crop"
     echo "-p ffmpeg -c preview -f xxx.mp4 -o xx.png: get preview images"
-    echo "ffmpeg_fn -i input -vf scale=640:360  -an -filter:v 'crop=90:90:0:0,setpts=0.5*PTS'   -ss 00:30 -to 00:40 -t 10 output"
+    echo "ffmpeg_fn -i input -vf scale=800:450  -an -filter:v 'crop=90:90:0:0,setpts=0.5*PTS'   -ss 00:30 -to 00:40 -t 10 output"
 
 
 }
