@@ -377,4 +377,4 @@ for key in "${custEnvList[@]}"
 do
     content="\n$key=${custEnv[$key]}"
 done
-echo $content > $custEnvFile
+echo -e $content > $custEnvFile

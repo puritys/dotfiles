@@ -241,6 +241,7 @@ setTerm() {
 }
 
 ssh() {
+    getMySSHAgent
     title=$*
     if [ -f "/usr/bin/tmux" ]; then
         tmux="/usr/bin/tmux";
