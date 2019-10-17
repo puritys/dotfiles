@@ -67,7 +67,7 @@ snippet getopt
 			${0}
 		}
 	}
-snippet class
+snippet cla
 	class ${1:`vim_snippets#Filename('$1', 'name')`} {
 	public:
 		$1(${2});
@@ -76,3 +76,11 @@ snippet class
 	private:
 		${0:/* data */}
 	};
+
+snippet file_read
+	#include <fstream>
+	#include <string>
+	std::ifstream ifs("myfile.txt");
+	std::string content((std::istreambuf_iterator<char>(ifs) ),
+						(std::istreambuf_iterator<char>() ) );
+
