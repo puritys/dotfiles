@@ -74,6 +74,11 @@ snippet forNum
 		echo $i
 	done
 
+snippet forFileLineByLine
+	while IFS= read -r line; do
+		echo "Read from file: $line"
+	done < file.txt
+
 snippet atoi
 	\$(( d1 - d2 ))
 
