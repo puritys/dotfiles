@@ -169,6 +169,14 @@ snippet main
 		}
 	}
 
+snippet class_private
+	final class Field {
+
+		private Field() {
+			 throw new IllegalStateException("Don't initiate class");
+		}  
+	}
+
 snippet enum
 	public enum ${0} {
 		{1}
@@ -334,6 +342,9 @@ snippet pmdSkipDefault
 
 snippet pmdSkipEmptyCatch
 	@SuppressWarnings("PMD.EmptyCatchBlock")
+
+snippet pmdSkipCouplingBetweenObjects
+	@SuppressWarnings("CouplingBetweenObjects")
 
 snippet pmdSkipEnum
 	@SuppressWarnings({"PMD.TooFewBranchesForASwitchStatement"})
