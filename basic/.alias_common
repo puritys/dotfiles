@@ -170,7 +170,7 @@ fnGitMergeRepo() {
               echo "Usage:"
               echo "-r (repo): the repo path you want to merge: git@github.com:puritys/nodejs-phplike.git"
               echo "-d (dirname): dirname: clone code to this dirname "
-              echo "-b (branch): the branch of new repo, you have to create a branch before merge code."
+              echo "-b (branch): Merge repo to this new branch. Please create branch on git server first and update your local git."
               echo "-c (comment): comment."
               echo "you have to execute 'git push' after this scirpt is done ."
               echo "Example:"
@@ -187,20 +187,28 @@ fnGitMergeRepo() {
           * ) echo "$1 is not a correct option.";shift 1; ;;
         esac
     done
-    if [ -z $REPO ] || [ -z $DIRNAME ] || [ -z $BRANCH ] || [ -z $COMMENT]; then
+    if [ -z $REPO ] || [ -z $DIRNAME ]; then
         echo "some arguements are missing, use -h to read instruction"
         return
     fi
+
+    if [ -z $BRANCH ] || [ -z $COMMENT ]; then
+        echo "some arguements are missing, use -h to read instruction"
+        return
+    fi
+
+    git checkout $BRANCH
     git remote add new_repo_clone $REPO
     git fetch new_repo_clone
     git branch new_repo_checkout new_repo_clone/master
     git checkout new_repo_checkout
     mkdir -p $DIRNAME
-    git ls-tree -z --name-only HEAD | xargs -0 -I {} git mv {} $DIRNAME/
-    git commit -m "Moved files to $DIRNAME"
+    git ls-tree -z --name-only HEAD | xargs -0 -I {} git mv -f {} $DIRNAME/
+    git commit -m "$COMMENT"
     git checkout $BRANCH
     git merge --allow-unrelated-histories new_repo_checkout
-
+    git push --set-upstream origin $BRANCH
+    git push origin $BRANCH
 }
 
 
