@@ -194,9 +194,17 @@ function getMySSHAgent {
             export SSH_AGENT_PID=$pid
 EOF
         source ~/.ssh/environment
+
+        # link ssh-agent for docker container
         if [ -d ~/docker_tmp ];then
-            rm -rf ~/docker_tmp/ssh-agent
-            ln -sf $socket_name ~/docker_tmp/ssh-agent
+            if [ -f ~/docker_tmp/ssh-agent ];then
+                rm -f ~/docker_tmp/ssh-agent
+            fi
+            mkdir -p ~/docker_tmp/ssh-agent/
+            # change the dirname of the ssh-agent tmpdir, I don't want to mount host /tmp to container /tmp
+            # -v /tmp:/host_tmp
+            socket_name=$(echo $socket_name | sed 's/\/tmp\//\/host_tmp\//')
+            ln -sf $socket_name ~/docker_tmp/ssh-agent/ssh-agent
         fi
         return 
 
