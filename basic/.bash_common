@@ -188,7 +188,7 @@ function getMySSHAgent {
         socket_name=$(echo $sshagent_socket | awk '{print $2}')
         socket_pid=$(echo $sshagent_socket | awk '{print $2}' | awk -F. '{print $2}' )
     fi
-    if [ "x" != "$socket_pid" ];then
+    if [ ! -z $socket_id ];then
         cat <<- EOF > ~/.ssh/environment
             export SSH_AUTH_SOCK=$socket_name
             export SSH_AGENT_PID=$pid
