@@ -236,12 +236,12 @@ EOF
         done
     fi
     if [ -z $isDone ] || [ $isDone == 0 ]; then
-        sshagent=$(find /tmp/ssh-* -user `whoami` -type s 2>/dev/null)
+        sshagent=$(find /tmp/ssh-* -user `whoami` -type s  -printf '%T@ %p' 2>/dev/null)
         sshagent=(${sshagent// / });
         for(( i=0; i<${#sshagent[@]}; i++ ))
         do
             agent=${sshagent[$i]}
-            pid=`echo "$agent" | grep -o '[0-9]*'`
+            pid=`echo "$agent" | grep -o '\.[0-9]*'`
             hasProcess=`ps aux |grep $pid  |grep -v grep| wc -l`
             if [ ! -z $hasProcess ] && [ $hasProcess == 1 ]; then 
                 cat <<- EOF > ~/.ssh/environment
