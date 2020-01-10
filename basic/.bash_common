@@ -236,7 +236,7 @@ EOF
         done
     fi
     if [ -z $isDone ] || [ $isDone == 0 ]; then
-        sshagent=$(find /tmp/ssh-* -user `whoami` -type s  -printf '%T@ %p' 2>/dev/null)
+        sshagent=$(find /tmp/ssh-* -user `whoami` -type s  -printf '%T@ %p ' 2>/dev/null)
         sshagent=(${sshagent// / });
         for(( i=0; i<${#sshagent[@]}; i++ ))
         do
