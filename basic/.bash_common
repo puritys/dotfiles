@@ -206,6 +206,7 @@ EOF
             socket_name=$(echo $socket_name | sed 's/\/tmp\//\/host_tmp\//')
             ln -sf $socket_name ~/docker_tmp/ssh-agent/ssh-agent
         fi
+        isDone=1
         return 
 
     else 
@@ -227,12 +228,34 @@ EOF
                         export SSH_AGENT_PID=$pid
 EOF
                     source ~/.ssh/environment
+                    isDone=1
                     return 
                 fi
                 pid=$(($pid - 1))
             done
         done
     fi
+    if [ -z $isDone ] || [ $isDone == 0 ]; then
+        sshagent=$(find /tmp/ssh-* -user `whoami` -type s  -printf '%T@ %p ' 2>/dev/null)
+        sshagent=(${sshagent// / });
+        for(( i=0; i<${#sshagent[@]}; i++ ))
+        do
+            agent=${sshagent[$i]}
+            pid=`echo "$agent" | grep -o '\.[0-9]*'`
+            hasProcess=`ps aux |grep $pid  |grep -v grep| wc -l`
+            if [ ! -z $hasProcess ] && [ $hasProcess == 1 ]; then 
+                cat <<- EOF > ~/.ssh/environment
+                    export SSH_AUTH_SOCK=$agent
+                    export SSH_AGENT_PID=$pid
+EOF
+                source ~/.ssh/environment
+                isDone=1
+                return 
+            fi
+
+        done
+    fi
+
 }
 
 setTerm() {
