@@ -532,8 +532,14 @@ snippet options
 	String version = cmd.getOptionValue(versionOpt.getOpt());
 
 snippet sync
-	synchronized (xx) {
-
+	private volatile syn = null;
+	if (null == syn) {
+		synchronized (xx) {
+			if (null != syn) {
+				return syn;
+			}
+			syn=zzz
+		}
 	}
 
 snippet powermock
