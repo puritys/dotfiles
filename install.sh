@@ -266,9 +266,10 @@ fi
 if [ ! -d "$HOME/workspace/.metadata/.plugins/org.eclipse.core.runtime/.settings/" ];then
     mkdir -p $HOME/workspace/.metadata/.plugins/org.eclipse.core.runtime/.settings/;
 fi
-cp vim/javaPlugin/eclipse_config/org.eclipse.jdt.core.prefs.sh ~/workspace/.metadata/.plugins/org.eclipse.core.runtime/.settings/
+cp vim/javaPlugin/eclipse_config/*.sh ~/workspace/.metadata/.plugins/org.eclipse.core.runtime/.settings/
 pwd2="$HOME/workspace/.metadata/.plugins/org.eclipse.core.runtime/.settings"
 sh $pwd2/org.eclipse.jdt.core.prefs.sh > $pwd2/org.eclipse.jdt.core.prefs
+sh $pwd2/org.eclipse.jdt.apt.core.prefs.sh > $pwd2/org.eclipse.jdt.apt.core.prefs
 sudo cp vim/javaPlugin/google_checks.xml /usr/local/etc/
 sudo cp vim/javaPlugin/checkstyle.xml /usr/local/etc/
 

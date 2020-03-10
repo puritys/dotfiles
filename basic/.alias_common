@@ -107,11 +107,12 @@ fn_ecliConfig() {
     sh /usr/local/bin/appendJavaClasspath.sh
     mkdir -p .settings/
     cp $HOME/workspace/.metadata/.plugins/org.eclipse.core.runtime/.settings/org.eclipse.jdt.core.prefs .settings/
+    cp $HOME/workspace/.metadata/.plugins/org.eclipse.core.runtime/.settings/org.eclipse.jdt.apt.core.prefs .settings/
 
     # eclipse.jdt.ls
-    mkdir -p /root/workspace/jdt.ls-java-project/.settings/
-    sh /usr/local/bin/appendJavaClasspath.sh -f /root/workspace/jdt.ls-java-project/.classpath
-    cp $HOME/workspace/.metadata/.plugins/org.eclipse.core.runtime/.settings/org.eclipse.jdt.core.prefs /root/workspace/jdt.ls-java-project/.settings/org.eclipse.jdt.core.prefs
+    #mkdir -p /root/workspace/jdt.ls-java-project/.settings/
+    #sh /usr/local/bin/appendJavaClasspath.sh -f /root/workspace/jdt.ls-java-project/.classpath
+    #cp $HOME/workspace/.metadata/.plugins/org.eclipse.core.runtime/.settings/org.eclipse.jdt.core.prefs /root/workspace/jdt.ls-java-project/.settings/org.eclipse.jdt.core.prefs
 
 }
 
