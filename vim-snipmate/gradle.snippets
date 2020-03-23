@@ -58,3 +58,32 @@ snippet impdynamodblocal
 	"com.almworks.sqlite4java:sqlite4java:1.0.392",
 	"com.almworks.sqlite4java:libsqlite4java-linux-amd64:1.0.392",
 	"com.amazonaws:DynamoDBLocal:1.11.119"
+
+snippet protobuf
+	plugins {
+		id "java"
+		id "com.google.protobuf" version "0.8.12"
+	}
+	dependencies {
+		compile (
+				"com.google.protobuf:protobuf-java:3.8.0"
+		)
+	}
+	sourceSets {
+	  main {
+		  proto {
+				srcDir 'src/main/java/com/proto'
+				include '**/*.proto'
+		  }   
+		  java {
+				srcDirs 'src/main/java', 'build/generated/source/proto/main/java'
+		  }   
+	  }
+	}
+	protobuf {
+	  // Configure the protoc executable
+	  protoc {
+		  // Download from repositories
+		  artifact = 'com.google.protobuf:protoc:3.7.0'
+	  }
+	}

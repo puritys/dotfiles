@@ -1,3 +1,6 @@
+snippet resource_path
+	this.getClass().getClassLoader().getResource("xxx").getPath();
+
 snippet log
 	System.out.println(${1});
 
@@ -319,6 +322,22 @@ snippet filewrite
 snippet fileread
 	String text = new String(Files.readAllBytes(Paths.get("filename")), StandardCharsets.UTF_8);
 
+snippet fileread_linebyline
+        BufferedReader bufReader = null;
+        File file = new File(filePath);
+        if (!file.isFile()) {
+            throw exception
+        }   
+        try {
+            bufReader = new BufferedReader(
+                    new InputStreamReader(new FileInputStream(file), Charset.forName("Big5"))
+            );  
+            String line;
+            while ((line = bufReader.readLine()) != null) {
+            }
+		} catch (Exception e) {
+
+		}
 snippet isfile
 	File f = new File("f");
 	if (f.exists() && !f.isDirectory()) {
