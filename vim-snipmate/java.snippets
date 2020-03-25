@@ -304,6 +304,14 @@ snippet guicemodule
 
 	}
 
+snippet guice_injecter
+	import com.google.inject.Guice;
+	import com.google.inject.Injector;
+	Injector injector = Guice.createInjector(
+		new GuiceModule()
+	); 
+	injector.injectMembers(p);
+
 snippet pathCurrent
 	Paths.get("").toAbsolutePath().toString()
 
