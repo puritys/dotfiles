@@ -570,9 +570,16 @@ snippet options
 	Option helpOpt = new Option("h", "help", false, "read usage()");
 
 	options.addOption(versionOpt).addOption(helpOpt);
-
-	CommandLineParser parser = new BasicParser();
-	CommandLine cmd = parser.parse(options, args);
+	CommandLineParser parser = null;
+	CommandLine cmd = null;
+	try {
+		parser = new BasicParser();
+		cmd = parser.parse(options, args);
+	} catch (Exception e) {
+		HelpFormatter formatter = new HelpFormatter();
+		formatter.printHelp("CLITester", options);
+		throw e
+	}
 	boolean help = cmd.hasOption(helpOpt.getOpt());
 	if (help) {
 		HelpFormatter formatter = new HelpFormatter();

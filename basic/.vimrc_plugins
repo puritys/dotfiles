@@ -421,7 +421,7 @@ call plug#begin('~/.vim/plugged')
 " ----------------
 Plug 'google/vim-maktaba'
 Plug 'junegunn/fzf', { 'do': './install --all' } " File finder
-
+Plug 'junegunn/vader.vim' " unit test
 
 " ----------------
 " UI Plugins
