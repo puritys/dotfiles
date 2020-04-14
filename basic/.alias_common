@@ -91,6 +91,10 @@ fn_eclim_stop() {
 
 fn_ecliUpdate() {
     if [ -f build.gradle ]; then
+        hasEclipse=`cat build.gradle |grep 'eclipse' | wc -l`
+        if [ $hasEclipse == 0 ]; then
+            echo -e "\n\n!!!!!!!!!!!!!!!!!\nPlese add 'id eclipse' into build.gradle. \n\n\n\n"
+        fi
         gradle eclipse
     else
         sudo mvn eclipse:clean eclipse:eclipse -Dmaven.pmd.skip=true -Dmaven.checkstyle.skip=true -Dmaven.cpd-check.skip=true -Dmaven.cpd.skip=true -Dcheckstyle.skip -Dmaven.javadoc.skip=true -Dpmd.skip=true

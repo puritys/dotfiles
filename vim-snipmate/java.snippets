@@ -24,6 +24,10 @@ snippet impjson
 snippet impgson
 	import com.google.gson.Gson;
 
+snippet imppair
+	import org.apache.commons.lang3.tuple.Pair;
+	import org.apache.commons.lang3.tuple.MutablePair;
+
 snippet impmockito
 	import static org.junit.Assert.assertEquals;
 	import static org.junit.Assert.assertNotEquals;
@@ -346,6 +350,10 @@ snippet fileread_linebyline
 		} catch (Exception e) {
 
 		}
+
+snippet join
+	String.join(",", list);
+
 snippet isfile
 	File f = new File("f");
 	if (f.exists() && !f.isDirectory()) {
@@ -455,6 +463,15 @@ snippet stringtobuyte
 snippet clone
 	Object new = (Object) SerializationUtils.clone(old);
 
+snippet settolist
+	Set.stream().collect(Collectors.toList())
+
+snippet join-stream
+	list.stream().collect(Collectors.joining(","))
+
+snippet pair
+	Pair.of(String, String);
+
 # ------------------
 # Time
 # ------------------
@@ -465,6 +482,21 @@ snippet time-date
 	ZonedDateTime date = ZonedDateTime.ofInstant(i, ZoneId.of("Asia/Taipei"));
 	DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy/MM/DD");
 	System.out.println("date " + date.format(formatter));
+
+snippet sort
+	List<Employee> emplyees;
+	Comparator<Employee> compareById = (Employee o1, Employee o2) -> 
+										o1.getId().compareTo( o2.getId() ); 
+	Collections.sort(emplyees, compareById);
+
+
+snippet gsontype
+	Type lastKeyType = (new TypeToken<Map<String, AttributeValue>>() { }).getType();
+	GSON.fromJson(data, lastKeyType)
+
+snippet impgsontype
+	import com.google.gson.reflect.TypeToken;
+	import java.lang.reflect.Type;
 
 snippet imp-instant
 	import java.time.Instant;
