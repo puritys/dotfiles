@@ -105,6 +105,7 @@ fn_ecliUpdate() {
         h=`echo $HOME | sed 's/\//\\\\\//g'`
         sed "s/M2_REPO/$h\/.m2\/repository/" -i .classpath
     fi
+    fn_ecliConfig
 }
 
 fn_ecliConfig() {

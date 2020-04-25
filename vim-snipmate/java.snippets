@@ -166,7 +166,7 @@ snippet atol
 	Long.parseLong(${1});
 
 snippet empty
-	StringUtils.isEmpty(${1});
+	StringUtils.isBlank(${1});
 
 snippet main
 	public class ${0/*classname*/} {
@@ -335,21 +335,21 @@ snippet fileread
 	String text = new String(Files.readAllBytes(Paths.get("filename")), StandardCharsets.UTF_8);
 
 snippet fileread_linebyline
-        BufferedReader bufReader = null;
-        File file = new File(filePath);
-        if (!file.isFile()) {
-            throw exception
-        }   
-        try {
-            bufReader = new BufferedReader(
-                    new InputStreamReader(new FileInputStream(file), Charset.forName("Big5"))
-            );  
-            String line;
-            while ((line = bufReader.readLine()) != null) {
-            }
-		} catch (Exception e) {
-
+	BufferedReader bufReader = null;
+	File file = new File(filePath);
+	if (!file.isFile()) {
+		throw exception
+	}   
+	try {
+		bufReader = new BufferedReader(
+		new InputStreamReader(new FileInputStream(file), Charset.forName("Big5"))
+		String line;
+		while ((line = bufReader.readLine()) != null) {
 		}
+	} catch (Exception e) {
+	} finally {
+		bufReader.close();
+	}
 
 snippet join
 	String.join(",", list);
@@ -422,7 +422,7 @@ snippet enumFor
 	}
 
 snippet urlencode
-	java.net.URLEncoder.decode(url, "UTF-8");
+	java.net.URLEncoder.encode(url, "UTF-8");
 
 snippet urldecode
 	java.net.URLDecoder.decode(url, "UTF-8");

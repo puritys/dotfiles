@@ -45,7 +45,7 @@ snippet main
 		id 'application'
 	}
 	application {
-		mainClassName = 'com.Test'
+		mainClassName = 'com.puritys.App'
 	}
 
 snippet impoptions
@@ -100,3 +100,18 @@ snippet protobuf
 snippet implog
 	"org.slf4j:slf4j-api:1.7.25",
 	"org.slf4j:slf4j-jdk14:1.7.25",
+
+snippet dep
+	dependencies {
+		implementation (
+
+		)
+	}
+
+snippet repo
+	allprojects {
+		repositories {
+			mavenCentral()
+			maven { url "http://maven.corp.xxx.x/xic" }
+		}
+	}
