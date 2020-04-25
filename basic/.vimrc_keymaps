@@ -1,0 +1,223 @@
+" =========
+" Basic key map
+" =========
+
+" Hot key 
+map <Esc> :<C-c>
+
+"數字鍵轉正常數字
+map <Esc>Oq 1
+map <Esc>Or 2
+map <Esc>Os 3
+map <Esc>Ot 4
+map <Esc>Ou 5
+map <Esc>Ov 6
+map <Esc>Ow 7
+map <Esc>Ox 8
+map <Esc>Oy 9
+map <Esc>Op 0
+map <Esc>On .
+map <Esc>OQ /
+map <Esc>OR *
+map <Esc>Ol +
+map <Esc>OS -
+map <Esc>[D 4
+map <Esc>[C 6
+
+"切換tab
+if (exists("g:forceUseTab") && g:forceUseTab == 1)
+    nmap 4 :tabp<CR>
+    nmap 6 :tabn<CR>
+    nmap n :tabp<CR>
+    nmap m :tabn<CR>
+    nmap <C-[>a :tabp<CR>
+    nmap <C-[>s :tabn<CR>
+
+    "vim tab
+    nmap <ESC>[1;2D :tabp<CR> " shift + left
+    nmap <ESC>[1;2C :tabn<CR> " shift + right
+
+    " putty
+    nmap <ESC>[D :tabp<CR>
+    nmap <ESC>[C :tabn<CR>
+
+    " Mac
+    map <ESC>[881 :tabp<CR> " shift + left , move to previous tab 
+    map <ESC>[882 :tabn<CR> " shift + right , move to next tab 
+    let g:myTabe = "tabe"
+else
+    nmap 4 :bp<CR>
+    nmap 6 :bn<CR>
+    nmap n :bp<CR>
+    nmap m :bn<CR>
+    nmap <C-[>a :bp<CR>
+    nmap <C-[>s :bn<CR>
+
+    "vim tab
+    nmap <ESC>[1;2D :bp<CR> " shift + left
+    nmap <ESC>[1;2C :bn<CR> " shift + right
+
+    " putty
+    nmap <ESC>[D :bp<CR>
+    nmap <ESC>[C :bn<CR>
+
+    " Mac
+    map <ESC>[881 :bp<CR> " shift + left , move to previous tab 
+    map <ESC>[882 :bn<CR> " shift + right , move to next tab 
+    let g:myTabe = "e"
+endif
+
+nmap gf <C-w>gf
+map <F6> :emenu <C-Z>
+
+" switch vim window
+nmap <ESC>[1;5A <C-w>h " ctrl + up arrow : move to up split window
+nmap <ESC>[1;5B <C-w>l " ctrl + down arrow : move to up split window
+
+nmap <Tab> <C-w>w " Clicking Tab  will  go to the next split window;
+
+" putty
+nmap <ESC>[A <C-w>h " ctrl + up arrow : move to up split window
+nmap <ESC>[B <C-w>l " ctrl + down arrow : move to up split window
+
+" Copy/Paste : http://vim.wikia.com/wiki/Copy_and_paste_between_Vim_instances
+vnoremap <silent> ,y y:new<CR>:call setline(1,getregtype())<CR>o<Esc>P:wq! ~/.vim_clipboard.txt<CR>
+nnoremap <silent> ,y :new<CR>:call setline(1,getregtype())<CR>o<Esc>P:wq! ~/.vim_clipboard.txt<CR>
+map <silent> ,p :sview ~/.vim_clipboard.txt<CR>"zdddG:q!<CR>:call setreg('"', @", @z)<CR>p
+map <silent> ,P :sview ~/.vim_clipboard.txt<CR>"zdddG:q!<CR>:call setreg('"', @", @z)<CR>P
+
+" auto commplete
+if !empty(glob("~/.vim/plugged/YouCompleteMe")) && 1 == g:enablePluginYouCompleteMe
+
+else
+    :inoremap <C-d> <C-x><C-o>
+endif
+
+" ============
+" Language
+" ============
+
+function! PHP_KEYMAP()
+    nmap doc :call PhpDocSingle()<CR>
+endfunction
+
+" ============
+" Function key
+" ============
+
+" F2 toggle tagbar
+noremap <ESC>OQ    :TagbarToggle<CR>
+noremap <F2>    :TagbarToggle<CR>
+" F3, toggle paste
+noremap <ESC>OR :set paste!<CR>
+noremap <F3> :set paste!<CR>
+
+
+
+" =========
+" plugins
+" =========
+
+" ====
+" plugin JavaImp
+"  :JIG create dir, :JI Auto add import file, :JIS  sort the import list,  :JIF  find the source on your scursor
+" ===
+noremap ,jis :JIS<CR>
+noremap ,ji  :JI<CR>
+
+
+" ===
+" plugin FZF
+" ===
+:nmap <C-p> :call fzf#run({
+  \ 'sink':  g:myTabe,
+  \ 'down': '40%',
+  \ 'options': '--reverse --margin 5%,0%'
+  \ })<CR>
+
+:nmap <c-s> :w!<CR>
+:imap <c-s> <Esc>:w!<CR>a
+:nmap <c-q> :q<CR>
+:imap <c-q> <Esc>:q<CR>a
+:nmap :T :t
+:nmap :W :w
+:nmap :Q :q
+:nmap :ss<CR> :Sessions<CR>
+
+" plugin hot key
+nmap ,tree :NERDTree<CR> " NERDTree plugin
+nmap ,ctag :TlistToggle<CR> " taglist
+
+" tabular
+map ,align :Tabularize /
+map ,align, :Tab /,\zs
+
+" ===
+" plugin youcompleteme
+" ===
+if !empty(glob("~/.vim/plugged/YouCompleteMe"))
+    if version > 800
+        if g:enablePluginYouCompleteMe == 1
+            nmap sc :YcmForceCompileAndDiagnostics<CR>
+            nmap :ycmlist :YcmDiags<CR>
+            nmap <C-g> :YcmCompleter GoTo<CR>
+        endif
+    endif
+
+endif
+
+" ===
+" plugin ale
+" ===
+if g:enablePluginAle == 1
+    if version > 800
+        if !empty(glob("~/.vim/plugged/ale"))
+            nmap sc :ALELint<CR>
+            nmap af :ALEFix<CR>
+            nmap ah :ALEHover<CR>
+            nmap as :ALESymbolSearch 
+            nmap ag :ALEGoToDefinition<CR>
+            inoremap <C-d> <C-\><C-O>:ALEComplete<CR>
+
+            " ALEFix
+        else
+            " SyntasticCheck
+            nmap sc :SyntasticCheck<CR>
+        endif
+    endif
+endif
+
+" ===
+" plugin Valloric/MatchTagAlways
+" ===
+nmap ,jumptag :MtaJumpToOtherTag<CR>
+
+" ===
+" plugin Qickrun
+" ===
+if !empty(glob("~/.vim/plugged/vim-quickrun"))
+    :nnoremap <C-e> <CR>:QuickRun<CR>
+    :vnoremap <C-e> :QuickRun -mode v<CR>
+endif
+
+" ===
+" plugin indent
+" ===
+
+if !empty(glob("~/.vim/plugged/vim-indent-guides"))
+    map ,indent :IndentGuidesToggle<CR>
+    map :indent<CR> :IndentGuidesToggle<CR>
+endif
+
+" ===
+" plugin async run
+" :AsyncRun -raw=1 g++ % -o ./a.out
+" ===
+nnoremap ,ar :AsyncRun -raw=1 
+nnoremap ,ecliu :AsyncRun -raw=1 source ~/.alias_common; fn_ecliUpdate 
+
+" ===
+" plugin NerdTree
+" ===
+noremap <C-f> :NERDTreeToggle<CR> " open NerdTree tab
+

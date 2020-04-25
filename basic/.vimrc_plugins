@@ -81,7 +81,6 @@ endif
 " NerdTree settings
 " -----------------
 
-map <C-f> :NERDTreeToggle<CR> " open NerdTree tab
 " show line
 let NERDTreeShowLineNumbers=1
 let NERDTreeAutoCenter=1
@@ -114,8 +113,7 @@ let g:netrw_liststyle = 3
 let g:JavaImpDataDir = $HOME . "/.vim/JavaImp"
 " Java Source code path
 let g:JavaImpPaths = $HOME . "/openjdk/openjdk/jdk/src/share/classes/"
-" :JIG create dir, :JI Auto add import file, :JIS  sort the import list,  :JIF  find the source on your scursor
-"imap <c-i> <c-c>:JI<CR>i
+
 
 " ----------------
 " Snippet settings
@@ -231,23 +229,6 @@ let g:ale_fixers = {
 \}
 let g:ale_fix_on_save = 1
 
-if g:enablePluginAle == 1
-    if version > 800
-        if !empty(glob("~/.vim/plugged/ale"))
-            nmap sc :ALELint<CR>
-            nmap af :ALEFix<CR>
-            nmap ah :ALEHover<CR>
-            nmap as :ALESymbolSearch 
-            nmap ag :ALEGoToDefinition<CR>
-            inoremap <C-d> <C-\><C-O>:ALEComplete<CR>
-
-            " ALEFix
-        else
-            " SyntasticCheck
-            nmap sc :SyntasticCheck<CR>
-        endif
-    endif
-endif
 
 """""""""""""""""
 " YouCompleteMe "
@@ -295,9 +276,6 @@ if !empty(glob("~/.vim/plugged/YouCompleteMe"))
                 autocmd!
                 autocmd InsertEnter * call plug#load('YouCompleteMe') | autocmd! load_ycm
             augroup END
-            nmap sc :YcmForceCompileAndDiagnostics<CR>
-            nmap :ycmlist :YcmDiags<CR>
-            nmap <C-g> :YcmCompleter GoTo<CR>
         endif
     endif
 
@@ -309,7 +287,6 @@ endif
 let g:mta_use_matchparen_group = 0
 let g:mta_set_default_matchtag_color = 0
 
-nmap jumptag :MtaJumpToOtherTag<CR>
 
 let g:mta_filetypes = {
     \ 'html' : 1,
@@ -339,14 +316,6 @@ let g:vimjs#chromeapis = 0
 " " Disabled by default. Toggling this will enable completion for a number of
 " Chrome's JavaScript extension APIs
 
-" ----------------
-" Qickrun settings
-" ----------------
-if !empty(glob("~/.vim/plugged/vim-quickrun"))
-    :nnoremap <C-e> <CR>:QuickRun<CR>
-    :vnoremap <C-e> :QuickRun -mode v<CR>
-endif
-
 
 " --------------
 " PHP Auto Complete
@@ -364,7 +333,6 @@ let g:fzf_session_path="/tmp/fzf_session"
 if !empty(glob("~/.vim/plugged/vim-indent-guides"))
     let g:indent_guides_auto_colors = 0
     let g:indent_guides_guide_size = 1
-    map :indent<CR> :IndentGuidesToggle<CR>
 endif
 
 
@@ -409,7 +377,6 @@ endif
 " :AsyncRun -raw=1 g++ % -o ./a.out
 " --------------
 :let g:asyncrun_open = 8
-nmap ar :AsyncRun -raw=1 
 
 " =============== "
 " Load Plugin     "
