@@ -85,6 +85,7 @@ vnoremap <silent> ,y y:new<CR>:call setline(1,getregtype())<CR>o<Esc>P:wq! ~/.vi
 nnoremap <silent> ,y :new<CR>:call setline(1,getregtype())<CR>o<Esc>P:wq! ~/.vim_clipboard.txt<CR>
 map <silent> ,p :sview ~/.vim_clipboard.txt<CR>"zdddG:q!<CR>:call setreg('"', @", @z)<CR>p
 map <silent> ,P :sview ~/.vim_clipboard.txt<CR>"zdddG:q!<CR>:call setreg('"', @", @z)<CR>P
+inoremap <ESC>v :set paste<CR>"+gP:set nopaste<CR>
 
 " auto commplete
 if !empty(glob("~/.vim/plugged/YouCompleteMe")) && 1 == g:enablePluginYouCompleteMe
@@ -92,6 +93,7 @@ if !empty(glob("~/.vim/plugged/YouCompleteMe")) && 1 == g:enablePluginYouComplet
 else
     :inoremap <C-d> <C-x><C-o>
 endif
+
 
 " ============
 " Language
@@ -109,9 +111,20 @@ endfunction
 noremap <ESC>OQ    :TagbarToggle<CR>
 noremap <F2>    :TagbarToggle<CR>
 " F3, toggle paste
-noremap <ESC>OR :set paste!<CR>
-noremap <F3> :set paste!<CR>
-
+function! PASTE()
+    set paste!
+    let l:paste = &paste
+    if  l:paste == 1
+        " paste mode
+        let $DEF_COLOR = g:colors_name
+        colors dracula
+    else
+        colors $DEF_COLOR
+    endif
+endfunction
+noremap <ESC>OR :call PASTE()<CR>
+inoremap <ESC>OR <ESC>:call PASTE()<CR>i
+inoremap <F3> <ESC>:call PASTE()<CR>i
 
 
 " =========
