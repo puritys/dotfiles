@@ -190,7 +190,7 @@ if g:enablePluginAle == 1
             nnoremap ,ah :ALEHover<CR>
             nnoremap ,as :ALESymbolSearch 
             nnoremap ,ag :ALEGoToDefinition<CR>
-            nnoremap ,are :ALEStopAllLSPs<CR>:w<CR>
+            nnoremap ,alere :ALEStopAllLSPs<CR>:w<CR>
 
             inoremap <C-d> <C-\><C-O>:ALEComplete<CR>
 
