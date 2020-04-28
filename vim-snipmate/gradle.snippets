@@ -42,7 +42,12 @@ snippet fat-application
 
 snippet main
 	plugins {
-		id 'application'
+		id "application"
+		id "eclipse"
+		id "idea"
+		id "maven"
+		id "java-library"
+		id "java"
 	}
 	application {
 		mainClassName = 'com.puritys.App'

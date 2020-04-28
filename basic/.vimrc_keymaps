@@ -185,11 +185,13 @@ endif
 if g:enablePluginAle == 1
     if version > 800
         if !empty(glob("~/.vim/plugged/ale"))
-            nmap sc :ALELint<CR>
-            nmap af :ALEFix<CR>
-            nmap ah :ALEHover<CR>
-            nmap as :ALESymbolSearch 
-            nmap ag :ALEGoToDefinition<CR>
+            nnoremap sc :ALELint<CR>
+            nnoremap ,af :ALEFix<CR>
+            nnoremap ,ah :ALEHover<CR>
+            nnoremap ,as :ALESymbolSearch 
+            nnoremap ,ag :ALEGoToDefinition<CR>
+            nnoremap ,are :ALEStopAllLSPs<CR>:w<CR>
+
             inoremap <C-d> <C-\><C-O>:ALEComplete<CR>
 
             " ALEFix
