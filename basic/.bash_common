@@ -188,27 +188,13 @@ function getMySSHAgent {
         socket_name=$(echo $sshagent_socket | awk '{print $2}')
         socket_pid=$(echo $sshagent_socket | awk '{print $2}' | awk -F. '{print $2}' )
     fi
-    if [ ! -z $socket_id ];then
+    if [ ! -z $socket_pid ];then
         cat <<- EOF > ~/.ssh/environment
             export SSH_AUTH_SOCK=$socket_name
             export SSH_AGENT_PID=$pid
 EOF
         source ~/.ssh/environment
-
-        # link ssh-agent for docker container
-        if [ -d ~/docker_tmp ];then
-            if [ -f ~/docker_tmp/ssh-agent ];then
-                rm -f ~/docker_tmp/ssh-agent
-            fi
-            mkdir -p ~/docker_tmp/ssh-agent/
-            # change the dirname of the ssh-agent tmpdir, I don't want to mount host /tmp to container /tmp
-            # -v /tmp:/host_tmp
-            socket_name=$(echo $socket_name | sed 's/\/tmp\//\/host_tmp\//')
-            ln -sf $socket_name ~/docker_tmp/ssh-agent/ssh-agent
-        fi
         isDone=1
-        return 
-
     else 
         for(( i=0; i<$length; i++ ))
         do
@@ -229,10 +215,13 @@ EOF
 EOF
                     source ~/.ssh/environment
                     isDone=1
-                    return 
+                    break
                 fi
                 pid=$(($pid - 1))
             done
+            if [ $isDone == 1 ];then
+                break
+            fi
         done
     fi
     if [ -z $isDone ] || [ $isDone == 0 ]; then
@@ -254,6 +243,18 @@ EOF
             fi
 
         done
+    else
+        # link ssh-agent for docker container
+        if [ -d ~/docker_tmp ];then
+            if [ -f ~/docker_tmp/ssh-agent ];then
+                rm -f ~/docker_tmp/ssh-agent
+            fi
+            mkdir -p ~/docker_tmp/ssh-agent/
+            # change the dirname of the ssh-agent tmpdir, I don't want to mount host /tmp to container /tmp
+            # -v /tmp:/host_tmp
+            socket_name=$(echo $socket_name | sed 's/\/tmp\//\/host_tmp\//')
+            ln -sf $socket_name ~/docker_tmp/ssh-agent/ssh-agent
+        fi
     fi
 
 }

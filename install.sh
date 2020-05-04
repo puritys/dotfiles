@@ -166,7 +166,7 @@ installFzf () {
                 sudo yum install -y wget
             fi
         fi
-        cd ~/.sh_tool/ ; wget https://github.com/clvv/fasd/tarball/1.0.1
+        cd ~/.sh_tool/ ; curl -L https://github.com/clvv/fasd/tarball/1.0.1 -o 1.0.1
         tar -zxvf 1.0.1
         cd clvv-fasd-4822024; PREFIX=$HOME make install
         cd ../../
