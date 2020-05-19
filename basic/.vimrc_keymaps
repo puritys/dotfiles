@@ -94,6 +94,8 @@ else
     :inoremap <C-d> <C-x><C-o>
 endif
 
+nnoremap ,tohex<CR> :%!xxd<CR>
+nnoremap ,fromhex<CR> :%!xxd -r<CR>
 
 " ============
 " Language
