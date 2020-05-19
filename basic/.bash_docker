@@ -159,7 +159,7 @@ function vim_ssh_fn() {
     if [ "x1" == "x$startVimDocker" ];then
         sleep 4
     fi
-    command="ssh -t -e ] root@localhost -p$port \"cd /src$pwd; /bin/bash\";";
+    command="ssh -t -e ] root@localhost -p$port \"export SSH_AUTH_SOCK=/docker_tmp/ssh-agent/ssh-agent; cd /src$pwd; /bin/bash\";";
 
     echo $command
     eval $command
@@ -243,8 +243,9 @@ function vim_start() {
             -e VIM_PLUGIN_ALE_AUTO_COMPLETE=0 \
             -e CUST_FONT=1 \
             -p $port:22 \
-            -v ~/docker_tmp/ssh-agent:/ssh-agent \
-            -e SSH_AUTH_SOCK=/ssh-agent \
+            -v ~/docker_tmp/ssh-agent/:/docker_tmp/ssh-agent/:ro \
+            -v /tmp:/host_tmp:ro \
+            -e SSH_AUTH_SOCK=/docker_tmp/ssh-agent/ssh-agent \
             -v /:/src  \
             -v ~/:/puritys \
             -v ~/docker_tmp:/tmp \
@@ -253,7 +254,6 @@ function vim_start() {
             -w /src$pwd \
             puritys/vim:$version
 
-            #-v ~/docker_tmp/eclim_projects:/root/workspace/.metadata/.plugins/org.eclipse.core.resources \
             #-e USER=puritys \
         docker exec -d $containerName sh /root/start.sh
     fi
