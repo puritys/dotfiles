@@ -69,6 +69,7 @@ snippet impdate
 	import java.util.Date;
 	import java.sql.Timestamp;
 	import java.util.Locale;
+	import java.util.TimeZone;
 
 snippet impstring
 	import org.apache.commons.lang3.StringUtils;
@@ -247,6 +248,14 @@ snippet classname
 snippet arrayToList
 	List<String> list = Arrays.asList(args);
 
+snippet arrayinit
+	new ArrayList<String>() { 
+	   { 
+		add("a"); 
+		add("b"); 
+	   } 
+	}; 
+
 snippet map
 	Map<String, String> m = new HashMap<>();
 
@@ -387,6 +396,9 @@ snippet pmdSkipEnum
 snippet pmdmagicnumber
 	@SuppressWarnings({"checkstyle:magicnumber"})
 
+snippet pmddeprecate
+	@SuppressWarnings("deprecation")
+
 snippet jsonType
 	if (json.has("zzz")) {
 		Object aObj = json.get("zzz");
@@ -482,6 +494,11 @@ snippet time-date
 	ZonedDateTime date = ZonedDateTime.ofInstant(i, ZoneId.of("Asia/Taipei"));
 	DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy/MM/DD");
 	System.out.println("date " + date.format(formatter));
+
+snippet date-convert
+	SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss.SSS");
+	Date parsedDate = dateFormat.parse(yourString);
+	Timestamp timestamp = new java.sql.Timestamp(parsedDate.getTime());
 
 snippet sort
 	List<Employee> emplyees;

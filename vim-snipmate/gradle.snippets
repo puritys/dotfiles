@@ -132,3 +132,38 @@ snippet repo
 			maven { url "http://maven.corp.xxx.x/xic" }
 		}
 	}
+
+snippet cucumber
+	dependencies {
+		testCompile (
+			'io.cucumber:cucumber-java:5.6.0',
+			'io.cucumber:cucumber-junit:5.6.0',
+			'io.cucumber:cucumber-picocontainer:5.6.0'
+		)
+		testCompile (
+			"org.apache.commons:commons-lang3:3.10",
+			"org.codehaus.jackson:jackson-mapper-asl:1.9.13",
+			"com.google.code.gson:gson:1.7.1",
+			"org.json:json:20190722",
+			"org.slf4j:slf4j-api:1.7.25",
+			"org.slf4j:slf4j-jdk14:1.7.25",
+		)
+	}
+	configurations {
+		cucumberRuntime {
+			extendsFrom testRuntime
+		}
+	}
+	ext {
+		tag = project.properties['tag'] ?: "@prod"
+	}
+	task cucumber() {
+		dependsOn assemble, compileTestJava
+		doLast {
+			javaexec {
+			main = "io.cucumber.core.cli.Main"
+			classpath = configurations.cucumberRuntime + sourceSets.main.output + sourceSets.test.output
+			args = ['--plugin', 'pretty', '--plugin', 'json:target/cucumber.json', '--glue', 'namespace.name', 'src/test/resources', '--tags',  project.ext.tag]
+			}   
+		}   
+	}
