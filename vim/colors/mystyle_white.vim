@@ -1,4 +1,4 @@
-" Vim color file
+
 
 
 if &t_Co != 256 && ! has("gui_running")
@@ -250,3 +250,6 @@ hi IndentGuidesEven cterm=NONE ctermfg=NONE ctermbg=252 guifg=NONE guibg=#d0d0d0
 " Valloric/MatchTagAlways
 hi! link MatchTag OptionHeavy
 
+" multiple cursor
+hi link multiple_cursors_cursor OptionSel
+hi link multiple_cursors_visual OptionHeavy

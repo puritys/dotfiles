@@ -407,7 +407,7 @@ Plug 'haya14busa/incsearch.vim' " better search plugin
 Plug 'ap/vim-css-color' " show color for color ticket
 Plug 'nathanaelkane/vim-indent-guides'
 Plug 'Valloric/MatchTagAlways', {'for': ['php', 'html', 'js', 'xml']}
-
+Plug 'terryma/vim-multiple-cursors'
 if g:enablePluginLightLine == 1
     Plug 'itchyny/lightline.vim'
 endif
@@ -495,6 +495,29 @@ if !empty(glob("~/.vim/plugged/vim-maktaba"))
     "call g:vroom_logger.Error('my')
     "call g:vroom_logger.Debug('Test')
 endif
+
+
+" ---------------------------------
+" Plugin terryma/vim-multiple-cursors
+" ---------------------------------
+
+let g:ale_enabled_org = 0
+func! Multiple_cursors_before()
+  if g:ale_enabled
+      let g:ale_enabled_org = 1
+      let g:ale_enabled = 0
+      call ale#toggle#Disable()
+  endif
+endfunc
+
+func! Multiple_cursors_after()
+  if g:ale_enabled_org == 1
+      g:ale_enabled = 1
+      call ale#toggle#Enable()
+  endif
+
+endfunc
+
 
 
 """ Theme
