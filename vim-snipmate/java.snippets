@@ -259,6 +259,9 @@ snippet arrayinit
 snippet map
 	Map<String, String> m = new HashMap<>();
 
+snippet map-entry
+	Map.Entry<String, String> m = new AbstractMap.SimpleEntry<String, String>("a", "b");
+
 snippet map-initialize
 	import com.google.common.collect.ImmutableMap;
 	private static Map<String, String> m = ImmutableMap.<String, String>builder()
@@ -492,7 +495,7 @@ snippet instant-ofEpoch
 
 snippet time-date
 	ZonedDateTime date = ZonedDateTime.ofInstant(i, ZoneId.of("Asia/Taipei"));
-	DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy/MM/DD");
+	DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy/MM/dd");
 	System.out.println("date " + date.format(formatter));
 
 snippet date-convert
