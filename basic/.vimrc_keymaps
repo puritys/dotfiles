@@ -258,9 +258,9 @@ noremap <C-f> :NERDTreeToggle<CR> " open NerdTree tab
 " ===
 " plugin multiple cursor
 " ===
-let g:multi_cursor_support_imap = 0
-let g:multi_cursor_use_default_mapping = 0
-let g:multi_cursor_start_word_key      = '<C-n>'
-let g:multi_cursor_next_key            = '<C-n>'
-vnoremap ,mc :MultipleCursorsFind 
+"let g:multi_cursor_support_imap = 0
+"let g:multi_cursor_use_default_mapping = 0
+"let g:multi_cursor_start_word_key      = '<C-n>'
+"let g:multi_cursor_next_key            = '<C-n>'
+"vnoremap ,mc :MultipleCursorsFind 
 
