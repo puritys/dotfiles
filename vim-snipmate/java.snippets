@@ -269,6 +269,12 @@ snippet map-initialize
 		.put("image", "image")
 	.build();
 
+snippet map-stream-filter-value
+	<String, String>maObj.entrySet().stream()
+		.filter(e -> e.getValue() == "value")
+		.map(Map.Entry::getValue)
+		.collect(Collectors.toList());
+
 snippet time
 	System.currentTimeMillis();
 
@@ -493,15 +499,48 @@ snippet pair
 snippet instant-ofEpoch
 	Instant i = Instant.ofEpochMilli(1183921121000L).minus(5, ChronoUnit.DAYS);
 
-snippet time-date
+snippet timeToDate
 	ZonedDateTime date = ZonedDateTime.ofInstant(i, ZoneId.of("Asia/Taipei"));
 	DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy/MM/dd");
 	System.out.println("date " + date.format(formatter));
 
-snippet date-convert
-	SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss.SSS");
-	Date parsedDate = dateFormat.parse(yourString);
-	Timestamp timestamp = new java.sql.Timestamp(parsedDate.getTime());
+snippet date-string
+	new Date().toString())
+
+snippet dateToTime
+	SimpleDateFormat dateFormat = new SimpleDateFormat("yyyyMMdd");
+	dateFormat.setTimeZone(TimeZone.getTimeZone("Asia/Taipei"));
+	try {
+		return dateFormat.parse("20200101").getTime();
+	} carch (Exception e) {
+
+	}
+
+# -------------
+# Future / Complete Future
+# -------------
+snippet future
+
+snippet future-simple
+	CompletableFuture<String> completableFuture
+		= CompletableFuture.supplyAsync(() -> "Hello")
+
+snippet future-combo
+	CompletableFuture<String> completableFuture 
+		= CompletableFuture.supplyAsync(() -> "Hello")
+		.thenCompose(s -> {
+				xx;
+				CompletableFuture.supplyAsync(() -> s + " World");
+	});
+
+snippet future-multi-request 
+	CompletableFuture<String> f1 = sss.get(); 
+	CompletableFuture<Integer> f2 = zzz.get(qs);
+	return CompletableFuture.allOf(f1, f2
+	).thenCompose(non -> {
+		String s = f1.join();
+		Integer i= f2.join();
+    });
 
 snippet sort
 	List<Employee> emplyees;
