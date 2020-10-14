@@ -50,9 +50,8 @@ else
     i=0;
     while read line
     do
-        if [ ! -z $line ];then
+        if [ ! -z $line ] && [ $line != "-e" ];then
             s=(${line//=/ });
-echo $s
             custEnv[${s[0]}]="${s[1]}"
         fi
         i=$(( $i + 1 ))
@@ -376,6 +375,13 @@ fi
 content=""
 for key in "${custEnvList[@]}"
 do
-    content="\n$key=${custEnv[$key]}"
+    if [ ! -z ${custEnv[$key]} ]; then
+        content="\n$key=${custEnv[$key]}"
+    fi
 done
-echo -e $content > $custEnvFile
+OS=$(uname -s)
+if [[ X"$OS" == X"Darwin" ]]; then
+    echo $content > $custEnvFile
+else
+    echo -e $content > $custEnvFile
+fi

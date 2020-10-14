@@ -204,6 +204,7 @@ EOF
                 if [[ X"$OS" == X"Darwin" ]]; then
                     # $TMPDIR is environment variable on MAC OS
                     sshagent=`ls $TMPDIR |grep ssh | xargs -n 1 -I%I find $TMPDIR%I -user $myname -type s | grep ssh |grep $pid | xargs ls -rt | awk '{print }'`
+                    socket_name=$sshagent
                     #sshagent=$(find $TMPDIR -user `whoami` -type s | grep ssh |grep $pid | xargs ls -rt | awk '{print }')
                 elif [[ X"$OS" == X"Linux" ]]; then
                     sshagent=$(find /tmp/ssh-* -user `whoami` -type s -printf '%p\n' 2>/dev/null | grep $pid) 
@@ -253,7 +254,9 @@ EOF
             # change the dirname of the ssh-agent tmpdir, I don't want to mount host /tmp to container /tmp
             # -v /tmp:/host_tmp
             socket_name=$(echo $socket_name | sed 's/\/tmp\//\/host_tmp\//')
-            ln -sf $socket_name ~/docker_tmp/ssh-agent/ssh-agent
+            if [ ! -z $socket_name ];then
+                ln -sf $socket_name ~/docker_tmp/ssh-agent/ssh-agent
+            fi
         fi
     fi
 
