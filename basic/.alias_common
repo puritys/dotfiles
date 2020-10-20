@@ -29,9 +29,13 @@ alias so='source ~/.bash_profile'
 #alias fg='builtin fg $@; printf "\e[H\e[2J"'
 
 if [ -f /usr/bin/ag ]; then
-    alias grep='ag --color-line-number "38;5;241" --color-match "38;5;166" --color-path "38;5;29" '
-    alias Grep='ag --color-line-number "38;5;241" --color-match "38;5;166" --color-path "38;5;29" '
-    alias ag='ag --color-line-number "38;5;241" --color-match "38;5;166" --color-path "38;5;29" '
+    alias grep='/usr/bin/ag --color-line-number "38;5;241" --color-match "38;5;166" --color-path "38;5;29" '
+    alias Grep='/usr/bin/ag --color-line-number "38;5;241" --color-match "38;5;166" --color-path "38;5;29" '
+    alias ag='/usr/bin/ag --color-line-number "38;5;241" --color-match "38;5;166" --color-path "38;5;29" '
+elif [ -f //usr/local/bin/ag ];then
+    alias grep='/usr/local/bin/ag --color-line-number "38;5;241" --color-match "38;5;166" --color-path "38;5;29" '
+    alias Grep='/usr/local/bin/ag --color-line-number "38;5;241" --color-match "38;5;166" --color-path "38;5;29" '
+    alias ag='/usr/local/bin/ag --color-line-number "38;5;241" --color-match "38;5;166" --color-path "38;5;29" '
 else
     alias Grep='grep'
 fi

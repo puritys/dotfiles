@@ -173,6 +173,39 @@ installFzf () {
 
 }
 
+installAg() {
+    echo -e "Install ag \n"
+    if [ "x" == "x`command -v /usr/local/bin/ag`" ]; then
+        installedAg=0
+        if [ -f /etc/redhat-release ]; then
+            v=`cat /etc/redhat-release`
+            if [[ "$v" == *"7."* ]]; then
+                resp=`sudo yum install -y the_silver_searcher 2>&1`
+                if [[ $resp == *"Nothing to do"* ]]; then
+                    echo "could not use yum to install silver search"
+                else
+                    installedAg=1
+                fi
+            fi
+        elif [[ `uname` == 'Darwin' ]]; then
+            brew install the_silver_searcher
+            installedAg=1;
+        fi
+        if [ "x0" == "x$installedAg" ] && [ "x" != "x`command -v yum`" ];then
+            sudo yum install automake pcre-devel xz-devel zlib-devel -y
+            if [ ! -d the_silver_searcher ]; then
+                git clone https://github.com/ggreer/the_silver_searcher.git
+            fi
+            cd the_silver_searcher
+            ./build.sh
+            make
+            sudo make install
+            cd ..
+        fi
+    fi
+
+}
+
 installVim () {
     wget https://github.com/vim/vim/archive/v8.1.1317.tar.gz
     tar -zxvf v8.1.1317.tar.gz
@@ -283,32 +316,7 @@ if [ "x$INIT" != "x" ];  then
     ## Basic package
     installFzf
     installTmux
-
-    # -----------
-    # Install ag
-    # -----------
-    echo -e "Install ag \n"
-    if [ "x" == "x`command -v /usr/local/bin/ag`" ]; then
-        installedAg=0
-        if [ -f /etc/redhat-release ]; then
-            v=`cat /etc/redhat-release`
-            if [[ "$v" == *"7."* ]]; then
-                sudo yum install -y the_silver_searcher
-                installedAg=1
-            fi
-        elif [[ `uname` == 'Darwin' ]]; then
-            brew install the_silver_searcher
-            installedAg=1;
-        fi
-        if [ "x0" == "x$installedAg" ];then
-            git clone https://github.com/ggreer/the_silver_searcher.git
-            cd the_silver_searcher
-            ./build.sh
-            make
-            sudo make install
-            cd ..
-        fi
-    fi
+    installAg
 fi
 
 if [ "x$installBashIt" != "x" ];  then
