@@ -11,7 +11,7 @@ let php_sync_method=-1
 "let g:gitgutter_eager = 0 "trade accuracy for speed
 "hi GitGutterAdd ctermfg=green
 "hi GitGutterDeleteLine ctermfg=red
-""hi GitGutterChange GitGutterChangeDeleteLine 
+""hi GitGutterChange GitGutterChangeDeleteLine
 ""let g:gitgutter_sign_added = '+'
 ""let g:gitgutter_sign_modified = 'm'
 ""let g:gitgutter_sign_removed = '-'
@@ -36,9 +36,9 @@ let g:airline#extensions#ale#open_lnum_symbol = '(L'
 let g:airline#extensions#ale#close_lnum_symbol = ')'
 let g:airline#extensions#coc#enabled = 1
 if !exists('g:airline_symbols')
-    let g:airline_symbols = {} 
+    let g:airline_symbols = {}
     let g:airline_symbols.linenr = ''
-endif 
+endif
 "let g:airline#extensions#tabline#enabled=1
 "let g:airline#extensions#tabline#fnamemod=':t' "only show the filaname
 "let g:airline#extensions#whitespace#enabled=0 "disable whitespace trailing
@@ -131,7 +131,7 @@ let g:snipMate.scope_aliases['xml'] = 'mvn_pom'
 let g:snipMate.scope_aliases['java'] = 'java'
 let g:snipMate.scope_aliases['python'] = 'py'
 let g:snipMate.scope_aliases['vim'] = 'vim'
-let g:snipMate.scope_aliases['groovy'] = 'gradle'
+let g:snipMate.scope_aliases['groovy'] = 'gradle,groovy'
 
 " snippet remap
 "let g:snips_no_mappings = 1
@@ -184,7 +184,7 @@ let g:syntastic_mode_map={'mode': 'passive'}
 
 
 " --------------
-" ale 
+" ale
 " --------------
 let s:php_language_server=$HOME. "/vendor/bin/php-language-server.php"
 if !empty(glob(s:php_language_server))
@@ -267,7 +267,7 @@ if !empty(glob("~/.vim/plugged/YouCompleteMe"))
     endif
 
     " debug :YcmDebugInfo
-    "let g:ycm_keep_logfiles = 1 
+    "let g:ycm_keep_logfiles = 1
     "let g:ycm_log_level = 'debug'
 
     if version > 800
@@ -448,7 +448,7 @@ if version > 800
     endif
 endif
 Plug '1995eaton/vim-better-javascript-completion', {'for': 'javascript'}
-Plug 'shawncplus/phpcomplete.vim', {'for': 'php'} 
+Plug 'shawncplus/phpcomplete.vim', {'for': 'php'}
 
 " Snippet
 Plug 'MarcWeber/vim-addon-mw-utils'
@@ -528,4 +528,3 @@ if version > 742
     endif
 endif
 colors mystyle_white "dracula, seoul256, seoul256-light
-
