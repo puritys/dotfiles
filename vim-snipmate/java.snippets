@@ -182,7 +182,7 @@ snippet class_private
 
 		private Field() {
 			 throw new IllegalStateException("Don't initiate class");
-		}  
+		}
 	}
 
 snippet enum
@@ -191,12 +191,12 @@ snippet enum
 	}
 
 snippet enumof
-	private static Map<String, Class> enumMap = new HashMap<>(); 
+	private static Map<String, Class> enumMap = new HashMap<>();
 	static {
 		for (Clas c: Class.values()) {
 			enumMap.put(c.name(), c);
 		}
-	} 
+	}
 	public static Class of(String val) {
 		if (!enumMap.containsKey(val)) {
 			throw new IllegalArgumentException(
@@ -249,12 +249,12 @@ snippet arrayToList
 	List<String> list = Arrays.asList(args);
 
 snippet arrayinit
-	new ArrayList<String>() { 
-	   { 
-		add("a"); 
-		add("b"); 
-	   } 
-	}; 
+	new ArrayList<String>() {
+	   {
+		add("a");
+		add("b");
+	   }
+	};
 
 snippet map
 	Map<String, String> m = new HashMap<>();
@@ -331,7 +331,7 @@ snippet guice_injecter
 	import com.google.inject.Injector;
 	Injector injector = Guice.createInjector(
 		new GuiceModule()
-	); 
+	);
 	injector.injectMembers(p);
 
 snippet pathCurrent
@@ -357,7 +357,7 @@ snippet fileread_linebyline
 	File file = new File(filePath);
 	if (!file.isFile()) {
 		throw exception
-	}   
+	}
 	try {
 		bufReader = new BufferedReader(
 		new InputStreamReader(new FileInputStream(file), Charset.forName("Big5"))
@@ -526,15 +526,15 @@ snippet future-simple
 		= CompletableFuture.supplyAsync(() -> "Hello")
 
 snippet future-combo
-	CompletableFuture<String> completableFuture 
+	CompletableFuture<String> completableFuture
 		= CompletableFuture.supplyAsync(() -> "Hello")
 		.thenCompose(s -> {
 				xx;
 				CompletableFuture.supplyAsync(() -> s + " World");
 	});
 
-snippet future-multi-request 
-	CompletableFuture<String> f1 = sss.get(); 
+snippet future-multi-request
+	CompletableFuture<String> f1 = sss.get();
 	CompletableFuture<Integer> f2 = zzz.get(qs);
 	return CompletableFuture.allOf(f1, f2
 	).thenCompose(non -> {
@@ -544,8 +544,8 @@ snippet future-multi-request
 
 snippet sort
 	List<Employee> emplyees;
-	Comparator<Employee> compareById = (Employee o1, Employee o2) -> 
-										o1.getId().compareTo( o2.getId() ); 
+	Comparator<Employee> compareById = (Employee o1, Employee o2) ->
+										o1.getId().compareTo( o2.getId() );
 	Collections.sort(emplyees, compareById);
 
 
@@ -622,9 +622,9 @@ snippet mockinject
 	@InjectMocks private o3 o3;
 	@Before
 	public void setUp() throws Exception {
-		o = mock(o.class); 
+		o = mock(o.class);
 		o2 = new o2();
-		MockitoAnnotations.initMocks(this); 
+		MockitoAnnotations.initMocks(this);
 	}
 
 snippet unitprodvier
@@ -699,4 +699,18 @@ snippet powermock
 			PowerMockito.mockStatic(StaticClass.class);
 			when(StaticClass.run("xxx")).thenReturn("zzzzz");
 		}
+	}
+
+snippet runable
+	Callable run = new Callable<Obj>() {
+	@Override
+		public Obj call() {
+			return getObj(id);
+		}
+	};
+	run.call();
+
+snippet runable_func
+	public <T> T getObj(Callable<T> func) {
+		return (T) func.call();
 	}
