@@ -257,8 +257,9 @@ if [ "x$INIT" != "x" ] || [ "x$installFZF" != "x" ];  then
         ## append
         #  <(cat ~/machine_list.txt | command grep -v '#' | sed -e 's/^/host /') \
         #  to ~/.sh_tool/fzf/shell/completion.bash : _fzf_complete_ssh
+    fi
 
-
+    if [ ! -d ~/.sh_tool/clvv-fasd-4822024 ]; then
         # ------------
         # Install fasd cd
         # ------------

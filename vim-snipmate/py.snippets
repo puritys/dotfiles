@@ -27,7 +27,7 @@ sinppet reg-seaach
 
 sinppet reg-match
 	re.compile("[a-z]").match(str)
-	
+
 snippet count
 	len(array)
 
@@ -41,8 +41,8 @@ snippet options
 	com = re.compile("^--")
 	for index, str in enumerate(sys.argv):
 		if com.match(str):
-			name = str.replace("-", "") 
-			index = index + 1 
+			name = str.replace("-", "")
+			index = index + 1
 			value = sys.argv[index]
 			param[name] = value
 
@@ -113,7 +113,39 @@ snippet null
 	None
 
 snippet encoding
-	import os; 
+	import os;
 	import locale;
 	os.environ["PYTHONIOENCODING"] = "utf-8";
 	myLocale=locale.setlocale(category=locale.LC_ALL, locale="en_US.UTF-8");
+
+snippet curlimp
+  import pycurl
+  import StringIO
+
+snippet curlinit
+    url = "https://localhost/"
+    url = url.encode('unicode-escape').decode('string_escape')
+    response = StringIO.StringIO()
+    c = pycurl.Curl()
+    c.setopt(c.URL, url)
+    c.setopt(c.WRITEFUNCTION, response.write)
+    c.setopt(c.HTTPHEADER, ['Content-Type: application/json','Accept-Charset: UTF-8'])
+    #c.setopt(c.POSTFIELDS, '@request.json')
+    c.perform()
+    print c.getinfo(pycurl.HTTP_CODE)
+    c.close()
+    print response.getvalue()
+    response.close()
+
+snippet strappend
+    str = "%s%s" % ("a", "append_b")
+
+snippet urlencode_imp
+    import urllib
+
+snippet urlencode
+    urllib.quote("zzz")
+
+snippet while
+    while 1:
+        print "aa"
