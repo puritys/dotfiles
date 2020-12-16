@@ -42,10 +42,15 @@ snippet fat-application
 
 snippet main
 	plugins {
-		id 'application'
+		id "application"
+		id "eclipse"
+		id "idea"
+		id "maven"
+		id "java-library"
+		id "java"
 	}
 	application {
-		mainClassName = 'com.Test'
+		mainClassName = 'com.puritys.App'
 	}
 
 snippet impoptions
@@ -58,3 +63,107 @@ snippet impdynamodblocal
 	"com.almworks.sqlite4java:sqlite4java:1.0.392",
 	"com.almworks.sqlite4java:libsqlite4java-linux-amd64:1.0.392",
 	"com.amazonaws:DynamoDBLocal:1.11.119"
+
+snippet impstring
+	"org.apache.commons:commons-lang3:3.9"
+
+snippet impguice
+	"com.google.inject:guice:4.2.2"
+
+snippet impinject
+	"com.google.inject:guice:4.2.2"
+
+snippet impgson
+	"com.google.code.gson:gson:1.7.1"
+	"org.json:json:20190722" 
+
+snippet impapache
+	"org.apache.commons:commons-lang3:3.10",
+
+snippet impbasic
+	"org.apache.commons:commons-lang3:3.10",
+	"com.google.code.gson:gson:1.7.1",
+	"org.json:json:20190722" 
+
+snippet protobuf
+	plugins {
+		id "java"
+		id "com.google.protobuf" version "0.8.12"
+	}
+	dependencies {
+		compile (
+				"com.google.protobuf:protobuf-java:3.8.0"
+		)
+	}
+	sourceSets {
+	  main {
+		  proto {
+				srcDir 'src/main/java/com/proto'
+				include '**/*.proto'
+		  }   
+		  java {
+				srcDirs 'src/main/java', 'build/generated/source/proto/main/java'
+		  }   
+	  }
+	}
+	protobuf {
+	  // Configure the protoc executable
+	  protoc {
+		  // Download from repositories
+		  artifact = 'com.google.protobuf:protoc:3.7.0'
+	  }
+	}
+
+snippet implog
+	"org.slf4j:slf4j-api:1.7.25",
+	"org.slf4j:slf4j-jdk14:1.7.25",
+
+snippet dep
+	dependencies {
+		implementation (
+
+		)
+	}
+
+snippet repo
+	allprojects {
+		repositories {
+			mavenCentral()
+			maven { url "http://maven.corp.xxx.x/xic" }
+		}
+	}
+
+snippet cucumber
+	dependencies {
+		testCompile (
+			'io.cucumber:cucumber-java:5.6.0',
+			'io.cucumber:cucumber-junit:5.6.0',
+			'io.cucumber:cucumber-picocontainer:5.6.0'
+		)
+		testCompile (
+			"org.apache.commons:commons-lang3:3.10",
+			"org.codehaus.jackson:jackson-mapper-asl:1.9.13",
+			"com.google.code.gson:gson:1.7.1",
+			"org.json:json:20190722",
+			"org.slf4j:slf4j-api:1.7.25",
+			"org.slf4j:slf4j-jdk14:1.7.25",
+		)
+	}
+	configurations {
+		cucumberRuntime {
+			extendsFrom testRuntime
+		}
+	}
+	ext {
+		tag = project.properties['tag'] ?: "@prod"
+	}
+	task cucumber() {
+		dependsOn assemble, compileTestJava
+		doLast {
+			javaexec {
+			main = "io.cucumber.core.cli.Main"
+			classpath = configurations.cucumberRuntime + sourceSets.main.output + sourceSets.test.output
+			args = ['--plugin', 'pretty', '--plugin', 'json:target/cucumber.json', '--glue', 'namespace.name', 'src/test/resources', '--tags',  project.ext.tag]
+			}   
+		}   
+	}

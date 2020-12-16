@@ -1,3 +1,6 @@
+snippet resource_path
+	this.getClass().getClassLoader().getResource("xxx").getPath();
+
 snippet log
 	System.out.println(${1});
 
@@ -20,6 +23,10 @@ snippet impjson
 	import org.json.JSONArray;
 snippet impgson
 	import com.google.gson.Gson;
+
+snippet imppair
+	import org.apache.commons.lang3.tuple.Pair;
+	import org.apache.commons.lang3.tuple.MutablePair;
 
 snippet impmockito
 	import static org.junit.Assert.assertEquals;
@@ -62,6 +69,7 @@ snippet impdate
 	import java.util.Date;
 	import java.sql.Timestamp;
 	import java.util.Locale;
+	import java.util.TimeZone;
 
 snippet impstring
 	import org.apache.commons.lang3.StringUtils;
@@ -159,7 +167,7 @@ snippet atol
 	Long.parseLong(${1});
 
 snippet empty
-	StringUtils.isEmpty(${1});
+	StringUtils.isBlank(${1});
 
 snippet main
 	public class ${0/*classname*/} {
@@ -169,18 +177,26 @@ snippet main
 		}
 	}
 
+snippet class_private
+	final class Field {
+
+		private Field() {
+			 throw new IllegalStateException("Don't initiate class");
+		}
+	}
+
 snippet enum
 	public enum ${0} {
 		{1}
 	}
 
 snippet enumof
-	private static Map<String, Class> enumMap = new HashMap<>(); 
+	private static Map<String, Class> enumMap = new HashMap<>();
 	static {
 		for (Clas c: Class.values()) {
 			enumMap.put(c.name(), c);
 		}
-	} 
+	}
 	public static Class of(String val) {
 		if (!enumMap.containsKey(val)) {
 			throw new IllegalArgumentException(
@@ -224,13 +240,27 @@ snippet listempty
 	List<String> status = new ArrayList<>();
 
 snippet set
-	Set<String> m = new HashSet<String>();
+	Set<String> m = new HashSet<String>(Arrays.asList("0", "1"));
+
+snippet classname
+	this.getClass().getSimpleName();
 
 snippet arrayToList
 	List<String> list = Arrays.asList(args);
 
+snippet arrayinit
+	new ArrayList<String>() {
+	   {
+		add("a");
+		add("b");
+	   }
+	};
+
 snippet map
 	Map<String, String> m = new HashMap<>();
+
+snippet map-entry
+	Map.Entry<String, String> m = new AbstractMap.SimpleEntry<String, String>("a", "b");
 
 snippet map-initialize
 	import com.google.common.collect.ImmutableMap;
@@ -238,6 +268,12 @@ snippet map-initialize
 		.put("id", "id")
 		.put("image", "image")
 	.build();
+
+snippet map-stream-filter-value
+	<String, String>maObj.entrySet().stream()
+		.filter(e -> e.getValue() == "value")
+		.map(Map.Entry::getValue)
+		.collect(Collectors.toList());
 
 snippet time
 	System.currentTimeMillis();
@@ -290,6 +326,14 @@ snippet guicemodule
 
 	}
 
+snippet guice_injecter
+	import com.google.inject.Guice;
+	import com.google.inject.Injector;
+	Injector injector = Guice.createInjector(
+		new GuiceModule()
+	);
+	injector.injectMembers(p);
+
 snippet pathCurrent
 	Paths.get("").toAbsolutePath().toString()
 
@@ -308,6 +352,26 @@ snippet filewrite
 snippet fileread
 	String text = new String(Files.readAllBytes(Paths.get("filename")), StandardCharsets.UTF_8);
 
+snippet fileread_linebyline
+	BufferedReader bufReader = null;
+	File file = new File(filePath);
+	if (!file.isFile()) {
+		throw exception
+	}
+	try {
+		bufReader = new BufferedReader(
+		new InputStreamReader(new FileInputStream(file), Charset.forName("Big5"))
+		String line;
+		while ((line = bufReader.readLine()) != null) {
+		}
+	} catch (Exception e) {
+	} finally {
+		bufReader.close();
+	}
+
+snippet join
+	String.join(",", list);
+
 snippet isfile
 	File f = new File("f");
 	if (f.exists() && !f.isDirectory()) {
@@ -325,6 +389,24 @@ snippet upperCase
 
 snippet pmdSkip
 	@SuppressWarnings({"PMD.NPathComplexity", "PMD.ExcessiveMethodLength", "PMD.NonStaticInitializer"})
+
+snippet pmdSkipDefault
+	@SuppressWarnings({"PMD.SwitchStmtsShouldHaveDefault"})
+
+snippet pmdSkipEmptyCatch
+	@SuppressWarnings("PMD.EmptyCatchBlock")
+
+snippet pmdSkipCouplingBetweenObjects
+	@SuppressWarnings("CouplingBetweenObjects")
+
+snippet pmdSkipEnum
+	@SuppressWarnings({"PMD.TooFewBranchesForASwitchStatement"})
+
+snippet pmdmagicnumber
+	@SuppressWarnings({"checkstyle:magicnumber"})
+
+snippet pmddeprecate
+	@SuppressWarnings("deprecation")
 
 snippet jsonType
 	if (json.has("zzz")) {
@@ -361,7 +443,7 @@ snippet enumFor
 	}
 
 snippet urlencode
-	java.net.URLEncoder.decode(url, "UTF-8");
+	java.net.URLEncoder.encode(url, "UTF-8");
 
 snippet urldecode
 	java.net.URLDecoder.decode(url, "UTF-8");
@@ -401,6 +483,91 @@ snippet stringtobuyte
 
 snippet clone
 	Object new = (Object) SerializationUtils.clone(old);
+
+snippet settolist
+	Set.stream().collect(Collectors.toList())
+
+snippet join-stream
+	list.stream().collect(Collectors.joining(","))
+
+snippet pair
+	Pair.of(String, String);
+
+# ------------------
+# Time
+# ------------------
+snippet instant-ofEpoch
+	Instant i = Instant.ofEpochMilli(1183921121000L).minus(5, ChronoUnit.DAYS);
+
+snippet timeToDate
+	ZonedDateTime date = ZonedDateTime.ofInstant(i, ZoneId.of("Asia/Taipei"));
+	DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy/MM/dd");
+	System.out.println("date " + date.format(formatter));
+
+snippet date-string
+	new Date().toString())
+
+snippet dateToTime
+	SimpleDateFormat dateFormat = new SimpleDateFormat("yyyyMMdd");
+	dateFormat.setTimeZone(TimeZone.getTimeZone("Asia/Taipei"));
+	try {
+		return dateFormat.parse("20200101").getTime();
+	} carch (Exception e) {
+
+	}
+
+# -------------
+# Future / Complete Future
+# -------------
+snippet future
+
+snippet future-simple
+	CompletableFuture<String> completableFuture
+		= CompletableFuture.supplyAsync(() -> "Hello")
+
+snippet future-combo
+	CompletableFuture<String> completableFuture
+		= CompletableFuture.supplyAsync(() -> "Hello")
+		.thenCompose(s -> {
+				xx;
+				CompletableFuture.supplyAsync(() -> s + " World");
+	});
+
+snippet future-multi-request
+	CompletableFuture<String> f1 = sss.get();
+	CompletableFuture<Integer> f2 = zzz.get(qs);
+	return CompletableFuture.allOf(f1, f2
+	).thenCompose(non -> {
+		String s = f1.join();
+		Integer i= f2.join();
+    });
+
+snippet sort
+	List<Employee> emplyees;
+	Comparator<Employee> compareById = (Employee o1, Employee o2) ->
+										o1.getId().compareTo( o2.getId() );
+	Collections.sort(emplyees, compareById);
+
+
+snippet gsontype
+	Type lastKeyType = (new TypeToken<Map<String, AttributeValue>>() { }).getType();
+	GSON.fromJson(data, lastKeyType)
+
+snippet impgsontype
+	import com.google.gson.reflect.TypeToken;
+	import java.lang.reflect.Type;
+
+snippet imp-instant
+	import java.time.Instant;
+	import java.time.ZonedDateTime;
+	import java.time.ZoneId;
+	import java.time.temporal.ChronoUnit;
+	import java.time.format.DateTimeFormatter;
+
+snippet calender
+	Calendar startTime = Calendar.getInstance(TimeZone.getTimeZone("Asia/Taipei"));
+	startTime.setTimeInMillis(1583921131000L);
+	System.out.println("date " + startTime.getTime());
 
 # ------------------
 # Exception Handling
@@ -455,9 +622,9 @@ snippet mockinject
 	@InjectMocks private o3 o3;
 	@Before
 	public void setUp() throws Exception {
-		o = mock(o.class); 
+		o = mock(o.class);
 		o2 = new o2();
-		MockitoAnnotations.initMocks(this); 
+		MockitoAnnotations.initMocks(this);
 	}
 
 snippet unitprodvier
@@ -494,9 +661,16 @@ snippet options
 	Option helpOpt = new Option("h", "help", false, "read usage()");
 
 	options.addOption(versionOpt).addOption(helpOpt);
-
-	CommandLineParser parser = new BasicParser();
-	CommandLine cmd = parser.parse(options, args);
+	CommandLineParser parser = null;
+	CommandLine cmd = null;
+	try {
+		parser = new BasicParser();
+		cmd = parser.parse(options, args);
+	} catch (Exception e) {
+		HelpFormatter formatter = new HelpFormatter();
+		formatter.printHelp("CLITester", options);
+		throw e
+	}
 	boolean help = cmd.hasOption(helpOpt.getOpt());
 	if (help) {
 		HelpFormatter formatter = new HelpFormatter();
@@ -506,8 +680,14 @@ snippet options
 	String version = cmd.getOptionValue(versionOpt.getOpt());
 
 snippet sync
-	synchronized (xx) {
-
+	private volatile syn = null;
+	if (null == syn) {
+		synchronized (xx) {
+			if (null != syn) {
+				return syn;
+			}
+			syn=zzz
+		}
 	}
 
 snippet powermock
@@ -519,4 +699,18 @@ snippet powermock
 			PowerMockito.mockStatic(StaticClass.class);
 			when(StaticClass.run("xxx")).thenReturn("zzzzz");
 		}
+	}
+
+snippet runable
+	Callable run = new Callable<Obj>() {
+	@Override
+		public Obj call() {
+			return getObj(id);
+		}
+	};
+	run.call();
+
+snippet runable_func
+	public <T> T getObj(Callable<T> func) {
+		return (T) func.call();
 	}

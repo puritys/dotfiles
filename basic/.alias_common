@@ -14,11 +14,13 @@ alias mem="ps aux | awk '{printf \"%s %s\n\",\$4,\$0}' | sort -n"
 alias memSum="ps aux | awk '{sum += \$4} END {print sum}' "
 alias myHelp='fn_help'
 alias ntpSync='sudo ntpdate -s time.stdtime.gov.tw'
+alias git='getMySSHAgent; git'
 alias gitCloneBranch='fnGitCloneBranch'
 alias gitDeleteTag='fnGitDeleteTag'
 alias gitDeleteBranch='fnGitDeleteBranch'
 alias gitForceCommit='fnGitForceCommit'
 alias gitCreateEmptyBranch='fnGitCreateEmptyBranch'
+alias gitMergeRepo='fnGitMergeRepo'
 alias gitMergeCommit='fnGitMergeCommit'
 alias c='/usr/local/bin/myExec.sh'
 alias urlencode='sh /usr/local/bin/puritys/urlencode.sh '
@@ -27,9 +29,13 @@ alias so='source ~/.bash_profile'
 #alias fg='builtin fg $@; printf "\e[H\e[2J"'
 
 if [ -f /usr/bin/ag ]; then
-    alias grep='ag --color-line-number "38;5;241" --color-match "38;5;166" --color-path "38;5;29" '
-    alias Grep='ag --color-line-number "38;5;241" --color-match "38;5;166" --color-path "38;5;29" '
-    alias ag='ag --color-line-number "38;5;241" --color-match "38;5;166" --color-path "38;5;29" '
+    alias grep='/usr/bin/ag --color-line-number "38;5;241" --color-match "38;5;166" --color-path "38;5;29" '
+    alias Grep='/usr/bin/ag --color-line-number "38;5;241" --color-match "38;5;166" --color-path "38;5;29" '
+    alias ag='/usr/bin/ag --color-line-number "38;5;241" --color-match "38;5;166" --color-path "38;5;29" '
+elif [ -f //usr/local/bin/ag ];then
+    alias grep='/usr/local/bin/ag --color-line-number "38;5;241" --color-match "38;5;166" --color-path "38;5;29" '
+    alias Grep='/usr/local/bin/ag --color-line-number "38;5;241" --color-match "38;5;166" --color-path "38;5;29" '
+    alias ag='/usr/local/bin/ag --color-line-number "38;5;241" --color-match "38;5;166" --color-path "38;5;29" '
 else
     alias Grep='grep'
 fi
@@ -89,6 +95,10 @@ fn_eclim_stop() {
 
 fn_ecliUpdate() {
     if [ -f build.gradle ]; then
+        hasEclipse=`cat build.gradle |grep 'eclipse' | wc -l`
+        if [ $hasEclipse == 0 ]; then
+            echo -e "\n\n!!!!!!!!!!!!!!!!!\nPlese add 'id eclipse' into build.gradle. \n\n\n\n"
+        fi
         gradle eclipse
     else
         sudo mvn eclipse:clean eclipse:eclipse -Dmaven.pmd.skip=true -Dmaven.checkstyle.skip=true -Dmaven.cpd-check.skip=true -Dmaven.cpd.skip=true -Dcheckstyle.skip -Dmaven.javadoc.skip=true -Dpmd.skip=true
@@ -99,17 +109,19 @@ fn_ecliUpdate() {
         h=`echo $HOME | sed 's/\//\\\\\//g'`
         sed "s/M2_REPO/$h\/.m2\/repository/" -i .classpath
     fi
+    fn_ecliConfig
 }
 
 fn_ecliConfig() {
     sh /usr/local/bin/appendJavaClasspath.sh
     mkdir -p .settings/
     cp $HOME/workspace/.metadata/.plugins/org.eclipse.core.runtime/.settings/org.eclipse.jdt.core.prefs .settings/
+    cp $HOME/workspace/.metadata/.plugins/org.eclipse.core.runtime/.settings/org.eclipse.jdt.apt.core.prefs .settings/
 
     # eclipse.jdt.ls
-    mkdir -p /root/workspace/jdt.ls-java-project/.settings/
-    sh /usr/local/bin/appendJavaClasspath.sh -f /root/workspace/jdt.ls-java-project/.classpath
-    cp $HOME/workspace/.metadata/.plugins/org.eclipse.core.runtime/.settings/org.eclipse.jdt.core.prefs /root/workspace/jdt.ls-java-project/.settings/org.eclipse.jdt.core.prefs
+    #mkdir -p /root/workspace/jdt.ls-java-project/.settings/
+    #sh /usr/local/bin/appendJavaClasspath.sh -f /root/workspace/jdt.ls-java-project/.classpath
+    #cp $HOME/workspace/.metadata/.plugins/org.eclipse.core.runtime/.settings/org.eclipse.jdt.core.prefs /root/workspace/jdt.ls-java-project/.settings/org.eclipse.jdt.core.prefs
 
 }
 
@@ -151,6 +163,62 @@ fnGitCloneBranch() {
 fnGitMergeCommit() {
     git reset --soft $1
     git commit -c ORIG_HEAD
+}
+
+# merge another repo to here and keep commit histories
+fnGitMergeRepo() {
+    while true; do
+        if [ "x$1" == "x" ];then
+            break;
+        fi
+        case "$1" in
+          -r | --repo   ) REPO=$2; shift 2 ;;
+          -d | --dirname ) DIRNAME=$2; shift 2 ;;
+          -b | --branch) BRANCH=$2; shift 2 ;;
+          -c | --comment) COMMENT=$2; shift 2 ;;
+          -h | --help  ) 
+              echo "Usage:"
+              echo "-r (repo): the repo path you want to merge: git@github.com:puritys/nodejs-phplike.git"
+              echo "-d (dirname): dirname: clone code to this dirname "
+              echo "-b (branch): Merge repo to this new branch. Please create branch on git server first and update your local git."
+              echo "-c (comment): comment."
+              echo "you have to execute 'git push' after this scirpt is done ."
+              echo "Example:"
+              echo "If I want to move github.com:repo2 to github.com:repo1, dir yyy."
+              echo "> git clone github.com:repo1"
+              echo "> cd repo1"
+              echo "> git checkout -b new_branch_for_merge"
+              echo "> gitMergeRepo -r github.com:repo2 -d yyy -b new_branch_for_merge -c \"Move repo2 to yyy\""
+
+              shift 1 
+              return
+              ;;
+          --) echo "-- is not a correct option.";shift 1; ;;
+          * ) echo "$1 is not a correct option.";shift 1; ;;
+        esac
+    done
+    if [ -z $REPO ] || [ -z $DIRNAME ]; then
+        echo "some arguements are missing, use -h to read instruction"
+        return
+    fi
+
+    if [ -z $BRANCH ] || [ -z $COMMENT ]; then
+        echo "some arguements are missing, use -h to read instruction"
+        return
+    fi
+
+    git checkout $BRANCH
+    git remote add new_repo_clone $REPO
+    git fetch new_repo_clone
+    git branch new_repo_checkout new_repo_clone/master
+    git checkout new_repo_checkout
+    mkdir -p $DIRNAME
+    git ls-tree -z --name-only HEAD | xargs -0 -I {} git mv -f {} $DIRNAME/
+    git commit -m "$COMMENT"
+    git checkout $BRANCH
+    git merge --allow-unrelated-histories new_repo_checkout
+    git push --set-upstream origin $BRANCH
+    git push origin $BRANCH
 }
 
 

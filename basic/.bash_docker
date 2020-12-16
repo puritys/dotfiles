@@ -150,22 +150,16 @@ function npm_fn() {
 
 function vim_ssh_fn() {
     common_docker_set_env "tool"
-    port="39901"
     command=" $@ "
     pwd=`pwd`
-    if [ "x2" == "x$1" ];then
-        port="39902"
-        vim_start2
-    elif [ "x3" == "x$1" ];then
-        port="39903"
-        vim_start3
-    else
-        vim_start
-    fi
+    version=$1
+    port=$2
+    echo "version = $version port = $port"
+    vim_start $version $port
     if [ "x1" == "x$startVimDocker" ];then
         sleep 4
     fi
-    command="ssh -t -e ] root@localhost -p$port \"cd /src$pwd; /bin/bash\";";
+    command="ssh -t -e ] root@localhost -p$port \"export SSH_AUTH_SOCK=/docker_tmp/ssh-agent/ssh-agent; cd /src$pwd; /bin/bash\";";
 
     echo $command
     eval $command
@@ -178,7 +172,7 @@ function vim_in_fn() {
 
     # Create a docker container each time
     # command="docker run -ti -v /:/src  -v /tmp:/tmp -w /src$pwd puritys/vim /bin/bash"
-    vim_start
+    vim_start_latest
     dockerVersion=`docker -v |grep -o "[0-9\.]*" | head -n 1`
     vercomp $dockerVersion 1.7.99999
     if [ "x2" == "x$verRet" ]; then
@@ -225,86 +219,11 @@ vercomp () {
     return 0
 }
 
-# testing
-function vim_start3() {
-    startVimDocker=0
-    port="39903"
-    containerName="puritys-vim3"
-    r=`docker ps --filter="name=$containerName" 2>&1 | wc -l`
-    if [[ $r == *"1"* ]]; then
-        startVimDocker=1
-        mkdir -p ~/docker_tmp ~/docker_tmp/fzf_session ~/docker_tmp/eclim_projects ~/.m2
-        rm -rf ~/docker_tmp/ssh-agent
-        touch ~/docker_tmp/.bash_history ~/docker_tmp/ssh-agent
-
-        pwd=`pwd`
-        docker rm $containerName 2>&1
-        docker run -d -t --name $containerName  \
-            -e VIM_THEME=seoul256 \
-            -e VIM_PLUGIN_YouCompleteMe=1 \
-            -e VIM_PLUGIN_YouCompleteMe_ENABLE_SYNTAX=1 \
-            -e VIM_PLUGIN_YouCompleteMe_auto_trigger=1 \
-            -e VIM_PLUGIN_ALE=0 \
-            -p $port:22 \
-            -v ~/docker_tmp/ssh-agent:/ssh-agent \
-            -e SSH_AUTH_SOCK=/ssh-agent \
-            -v /:/src  \
-            -v ~/:/puritys \
-            -v ~/docker_tmp:/tmp \
-            -v ~/docker_tmp/.bash_history:/root/.bash_history \
-            -v ~/.m2:/root/.m2 \
-            -w /src$pwd \
-            puritys/vim:latest
-
-            #-e USER=puritys \
-        docker exec -d $containerName sh /root/start.sh
-    fi
-}
-
-# legacy version
-function vim_start2() {
-    startVimDocker=0
-    port="39901"
-    containerName="puritys-vim2"
-    r=`docker ps --filter="name=$containerName" 2>&1 | wc -l`
-    if [[ $r == *"1"* ]]; then
-        startVimDocker=1
-        mkdir -p ~/docker_tmp ~/docker_tmp/fzf_session ~/docker_tmp/eclim_projects ~/.m2
-        rm -rf ~/docker_tmp/ssh-agent
-        touch ~/docker_tmp/.bash_history ~/docker_tmp/ssh-agent
-
-        pwd=`pwd`
-        docker rm $containerName 2>&1
-        docker run -d -t --name $containerName  \
-            -e VIM_THEME=mystyle_white \
-            -e VIM_PLUGIN_Eclim=0 \
-            -e VIM_PLUGIN_LightLine=0 \
-            -e VIM_PLUGIN_YouCompleteMe=1 \
-            -e VIM_PLUGIN_YouCompleteMe_ENABLE_SYNTAX=1 \
-            -e VIM_PLUGIN_YouCompleteMe_auto_trigger=1 \
-            -e VIM_PLUGIN_ALE=0 \
-            -e CUST_FONT=1 \
-            -p $port:22 \
-            -v ~/docker_tmp/ssh-agent:/ssh-agent \
-            -e SSH_AUTH_SOCK=/ssh-agent \
-            -v /:/src  \
-            -v ~/:/puritys \
-            -v ~/docker_tmp:/tmp \
-            -v ~/docker_tmp/.bash_history:/root/.bash_history \
-            -v ~/.m2:/root/.m2 \
-            -w /src$pwd \
-            puritys/vim:latest
-
-            #-e USER=puritys \
-        docker exec -d $containerName sh /root/start.sh
-    fi
-}
-
-# latest version: use you complete me
 function vim_start() {
     startVimDocker=0
-    port="39902"
-    containerName="puritys-vim1" 
+    version=$1
+    port=$2
+    containerName="puritys-vim-$version" 
     r=`docker ps --filter="name=$containerName" 2>&1 | wc -l`
     if [[ $r == *"1"* ]]; then
         startVimDocker=1
@@ -324,18 +243,20 @@ function vim_start() {
             -e VIM_PLUGIN_ALE_AUTO_COMPLETE=0 \
             -e CUST_FONT=1 \
             -p $port:22 \
-            -v ~/docker_tmp/ssh-agent:/ssh-agent \
-            -e SSH_AUTH_SOCK=/ssh-agent \
+            -v ~/docker_tmp/ssh-agent/:/docker_tmp/ssh-agent/:ro \
+            -v /tmp:/host_tmp:ro \
+            -e SSH_AUTH_SOCK=/docker_tmp/ssh-agent/ssh-agent \
             -v /:/src  \
             -v ~/:/puritys \
             -v ~/docker_tmp:/tmp \
             -v ~/docker_tmp/.bash_history:/root/.bash_history \
             -v ~/.m2:/root/.m2 \
             -w /src$pwd \
-            puritys/vim:latest
+            puritys/vim:$version
 
-            #-v ~/docker_tmp/eclim_projects:/root/workspace/.metadata/.plugins/org.eclipse.core.resources \
             #-e USER=puritys \
         docker exec -d $containerName sh /root/start.sh
     fi
 }
+
+

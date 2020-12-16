@@ -50,9 +50,8 @@ else
     i=0;
     while read line
     do
-        if [ ! -z $line ];then
+        if [ ! -z $line ] && [ $line != "-e" ];then
             s=(${line//=/ });
-echo $s
             custEnv[${s[0]}]="${s[1]}"
         fi
         i=$(( $i + 1 ))
@@ -65,7 +64,7 @@ if [ "x" != "x$remoteHost" ]; then
     echo "Sync dotfiles to remote host $remoteHost"
     scp basic/.alias basic/.alias_common \
         basic/.bash_common basic/.bash_profile basic/.inputrc \
-        basic/.bashrc bin/exec.sh basic/.vimrc basic/.vimrc_plugins \
+        basic/.bashrc bin/exec.sh basic/.vimrc basic/.vimrc_plugins basic/.vimrc_keymaps \
         basic/.eclimrc basic/.screenrc $remoteHost:~/
 
     ssh $remoteHost " \
@@ -145,6 +144,65 @@ installTmux () {
         brew install tmux
     fi
 
+
+}
+
+installFzf () {
+    if [ ! -d ~/.sh_tool ]; then
+        mkdir ~/.sh_tool
+        git clone --depth 1 git@github.com:junegunn/fzf.git ~/.sh_tool/fzf
+        ~/.sh_tool/fzf/install --all
+        ## append
+        #  <(cat ~/machine_list.txt | command grep -v '#' | sed -e 's/^/host /') \
+        #  to ~/.sh_tool/fzf/shell/completion.bash : _fzf_complete_ssh
+
+
+        # ------------
+        # Install fasd cd
+        # ------------
+        if [ "x" = "x`command -v wget`" ]; then
+            if [ "x" != "x`command -v yum`" ]; then
+                sudo yum install -y wget
+            fi
+        fi
+        cd ~/.sh_tool/ ; curl -L https://github.com/clvv/fasd/tarball/1.0.1 -o 1.0.1
+        tar -zxvf 1.0.1
+        cd clvv-fasd-4822024; PREFIX=$HOME make install
+        cd ../../
+    fi
+
+}
+
+installAg() {
+    echo -e "Install ag \n"
+    if [ "x" == "x`command -v /usr/local/bin/ag`" ]; then
+        installedAg=0
+        if [ -f /etc/redhat-release ]; then
+            v=`cat /etc/redhat-release`
+            if [[ "$v" == *"7."* ]]; then
+                resp=`sudo yum install -y the_silver_searcher 2>&1`
+                if [[ $resp == *"Nothing to do"* ]]; then
+                    echo "could not use yum to install silver search"
+                else
+                    installedAg=1
+                fi
+            fi
+        elif [[ `uname` == 'Darwin' ]]; then
+            brew install the_silver_searcher
+            installedAg=1;
+        fi
+        if [ "x0" == "x$installedAg" ] && [ "x" != "x`command -v yum`" ];then
+            sudo yum install automake pcre-devel xz-devel zlib-devel -y
+            if [ ! -d the_silver_searcher ]; then
+                git clone https://github.com/ggreer/the_silver_searcher.git
+            fi
+            cd the_silver_searcher
+            ./build.sh
+            make
+            sudo make install
+            cd ..
+        fi
+    fi
 
 }
 
@@ -240,15 +298,17 @@ fi
 if [ ! -d "$HOME/workspace/.metadata/.plugins/org.eclipse.core.runtime/.settings/" ];then
     mkdir -p $HOME/workspace/.metadata/.plugins/org.eclipse.core.runtime/.settings/;
 fi
-cp vim/javaPlugin/eclipse_config/org.eclipse.jdt.core.prefs.sh ~/workspace/.metadata/.plugins/org.eclipse.core.runtime/.settings/
+cp vim/javaPlugin/eclipse_config/*.sh ~/workspace/.metadata/.plugins/org.eclipse.core.runtime/.settings/
 pwd2="$HOME/workspace/.metadata/.plugins/org.eclipse.core.runtime/.settings"
 sh $pwd2/org.eclipse.jdt.core.prefs.sh > $pwd2/org.eclipse.jdt.core.prefs
+sh $pwd2/org.eclipse.jdt.apt.core.prefs.sh > $pwd2/org.eclipse.jdt.apt.core.prefs
 sudo cp vim/javaPlugin/google_checks.xml /usr/local/etc/
 sudo cp vim/javaPlugin/checkstyle.xml /usr/local/etc/
 
 source ./scripts/eclim.sh
 source ./scripts/installCommonCommand.sh
 
+<<<<<<< HEAD
 if [ "x$INIT" != "x" ] || [ "x$installFZF" != "x" ];  then
     if [ ! -d ~/.sh_tool ]; then
         mkdir ~/.sh_tool
@@ -274,34 +334,15 @@ if [ "x$INIT" != "x" ] || [ "x$installFZF" != "x" ];  then
         cd ../../
     fi
 
-    ## Basic package
-    installTmux
+if [ "x$installFZF" != "x" ];  then
+    installFzf
+fi
 
-    # -----------
-    # Install ag
-    # -----------
-    echo -e "Install ag \n"
-    if [ "x" == "x`command -v /usr/local/bin/ag`" ]; then
-        installedAg=0
-        if [ -f /etc/redhat-release ]; then
-            v=`cat /etc/redhat-release`
-            if [[ "$v" == *"7."* ]]; then
-                sudo yum install -y the_silver_searcher
-                installedAg=1
-            fi
-        elif [[ `uname` == 'Darwin' ]]; then
-            brew install the_silver_searcher
-            installedAg=1;
-        fi
-        if [ "x0" == "x$installedAg" ];then
-            git clone https://github.com/ggreer/the_silver_searcher.git
-            cd the_silver_searcher
-            ./build.sh
-            make
-            sudo make install
-            cd ..
-        fi
-    fi
+if [ "x$INIT" != "x" ];  then
+    ## Basic package
+    installFzf
+    installTmux
+    installAg
 fi
 
 if [ "x$installBashIt" != "x" ];  then
@@ -368,6 +409,13 @@ fi
 content=""
 for key in "${custEnvList[@]}"
 do
-    content="\n$key=${custEnv[$key]}"
+    if [ ! -z ${custEnv[$key]} ]; then
+        content="\n$key=${custEnv[$key]}"
+    fi
 done
-echo $content > $custEnvFile
+OS=$(uname -s)
+if [[ X"$OS" == X"Darwin" ]]; then
+    echo $content > $custEnvFile
+else
+    echo -e $content > $custEnvFile
+fi

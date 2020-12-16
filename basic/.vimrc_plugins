@@ -11,7 +11,7 @@ let php_sync_method=-1
 "let g:gitgutter_eager = 0 "trade accuracy for speed
 "hi GitGutterAdd ctermfg=green
 "hi GitGutterDeleteLine ctermfg=red
-""hi GitGutterChange GitGutterChangeDeleteLine 
+""hi GitGutterChange GitGutterChangeDeleteLine
 ""let g:gitgutter_sign_added = '+'
 ""let g:gitgutter_sign_modified = 'm'
 ""let g:gitgutter_sign_removed = '-'
@@ -36,9 +36,9 @@ let g:airline#extensions#ale#open_lnum_symbol = '(L'
 let g:airline#extensions#ale#close_lnum_symbol = ')'
 let g:airline#extensions#coc#enabled = 1
 if !exists('g:airline_symbols')
-    let g:airline_symbols = {} 
+    let g:airline_symbols = {}
     let g:airline_symbols.linenr = ''
-endif 
+endif
 "let g:airline#extensions#tabline#enabled=1
 "let g:airline#extensions#tabline#fnamemod=':t' "only show the filaname
 "let g:airline#extensions#whitespace#enabled=0 "disable whitespace trailing
@@ -81,7 +81,6 @@ endif
 " NerdTree settings
 " -----------------
 
-map <C-f> :NERDTreeToggle<CR> " open NerdTree tab
 " show line
 let NERDTreeShowLineNumbers=1
 let NERDTreeAutoCenter=1
@@ -114,8 +113,7 @@ let g:netrw_liststyle = 3
 let g:JavaImpDataDir = $HOME . "/.vim/JavaImp"
 " Java Source code path
 let g:JavaImpPaths = $HOME . "/openjdk/openjdk/jdk/src/share/classes/"
-" :JIG create dir, :JI Auto add import file, :JIS  sort the import list,  :JIF  find the source on your scursor
-"imap <c-i> <c-c>:JI<CR>i
+
 
 " ----------------
 " Snippet settings
@@ -133,7 +131,7 @@ let g:snipMate.scope_aliases['xml'] = 'mvn_pom'
 let g:snipMate.scope_aliases['java'] = 'java'
 let g:snipMate.scope_aliases['python'] = 'py'
 let g:snipMate.scope_aliases['vim'] = 'vim'
-let g:snipMate.scope_aliases['groovy'] = 'gradle'
+let g:snipMate.scope_aliases['groovy'] = 'gradle,groovy'
 
 " snippet remap
 "let g:snips_no_mappings = 1
@@ -186,7 +184,7 @@ let g:syntastic_mode_map={'mode': 'passive'}
 
 
 " --------------
-" ale 
+" ale
 " --------------
 let s:php_language_server=$HOME. "/vendor/bin/php-language-server.php"
 if !empty(glob(s:php_language_server))
@@ -231,23 +229,6 @@ let g:ale_fixers = {
 \}
 let g:ale_fix_on_save = 1
 
-if g:enablePluginAle == 1
-    if version > 800
-        if !empty(glob("~/.vim/plugged/ale"))
-            nmap sc :ALELint<CR>
-            nmap af :ALEFix<CR>
-            nmap ah :ALEHover<CR>
-            nmap as :ALESymbolSearch 
-            nmap ag :ALEGoToDefinition<CR>
-            inoremap <C-d> <C-\><C-O>:ALEComplete<CR>
-
-            " ALEFix
-        else
-            " SyntasticCheck
-            nmap sc :SyntasticCheck<CR>
-        endif
-    endif
-endif
 
 """""""""""""""""
 " YouCompleteMe "
@@ -286,7 +267,7 @@ if !empty(glob("~/.vim/plugged/YouCompleteMe"))
     endif
 
     " debug :YcmDebugInfo
-    "let g:ycm_keep_logfiles = 1 
+    "let g:ycm_keep_logfiles = 1
     "let g:ycm_log_level = 'debug'
 
     if version > 800
@@ -295,9 +276,6 @@ if !empty(glob("~/.vim/plugged/YouCompleteMe"))
                 autocmd!
                 autocmd InsertEnter * call plug#load('YouCompleteMe') | autocmd! load_ycm
             augroup END
-            nmap sc :YcmForceCompileAndDiagnostics<CR>
-            nmap :ycmlist :YcmDiags<CR>
-            nmap <C-g> :YcmCompleter GoTo<CR>
         endif
     endif
 
@@ -309,7 +287,6 @@ endif
 let g:mta_use_matchparen_group = 0
 let g:mta_set_default_matchtag_color = 0
 
-nmap jumptag :MtaJumpToOtherTag<CR>
 
 let g:mta_filetypes = {
     \ 'html' : 1,
@@ -339,14 +316,6 @@ let g:vimjs#chromeapis = 0
 " " Disabled by default. Toggling this will enable completion for a number of
 " Chrome's JavaScript extension APIs
 
-" ----------------
-" Qickrun settings
-" ----------------
-if !empty(glob("~/.vim/plugged/vim-quickrun"))
-    :nnoremap <C-e> <CR>:QuickRun<CR>
-    :vnoremap <C-e> :QuickRun -mode v<CR>
-endif
-
 
 " --------------
 " PHP Auto Complete
@@ -364,7 +333,6 @@ let g:fzf_session_path="/tmp/fzf_session"
 if !empty(glob("~/.vim/plugged/vim-indent-guides"))
     let g:indent_guides_auto_colors = 0
     let g:indent_guides_guide_size = 1
-    map :indent<CR> :IndentGuidesToggle<CR>
 endif
 
 
@@ -409,7 +377,6 @@ endif
 " :AsyncRun -raw=1 g++ % -o ./a.out
 " --------------
 :let g:asyncrun_open = 8
-nmap ar :AsyncRun -raw=1 
 
 " =============== "
 " Load Plugin     "
@@ -421,7 +388,7 @@ call plug#begin('~/.vim/plugged')
 " ----------------
 Plug 'google/vim-maktaba'
 Plug 'junegunn/fzf', { 'do': './install --all' } " File finder
-
+Plug 'junegunn/vader.vim' " unit test
 
 " ----------------
 " UI Plugins
@@ -440,7 +407,8 @@ Plug 'haya14busa/incsearch.vim' " better search plugin
 Plug 'ap/vim-css-color' " show color for color ticket
 Plug 'nathanaelkane/vim-indent-guides'
 Plug 'Valloric/MatchTagAlways', {'for': ['php', 'html', 'js', 'xml']}
-
+"Plug 'terryma/vim-multiple-cursors'
+"
 if g:enablePluginLightLine == 1
     Plug 'itchyny/lightline.vim'
 endif
@@ -480,7 +448,7 @@ if version > 800
     endif
 endif
 Plug '1995eaton/vim-better-javascript-completion', {'for': 'javascript'}
-Plug 'shawncplus/phpcomplete.vim', {'for': 'php'} 
+Plug 'shawncplus/phpcomplete.vim', {'for': 'php'}
 
 " Snippet
 Plug 'MarcWeber/vim-addon-mw-utils'
@@ -530,6 +498,29 @@ if !empty(glob("~/.vim/plugged/vim-maktaba"))
 endif
 
 
+" ---------------------------------
+" Plugin terryma/vim-multiple-cursors
+" ---------------------------------
+
+"let g:ale_enabled_org = 0
+"func! Multiple_cursors_before()
+"  if g:ale_enabled
+"      let g:ale_enabled_org = 1
+"      let g:ale_enabled = 0
+"      call ale#toggle#Disable()
+"  endif
+"endfunc
+"
+"func! Multiple_cursors_after()
+"  if g:ale_enabled_org == 1
+"      g:ale_enabled = 1
+"      call ale#toggle#Enable()
+"  endif
+"
+"endfunc
+
+
+
 """ Theme
 if version > 742
     if has("termguicolors")
@@ -537,4 +528,3 @@ if version > 742
     endif
 endif
 colors mystyle_white "dracula, seoul256, seoul256-light
-

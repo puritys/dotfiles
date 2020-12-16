@@ -188,18 +188,13 @@ function getMySSHAgent {
         socket_name=$(echo $sshagent_socket | awk '{print $2}')
         socket_pid=$(echo $sshagent_socket | awk '{print $2}' | awk -F. '{print $2}' )
     fi
-    if [ "x" != "$socket_pid" ];then
+    if [ ! -z $socket_pid ];then
         cat <<- EOF > ~/.ssh/environment
             export SSH_AUTH_SOCK=$socket_name
             export SSH_AGENT_PID=$pid
 EOF
         source ~/.ssh/environment
-        if [ -d ~/docker_tmp ];then
-            rm -rf ~/docker_tmp/ssh-agent
-            ln -sf $socket_name ~/docker_tmp/ssh-agent
-        fi
-        return 
-
+        isDone=1
     else 
         for(( i=0; i<$length; i++ ))
         do
@@ -209,6 +204,7 @@ EOF
                 if [[ X"$OS" == X"Darwin" ]]; then
                     # $TMPDIR is environment variable on MAC OS
                     sshagent=`ls $TMPDIR |grep ssh | xargs -n 1 -I%I find $TMPDIR%I -user $myname -type s | grep ssh |grep $pid | xargs ls -rt | awk '{print }'`
+                    socket_name=$sshagent
                     #sshagent=$(find $TMPDIR -user `whoami` -type s | grep ssh |grep $pid | xargs ls -rt | awk '{print }')
                 elif [[ X"$OS" == X"Linux" ]]; then
                     sshagent=$(find /tmp/ssh-* -user `whoami` -type s -printf '%p\n' 2>/dev/null | grep $pid) 
@@ -219,12 +215,51 @@ EOF
                         export SSH_AGENT_PID=$pid
 EOF
                     source ~/.ssh/environment
-                    return 
+                    isDone=1
+                    break
                 fi
                 pid=$(($pid - 1))
             done
+            if [ $isDone == 1 ];then
+                break
+            fi
         done
     fi
+    if [ -z $isDone ] || [ $isDone == 0 ]; then
+        sshagent=$(find /tmp/ssh-* -user `whoami` -type s  -printf '%T@ %p ' 2>/dev/null)
+        sshagent=(${sshagent// / });
+        for(( i=0; i<${#sshagent[@]}; i++ ))
+        do
+            agent=${sshagent[$i]}
+            pid=`echo "$agent" | grep -o '\.[0-9]*'`
+            hasProcess=`ps aux |grep $pid  |grep -v grep| wc -l`
+            if [ ! -z $hasProcess ] && [ $hasProcess == 1 ]; then 
+                cat <<- EOF > ~/.ssh/environment
+                    export SSH_AUTH_SOCK=$agent
+                    export SSH_AGENT_PID=$pid
+EOF
+                source ~/.ssh/environment
+                isDone=1
+                return 
+            fi
+
+        done
+    else
+        # link ssh-agent for docker container
+        if [ -d ~/docker_tmp ];then
+            if [ -f ~/docker_tmp/ssh-agent ];then
+                rm -f ~/docker_tmp/ssh-agent
+            fi
+            mkdir -p ~/docker_tmp/ssh-agent/
+            # change the dirname of the ssh-agent tmpdir, I don't want to mount host /tmp to container /tmp
+            # -v /tmp:/host_tmp
+            socket_name=$(echo $socket_name | sed 's/\/tmp\//\/host_tmp\//')
+            if [ ! -z $socket_name ];then
+                ln -sf $socket_name ~/docker_tmp/ssh-agent/ssh-agent
+            fi
+        fi
+    fi
+
 }
 
 setTerm() {
@@ -241,6 +276,7 @@ setTerm() {
 }
 
 ssh() {
+    getMySSHAgent
     title=$*
     if [ -f "/usr/bin/tmux" ]; then
         tmux="/usr/bin/tmux";
