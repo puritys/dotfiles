@@ -308,7 +308,6 @@ sudo cp vim/javaPlugin/checkstyle.xml /usr/local/etc/
 source ./scripts/eclim.sh
 source ./scripts/installCommonCommand.sh
 
-<<<<<<< HEAD
 if [ "x$INIT" != "x" ] || [ "x$installFZF" != "x" ];  then
     if [ ! -d ~/.sh_tool ]; then
         mkdir ~/.sh_tool
@@ -333,6 +332,7 @@ if [ "x$INIT" != "x" ] || [ "x$installFZF" != "x" ];  then
         cd clvv-fasd-4822024; PREFIX=$HOME make install
         cd ../../
     fi
+fi
 
 if [ "x$installFZF" != "x" ];  then
     installFzf
