@@ -714,3 +714,6 @@ snippet runable_func
 	public <T> T getObj(Callable<T> func) {
 		return (T) func.call();
 	}
+
+snippet optional_if
+    String text = Optional.ofNullable(t1).orElseGet(() -> getT2());
