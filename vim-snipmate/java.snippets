@@ -540,7 +540,7 @@ snippet future-multi-request
 	).thenCompose(non -> {
 		String s = f1.join();
 		Integer i= f2.join();
-    });
+	});
 
 snippet sort
 	List<Employee> emplyees;
@@ -716,4 +716,4 @@ snippet runable_func
 	}
 
 snippet optional_if
-    String text = Optional.ofNullable(t1).orElseGet(() -> getT2());
+	String text = Optional.ofNullable(t1).orElseGet(() -> getT2());

@@ -29,7 +29,7 @@ snippet if
 	#    echo "else if"
 	#else
 	#    echo "else"
-	fi 
+	fi
 
 snippet if-command
 	if ! [ -x "$(command -v node)" ]; then
@@ -44,11 +44,11 @@ snippet option
 		case "\$1" in
 		  -t | --tag   ) tag=\$2; shift 2 ;;
 		  -d | --debug ) DEBUG=true; shift 1 ;;
-		  -h | --help  ) 
+		  -h | --help  )
 			  echo "Usage:"
 			  echo "-t: set tag name, ex: -t mytag."
 			  echo "-d: Enable debug"
-			  shift 1 
+			  shift 1
 		      exit 0
 			  ;;
 		  --) echo "-- is not a correct option.";shift 1; ;;
@@ -85,12 +85,12 @@ snippet atoi
 snippet switch
 	case "\$x" in
 	"a")
-		echo "z" 
+		echo "z"
 	;;
-	*xxx*) 
-		echo "b" 
+	*xxx*)
+		echo "b"
 	;;
-	*) echo "New Zealand is famous for kiwi." 
+	*) echo "New Zealand is famous for kiwi."
 	;;
 	esac
 
@@ -143,3 +143,6 @@ snippet commentblock
 	# ===================
 	# Comment1
 	# ===================
+
+snippet strlen
+	length=$(echo -n $str | wc -m)
