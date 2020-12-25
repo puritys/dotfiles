@@ -50,6 +50,10 @@ snippet for-in
 	for letter in 'Python':
 		print 'let %s' %(letter)
 
+snippet for-json
+	for key in json['data']:
+		print key
+
 snippet exit
 	sys.exit(0)
 
@@ -119,33 +123,51 @@ snippet encoding
 	myLocale=locale.setlocale(category=locale.LC_ALL, locale="en_US.UTF-8");
 
 snippet curlimp
-  import pycurl
-  import StringIO
+	import pycurl
+	import StringIO
 
 snippet curlinit
-    url = "https://localhost/"
-    url = url.encode('unicode-escape').decode('string_escape')
-    response = StringIO.StringIO()
-    c = pycurl.Curl()
-    c.setopt(c.URL, url)
-    c.setopt(c.WRITEFUNCTION, response.write)
-    c.setopt(c.HTTPHEADER, ['Content-Type: application/json','Accept-Charset: UTF-8'])
-    #c.setopt(c.POSTFIELDS, '@request.json')
-    c.perform()
-    print c.getinfo(pycurl.HTTP_CODE)
-    c.close()
-    print response.getvalue()
-    response.close()
+	url = "https://localhost/"
+	url = url.encode('unicode-escape').decode('string_escape')
+	response = StringIO.StringIO()
+	c = pycurl.Curl()
+	c.setopt(c.URL, url)
+	c.setopt(c.WRITEFUNCTION, response.write)
+	c.setopt(c.HTTPHEADER, ['Content-Type: application/json','Accept-Charset: UTF-8'])
+	#c.setopt(c.POSTFIELDS, '@request.json')
+	c.perform()
+	print c.getinfo(pycurl.HTTP_CODE)
+	c.close()
+	print response.getvalue()
+	response.close()
 
 snippet strappend
-    str = "%s%s" % ("a", "append_b")
+	str = "%s%s" % ("a", "append_b")
 
 snippet urlencode_imp
-    import urllib
+	import urllib
 
 snippet urlencode
-    urllib.quote("zzz")
+	urllib.quote("zzz")
 
 snippet while
-    while 1:
-        print "aa"
+	while 1:
+		print "aa"
+
+snippet dynamodb_deleteItem
+	import boto3
+	from boto3.dynamodb.conditions import Key
+	def deleteItems(dynamodb):
+	table = dynamodb.Table('table_name')
+	response = table.scan();
+	for item in response['Items']:
+		print "%s %s" % (item['id'], item['range'])
+		table.delete_item(
+		Key={
+			'id': item['id'],
+			'range': item['range']
+		}
+		);
+		print "\n"
+		dynamodb = boto3.resource('dynamodb')
+	deleteItems(dynamodb)
