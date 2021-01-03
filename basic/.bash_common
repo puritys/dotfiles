@@ -147,7 +147,7 @@ screen_path() {
 
 screen_title () {
     screen_path;
-    screenPath=`echo $screenPath | cut -c1-13` 
+    screenPath=`echo $screenPath | cut -c1-13`
     isSetTitle=0;
     hostname=`hostname`
     if [ "xtmux-256color" == "x$term" ]; then
@@ -164,7 +164,7 @@ screen_title () {
     fi
     if [ "x0" == "x$isSetTitle" ]; then
         if [ "x" != "x$host" ]; then
-            text=`echo $host | cut -c1-5` 
+            text=`echo $host | cut -c1-5`
             local title="$text:$screenPath"
         else
             local title=`uname -n | cut -c1-8`
@@ -195,7 +195,7 @@ function getMySSHAgent {
 EOF
         source ~/.ssh/environment
         isDone=1
-    else 
+    else
         for(( i=0; i<$length; i++ ))
         do
             pid=${pids[$i]}
@@ -203,11 +203,11 @@ EOF
             do
                 if [[ X"$OS" == X"Darwin" ]]; then
                     # $TMPDIR is environment variable on MAC OS
-                    sshagent=`ls $TMPDIR |grep ssh | xargs -n 1 -I%I find $TMPDIR%I -user $myname -type s | grep ssh |grep $pid | xargs ls -rt | awk '{print }'`
+                    sshagent=`ls $TMPDIR |grep 'ssh' | xargs -n 1 -I%I find $TMPDIR%I -user $myname -type s | grep 'ssh' |grep $pid | xargs ls -rt | awk '{print }'`
                     socket_name=$sshagent
                     #sshagent=$(find $TMPDIR -user `whoami` -type s | grep ssh |grep $pid | xargs ls -rt | awk '{print }')
                 elif [[ X"$OS" == X"Linux" ]]; then
-                    sshagent=$(find /tmp/ssh-* -user `whoami` -type s -printf '%p\n' 2>/dev/null | grep $pid) 
+                    sshagent=$(find /tmp/ssh-* -user `whoami` -type s -printf '%p\n' 2>/dev/null | grep $pid)
                 fi
                 if [ "x$sshagent" != "x" ];then
                     cat <<- EOF > ~/.ssh/environment
@@ -232,15 +232,15 @@ EOF
         do
             agent=${sshagent[$i]}
             pid=`echo "$agent" | grep -o '\.[0-9]*'`
-            hasProcess=`ps aux |grep $pid  |grep -v grep| wc -l`
-            if [ ! -z $hasProcess ] && [ $hasProcess == 1 ]; then 
+            hasProcess=`ps aux |grep $pid  |grep -v 'grep'| wc -l`
+            if [ ! -z $hasProcess ] && [ $hasProcess == 1 ]; then
                 cat <<- EOF > ~/.ssh/environment
                     export SSH_AUTH_SOCK=$agent
                     export SSH_AGENT_PID=$pid
 EOF
                 source ~/.ssh/environment
                 isDone=1
-                return 
+                return
             fi
 
         done
@@ -299,5 +299,3 @@ ssh() {
 if [ -f ~/.bash_docker ]; then
     . ~/.bash_docker
 fi
-
-
