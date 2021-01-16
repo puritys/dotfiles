@@ -30,7 +30,7 @@ if (exists("g:forceUseTab") && g:forceUseTab == 1)
     nmap 6 :tabn<CR>
     nmap n :tabp<CR>
     nmap m :tabn<CR>
-    # item2: add a mapping on profile keys, "option+a" = "+Esc a",  "options+s" = "+Esc s"
+    " item2: add a mapping on profile keys, "option+a" = "+Esc a",  "options+s" = "+Esc s"
     nmap <C-[>a :tabp<CR>
     nmap <C-[>s :tabn<CR>
 
