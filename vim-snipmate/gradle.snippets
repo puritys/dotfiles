@@ -75,7 +75,7 @@ snippet impinject
 
 snippet impgson
 	"com.google.code.gson:gson:1.7.1"
-	"org.json:json:20190722" 
+	"org.json:json:20190722"
 
 snippet impapache
 	"org.apache.commons:commons-lang3:3.10",
@@ -83,7 +83,7 @@ snippet impapache
 snippet impbasic
 	"org.apache.commons:commons-lang3:3.10",
 	"com.google.code.gson:gson:1.7.1",
-	"org.json:json:20190722" 
+	"org.json:json:20190722"
 
 snippet protobuf
 	plugins {
@@ -100,10 +100,10 @@ snippet protobuf
 		  proto {
 				srcDir 'src/main/java/com/proto'
 				include '**/*.proto'
-		  }   
+		  }
 		  java {
 				srcDirs 'src/main/java', 'build/generated/source/proto/main/java'
-		  }   
+		  }
 	  }
 	}
 	protobuf {
@@ -118,12 +118,19 @@ snippet implog
 	"org.slf4j:slf4j-api:1.7.25",
 	"org.slf4j:slf4j-jdk14:1.7.25",
 
+snippet implog-simple
+    "org.slf4j:slf4j-simple:1.7.25"
+    src/main/resources/simplelogger.properties : org.slf4j.simpleLogger.defaultLogLevel=debug
+
 snippet dep
 	dependencies {
 		implementation (
 
 		)
 	}
+
+snippet method_name
+    Thread.currentThread().getStackTrace()[1].getMethodName()
 
 snippet repo
 	allprojects {
@@ -164,6 +171,9 @@ snippet cucumber
 			main = "io.cucumber.core.cli.Main"
 			classpath = configurations.cucumberRuntime + sourceSets.main.output + sourceSets.test.output
 			args = ['--plugin', 'pretty', '--plugin', 'json:target/cucumber.json', '--glue', 'namespace.name', 'src/test/resources', '--tags',  project.ext.tag]
-			}   
-		}   
+			}
+		}
 	}
+
+snippet dep_local
+    project (":common")

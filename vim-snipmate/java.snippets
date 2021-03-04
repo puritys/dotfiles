@@ -647,6 +647,22 @@ snippet unitprodvier
 		}
 	}
 
+snippet unitprodvier_testng
+    import org.testng.annotations.DataProvider;
+	public class xxxoTest {
+		@Test(dataProvider = "provideTestG")
+		public void testG(String expect, String val) {
+
+		}
+
+		@DataProvider(name = "provideTestG")
+		public static Object[][] provideTestG() {
+			return new Object[][] {
+					{"expect", "val"}
+			};
+		}
+	}
+
 snippet doReturn
 	doReturn("xx").when(obj).getNxxx(anyString());
 
