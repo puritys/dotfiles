@@ -1,11 +1,27 @@
+snippet main
+	#!/usr/bin/python
+	#coding=utf-8
+
+	import sys
+	import re
+	import os.path
+	import MySQLdb
+
+snippet array
+	val = []
+	val.append(0)
+
 snippet itoa
 	str(2)
 
 snippet atoi
 	int("ss")
 
+snippet empty
+	if not a:
+
 snippet function
-	def ${0}():
+	def ${0}(param1):
 		return "aaa"
 
 snippet log
@@ -171,3 +187,13 @@ snippet dynamodb_deleteItem
 		print "\n"
 		dynamodb = boto3.resource('dynamodb')
 	deleteItems(dynamodb)
+
+snippet xml
+	import xml.etree.ElementTree as ET
+	root = ET.parse('file.xml').getroot()
+	root = ET.fromstring(xml)
+	html = root.find('html')
+	lang = html.get('lang')
+	ps = root.findall('html/body/p')
+	for p in ps:
+		style = price.get('style')

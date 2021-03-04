@@ -1,14 +1,14 @@
 # ---------------------
 # Docker alias function
 # ---------------------
-
+ROOT=/
 function get_home() {
     owner=`whoami`
     if [ `uname` = "Darwin" ]; then
         HOME="/Users/$owner"
     else
         HOME="/home/$owner"
-    fi 
+    fi
 
 }
 
@@ -35,7 +35,7 @@ function mvn_fn() {
         HOME="/Users/$owner"
     else
         HOME="/home/$owner"
-    fi 
+    fi
     command="docker run -it --rm -v $HOME/.m2:/root/.m2 -v $(pwd):/usr/src/mymaven -w /usr/src/mymaven puritys/command $command"
     echo $command
     $command
@@ -50,7 +50,7 @@ function javar_fn() {
         HOME="/Users/$owner"
     else
         HOME="/home/$owner"
-    fi 
+    fi
     command="docker run -it --rm -v $HOME/.m2:/root/.m2 -v $(pwd):/usr/src/mymaven -w /usr/src/mymaven my/my-mvn $command"
     echo $command
     $command
@@ -63,10 +63,11 @@ function php_fn() {
     owner=`whoami`
     if [ `uname` = "Darwin" ]; then
         HOME="/Users/$owner"
+        ROOT="~/"
     else
         HOME="/home/$owner"
-    fi 
-    command="docker run -it --rm -v /www:/www -v $(pwd):/usr/src/myphp -w /usr/src/myphp puritys/command $command"
+    fi
+    command="docker run -it --rm -v ${ROOT}www:/www -v $(pwd):/usr/src/myphp -w /usr/src/myphp puritys/command $command"
     echo $command
     $command
 }
@@ -78,10 +79,11 @@ function php7_fn() {
     owner=`whoami`
     if [ `uname` = "Darwin" ]; then
         HOME="/Users/$owner"
+        ROOT="~/"
     else
         HOME="/home/$owner"
-    fi 
-    command="docker run -it --rm -v /www:/www -v $(pwd):/usr/src/myphp -w /usr/src/myphp puritys/phplatest $command"
+    fi
+    command="docker run -it --rm -v ${ROOT}www:/www -v $(pwd):/usr/src/myphp -w /usr/src/myphp puritys/phplatest $command"
     echo $command
     $command
 }
@@ -104,7 +106,7 @@ function ffmpeg_fn() {
         HOME="/Users/$owner"
     else
         HOME="/home/$owner"
-    fi 
+    fi
     command="docker run -it --rm  -v $(pwd):/temp_dir -w /temp_dir puritys/ffmpeg ffmpeg $command"
     echo $command
     $command
@@ -223,7 +225,7 @@ function vim_start() {
     startVimDocker=0
     version=$1
     port=$2
-    containerName="puritys-vim-$version" 
+    containerName="puritys-vim-$version"
     r=`docker ps --filter="name=$containerName" 2>&1 | wc -l`
     if [[ $r == *"1"* ]]; then
         startVimDocker=1
@@ -258,5 +260,3 @@ function vim_start() {
         docker exec -d $containerName sh /root/start.sh
     fi
 }
-
-
