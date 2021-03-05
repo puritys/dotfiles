@@ -30,6 +30,9 @@ snippet log
 snippet print
 	print "%s - %s " %(str, str2)
 
+snippet format
+	val = "%s - %s " %(str, str2)
+
 snippet reg-replace
 	reg = '[^\d]+'
 	str = re.sub(reg, '', str);
@@ -112,6 +115,11 @@ snippet fetchUrl
 snippet json_parse
 	import json
 	j = json.loads(str)
+
+snippet json_string
+	import json
+	j = json.dumps(js)
+
 
 snippet image_size
 	import requests
@@ -197,3 +205,16 @@ snippet xml
 	ps = root.findall('html/body/p')
 	for p in ps:
 		style = price.get('style')
+
+snippet mysql
+	import MySQLdb
+	db = MySQLdb.connect (
+		host = "hostname",
+		user = "username",
+		passwd = "pas",
+		db = "dbname",
+		ssl = 1)
+	conn  =  db.cursor ()
+	conn.execute("insert into;")
+	conn.execute("commit;")
+	db.close ()
