@@ -120,6 +120,7 @@ let g:JavaImpPaths = $HOME . "/openjdk/openjdk/jdk/src/share/classes/"
 " ----------------
 "let g:snippets_dir='~/.vim/bundle/vim-snipmate/snippets/'
 let g:snipMate = get(g:, 'snipMate', {}) " Allow for vimrc re-sourcing
+let g:snipMate.snippet_version = 1
 let g:snipMate.scope_aliases = {}
 let g:snipMate.no_default_aliases = 1
 
@@ -427,7 +428,6 @@ Plug 'junegunn/seoul256.vim'
 " ----------------
 "http://vimcasts.org/episodes/aligning-text-with-tabular-vim/
 Plug 'godlygeek/tabular' " align code
-Plug 'vim-scripts/vim-json-line-format' " JSON Parse
 Plug 'vim-scripts/PDV--phpDocumentor-for-Vim', {'for': 'php'}
 Plug 'puritys/vim-cterm-to-gui', {'for': 'vim'}
 

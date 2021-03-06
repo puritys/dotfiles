@@ -74,7 +74,6 @@ host=MacMini
 | google/vim-codefmt         |               | Auto fix java code formatter/indent       |
 | vim-airline/vim-airline    |               | Beautiful status bar and tab(disabled)    |
 | godlygeek/tabular          | align,<Enter> | Auto align code                           |
-| vim-json-line-format       | ,jp ,jw       | JSON Parser (support unicode)             |
 | shawncplus/phpcomplete.vim |               | PHP Auto Complete                         |
 | Yggdroot/indentLine        |               | Display indent line                       |
 | vim-scripts/PDV--phpDocumentor-for-Vim| doc | generate php document |
