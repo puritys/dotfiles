@@ -3,4 +3,4 @@
     email = puritys.chen@gmail.com
 
 [url "git@github.com:"]
-    insteadOf = https://github.com/
+    insteadOf = https://git@github.com/
