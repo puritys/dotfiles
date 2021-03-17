@@ -478,6 +478,9 @@ snippet guicecode
 	bind(xx.class);
 	bind(xxInterface.class).to(xxImplements.class);
 
+snippet bindannotiation
+	bind(xxx.class).annotatedWith(Names.named("new_name")).toInstance(new xxx());
+
 snippet guicecodesingleton
 	bind(xx.class).toInstace(obj);
 
