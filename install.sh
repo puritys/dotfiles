@@ -40,6 +40,13 @@ while true; do
     esac
 done
 
+if [ "x" = "x`command -v wget`" ]; then
+    if [ "x" != "x`command -v yum`" ]; then
+        sudo yum install -y make
+    fi
+
+fi
+
 custEnvList="enableCustFont"
 custEnvList=(${custEnvList// / });
 custEnvFile="$HOME/.custEnv"
