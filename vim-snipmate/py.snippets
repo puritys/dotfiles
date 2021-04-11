@@ -28,7 +28,7 @@ snippet log
 	print getframeinfo(currentframe()).lineno
 
 snippet print
-	print "%s - %s " %(str, str2)
+	print ("{} - {} ".format(str, str2))
 
 snippet format
 	val = "%s - %s " %(str, str2)
@@ -120,6 +120,11 @@ snippet json_string
 	import json
 	j = json.dumps(js)
 
+snippet json_print
+	print(json.dumps(str.json(), ensure_ascii=False, indent=4, sort_keys=True).encode('utf-8'))
+
+snippet json_if_not
+	if "key" not in json["level1"]:
 
 snippet image_size
 	import requests
@@ -218,3 +223,23 @@ snippet mysql
 	conn.execute("insert into;")
 	conn.execute("commit;")
 	db.close ()
+
+snippet class
+	class obj():
+		def __init__(self, param1, param2):
+			self.param1 = param1
+			return;
+		def run(self):
+			return;
+
+snippet trim
+	str.strip()
+
+snippet imptime
+	import time
+
+snippet time
+	ts = time.gmtime()
+
+snippet time_to_date
+	time.strftime("%Y-%m-%d", uts)
