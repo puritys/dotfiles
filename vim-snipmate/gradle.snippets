@@ -23,6 +23,10 @@ snippet application
 		classifier = null
 		version = null
 	}
+	task runApp(type: JavaExec) {
+		classpath = sourceSets.main.runtimeClasspath
+		main = "com.puritys.App"
+	}
 
 snippet fat-application
 	buildscript {
@@ -119,8 +123,8 @@ snippet implog
 	"org.slf4j:slf4j-jdk14:1.7.25",
 
 snippet implog-simple
-    "org.slf4j:slf4j-simple:1.7.25"
-    src/main/resources/simplelogger.properties : org.slf4j.simpleLogger.defaultLogLevel=debug
+	"org.slf4j:slf4j-simple:1.7.25"
+	src/main/resources/simplelogger.properties : org.slf4j.simpleLogger.defaultLogLevel=debug
 
 snippet dep
 	dependencies {
@@ -130,7 +134,7 @@ snippet dep
 	}
 
 snippet method_name
-    Thread.currentThread().getStackTrace()[1].getMethodName()
+	Thread.currentThread().getStackTrace()[1].getMethodName()
 
 snippet repo
 	allprojects {
@@ -176,4 +180,4 @@ snippet cucumber
 	}
 
 snippet dep_local
-    project (":common")
+	project (":common")
