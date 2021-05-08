@@ -66,13 +66,16 @@ if version > 703
     if !empty(glob("~/.vim/plugged/incsearch.vim"))
 
         if has("unix")
-            let s:uname = system("uname -s")
-            if s:uname == "Darwin\n"
-            else
+            "let s:uname = system("uname -s")
+            "if s:uname == "Darwin\n"
+            "else
                 set hlsearch
                 let g:incsearch#auto_nohlsearch = 0 " 0: keep hightlight when mouse cursor move
                 map /  <Plug>(incsearch-forward)
-            endif
+                map ?  <Plug>(incsearch-backward)
+                map n  <Plug>(incsearch-nohl-n)
+                map N  <Plug>(incsearch-nohl-N)
+            "endif
         endif
     endif
 endif
