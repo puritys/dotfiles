@@ -467,13 +467,23 @@ Plug 'skywind3000/asyncrun.vim', {'on': 'AsyncRun'}
 
 
 " ----------------
-" Others
+" Lint
 " ----------------
 Plug 'vim-syntastic/syntastic', {'on': 'SyntasticCheck'} " syntax check
 Plug 'danro/rename.vim'
 if version > 800
     Plug 'w0rp/ale'
 endif
+
+" ----------------
+" Auto complete
+" ----------------
+" :CocInstall coc-json coc-tsserver
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+" :CocInstall coc-java
+Plug 'neoclide/coc-java'
+" :CocInstall coc-pyright
+Plug 'fannheyward/coc-pyright'
 
 " others
 "Plug 'takac/vim-hardtime' " prevent repeat typing
