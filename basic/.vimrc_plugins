@@ -199,6 +199,10 @@ let g:ale_sign_warning = 'W>'
 let g:ale_sign_error = 'E>'
 let g:ale_lint_delay = 300
 
+if g:enablePluginAleJavaagent == 1
+    let g:ale_java_eclipselsp_javaagent='/root/lombok.jar'
+endif
+
 " Auto open lint error list
 "let g:ale_open_list = 1
 "let g:ale_keep_list_window_open = 0
@@ -484,6 +488,8 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'neoclide/coc-java'
 " :CocInstall coc-pyright
 Plug 'fannheyward/coc-pyright'
+" :CocInstall coc-phpls
+Plug 'marlonfan/coc-phpls'
 
 " others
 "Plug 'takac/vim-hardtime' " prevent repeat typing
