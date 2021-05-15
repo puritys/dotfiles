@@ -484,12 +484,12 @@ endif
 " ----------------
 " :CocInstall coc-json coc-tsserver
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-" :CocInstall coc-java
-Plug 'neoclide/coc-java'
-" :CocInstall coc-pyright
-Plug 'fannheyward/coc-pyright'
-" :CocInstall coc-phpls
-Plug 'marlonfan/coc-phpls'
+"" :CocInstall coc-java
+"Plug 'neoclide/coc-java'
+"" :CocInstall coc-pyright
+"Plug 'fannheyward/coc-pyright'
+"" :CocInstall coc-phpls
+"Plug 'marlonfan/coc-phpls'
 
 " others
 "Plug 'takac/vim-hardtime' " prevent repeat typing
