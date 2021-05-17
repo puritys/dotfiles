@@ -1,3 +1,7 @@
 {
-    "diagnostic.displayByAle": true
+    "diagnostic.displayByAle": true,
+    "diagnostic.enable": false,
+    "suggest.autoTrigger": "always",
+    "suggest.triggerAfterInsertEnter": false,
+    "coc.preferences.extensionUpdateCheck": "never"
 }
