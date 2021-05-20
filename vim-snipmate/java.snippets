@@ -135,6 +135,10 @@ snippet jsonarrayfor
 		JSONObject job = json.optJSONObject(i);
 	}
 
+snippet jsonpath
+	ReadContext ctx = JsonPath.parse(json);
+	String text = ctx.read("$.store.book[1].author");
+
 
 snippet impMap
 	import java.util.Map;
