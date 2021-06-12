@@ -81,6 +81,15 @@ snippet impgson
 	"com.google.code.gson:gson:1.7.1"
 	"org.json:json:20190722"
 
+snippet impjson
+	"org.json:json:20210307"
+
+snippet impjson_path
+	"com.jayway.jsonpath:json-path:2.5.0"
+
+snippet impasync_client
+	"org.asynchttpclient:async-http-client:2.12.2"
+
 snippet impapache
 	"org.apache.commons:commons-lang3:3.10",
 
@@ -89,34 +98,6 @@ snippet impbasic
 	"com.google.code.gson:gson:1.7.1",
 	"org.json:json:20190722"
 
-snippet protobuf
-	plugins {
-		id "java"
-		id "com.google.protobuf" version "0.8.12"
-	}
-	dependencies {
-		compile (
-				"com.google.protobuf:protobuf-java:3.8.0"
-		)
-	}
-	sourceSets {
-	  main {
-		  proto {
-				srcDir 'src/main/java/com/proto'
-				include '**/*.proto'
-		  }
-		  java {
-				srcDirs 'src/main/java', 'build/generated/source/proto/main/java'
-		  }
-	  }
-	}
-	protobuf {
-	  // Configure the protoc executable
-	  protoc {
-		  // Download from repositories
-		  artifact = 'com.google.protobuf:protoc:3.7.0'
-	  }
-	}
 
 snippet implog
 	"org.slf4j:slf4j-api:1.7.25",
@@ -172,12 +153,64 @@ snippet cucumber
 		dependsOn assemble, compileTestJava
 		doLast {
 			javaexec {
-			main = "io.cucumber.core.cli.Main"
-			classpath = configurations.cucumberRuntime + sourceSets.main.output + sourceSets.test.output
-			args = ['--plugin', 'pretty', '--plugin', 'json:target/cucumber.json', '--glue', 'namespace.name', 'src/test/resources', '--tags',  project.ext.tag]
+				systemProperties System.properties
+				main = "io.cucumber.core.cli.Main"
+				classpath = configurations.cucumberRuntime + sourceSets.main.output + sourceSets.test.output
+				args = ['--plugin', 'pretty', '--plugin', 'json:target/cucumber.json', '--glue', 'namespace.name', 'src/test/resources', '--tags',  project.ext.tag]
+			}
+		}
+	}
+
+snippet cucumber_run
+	task cucumber() {
+		sourceSets.main.java.srcDirs = ['src/zzz/']
+		dependsOn assemble, testClasses
+		System.setProperty("sss", "yyy")
+		doLast {
+			javaexec {
+				systemProperties System.properties
+				main = "io.cucumber.core.cli.Main"
+				classpath = configurations.cucumberRuntime + sourceSets.test.output
+				args = ['--plugin', 'pretty', '--plugin', 'json:target/cucumber.json', '--glue', 'integration', 'src/test/resources', '--tags',  project.ext.tag]
 			}
 		}
 	}
 
 snippet dep_local
 	project (":common")
+
+# -----------
+# Protobuf
+# -----------
+
+snippet protobuf
+	plugins {
+		id "java"
+		id "com.google.protobuf" version "0.8.12"
+	}
+	dependencies {
+		compile (
+				"com.google.protobuf:protobuf-java:3.8.0"
+		)
+	}
+	sourceSets {
+	  main {
+		  proto {
+				srcDir 'src/main/java/com/proto'
+				include '**/*.proto'
+		  }
+		  java {
+				srcDirs 'src/main/java', 'build/generated/source/proto/main/java'
+		  }
+	  }
+	}
+	protobuf {
+	  // Configure the protoc executable
+	  protoc {
+		  // Download from repositories
+		  artifact = 'com.google.protobuf:protoc:3.7.0'
+	  }
+	}
+
+snippet: imp_proto
+	apiImplementation "com.google.protobuf:protobuf-java:3.8.0"

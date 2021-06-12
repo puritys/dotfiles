@@ -529,7 +529,6 @@ snippet dateToTime
 # -------------
 # Future / Complete Future
 # -------------
-snippet future
 
 snippet future-simple
 	CompletableFuture<String> completableFuture
@@ -743,3 +742,30 @@ snippet runable_func
 
 snippet optional_if
 	String text = Optional.ofNullable(t1).orElseGet(() -> getT2());
+
+
+# -----------
+# Protobuf
+# -----------
+
+snippet proto
+	syntax = "proto3";
+	package com.xxx.yyy;
+	option java_outer_classname = "ZzzProto";
+	enum Option {
+		A = 0
+		B = 1
+	}
+	message Msg {
+		string id = 1;
+		Option opt = 2; // A or B
+		string name = 3;
+		repeated string aList = 4;
+	}
+
+
+snippet proto_enum
+	enum Option {
+		A = 0
+		B = 1
+	}
