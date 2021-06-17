@@ -33,6 +33,9 @@ endif
 if !exists("g:enablePluginAirline")
     let g:enablePluginAirline = 0
 endif
+if !exists("g:enablePluginAleJavaagent")
+    let g:enablePluginAleJavaagent = 0
+endif
 
 
 " vim log
@@ -114,7 +117,7 @@ function! INIT_PHP()
     set filetype=php
     set tags+=~/.vim/php_tags
     call PHP_KEYMAP()
-""    nmap doc :call PhpDocSingle()<CR>
+    let b:ale_disable_lsp = 1
 endfunction
 
 
@@ -124,11 +127,12 @@ au BufRead,BufNewFile *.js set filetype=javascript
 au BufRead,BufNewFile *.html set filetype=html
 au BufRead,BufNewFile *.go set filetype=go
 au BufRead,BufNewFile *.java set filetype=java
+au BufRead,BufNewFile *.groovy set filetype=java
 au BufRead,BufNewFile *.py set filetype=python
 au BufRead,BufNewFile *.vim set filetype=vim
 au BufRead,BufNewFile *.cc  call INIT_CPP()
-au BufRead,BufNewFile *.c   call INIT_CPP() 
-au BufRead,BufNewFile *.cpp   call INIT_CPP() 
+au BufRead,BufNewFile *.c   call INIT_CPP()
+au BufRead,BufNewFile *.cpp   call INIT_CPP()
 au BufRead,BufNewFile *.php call INIT_PHP()
 au BufRead,BufNewFile *.phtml call INIT_PHP()
 au BufRead,BufNewFile *.inc call INIT_PHP()

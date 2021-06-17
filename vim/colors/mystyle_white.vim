@@ -30,7 +30,7 @@ hi NoticeText cterm=NONE ctermfg=131 ctermbg=251 guifg=#af5f5f guibg=#c6c6c6
 hi Unknown cterm=NONE ctermfg=255 ctermbg=232 guifg=#eeeeee guibg=#080808
 
 " todo #f1066e link #0085c1
-" /* axxxxxxxxx*/ // # 
+" /* axxxxxxxxx*/ // #
 hi Comment cterm=NONE ctermfg=28 ctermbg=NONE guifg=#056900 guibg=NONE
 hi CommentKey cterm=NONE ctermfg=28 ctermbg=NONE guifg=#008700 guibg=NONE
 
@@ -73,7 +73,7 @@ hi! link SpellBad ErrorText
 " Validation Warning
 hi! link SpellCap NoticeText
 
-"  "xxxxxx" 
+"  "xxxxxx"
 "hi Constant cterm=NONE  ctermfg=202  ctermbg=NONE
 hi! link Constant TextBold
 
@@ -82,8 +82,10 @@ hi! link IncSearch OptionSel
 hi! link Search    OptionHeavy
 hi! link ErrorMsg  ErrorText
 hi! link WarningMsg  NoticeText
+hi! link ALEErrorSign  ErrorText
+hi! link ALEWarningSign  NoticeText
 
-" -- INSERT -- 
+" -- INSERT --
 hi ModeMsg cterm=NONE ctermfg=NONE ctermbg=NONE guifg=NONE guibg=NONE
 hi MoreMsg cterm=NONE ctermfg=242 ctermbg=NONE guifg=#6c6c6c guibg=NONE
 
@@ -125,7 +127,7 @@ hi! link Type TextType
 "->
 hi! link Function  TextType
 
-" ( ) {}  
+" ( ) {}
 hi Delimiter cterm=NONE ctermfg=18 ctermbg=NONE guifg=#000087 guibg=NONE
 hi Underlined cterm=underline ctermfg=39 ctermbg=NONE guifg=#00afff guibg=NONE
 
@@ -159,12 +161,12 @@ hi! link Debug           Special
 hi! link Label           TextDesc
 
 " ----------
-" php 
+" php
 " ----------
-hi! link phpTodo       TextEmphasize 
+hi! link phpTodo       TextEmphasize
 hi! link phpIdentifier TextSub
 hi! link phpOperator   TextDesc
-" function name    
+" function name
 hi! link phpRegion      TextDesc
 hi! link phpVarSelector TextSub
 " var const  method
@@ -183,7 +185,7 @@ hi! link phpSpecialFunction phpKeyword
 hi! link phpFunctions       phpKeyword
 " ->
 hi! link phpMemberSelector  phpKwyword
-" break return 
+" break return
 hi! link phpStatement   phpKeyword
 " if else switch
 hi! link phpConditional phpKeyword
@@ -194,7 +196,7 @@ hi! link phpLabel phpKeyword
 hi! link phpBoolean TextBold
 hi! link phpComparison TextBold
 hi! link phpComment Comment
-" float bool 
+" float bool
 hi! link phpType TextType
 " `cat /etc`
 hi! link phpBacktick TextEmphasize
@@ -210,7 +212,7 @@ hi! link cppStatement Statement
 hi! link cFormat         Statement
 hi! link cType   TextType
 hi! link cMultiGroup PreProc
-hi! link cNumber  TextSub  
+hi! link cNumber  TextSub
 " + - * /
 hi! link Operator TextSub
 hi! link cOperator TextSub
@@ -235,7 +237,7 @@ hi! link javaScriptBoolean TextBold
 hi! link javaScriptNumber Constant
 
 "" =========== java ============
-" comment @param, @return 
+" comment @param, @return
 hi! link javaDocTags Comment
 
 " ===============

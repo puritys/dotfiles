@@ -30,3 +30,17 @@ snippet prepare
 
 snippet map
 	def m = [ key1: "v", key2: "v" ]
+
+
+snippet mock
+	def config = Mock(Config) {
+		getString("env") >> "abc"
+		getString(_) >> "zzz"
+	}
+	def service = new Service()
+	service.inject = config
+
+snippet mock_exception
+	thrown(EmptyStackException)
+	def e = thrown(EmptyStackException)
+	e.cause == null

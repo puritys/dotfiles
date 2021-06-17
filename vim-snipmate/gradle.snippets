@@ -11,11 +11,11 @@ snippet fat-jar
 snippet application
 	buildscript {
 		dependencies {
-			classpath 'com.github.jengelman.gradle.plugins:shadow:5.0.0'
+			classpath 'gradle.plugin.com.github.jengelman.gradle.plugins:shadow:7.0.0'
 		}
 	}
 	plugins {
-		id 'com.github.johnrengelman.shadow' version '5.0.0'
+		id 'com.github.johnrengelman.shadow' version '7.0.0'
 		id 'java'
 	}
 	shadowJar {
@@ -23,15 +23,19 @@ snippet application
 		classifier = null
 		version = null
 	}
+	task runApp(type: JavaExec) {
+		classpath = sourceSets.main.runtimeClasspath
+		main = "com.puritys.App"
+	}
 
 snippet fat-application
 	buildscript {
 		dependencies {
-			classpath 'com.github.jengelman.gradle.plugins:shadow:5.0.0'
+			classpath 'gradle.plugin.com.github.jengelman.gradle.plugins:shadow:7.0.0'
 		}
 	}
 	plugins {
-		id 'com.github.johnrengelman.shadow' version '5.0.0'
+		id 'com.github.johnrengelman.shadow' version '7.0.0'
 		id 'java'
 	}
 	shadowJar {
@@ -77,6 +81,15 @@ snippet impgson
 	"com.google.code.gson:gson:1.7.1"
 	"org.json:json:20190722"
 
+snippet impjson
+	"org.json:json:20210307"
+
+snippet impjson_path
+	"com.jayway.jsonpath:json-path:2.5.0"
+
+snippet impasync_client
+	"org.asynchttpclient:async-http-client:2.12.2"
+
 snippet impapache
 	"org.apache.commons:commons-lang3:3.10",
 
@@ -85,42 +98,14 @@ snippet impbasic
 	"com.google.code.gson:gson:1.7.1",
 	"org.json:json:20190722"
 
-snippet protobuf
-	plugins {
-		id "java"
-		id "com.google.protobuf" version "0.8.12"
-	}
-	dependencies {
-		compile (
-				"com.google.protobuf:protobuf-java:3.8.0"
-		)
-	}
-	sourceSets {
-	  main {
-		  proto {
-				srcDir 'src/main/java/com/proto'
-				include '**/*.proto'
-		  }
-		  java {
-				srcDirs 'src/main/java', 'build/generated/source/proto/main/java'
-		  }
-	  }
-	}
-	protobuf {
-	  // Configure the protoc executable
-	  protoc {
-		  // Download from repositories
-		  artifact = 'com.google.protobuf:protoc:3.7.0'
-	  }
-	}
 
 snippet implog
 	"org.slf4j:slf4j-api:1.7.25",
 	"org.slf4j:slf4j-jdk14:1.7.25",
 
 snippet implog-simple
-    "org.slf4j:slf4j-simple:1.7.25"
-    src/main/resources/simplelogger.properties : org.slf4j.simpleLogger.defaultLogLevel=debug
+	"org.slf4j:slf4j-simple:1.7.25"
+	src/main/resources/simplelogger.properties : org.slf4j.simpleLogger.defaultLogLevel=debug
 
 snippet dep
 	dependencies {
@@ -130,7 +115,7 @@ snippet dep
 	}
 
 snippet method_name
-    Thread.currentThread().getStackTrace()[1].getMethodName()
+	Thread.currentThread().getStackTrace()[1].getMethodName()
 
 snippet repo
 	allprojects {
@@ -168,12 +153,64 @@ snippet cucumber
 		dependsOn assemble, compileTestJava
 		doLast {
 			javaexec {
-			main = "io.cucumber.core.cli.Main"
-			classpath = configurations.cucumberRuntime + sourceSets.main.output + sourceSets.test.output
-			args = ['--plugin', 'pretty', '--plugin', 'json:target/cucumber.json', '--glue', 'namespace.name', 'src/test/resources', '--tags',  project.ext.tag]
+				systemProperties System.properties
+				main = "io.cucumber.core.cli.Main"
+				classpath = configurations.cucumberRuntime + sourceSets.main.output + sourceSets.test.output
+				args = ['--plugin', 'pretty', '--plugin', 'json:target/cucumber.json', '--glue', 'namespace.name', 'src/test/resources', '--tags',  project.ext.tag]
+			}
+		}
+	}
+
+snippet cucumber_run
+	task cucumber() {
+		sourceSets.main.java.srcDirs = ['src/zzz/']
+		dependsOn assemble, testClasses
+		System.setProperty("sss", "yyy")
+		doLast {
+			javaexec {
+				systemProperties System.properties
+				main = "io.cucumber.core.cli.Main"
+				classpath = configurations.cucumberRuntime + sourceSets.test.output
+				args = ['--plugin', 'pretty', '--plugin', 'json:target/cucumber.json', '--glue', 'integration', 'src/test/resources', '--tags',  project.ext.tag]
 			}
 		}
 	}
 
 snippet dep_local
-    project (":common")
+	project (":common")
+
+# -----------
+# Protobuf
+# -----------
+
+snippet protobuf
+	plugins {
+		id "java"
+		id "com.google.protobuf" version "0.8.12"
+	}
+	dependencies {
+		compile (
+				"com.google.protobuf:protobuf-java:3.8.0"
+		)
+	}
+	sourceSets {
+	  main {
+		  proto {
+				srcDir 'src/main/java/com/proto'
+				include '**/*.proto'
+		  }
+		  java {
+				srcDirs 'src/main/java', 'build/generated/source/proto/main/java'
+		  }
+	  }
+	}
+	protobuf {
+	  // Configure the protoc executable
+	  protoc {
+		  // Download from repositories
+		  artifact = 'com.google.protobuf:protoc:3.7.0'
+	  }
+	}
+
+snippet: imp_proto
+	apiImplementation "com.google.protobuf:protobuf-java:3.8.0"

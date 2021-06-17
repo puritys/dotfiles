@@ -66,13 +66,16 @@ if version > 703
     if !empty(glob("~/.vim/plugged/incsearch.vim"))
 
         if has("unix")
-            let s:uname = system("uname -s")
-            if s:uname == "Darwin\n"
-            else
+            "let s:uname = system("uname -s")
+            "if s:uname == "Darwin\n"
+            "else
                 set hlsearch
                 let g:incsearch#auto_nohlsearch = 0 " 0: keep hightlight when mouse cursor move
                 map /  <Plug>(incsearch-forward)
-            endif
+                map ?  <Plug>(incsearch-backward)
+                map n  <Plug>(incsearch-nohl-n)
+                map N  <Plug>(incsearch-nohl-N)
+            "endif
         endif
     endif
 endif
@@ -196,16 +199,21 @@ let g:ale_sign_warning = 'W>'
 let g:ale_sign_error = 'E>'
 let g:ale_lint_delay = 300
 
-" Auto open lint error list
+if g:enablePluginAleJavaagent == 1
+    let g:ale_java_eclipselsp_javaagent='/root/lombok.jar'
+endif
+
+" Auto open lint error list, error only for this window :lopen
 "let g:ale_open_list = 1
 "let g:ale_keep_list_window_open = 0
 
 "let g:ale_set_loclist = 0
+" error for all session, :copen
 "let g:ale_set_quickfix = 1
 "let g:ale_list_vertical = 1
 "let g:ale_list_window_size = 35
 let g:ale_javascript_eslint_use_global = 1
-
+let g:ale_history_enabled = 0
 if g:enablePluginAleAutoComplete == 1
     let g:ale_completion_enabled = 1
 else
@@ -229,7 +237,7 @@ let g:ale_fixers = {
 \   'json': ['fixjson', 'remove_trailing_lines', 'trim_whitespace']
 \}
 let g:ale_fix_on_save = 1
-
+let g:ale_set_highlights = 1
 
 """""""""""""""""
 " YouCompleteMe "
@@ -464,13 +472,25 @@ Plug 'skywind3000/asyncrun.vim', {'on': 'AsyncRun'}
 
 
 " ----------------
-" Others
+" Lint
 " ----------------
 Plug 'vim-syntastic/syntastic', {'on': 'SyntasticCheck'} " syntax check
 Plug 'danro/rename.vim'
 if version > 800
     Plug 'w0rp/ale'
 endif
+
+" ----------------
+" Auto complete
+" ----------------
+" :CocInstall coc-json coc-tsserver
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+"" :CocInstall coc-java
+"Plug 'neoclide/coc-java'
+"" :CocInstall coc-pyright
+"Plug 'fannheyward/coc-pyright'
+"" :CocInstall coc-phpls
+"Plug 'marlonfan/coc-phpls'
 
 " others
 "Plug 'takac/vim-hardtime' " prevent repeat typing

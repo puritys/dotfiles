@@ -92,6 +92,7 @@ rm -rf ~/.sh_tool/z/
 
 touch ~/.bash_host
 cp basic/.* ~/
+cp config/coc-settings.json ~/.vim/
 pwd=`pwd`
 if hash sudo 2>/dev/null; then
     sudo="sudo "
