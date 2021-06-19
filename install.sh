@@ -163,6 +163,8 @@ installFzf () {
         ## append
         #  <(cat ~/machine_list.txt | command grep -v '#' | sed -e 's/^/host /') \
         #  to ~/.sh_tool/fzf/shell/completion.bash : _fzf_complete_ssh
+        ### new version of fzf
+        # ~/.vim/plugged/fzf/shell/completion.bash
 
 
         # ------------
