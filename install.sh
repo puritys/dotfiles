@@ -296,6 +296,7 @@ if [ "x$downloadOpenJdk" == "x1" ]; then
     fi
     wget http://download.java.net/openjdk/jdk7/promoted/b147/openjdk-7-fcs-src-b147-27_jun_2011.zip
     mkdir ~/.vim/JavaImp
+    cp config/JavaImp/* ~/.vim/JavaImp/
     mkdir ~/openjdk
     mv openjdk-7-fcs-src-b147-27_jun_2011.zip ~/openjdk/
     cd ~/openjdk && unzip openjdk-7-fcs-src-b147-27_jun_2011.zip
