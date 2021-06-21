@@ -179,6 +179,13 @@ snippet cucumber_run
 snippet dep_local
 	project (":common")
 
+snippet test_before
+	task buildDir(type: Exec) {
+	  executable "sh"
+	  args "-c", "mkdir -p /home/xxx"
+	}
+	tasks.test.dependsOn("buildDir")
+
 # -----------
 # Protobuf
 # -----------
