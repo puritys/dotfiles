@@ -275,7 +275,7 @@ setTerm() {
     fi
 }
 
-ssh() {
+function ssh() {
     getMySSHAgent
     title=$*
     if [ -f "/usr/bin/tmux" ]; then

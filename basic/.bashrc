@@ -115,9 +115,10 @@ export _FASD_DATA=/tmp/.fasd
 # ---------
 # Load Customized settings
 # ---------
-if [ -f ~/.ssh/config_customized ]; then
-    alias ssh='ssh -F <(cat .ssh/config ~/.ssh/config_customized)'
-fi
+# Not work in Mac
+#if [ -f ~/.ssh/config_customized ]; then
+#    alias ssh='ssh -F <(cat .ssh/config ~/.ssh/config_customized)'
+#fi
 
 if [ -f ~/.bash_customized ]; then
     . ~/.bash_customized
