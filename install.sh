@@ -43,8 +43,9 @@ done
 if [ "x" = "x`command -v wget`" ]; then
     if [ "x" != "x`command -v yum`" ]; then
         sudo yum install -y make
+    elif [ "x" != "x`command -v wget`" ]; then
+        brew install wget
     fi
-
 fi
 
 custEnvList="enableCustFont"
@@ -170,12 +171,7 @@ installFzf () {
         # ------------
         # Install fasd cd
         # ------------
-        if [ "x" = "x`command -v wget`" ]; then
-            if [ "x" != "x`command -v yum`" ]; then
-                sudo yum install -y wget
-            fi
-        fi
-        cd ~/.sh_tool/ ; curl -L https://github.com/clvv/fasd/tarball/1.0.1 -o 1.0.1
+        cd ~/.sh_tool/ ; wget https://github.com/clvv/fasd/tarball/1.0.1
         tar -zxvf 1.0.1
         cd clvv-fasd-4822024; PREFIX=$HOME make install
         cd ../../
@@ -319,32 +315,6 @@ sudo cp vim/javaPlugin/checkstyle.xml /usr/local/etc/
 
 source ./scripts/eclim.sh
 source ./scripts/installCommonCommand.sh
-
-if [ "x$INIT" != "x" ] || [ "x$installFZF" != "x" ];  then
-    if [ ! -d ~/.sh_tool/fzf ]; then
-        mkdir -p ~/.sh_tool
-        git clone --depth 1 https://github.com/junegunn/fzf.git ~/.sh_tool/fzf
-        ~/.sh_tool/fzf/install --all
-        ## append
-        #  <(cat ~/machine_list.txt | command grep -v '#' | sed -e 's/^/host /') \
-        #  to ~/.sh_tool/fzf/shell/completion.bash : _fzf_complete_ssh
-    fi
-
-    if [ ! -d ~/.sh_tool/clvv-fasd-4822024 ]; then
-        # ------------
-        # Install fasd cd
-        # ------------
-        if [ "x" = "x`command -v wget`" ]; then
-            if [ "x" != "x`command -v yum`" ]; then
-                sudo yum install -y wget
-            fi
-        fi
-        cd ~/.sh_tool/ ; wget https://github.com/clvv/fasd/tarball/1.0.1
-        tar -zxvf 1.0.1
-        cd clvv-fasd-4822024; PREFIX=$HOME make install
-        cd ../../
-    fi
-fi
 
 if [ "x$installFZF" != "x" ];  then
     installFzf
