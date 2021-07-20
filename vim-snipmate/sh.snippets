@@ -17,6 +17,10 @@ snippet fileWrite
 	xxxzz
 	EOF
 
+snippet fileRead
+	d=`cat contents.txt`
+	content=(${d// / });
+
 snippet func
 	${1} () {
 		param1=\$1
@@ -146,3 +150,16 @@ snippet commentblock
 
 snippet strlen
 	length=$(echo -n $str | wc -m)
+
+snippet batch_run
+	for(( i=0; i<${#urls[@]}; i++ ))
+	do
+		url=${urls[i]}
+		echo $url
+		curl -I -k "$url" &
+		m=$(($i % 20))
+		if [ $i -gt 0 ] && [ $m -eq 0 ]; then
+			echo "sleep 5 seconds per 20 requests"
+			sleep 5
+		fi
+	done

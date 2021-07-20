@@ -96,7 +96,8 @@ snippet file_write
 
 snippet file_read
 	f = open("/xx", "r")
-	print(f.read())
+	content = f.read().splitlines()
+	print(content)
 
 snippet file_exist
 	if not os.path.exists(file):
@@ -201,6 +202,14 @@ snippet dynamodb_deleteItem
 		dynamodb = boto3.resource('dynamodb')
 	deleteItems(dynamodb)
 
+snippet dynamodb_query
+	def query(table, hashVal, rangeVal):
+		response = table.query(
+			KeyConditionExpression=Key('id').eq(hashVal) & Key('r').eq(rangeVal)
+		)
+		return response['Items']
+
+
 snippet xml
 	import xml.etree.ElementTree as ET
 	root = ET.parse('file.xml').getroot()
@@ -237,6 +246,9 @@ snippet trim
 
 snippet imptime
 	import time
+
+snippet split_lines
+	x.splitlines()
 
 snippet time
 	ts = time.gmtime()
