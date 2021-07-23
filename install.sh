@@ -70,7 +70,7 @@ fi
 
 if [ "x" != "x$remoteHost" ]; then
     echo "Sync dotfiles to remote host $remoteHost"
-    scp basic/.alias basic/.alias_common \
+    scp basic/alias basic/alias_common \
         basic/.bash_common basic/.bash_profile basic/.inputrc \
         basic/.bashrc bin/exec.sh basic/.vimrc basic/.vimrc_plugins basic/.vimrc_keymaps \
         basic/.eclimrc basic/.screenrc $remoteHost:~/
@@ -92,8 +92,18 @@ rm -f ~/.vim/.vimrc_pluginSettings
 rm -rf ~/.sh_tool/z/
 
 touch ~/.bash_host
-cp basic/.* ~/
 cp config/coc-settings.json ~/.vim/
+# Copy all dotfiles
+files=($(ls basic))
+for(( i=0; i<${#files[@]}; i++ ))
+do
+    file=basic/${files[i]}
+    newFile=".${files[i]}"
+    echo "copy $file to $newFile"
+    cp $file ~/$newFile
+done
+
+
 pwd=`pwd`
 if hash sudo 2>/dev/null; then
     sudo="sudo "
@@ -297,7 +307,11 @@ if [ "x$downloadOpenJdk" == "x1" ]; then
     cp config/JavaImp/* ~/.vim/JavaImp/
     mkdir ~/openjdk
     mv openjdk-7-fcs-src-b147-27_jun_2011.zip ~/openjdk/
-    cd ~/openjdk && unzip openjdk-7-fcs-src-b147-27_jun_2011.zip
+    cd ~/openjdk
+        unzip openjdk-7-fcs-src-b147-27_jun_2011.zip
+        mv openjdk/jdk/src/share/classes/ ./
+        rm -rf openjdk
+        rm openjdk-7-fcs-src-b147-27_jun_2011.zip
     cd -
 fi
 

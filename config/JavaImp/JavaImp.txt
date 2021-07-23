@@ -1511,6 +1511,7 @@ CollectionCertStoreParameters java.security.cert.CollectionCertStoreParameters
 CollectionCertStore sun.security.provider.certpath.CollectionCertStore
 Collection java.util.Collection
 Collections java.util.Collections
+CollectionUtils org.apache.commons.collections.CollectionUtils
 Collectors java.util.stream.Collectors
 ColorChooserComponentFactory javax.swing.colorchooser.ColorChooserComponentFactory
 ColorChooserPanel javax.swing.colorchooser.ColorChooserPanel
