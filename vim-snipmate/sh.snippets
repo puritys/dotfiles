@@ -21,6 +21,13 @@ snippet fileRead
 	d=`cat contents.txt`
 	content=(${d// / });
 
+snippet fileRead_lineByline
+	while IFS= read -r line
+	do
+		echo $line
+	done  < "filename"
+snippet trim
+	echo " aaa " | sed  's/^[ ]*//;s/[ ]*$//'
 snippet func
 	${1} () {
 		param1=\$1
@@ -163,3 +170,6 @@ snippet batch_run
 			sleep 5
 		fi
 	done
+
+snippet ls_as_array
+	files=($(ls *))
