@@ -1,28 +1,30 @@
-snippet main
-	package main
-
 snippet imppath
 	import "runtime"
 	import "path"
 	import "os"
 
-snippet switch
-	switch ${1:var} {
-	case ${2:value1}:
-		${3}
-	case ${4:value2}:
-		${5}
-	default:
-		${0}
-	}
+snippet impcurl
+	"io/ioutil"
+	net/http"
+
+snippet impcurl-tls-cert
+	"crypto/tls"
+	"crypto/x509"
+
+snippet im
+	import "${1:package}"
+
+snippet immysql
+	import "database/sql"
 
 
-snippet sprintf
-	fmt.Sprintf("%${1:s}", ${2:var})
 
 snippet main
 	package main
-	import "fmt"
+	import (
+		"fmt"
+		"log"
+	)
 
 	func main() {
 
@@ -43,13 +45,11 @@ snippet for
 		${0}
 	}
 
-# import
-snippet im
-	import "${1:package}"
+snippet bytetostring
+	string(body)
 
-snippet immysql
-	import "database/sql"
-snippet crmysql
+
+snippet mysql
 	db, err := sql.Open("mysql", "root:@/test?charset=utf8");
 	if err != nil {
 		fmt.Println("error = %s", err);
@@ -80,3 +80,47 @@ snippet path_cwd
 snippet cwd
 	cwd, _ := os.Getwd()
 
+snippet curl
+	resp, err := http.Get("http://example.com/")
+	if err != nil {
+		log.Fatal(err)
+	}
+	defer resp.Body.Close()
+	body, err := io.ReadAll(resp.Body)
+	b = string(body)
+snippet curlpost
+	resp, err := http.Post("http://example.com/upload", "image/jpeg", &buf)
+	if err != nil {
+		log.Fatal(err)
+	}
+	defer resp.Body.Close()
+	body, err := io.ReadAll(resp.Body)
+
+snippet curlpostform
+	resp, err := http.PostForm("http://example.com/form",
+		url.Values{"key": {"Value"}, "id": {"123"}})
+	if err != nil {
+		log.Fatal(err)
+	}
+	defer resp.Body.Close()
+	body, err := io.ReadAll(resp.Body)
+
+snippet strtojson-map
+	str := "{...}"
+	var result map[string]interface{}
+	json.Unmarshal([]byte(str), &result)
+snippet switch
+	switch ${1:var} {
+	case ${2:value1}:
+		${3}
+	case ${4:value2}:
+		${5}
+	default:
+		${0}
+	}
+
+snippet strtobyte
+	[]byte(str)
+
+snippet sprintf
+	fmt.Sprintf("%${1:s}", ${2:var})
