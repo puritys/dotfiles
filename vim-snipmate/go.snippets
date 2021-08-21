@@ -109,6 +109,14 @@ snippet strtojson-map
 	str := "{...}"
 	var result map[string]interface{}
 	json.Unmarshal([]byte(str), &result)
+
+snippet strtojson-struct
+	type User struct {
+		name string
+	}
+	var user User
+	json.Unmarshal([]byte(body), &user)
+
 snippet switch
 	switch ${1:var} {
 	case ${2:value1}:
@@ -124,3 +132,15 @@ snippet strtobyte
 
 snippet sprintf
 	fmt.Sprintf("%${1:s}", ${2:var})
+
+###
+# Time & Date
+###
+snippet time
+	time.Now().Unix()
+
+snippet date
+	time.Date(2021, 1, 1, 0,0,0, 0, location).Unix())
+
+snippet iso8601
+	fmt.Println(time.Unix(second, nonoSecond).Format(time.RFC3339))
