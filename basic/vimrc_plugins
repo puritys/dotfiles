@@ -220,7 +220,7 @@ else
     let g:ale_completion_enabled = 0
 endif
 
-let g:ale_linters = {'java': ['checkstyle', 'eclipselsp', 'pmd']}
+let g:ale_linters = {'java': ['checkstyle', 'eclipselsp', 'pmd'],'go': ['gopls']}
 
 let g:ale_java_eclipselsp_workspace_path=$HOME . "/workspace"
 let s:eclipse = $HOME. "/eclipse.jdt.ls"
@@ -238,6 +238,9 @@ let g:ale_fixers = {
 \}
 let g:ale_fix_on_save = 1
 let g:ale_set_highlights = 1
+if !empty(glob("/root/go/bin/gopls"))
+    let g:ale_go_gopls_executable="/root/go/bin/gopls"
+endif
 
 """""""""""""""""
 " YouCompleteMe "

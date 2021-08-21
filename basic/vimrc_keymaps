@@ -2,7 +2,7 @@
 " Basic key map
 " =========
 
-" Hot key 
+" Hot key
 map <Esc> :<C-c>
 
 "數字鍵轉正常數字
@@ -43,8 +43,8 @@ if (exists("g:forceUseTab") && g:forceUseTab == 1)
     nmap <ESC>[C :tabn<CR>
 
     " Mac
-    map <ESC>[881 :tabp<CR> " shift + left , move to previous tab 
-    map <ESC>[882 :tabn<CR> " shift + right , move to next tab 
+    map <ESC>[881 :tabp<CR> " shift + left , move to previous tab
+    map <ESC>[882 :tabn<CR> " shift + right , move to next tab
     let g:myTabe = "tabe"
 else
     nmap 4 :bp<CR>
@@ -63,8 +63,8 @@ else
     nmap <ESC>[C :bn<CR>
 
     " Mac
-    map <ESC>[881 :bp<CR> " shift + left , move to previous tab 
-    map <ESC>[882 :bn<CR> " shift + right , move to next tab 
+    map <ESC>[881 :bp<CR> " shift + left , move to previous tab
+    map <ESC>[882 :bn<CR> " shift + right , move to next tab
     let g:myTabe = "e"
 endif
 
@@ -139,7 +139,7 @@ function! SWITCH_THEME()
         let g:myThemeIndex = 0
     endif
     echo g:myThemeIndex
-    let $MY_SWITCH_THEME = get(g:myThemes, g:myThemeIndex) 
+    let $MY_SWITCH_THEME = get(g:myThemes, g:myThemeIndex)
     colors $MY_SWITCH_THEME
 endfunction
 noremap <ESC>OS <ESC>:call SWITCH_THEME()<CR>
@@ -207,8 +207,8 @@ if g:enablePluginAle == 1
             nnoremap sc :ALELint<CR>
             nnoremap ,af :ALEFix<CR>
             nnoremap ,ah :ALEHover<CR>
-            nnoremap ,as :ALESymbolSearch 
-            nnoremap ,ag :ALEGoToDefinition<CR>
+            nnoremap ,as :ALESymbolSearch
+            nnoremap ,ag :ALEGoToDefinition -tab<CR>
             nnoremap ,alere :ALEStopAllLSPs<CR>:w<CR>
 
             inoremap <C-d> <C-\><C-O>:ALEComplete<CR>
@@ -247,8 +247,8 @@ endif
 " plugin async run
 " :AsyncRun -raw=1 g++ % -o ./a.out
 " ===
-nnoremap ,ar :AsyncRun -raw=1 
-nnoremap ,ecliu :AsyncRun -raw=1 source ~/.alias_common; fn_ecliUpdate 
+nnoremap ,ar :AsyncRun -raw=1
+nnoremap ,ecliu :AsyncRun -raw=1 source ~/.alias_common; fn_ecliUpdate
 
 " ===
 " plugin NerdTree
@@ -263,5 +263,4 @@ noremap <C-f> :NERDTreeToggle<CR> " open NerdTree tab
 "let g:multi_cursor_use_default_mapping = 0
 "let g:multi_cursor_start_word_key      = '<C-n>'
 "let g:multi_cursor_next_key            = '<C-n>'
-"vnoremap ,mc :MultipleCursorsFind 
-
+"vnoremap ,mc :MultipleCursorsFind
