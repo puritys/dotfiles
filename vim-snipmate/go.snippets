@@ -36,6 +36,11 @@ snippet file-write
 	d1 := []byte("hello\ngo\n")
 	err := ioutil.WriteFile("/tmp/dat1", d1, 0644)
 
+snippet file-read
+	dat, err := ioutil.ReadFile(fileName)
+	if err == nil {
+		fmt.Printf(dat)
+	}
 
 snippet pr
 	fmt.Printf(${1:/* var */})
@@ -115,6 +120,12 @@ snippet curlpostform
 	defer resp.Body.Close()
 	body, err := io.ReadAll(resp.Body)
 
+snippet log
+	fmt.Printf("%+v", obj)
+
+snippet error
+	log.Fatal(err)
+
 snippet strtojson-map
 	str := "{...}"
 	var result map[string]interface{}
@@ -155,6 +166,9 @@ snippet date
 
 snippet iso8601
 	fmt.Println(time.Unix(second, nonoSecond).Format(time.RFC3339))
+
+snippet split
+	s := strings.Split("a,b,c", ",")
 
 snippet sleep
 	time.Sleep(8 * time.Second)
