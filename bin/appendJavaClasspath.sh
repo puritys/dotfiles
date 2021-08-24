@@ -7,10 +7,10 @@ while true; do
     fi
     case "$1" in
       -f | --file   ) file=$2; shift 2 ;;
-      -h | --help  ) 
+      -h | --help  )
           echo "Usage:"
           echo "-f: file -f .classpaht."
-          shift 1 
+          shift 1
           exit 0
           ;;
       --) echo "-- is not a correct option.";shift 1; ;;
@@ -19,12 +19,13 @@ while true; do
 done
 #appendPaths="target/generated-sources/java,target/generated-sources/annotations"
 appendPaths="src/generated-sources/java"
+appendPaths="target/generated-sources/java"
 
 
 appendClasspath () {
     echo "Grep $appendPath"
     appendPathSlash=`echo $appendPath | sed 's/\//\\\\\//g'`
-    hasPath=`grep $appendPath $file |wc -l` 
+    hasPath=`grep $appendPath $file |wc -l`
     preSpace="        "
     if [ $hasPath -eq 0 ];then
         echo "To append $appendPath"
@@ -46,7 +47,7 @@ cat <<EOF >> $file
 EOF
 fi
 
-appendPathList=(${appendPaths//,/ }); 
+appendPathList=(${appendPaths//,/ });
 for(( i=0; i<${#appendPathList[@]}; i++ ))
 do
     appendPath=${appendPathList[$i]}
