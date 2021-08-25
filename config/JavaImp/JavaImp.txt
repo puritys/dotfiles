@@ -1306,6 +1306,7 @@ ChoiceFormat java.text.ChoiceFormat
 Choice java.awt.Choice
 ChoicePeer java.awt.peer.ChoicePeer
 Chromaticity javax.print.attribute.standard.Chromaticity
+ChronoUnit java.time.temporal.ChronoUnit
 ChunkedInputStream sun.net.httpserver.ChunkedInputStream
 ChunkedInputStream sun.net.www.http.ChunkedInputStream
 ChunkedOutputStream sun.net.httpserver.ChunkedOutputStream
