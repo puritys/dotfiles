@@ -210,6 +210,7 @@ if g:enablePluginAle == 1
             nnoremap ,as :ALESymbolSearch
             nnoremap ,ag :ALEGoToDefinition -tab<CR>
             nnoremap ,alere :ALEStopAllLSPs<CR>:w<CR>
+            nnoremap :ALE-RESTART :ALEStopAllLSPs<CR>:w<CR>
 
             inoremap <C-d> <C-\><C-O>:ALEComplete<CR>
 

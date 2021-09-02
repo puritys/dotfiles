@@ -87,6 +87,8 @@ set wildmenu
 set cpo-=<
 set wcm=<C-Z>
 
+" deafult igonorecase, start with  \C is case sensitive,  start with \c is ignorecase
+set smartcase
 " automatically open and close the popup menu / preview window
 au CursorMovedI,InsertLeave * if pumvisible() == 0|silent! pclose|endif
 
