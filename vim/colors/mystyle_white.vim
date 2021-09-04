@@ -255,3 +255,18 @@ hi! link MatchTag OptionHeavy
 " multiple cursor
 hi link multiple_cursors_cursor OptionSel
 hi link multiple_cursors_visual OptionHeavy
+
+let g:fzf_colors =
+\ { 'fg':      ['fg', 'Option'],
+  \ 'bg':      ['bg', 'Option'],
+  \ 'hl':      ['fg', 'Option'],
+  \ 'fg+':     ['fg', 'CursorLine', 'CursorColumn', 'OptionSel'],
+  \ 'bg+':     ['bg', 'OptionSel', 'CursorColumn'],
+  \ 'hl+':     ['fg', 'OptionSel'],
+  \ 'info':    ['fg', 'PreProc'],
+  \ 'border':  ['fg', 'Ignore'],
+  \ 'prompt':  ['fg', 'Normal'],
+  \ 'pointer': ['fg', 'Exception'],
+  \ 'marker':  ['fg', 'OptionSel'],
+  \ 'spinner': ['fg', 'Label'],
+  \ 'header':  ['fg', 'Comment'] }

@@ -161,11 +161,12 @@ noremap ,ji  :JI<CR>
 " ===
 " plugin FZF
 " ===
-:nmap <C-p> :call fzf#run({
+let g:fzf_config = {
   \ 'sink':  g:myTabe,
   \ 'down': '40%',
   \ 'options': '--reverse --margin 5%,0%'
-  \ })<CR>
+  \ }
+:nmap <C-p> :call fzf#run(fzf#wrap(g:fzf_config))<CR>
 
 :nmap <c-s> :w!<CR>
 :imap <c-s> <Esc>:w!<CR>a
