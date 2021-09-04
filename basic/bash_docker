@@ -242,7 +242,6 @@ function vim_start() {
             ROOT=$HOME
         fi
 
-        volCache=":cached"
         pwd=`pwd`
         docker rm $containerName 2>&1
         docker run -d -t --name $containerName  \
@@ -259,11 +258,11 @@ function vim_start() {
             -v $HOME/docker_tmp/ssh-agent/:/docker_tmp/ssh-agent/:ro \
             -v /tmp:/host_tmp:ro \
             -e SSH_AUTH_SOCK=/docker_tmp/ssh-agent/ssh-agent \
-            -v $ROOT:/src$volCache  \
+            -v $ROOT:/src  \
             -v $HOME/:/puritys \
-            -v $HOME/docker_tmp:/tmp$volCache \
-            -v $HOME/docker_tmp/.bash_history:/root/.bash_history$volCache \
-            -v $HOME/.m2:/root/.m2$volCache \
+            -v $HOME/docker_tmp:/tmp \
+            -v $HOME/docker_tmp/.bash_history:/root/.bash_history \
+            -v $HOME/.m2:/root/.m2 \
             -w /src$pwd \
             puritys/vim:$version
 
