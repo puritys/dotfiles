@@ -30,8 +30,8 @@ hi ThemeBGText3 cterm=NONE ctermfg=255  ctermbg=93  guifg=#FFFFFF guibg=#8378ad
 hi ThemeBGText4 cterm=NONE ctermfg=255 ctermbg=75  guifg=#FFFFFF guibg=#589cb1
 hi ThemeBGText5 cterm=NONE ctermfg=240 ctermbg=253 guifg=#585858 guibg=#dadada
 hi ThemeBGText6 cterm=NONE ctermfg=253 ctermbg=243 guifg=#dadada guibg=#767676
-hi ThemeFGText7 cterm=NONE ctermfg=255 ctermbg=18 guifg=#ffffff guibg=#004e8a
-hi ThemeFGText8 cterm=NONE ctermfg=255 ctermbg=28 guifg=#ffffff guibg=#056900
+hi ThemeBGText7 cterm=NONE ctermfg=255 ctermbg=18 guifg=#ffffff guibg=#004e8a
+hi ThemeBGText8 cterm=NONE ctermfg=255 ctermbg=28 guifg=#ffffff guibg=#056900
 hi ThemeBGText9 cterm=NONE ctermfg=255 ctermbg=23 guifg=#ffffff guibg=#00614b
 hi ThemeBGText10 cterm=NONE ctermfg=255 ctermbg=88 guifg=#ffffff guibg=#870000
 hi ThemeBGText11 cterm=NONE ctermfg=255 ctermbg=225 guifg=#ffffff guibg=#ffd7ff
