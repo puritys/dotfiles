@@ -234,7 +234,7 @@ function vim_start() {
     r=`docker ps --filter="name=$containerName" 2>&1 | wc -l`
     if [[ $r == *"1"* ]]; then
         startVimDocker=1
-        mkdir -p ~/docker_tmp ~/docker_tmp/fzf_session ~/docker_tmp/eclim_projects ~/.m2 ~/docker_tmp/ssh-agent
+        mkdir -p ~/docker_tmp ~/docker_tmp/fzf_session ~/docker_tmp/eclim_projects ~/.m2 ~/docker_tmp/ssh-agent ~/docker_tmp/workspace
         touch ~/docker_tmp/.bash_history
         ROOT="/"
         if [ `uname` == "Darwin" ]; then
@@ -263,6 +263,7 @@ function vim_start() {
             -v $HOME/docker_tmp:/tmp \
             -v $HOME/docker_tmp/.bash_history:/root/.bash_history \
             -v $HOME/.m2:/root/.m2 \
+            -v $HOME/docker_tmp/workspace:/root/workspace \
             -w /src$pwd \
             puritys/vim:$version
 
