@@ -30,6 +30,12 @@ hi ThemeBGText3 cterm=NONE ctermfg=255  ctermbg=93  guifg=#FFFFFF guibg=#8378ad
 hi ThemeBGText4 cterm=NONE ctermfg=255 ctermbg=75  guifg=#FFFFFF guibg=#589cb1
 hi ThemeBGText5 cterm=NONE ctermfg=240 ctermbg=253 guifg=#585858 guibg=#dadada
 hi ThemeBGText6 cterm=NONE ctermfg=253 ctermbg=243 guifg=#dadada guibg=#767676
+hi ThemeFGText7 cterm=NONE ctermfg=255 ctermbg=18 guifg=#ffffff guibg=#004e8a
+hi ThemeFGText8 cterm=NONE ctermfg=255 ctermbg=28 guifg=#ffffff guibg=#056900
+hi ThemeBGText9 cterm=NONE ctermfg=255 ctermbg=23 guifg=#ffffff guibg=#00614b
+hi ThemeBGText10 cterm=NONE ctermfg=255 ctermbg=88 guifg=#ffffff guibg=#870000
+hi ThemeBGText11 cterm=NONE ctermfg=255 ctermbg=225 guifg=#ffffff guibg=#ffd7ff
+hi ThemeBGText12 cterm=NONE ctermfg=255 ctermbg=52 guifg=#ffffff guibg=#753d04
 
 " font color
 hi ThemeFG cterm=NONE ctermfg=234 ctermbg=NONE guifg=#333333 guibg=NONE
@@ -42,9 +48,10 @@ hi ThemeFGText5 cterm=NONE ctermfg=33 ctermbg=NONE guifg=#0087d7 guibg=NONE
 hi ThemeFGText6 cterm=NONE ctermfg=237 ctermbg=NONE guifg=#3a3a3a guibg=NONE
 hi ThemeFGText7 cterm=NONE ctermfg=18 ctermbg=NONE guifg=#004e8a guibg=NONE
 hi ThemeFGText8 cterm=NONE ctermfg=28 ctermbg=NONE guifg=#056900 guibg=NONE
-hi ThemeFGText9 cterm=NONE ctermfg=28 ctermbg=NONE guifg=#008700 guibg=NONE
+hi ThemeFGText9 cterm=NONE ctermfg=23 ctermbg=NONE guifg=#00614b guibg=NONE
 hi ThemeFGText10 cterm=NONE ctermfg=88 ctermbg=NONE guifg=#870000 guibg=NONE
 hi ThemeFGText11 cterm=NONE ctermfg=225 ctermbg=NONE guifg=#ffd7ff guibg=NONE
+hi ThemeFGText12 cterm=NONE ctermfg=52 ctermbg=NONE guifg=#753d04 guibg=NONE
 
 " ------
 " define basic color
