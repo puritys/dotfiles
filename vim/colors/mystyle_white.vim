@@ -19,35 +19,62 @@ let g:colors_name = "mystyle_white"
 set fillchars=
 
 " ------
+" Color Template
+" -----
+" fill up background
+hi ThemeBG cterm=NONE ctermfg=NONE ctermbg=NONE guifg=NONE guibg=#F1E7D0
+hi ThemeBGSel cterm=NONE ctermfg=NONE ctermbg=179 guifg=NONE guibg=#d0c6ae
+hi ThemeBGText1 cterm=NONE ctermfg=255 ctermbg=115 guifg=#FFFFFF guibg=#78ad78
+hi ThemeBGText2 cterm=NONE ctermfg=255 ctermbg=160 guifg=#FFFFFF guibg=#b76855
+hi ThemeBGText3 cterm=NONE ctermfg=255  ctermbg=93  guifg=#FFFFFF guibg=#8378ad
+hi ThemeBGText4 cterm=NONE ctermfg=255 ctermbg=75  guifg=#FFFFFF guibg=#589cb1
+hi ThemeBGText5 cterm=NONE ctermfg=240 ctermbg=253 guifg=#585858 guibg=#dadada
+hi ThemeBGText6 cterm=NONE ctermfg=253 ctermbg=243 guifg=#dadada guibg=#767676
+
+" font color
+hi ThemeFG cterm=NONE ctermfg=234 ctermbg=NONE guifg=#333333 guibg=NONE
+hi ThemeFGSel cterm=NONE ctermfg=233 ctermbg=NONE guifg=#222222 guibg=NONE
+hi ThemeFGText1 cterm=NONE ctermfg=128 ctermbg=NONE guifg=#800da3 guibg=NONE
+hi ThemeFGText2 cterm=NONE ctermfg=72 ctermbg=NONE guifg=#1d7b79 guibg=NONE
+hi ThemeFGText3 cterm=NONE ctermfg=160 ctermbg=NONE guifg=#a32b0d guibg=NONE
+hi ThemeFGText4 cterm=NONE ctermfg=166 ctermbg=NONE guifg=#d75f00 guibg=NONE
+hi ThemeFGText5 cterm=NONE ctermfg=33 ctermbg=NONE guifg=#0087d7 guibg=NONE
+hi ThemeFGText6 cterm=NONE ctermfg=237 ctermbg=NONE guifg=#3a3a3a guibg=NONE
+hi ThemeFGText7 cterm=NONE ctermfg=18 ctermbg=NONE guifg=#004e8a guibg=NONE
+hi ThemeFGText8 cterm=NONE ctermfg=28 ctermbg=NONE guifg=#056900 guibg=NONE
+hi ThemeFGText9 cterm=NONE ctermfg=28 ctermbg=NONE guifg=#008700 guibg=NONE
+hi ThemeFGText10 cterm=NONE ctermfg=88 ctermbg=NONE guifg=#870000 guibg=NONE
+hi ThemeFGText11 cterm=NONE ctermfg=225 ctermbg=NONE guifg=#ffd7ff guibg=NONE
+
+" ------
 " define basic color
 " -----
-hi OptionSel cterm=NONE ctermfg=255 ctermbg=18 guifg=#eeeeee guibg=#045fa5
-hi Option cterm=NONE ctermfg=240 ctermbg=253 guifg=#585858 guibg=#dadada
-hi OptionHeavy cterm=NONE ctermfg=253 ctermbg=243 guifg=#dadada guibg=#767676
+hi! link OptionSel ThemeBGText4
+hi! link Option ThemeBGText5
+hi! link OptionHeavy ThemeBGText6
+hi! link ErrorText ThemeBGText2
+hi! link NoticeText ThemeBGText3
+hi! link Unknown ThemeBGText2
 
-hi ErrorText cterm=NONE ctermfg=196 ctermbg=252 guifg=#ffffff guibg=#a93838
-hi NoticeText cterm=NONE ctermfg=131 ctermbg=251 guifg=#af5f5f guibg=#c6c6c6
-hi Unknown cterm=NONE ctermfg=255 ctermbg=232 guifg=#eeeeee guibg=#080808
-
-" todo #f1066e link #0085c1
 " /* axxxxxxxxx*/ // #
-hi Comment cterm=NONE ctermfg=28 ctermbg=NONE guifg=#056900 guibg=NONE
-hi CommentKey cterm=NONE ctermfg=28 ctermbg=NONE guifg=#008700 guibg=NONE
+hi! link Comment ThemeFGText8
+hi! link CommentKey ThemeFGText9
 
 " ---------
-" Set theme
+" Theme
 " ---------
-hi TextMain cterm=NONE ctermfg=18 ctermbg=NONE guifg=#004e8a guibg=NONE
-hi TextSub cterm=NONE ctermfg=232 ctermbg=NONE guifg=#080808 guibg=NONE
-hi TextBold cterm=NONE ctermfg=166 ctermbg=NONE guifg=#c55700 guibg=NONE
-hi TextEmphasize cterm=NONE ctermfg=88 ctermbg=NONE guifg=#870000 guibg=NONE
-hi TextDesc      cterm=NONE ctermfg=23  ctermbg=NONE
+hi! link TextKey ThemeFGText7
+hi! link TextSub ThemeFGSel
+hi! link TextBold ThemeFGText4
+hi! link TextEmphasize ThemeFGText10
+hi! link TextDesc ThemeFGText8
+hi! link TextSelEmphasize ThemeFGText11
 
 hi TabLineFill cterm=NONE ctermfg=NONE ctermbg=240 guifg=NONE guibg=#585858
 hi TabLine cterm=NONE ctermfg=247 ctermbg=240 guifg=#9e9e9e guibg=#585858
-hi TabLineSel cterm=NONE ctermfg=16 ctermbg=230 guifg=#000000 guibg=#ffffd7
-hi TabLineSelRightIcon cterm=NONE ctermfg=230 ctermbg=240 guifg=#ffffd7 guibg=#585858
-hi TabLineRightIcon cterm=NONE ctermfg=240 ctermbg=230 guifg=#585858 guibg=#ffffd7
+hi TabLineSel cterm=NONE ctermfg=16 ctermbg=230 guifg=#000000 guibg=#f1e7d0
+hi TabLineSelRightIcon cterm=NONE ctermfg=230 ctermbg=240 guifg=#f1e7d0 guibg=#585858
+hi TabLineRightIcon cterm=NONE ctermfg=240 ctermbg=230 guifg=#585858 guibg=#f1e7d0
 
 hi ExtraWhitespace cterm=NONE ctermfg=NONE ctermbg=252 guifg=NONE guibg=#d0d0d0
 
@@ -55,14 +82,14 @@ hi ExtraWhitespace cterm=NONE ctermfg=NONE ctermbg=252 guifg=NONE guibg=#d0d0d0
 "hi Normal cterm=NONE ctermfg=238 ctermbg=NONE guifg=#444444 guibg=#F1E7D0
 hi Normal cterm=NONE ctermfg=238 ctermbg=NONE guifg=#444444 guibg=NONE
 
-hi! link  TextType  TextMain
+hi! link  TextType  TextKey
 
 " Number line
 hi LineNr cterm=NONE ctermfg=240 ctermbg=254 guifg=#585858 guibg=#e4e4e4
 
 " The number line which cursor on it.
-hi CursorLineNr cterm=NONE ctermfg=NONE ctermbg=252 guifg=NONE guibg=#d0d0d0
-hi CursorLine cterm=NONE ctermfg=NONE ctermbg=252 guifg=NONE guibg=#d0d0d0
+hi! link CursorLineNr ThemeBGSel
+hi! link CursorLine ThemeBGSel
 hi Cursor cterm=NONE ctermfg=NONE ctermbg=252 guifg=NONE guibg=#d0d0d0
 hi iCursor cterm=NONE ctermfg=NONE ctermbg=252 guifg=NONE guibg=#d0d0d0
 hi vCursor cterm=NONE ctermfg=NONE ctermbg=252 guifg=NONE guibg=#d0d0d0
@@ -152,7 +179,7 @@ hi! link Macro           PreProc
 hi! link PreCondit       PreProc
 hi! link StorageClass    TextType
 hi! link Structure       TextType
-hi! link Keyword         TextMain
+hi! link Keyword         TextKey
 hi! link SignColumn      PreProc
 hi! link Tag             Comment
 hi! link SpecialChar     Special
@@ -170,7 +197,7 @@ hi! link phpOperator   TextDesc
 hi! link phpRegion      TextDesc
 hi! link phpVarSelector TextSub
 " var const  method
-hi! link phpKeyword TextMain
+hi! link phpKeyword TextKey
 hi! link phpDefine  phpKeyword
 " <<<
 hi! link phpHereDoc    TextDesc
@@ -202,12 +229,12 @@ hi! link phpType TextType
 hi! link phpBacktick TextEmphasize
 hi! link phpFoldHtmlInside Normal
 
-hi! link htmlLink TextMain
+hi! link htmlLink TextKey
 
 " ---------------------
 " c & cpp
 " ---------------------
-hi! link cParen TextMain
+hi! link cParen TextKey
 hi! link cppStatement Statement
 hi! link cFormat         Statement
 hi! link cType   TextType
@@ -219,20 +246,20 @@ hi! link cOperator TextSub
 hi! link cppOperator TextSub
 hi! link cppCast TextSub
 hi! link cCppBracket PreProc
-hi! link cCharacter TextMain
+hi! link cCharacter TextKey
 " !xx = \"style\"
 hi! link cCppString Constant
 hi! link cConstant Constant
 " !<iostream>
 hi! link cIncluded TextSub
 " !#include
-hi! link cInclude  TextMain
+hi! link cInclude  TextKey
 " !#define
-hi! link cDefine TextMain
+hi! link cDefine TextKey
 hi! link cPreCondit TextSub
 
 "" !===========javascript =========
-hi! link javaScriptFunction TextMain
+hi! link javaScriptFunction TextKey
 hi! link javaScriptBoolean TextBold
 hi! link javaScriptNumber Constant
 
@@ -260,13 +287,13 @@ let g:fzf_colors =
 \ { 'fg':      ['fg', 'Option'],
   \ 'bg':      ['bg', 'Option'],
   \ 'hl':      ['fg', 'TextEmphasize'],
-  \ 'fg+':     ['fg', 'CursorLine', 'CursorColumn', 'TextMain'],
-  \ 'bg+':     ['bg', 'Option', 'CursorColumn'],
-  \ 'hl+':     ['fg', 'TextEmphasize'],
+  \ 'fg+':     ['fg', 'CursorLine', 'CursorColumn', 'OptionSel'],
+  \ 'bg+':     ['bg', 'OptionSel', 'CursorColumn'],
+  \ 'hl+':     ['fg', 'TextSelEmphasize'],
   \ 'info':    ['fg', 'PreProc'],
   \ 'border':  ['fg', 'Ignore'],
   \ 'prompt':  ['fg', 'Normal'],
-  \ 'pointer': ['fg', 'TextMain'],
-  \ 'marker':  ['fg', 'OptionHeavy'],
+  \ 'pointer': ['fg', 'TextKey'],
+  \ 'marker':  ['fg', 'TextSelEmphasize'],
   \ 'spinner': ['fg', 'Label'],
   \ 'header':  ['fg', 'Comment'] }
