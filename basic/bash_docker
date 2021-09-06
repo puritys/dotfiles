@@ -234,8 +234,8 @@ function vim_start() {
     r=`docker ps --filter="name=$containerName" 2>&1 | wc -l`
     if [[ $r == *"1"* ]]; then
         startVimDocker=1
-        mkdir -p ~/docker_tmp ~/docker_tmp/fzf_session ~/docker_tmp/eclim_projects ~/.m2
-        touch ~/docker_tmp/.bash_history ~/docker_tmp/ssh-agent
+        mkdir -p ~/docker_tmp ~/docker_tmp/fzf_session ~/docker_tmp/eclim_projects ~/.m2 ~/docker_tmp/ssh-agent
+        touch ~/docker_tmp/.bash_history
         ROOT="/"
         if [ `uname` == "Darwin" ]; then
             # mount root is not working on apple M1

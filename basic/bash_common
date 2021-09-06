@@ -240,7 +240,7 @@ EOF
 EOF
                 source ~/.ssh/environment
                 isDone=1
-                return
+                break
             fi
 
         done
