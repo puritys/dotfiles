@@ -42,7 +42,7 @@ done
 
 if [ "x" = "x`command -v wget`" ]; then
     if [ "x" != "x`command -v yum`" ]; then
-        sudo yum install -y make
+        sudo yum install -y wget
     elif [ "x" != "x`command -v wget`" ]; then
         brew install wget
     fi
@@ -176,8 +176,8 @@ installFzf () {
         #  to ~/.sh_tool/fzf/shell/completion.bash : _fzf_complete_ssh
         ### new version of fzf
         # ~/.vim/plugged/fzf/shell/completion.bash
-
-
+    fi
+    if [ ! -d ~/.sh_tool/clvv-fasd-4822024 ]; then
         # ------------
         # Install fasd cd
         # ------------

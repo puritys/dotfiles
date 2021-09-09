@@ -7,6 +7,7 @@ echo "version is $version"
 if [[ $os == *"centos"* ]] || [[ $os == *"rhel"* ]]; then
     if [ $version -gt 6 ]; then
         echo "Start install docker engine"
+        sudo yum -y install yum-utils
         sudo yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
         hasExclude=`grep exclude /etc/yum.conf | wc -l`
         if [ $hasExclude -eq 0 ]; then
