@@ -23,7 +23,7 @@ set fillchars=
 " -----
 " fill up background
 hi ThemeBG cterm=NONE ctermfg=NONE ctermbg=NONE guifg=NONE guibg=#F1E7D0
-hi ThemeBGSel cterm=NONE ctermfg=NONE ctermbg=179 guifg=NONE guibg=#d0c6ae
+hi ThemeBGSel cterm=NONE ctermfg=NONE ctermbg=180 guifg=NONE guibg=#d0c6ae
 hi ThemeBGText1 cterm=NONE ctermfg=255 ctermbg=115 guifg=#FFFFFF guibg=#78ad78
 hi ThemeBGText2 cterm=NONE ctermfg=255 ctermbg=160 guifg=#FFFFFF guibg=#b76855
 hi ThemeBGText3 cterm=NONE ctermfg=255  ctermbg=93  guifg=#FFFFFF guibg=#8378ad
