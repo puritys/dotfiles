@@ -1,4 +1,4 @@
-snippet main_groovy
+snippet spock_main
 	package com.yyy.zz;
 	import spock.lang.Specification
 	class CXXTest extends Specification {
@@ -8,7 +8,7 @@ snippet main_groovy
 		}
 	}
 
-snippet func
+snippet spock_func
 	def "Test xxx"() {
 		given:
 			def data = zz
@@ -23,16 +23,16 @@ snippet func
 		req | exp
 		t   | test
 
-snippet prepare
+snippet spock_prepare
 	where:
 	req | exp
 	t   | test
 
-snippet map
+snippet spock_map
 	def m = [ key1: "v", key2: "v" ]
 
 
-snippet mock
+snippet spock_mock
 	def config = Mock(Config) {
 		getString("env") >> "abc"
 		getString(_) >> "zzz"
@@ -40,7 +40,16 @@ snippet mock
 	def service = new Service()
 	service.inject = config
 
-snippet mock_exception
+snippet spock_mock_exception
 	thrown(EmptyStackException)
 	def e = thrown(EmptyStackException)
 	e.cause == null
+
+snippet spock_spy
+	// spy could not mock final or private class / method / property
+	util = Spy(Util, constructorArgs: [class1, class2]) {
+		get(_) >>
+	}
+
+snippet spock_times
+	1 * util.get(_)
