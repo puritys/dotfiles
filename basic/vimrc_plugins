@@ -552,9 +552,11 @@ call plug#end()
 
 " To update eclipse lsp workspacepath
 " gradle / maven or java 8/11 projects could not use the same workspace.
-if !empty(glob("~/.vim/plugged/ale"))
-    if &rtp =~ '/plugged/ale'
-        let g:ale_java_eclipselsp_workspace_path=$HOME . "/workspace/" . ale#java#FindProjectRoot(@%)
+if version > 800
+    if !empty(glob("~/.vim/plugged/ale"))
+        if &rtp =~ '/plugged/ale'
+            let g:ale_java_eclipselsp_workspace_path=$HOME . "/workspace/" . ale#java#FindProjectRoot(@%)
+        endif
     endif
 endif
 
