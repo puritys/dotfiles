@@ -98,6 +98,7 @@ else
     set completeopt=menuone,menu"
 endif
 
+source ~/.vimrc_lib
 source ~/.vimrc_keymaps
 
 function! INIT_CPP()

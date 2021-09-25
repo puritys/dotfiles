@@ -1,0 +1,20 @@
+"# revert arrow to auto get correct arrow color
+func RevertTablineArrow(group, sel, fill)
+    let id = synIDtrans(hlID(a:sel))
+    for mode in ['cterm', 'gui']
+        for g in ['bg']
+            exe 'let '. mode. "fg=  synIDattr(id, '".
+                        \ g."#', '". mode. "')"
+            exe "let ". mode. "fg = empty(". mode. "fg) ? 'NONE' : ". mode."fg"
+        endfor
+    endfor
+    let id = synIDtrans(hlID(a:fill))
+    for mode in ['cterm', 'gui']
+        for g in ['bg']
+            exe 'let '. mode. "bg =  synIDattr(id, '".
+                        \ g."#', '". mode. "')"
+            exe "let ". mode. "bg = empty(". mode. "bg) ? 'NONE' : ". mode."bg"
+        endfor
+    endfor
+    exe printf('hi %s ctermfg=%s ctermbg=%s guifg=%s guibg=%s', a:group, ctermfg, ctermbg, guifg, guibg)
+endfunc

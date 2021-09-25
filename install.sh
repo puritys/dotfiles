@@ -72,7 +72,7 @@ if [ "x" != "x$remoteHost" ]; then
     echo "Sync dotfiles to remote host $remoteHost"
     scp basic/alias basic/alias_common \
         basic/.bash_common basic/.bash_profile basic/.inputrc \
-        basic/.bashrc bin/exec.sh basic/.vimrc basic/.vimrc_plugins basic/.vimrc_keymaps \
+        basic/.bashrc bin/exec.sh basic/.vimrc basic/.vimrc_plugins basic/.vimrc_keymaps basic/.vimrc_lib \
         basic/.eclimrc basic/.screenrc $remoteHost:~/
 
     ssh $remoteHost " \

@@ -132,7 +132,7 @@ inoremap <F3> <ESC>:call PASTE()<CR>i
 
 " F4, switch theme
 let g:myThemeIndex=0
-let g:myThemes = ['mystyle_white', 'dracula', 'seoul256', 'mystyle_black_nice', 'molokai']
+let g:myThemes = ['mystyle_white', 'nord', 'dracula', 'seoul256', 'mystyle_black_nice', 'molokai']
 function! SWITCH_THEME()
     let g:myThemeIndex = g:myThemeIndex + 1
     if g:myThemeIndex >= len(g:myThemes)
@@ -141,6 +141,8 @@ function! SWITCH_THEME()
     echo g:myThemeIndex
     let $MY_SWITCH_THEME = get(g:myThemes, g:myThemeIndex)
     colors $MY_SWITCH_THEME
+    call RevertTablineArrow("TabLineSelRightIcon", "TabLineSel", "TabLine")
+    call RevertTablineArrow("TabLineRightIcon", "TabLine", "TabLineSel")
 endfunction
 noremap <ESC>OS <ESC>:call SWITCH_THEME()<CR>
 noremap <F4> <ESC>:call SWITCH_THEME()<CR>

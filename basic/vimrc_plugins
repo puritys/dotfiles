@@ -228,7 +228,6 @@ if !empty(glob(s:eclipse))
     let g:ale_java_eclipselsp_path = s:eclipse
 endif
 
-let g:airline#extensions#ale#enabled=0
 let g:ale_lint_on_enter = 0
 
 let g:ale_fixers = {
@@ -441,7 +440,7 @@ Plug 'dominickng/fzf-session.vim'
 " ----------------
 Plug 'dracula/vim', { 'as': 'dracula' }
 Plug 'junegunn/seoul256.vim'
-
+Plug 'arcticicestudio/nord-vim'
 " ----------------
 " Code change Plugins
 " ----------------
@@ -566,4 +565,4 @@ if version > 742
         set termguicolors
     endif
 endif
-colors mystyle_white "dracula, seoul256, seoul256-light
+colors mystyle_white "dracula, seoul256, seoul256-light, nord

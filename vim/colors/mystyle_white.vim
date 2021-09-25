@@ -80,8 +80,10 @@ hi! link TextSelEmphasize ThemeFGText11
 hi TabLineFill cterm=NONE ctermfg=NONE ctermbg=240 guifg=NONE guibg=#585858
 hi TabLine cterm=NONE ctermfg=247 ctermbg=240 guifg=#9e9e9e guibg=#585858
 hi TabLineSel cterm=NONE ctermfg=16 ctermbg=230 guifg=#000000 guibg=#f1e7d0
-hi TabLineSelRightIcon cterm=NONE ctermfg=230 ctermbg=240 guifg=#f1e7d0 guibg=#585858
-hi TabLineRightIcon cterm=NONE ctermfg=240 ctermbg=230 guifg=#585858 guibg=#f1e7d0
+"hi TabLineSelRightIcon cterm=NONE ctermfg=230 ctermbg=240 guifg=#f1e7d0 guibg=#585858
+call RevertTablineArrow("TabLineSelRightIcon", "TabLineSel", "TabLine")
+"hi TabLineRightIcon cterm=NONE ctermfg=240 ctermbg=230 guifg=#585858 guibg=#f1e7d0
+call RevertTablineArrow("TabLineRightIcon", "TabLine", "TabLineSel")
 
 hi ExtraWhitespace cterm=NONE ctermfg=NONE ctermbg=252 guifg=NONE guibg=#d0d0d0
 

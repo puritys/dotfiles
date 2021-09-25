@@ -83,7 +83,13 @@ host=MacMini
 | scrooloose/nerdtree       |       | file/dir list         |
 | Valloric/MatchTagAlways   | jumptag | Jump to the matched start/end tag         |
 
+### hotkey
 
+- ALT + 4 : switch theme
+- Ctrl+p : fuzzy find files
+- Ctrl+s : save
+- Ctrl+c : cancel
+- Ctrl+q : quit
 
 Attentions.
 * ctags is needed by vim-nerdtree-tabs and shawncplus/phpcomplete.vim.
