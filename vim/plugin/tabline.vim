@@ -198,4 +198,5 @@ else
 
 endif
 
-
+call RevertTablineArrow("TabLineSelRightIcon", "TabLineSel", "TabLine")
+call RevertTablineArrow("TabLineRightIcon", "TabLine", "TabLineSel")

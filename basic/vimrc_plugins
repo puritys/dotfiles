@@ -26,7 +26,7 @@ set term=xterm-256color
 set termencoding=utf-8
 let g:airline_extensions = ['branch', 'ale']
 let g:airline_powerline_fonts = 1
-let g:airline_theme='minimalist'
+let g:airline_theme='solarized'
 let g:airline_detect_paste=1
 let g:airline#extensions#ale#enabled = 1
 let g:airline#extensions#ale#error_symbol = 'E:'
@@ -35,6 +35,7 @@ let g:airline#extensions#ale#show_line_numbers = 1
 let g:airline#extensions#ale#open_lnum_symbol = '(L'
 let g:airline#extensions#ale#close_lnum_symbol = ')'
 let g:airline#extensions#coc#enabled = 1
+let g:airline_section_z  = "%l/%L:%c"
 if !exists('g:airline_symbols')
     let g:airline_symbols = {}
     let g:airline_symbols.linenr = ''
@@ -558,11 +559,3 @@ if version > 800
         endif
     endif
 endif
-
-""" Theme
-if version > 742
-    if has("termguicolors")
-        set termguicolors
-    endif
-endif
-colors mystyle_white "dracula, seoul256, seoul256-light, nord
