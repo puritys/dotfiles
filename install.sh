@@ -40,7 +40,7 @@ while true; do
     esac
 done
 
-source ./installWget.sh
+source ./bin/installWget.sh
 
 custEnvList="enableCustFont"
 custEnvList=(${custEnvList// / });
