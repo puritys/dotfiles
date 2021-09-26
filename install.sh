@@ -40,13 +40,7 @@ while true; do
     esac
 done
 
-if [ "x" = "x`command -v wget`" ]; then
-    if [ "x" != "x`command -v yum`" ]; then
-        sudo yum install -y wget
-    elif [ "x" != "x`command -v wget`" ]; then
-        brew install wget
-    fi
-fi
+source ./installWget.sh
 
 custEnvList="enableCustFont"
 custEnvList=(${custEnvList// / });

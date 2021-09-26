@@ -1,9 +1,13 @@
-sudo yum install  -y ncurses-devel
+if [[ `uname` == 'Darwin' ]]; then
+    brew install tmux
+else
+    sudo yum install  -y ncurses-devel wget
+fi
 if [ ! -f vim.tar.gz ]; then
     wget https://github.com/vim/vim/archive/v8.2.3401.tar.gz
     mv v8.2.3401.tar.gz vim.tar.gz
 fi
-tar -zxvf vim.tar.gz 
+tar -zxvf vim.tar.gz
 mv `ls -D |grep 'vim-[0-9]' | sed 's/\///'` vim_src
 cd vim_src
 ./configure ./configure --prefix=/usr  --enable-multibyte \
