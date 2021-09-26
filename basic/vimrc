@@ -31,12 +31,11 @@ if !exists("g:enablePluginAleAutoComplete")
     let g:enablePluginAleAutoComplete = 0
 endif
 if !exists("g:enablePluginAirline")
-    let g:enablePluginAirline = 0
+    let g:enablePluginAirline = 1
 endif
 if !exists("g:enablePluginAleJavaagent")
     let g:enablePluginAleJavaagent = 0
 endif
-
 
 " vim log
 "set verbosefile=/tmp/vim.log
@@ -192,13 +191,12 @@ if version > 742
         set termguicolors
     endif
 endif
-colors mystyle_white "dracula, seoul256, seoul256-light, nord
 
 " customized theme: export VIM_THEME=nord
 if (!empty($VIM_THEME))
-    colors $VIM_THEME
+    call SWITCH_THEME_WITH_NAME($VIM_THEME)
 else
-    colors mystyle_white
+    call SWITCH_THEME_WITH_NAME("mystyle_white")
 endif
 
 " disable paste bracket mode

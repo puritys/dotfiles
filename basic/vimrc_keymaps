@@ -140,10 +140,21 @@ function! SWITCH_THEME()
     endif
     echo g:myThemeIndex
     let $MY_SWITCH_THEME = get(g:myThemes, g:myThemeIndex)
+    call SWITCH_THEME_WITH_NAME($MY_SWITCH_THEME)
+endfunction
+
+function! SWITCH_THEME_WITH_NAME(name)
+    let $MY_SWITCH_THEME = a:name
+    if $MY_SWITCH_THEME != "mystyle_white"
+        let g:airline_theme='base16'
+    else
+        let g:airline_theme='solarized'
+    endif
     colors $MY_SWITCH_THEME
     call RevertTablineArrow("TabLineSelRightIcon", "TabLineSel", "TabLine")
     call RevertTablineArrow("TabLineRightIcon", "TabLine", "TabLineSel")
 endfunction
+
 noremap <ESC>OS <ESC>:call SWITCH_THEME()<CR>
 noremap <F4> <ESC>:call SWITCH_THEME()<CR>
 
