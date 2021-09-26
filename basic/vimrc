@@ -194,6 +194,13 @@ if version > 742
 endif
 colors mystyle_white "dracula, seoul256, seoul256-light, nord
 
+" customized theme: export VIM_THEME=nord
+if (!empty($VIM_THEME))
+    colors $VIM_THEME
+else
+    colors mystyle_white
+endif
+
 " disable paste bracket mode
 " https://unix.stackexchange.com/questions/196098/copy-paste-in-xfce4-terminal-adds-0-and-1/196574#196574?newreg=50a3302c8f334958bfbe56d4f03cc548
 set t_BE=
