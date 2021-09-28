@@ -194,9 +194,9 @@ endif
 
 " customized theme: export VIM_THEME=nord
 if (!empty($VIM_THEME))
-    call SWITCH_THEME_WITH_NAME($VIM_THEME)
+    call SWITCH_THEME_AS_NAME($VIM_THEME)
 else
-    call SWITCH_THEME_WITH_NAME("mystyle_white")
+    call SWITCH_THEME_AS_NAME("mystyle_white")
 endif
 
 " disable paste bracket mode

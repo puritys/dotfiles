@@ -120,9 +120,11 @@ function! PASTE()
     if  l:paste == 1
         " paste mode
         let $DEF_COLOR = g:colors_name
-        colors dracula
+        call SWITCH_THEME_AS_NAME("paste_only")
+        set nu!
     else
-        colors $DEF_COLOR
+        call SWITCH_THEME_AS_NAME($DEF_COLOR)
+        set nu
     endif
 endfunction
 noremap <ESC>OR :call PASTE()<CR>
@@ -140,10 +142,10 @@ function! SWITCH_THEME()
     endif
     echo g:myThemeIndex
     let $MY_SWITCH_THEME = get(g:myThemes, g:myThemeIndex)
-    call SWITCH_THEME_WITH_NAME($MY_SWITCH_THEME)
+    call SWITCH_THEME_AS_NAME($MY_SWITCH_THEME)
 endfunction
 
-function! SWITCH_THEME_WITH_NAME(name)
+function! SWITCH_THEME_AS_NAME(name)
     let $MY_SWITCH_THEME = a:name
     if $MY_SWITCH_THEME != "mystyle_white"
         let g:airline_theme='base16'

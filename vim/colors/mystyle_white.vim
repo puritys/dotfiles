@@ -88,8 +88,7 @@ call RevertTablineArrow("TabLineRightIcon", "TabLine", "TabLineSel")
 hi ExtraWhitespace cterm=NONE ctermfg=NONE ctermbg=252 guifg=NONE guibg=#d0d0d0
 
 " if termguicolors is true and guibg is not NONE then the word selection in tmux will include the tail empty space of window.
-"hi Normal cterm=NONE ctermfg=238 ctermbg=NONE guifg=#444444 guibg=#F1E7D0
-hi Normal cterm=NONE ctermfg=238 ctermbg=NONE guifg=#444444 guibg=NONE
+hi Normal cterm=NONE ctermfg=238 ctermbg=223 guifg=#444444 guibg=#F1E7D0
 
 hi! link  TextType  TextKey
 
