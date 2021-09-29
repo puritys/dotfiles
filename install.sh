@@ -262,6 +262,15 @@ if [ "x$installVimPlugin" != "x" ];then
 
     sudo rm -rf ~/.vim/plugged/vim-snipmate/
     echo "\n" | vim -c :PlugInstall +qall
+
+    # install coc plugin
+    if [ "x" != "x`command -v npm`" ]; then
+        mkdir -p ~/.config/coc/extensions;
+        cd ~/.config/coc/extensions;
+            npm install coc-tabnine coc-snippets --global-style --ignore-scripts --no-bin-links --no-package-lock --only=prod;
+            sudo chmod -R 755 ~/.config/coc/extensions/coc-tabnine-data/
+        cd -
+    fi
 fi
 
 

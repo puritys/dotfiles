@@ -495,7 +495,7 @@ endif
 " Auto complete
 " ----------------
 " :CocInstall coc-json coc-tsserver
-if version > 812
+if version > 800
     Plug 'neoclide/coc.nvim', {'branch': 'release'}
 endif
 "" :CocInstall coc-java
