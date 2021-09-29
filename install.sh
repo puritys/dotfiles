@@ -266,9 +266,12 @@ if [ "x$installVimPlugin" != "x" ];then
     # install coc plugin
     if [ "x" != "x`command -v npm`" ]; then
         mkdir -p ~/.config/coc/extensions;
+        sudo chmod -R 755 ~/.config/coc/extensions;
         cd ~/.config/coc/extensions;
             npm install coc-tabnine coc-snippets --global-style --ignore-scripts --no-bin-links --no-package-lock --only=prod;
-            sudo chmod -R 755 ~/.config/coc/extensions/coc-tabnine-data/
+            # Manually download tabnine and fix permission
+            # - https://update.tabnine.com/bundles/3.7.5/x86_64-unknown-linux-musl/TabNine.zip
+            # - sudo chmod -R 755 ~/.config/coc/extensions/coc-tabnine-data/
         cd -
     fi
 fi
