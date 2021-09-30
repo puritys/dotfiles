@@ -1,8 +1,6 @@
 alias tmux='fnTmux'
 alias plog='tail -f /tmp/php.log'
 alias s='source ~/.bash_profile  '
-alias ecliStart='fn_eclim_start'
-alias ecliStop='fn_eclim_stop'
 alias ecliUpdate='fn_ecliUpdate'
 alias ecliConfig='fn_ecliConfig'
 alias f='findFile'
@@ -62,35 +60,9 @@ alias mydate='fnDate'
 fn_help() {
     echo "mem: get the process using most memory"
     echo "memSum: get sum of memory usage"
-    echo "ecliStart: start eclim"
     echo "ecliUpdate: Update .class of java mvn project"
 
 
-}
-
-
-fn_eclim_start() {
-    if [ `uname` == 'Darwin' ]; then
-        ps aux |grep -i ecli |grep -v grep | awk '{printf "kill -9 %s\n",$2}' | sudo sh
-        open $HOME/.vim/Eclipse.app
-        echo "Wait for eclipse start"
-        sleep 50
-        DISPLAY=:1 $HOME/.vim/Eclipse.app/Contents/Eclipse/eclimd -b
-        echo "Wait 20 seconds for eclim start."
-        sleep 20
-    else
-        ps aux |grep -i Xvfb |grep -v grep | awk '{printf "kill -9 %s\n",$2}' | sudo sh
-        sudo Xvfb :1 -screen 0 1024x768x24 &
-        DISPLAY=:1 ~/.vim/eclipse/eclipse -nosplash -consolelog -debug -application org.eclipse.equinox.p2.director   -repository http://download.eclipse.org/releases/juno      -installIU org.eclipse.wst.web_ui.feature.feature.group
-        DISPLAY=:1 ~/.vim/eclipse/eclimd -b
-        echo "Wait 20 seconds for eclim start."
-        sleep 20
-    fi
-}
-
-fn_eclim_stop() {
-    ps aux |grep -i ecli |grep -v grep | awk '{printf "kill -9 %s\n",$2}' | sudo sh
-    ps aux |grep -i Xvfb |grep -v grep | awk '{printf "kill -9 %s\n",$2}' | sudo sh
 }
 
 fn_ecliUpdate() {
@@ -153,7 +125,7 @@ fnGitDeleteTag() {
     echo -e "git tag -d $@\n"
     echo -e "git push --delete origin $@\n"
     echo "$@" | sed 's/ /\n/' | xargs -t -n 1 -P8 --no-run-if-empty  git tag -d
-    echo "$@" | xargs -t -n 1 -P8 --no-run-if-empty  git push --delete origin 
+    echo "$@" | xargs -t -n 1 -P8 --no-run-if-empty  git push --delete origin
 }
 
 fnGitCloneBranch() {
@@ -176,7 +148,7 @@ fnGitMergeRepo() {
           -d | --dirname ) DIRNAME=$2; shift 2 ;;
           -b | --branch) BRANCH=$2; shift 2 ;;
           -c | --comment) COMMENT=$2; shift 2 ;;
-          -h | --help  ) 
+          -h | --help  )
               echo "Usage:"
               echo "-r (repo): the repo path you want to merge: git@github.com:puritys/nodejs-phplike.git"
               echo "-d (dirname): dirname: clone code to this dirname "
@@ -190,7 +162,7 @@ fnGitMergeRepo() {
               echo "> git checkout -b new_branch_for_merge"
               echo "> gitMergeRepo -r github.com:repo2 -d yyy -b new_branch_for_merge -c \"Move repo2 to yyy\""
 
-              shift 1 
+              shift 1
               return
               ;;
           --) echo "-- is not a correct option.";shift 1; ;;
@@ -231,13 +203,13 @@ fnDate() {
           -t | --timestamp   ) timestamp=$2; shift 2 ;;
           -d | --date ) date=$2; shift 2 ;;
           -o | --output ) output=$2; shift 2 ;;
-          -h | --help  ) 
+          -h | --help  )
               echo "Usage:"
               echo "mydate -d 20170101 -o time"
               echo "-t: timestamp, ex: -t 12312 "
               echo "-d: date, ex: -d 20170301"
               echo "-o: date/timestamp/time, ex: -o time"
-              shift 1 
+              shift 1
               return
               ;;
           --) echo "-- is not a correct option.";shift 1; ;;

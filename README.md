@@ -56,7 +56,6 @@ host=MacMini
 - fzf: file fuzzy finder
 - ag: better grep command
 - bashIt: Similar to Oh My Zsh,  it support auto complete command.
-- eclim: Integrate eclipse
 
 ## Vim Plugins
 

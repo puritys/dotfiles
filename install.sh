@@ -1,7 +1,5 @@
 #!/bin/bash
 installYouCompleteMe=0
-installEclim=0
-updateEclim=0
 
 while true; do
     if [ "x$1" == "x" ];then
@@ -67,7 +65,6 @@ if [ "x" != "x$remoteHost" ]; then
     scp basic/alias basic/alias_common \
         basic/.bash_common basic/.bash_profile basic/.inputrc \
         basic/.bashrc bin/exec.sh basic/.vimrc basic/.vimrc_plugins basic/.vimrc_keymaps basic/.vimrc_lib \
-        basic/.eclimrc basic/.screenrc $remoteHost:~/
 
     ssh $remoteHost " \
         sudo mv exec.sh /usr/local/bin/myExec.sh; mkdir -p ~/.vim/plugged/vim-snipmate/snippets/; \
@@ -333,7 +330,6 @@ sudo mkdir -p /usr/local/etc/
 sudo cp vim/javaPlugin/google_checks.xml /usr/local/etc/
 sudo cp vim/javaPlugin/checkstyle.xml /usr/local/etc/
 
-source ./scripts/eclim.sh
 source ./scripts/installCommonCommand.sh
 
 if [ "x$installFZF" != "x" ];  then

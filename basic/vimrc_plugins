@@ -146,14 +146,6 @@ let g:snipMate.scope_aliases['vim'] = 'vim'
 "call s:map_if_not_mapped('<Tab>', '<Plug>snipMateVisual', 'x')
 
 
-" -------------
-" eclim
-" -------------
-let g:EclimLogLevel="error"
-let g:EclimJavaValidate=1
-let g:EclimJavaCheckstyleOnSave=1
-let g:EclimCompletionMethod = 'omnifunc'
-"let g:EclimMavenPomClasspathUpdate = 1 " Cannot add correct dependencies if it include properties.
 
 " -----------------------
 " vim-syntastic/syntastic

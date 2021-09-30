@@ -121,6 +121,10 @@ snippet implog
 snippet sleep
 	TimeUnit.SECONDS.sleep(3);
 
+
+snippet bytetostring
+	new String(byte[]xxx, StandardCharsets.UTF_8);
+
 # -----------
 # JSON
 # -----------
@@ -239,6 +243,9 @@ snippet random-uuid
 
 snippet list
 	List<String> status = Arrays.asList("0", "1");
+
+snippet list-synchronized
+	List<String> ex = Collections.synchronizedList(new ArrayList<>());
 
 snippet listempty
 	List<String> status = new ArrayList<>();
@@ -771,4 +778,12 @@ snippet proto_enum
 	enum Option {
 		A = 0
 		B = 1
+	}
+
+snippet sha
+	try {
+		MessageDigest digest = MessageDigest.getInstance("SHA-256");
+		return new String(digest.digest("text".getBytes(StandardCharsets.UTF_8)), StandardCharsets.UTF_8);
+	} catch (Exception e) {
+		logger.error("err");
 	}
