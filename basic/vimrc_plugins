@@ -193,7 +193,7 @@ let g:ale_lint_delay = 300
 let g:ale_lint_on_insert_leave = 0
 let g:ale_lint_on_enter = 0
 if g:enablePluginAleJavaagent == 1
-    let g:ale_java_eclipselsp_javaagent='/root/lombok.jar'
+    let g:ale_java_eclipselsp_javaagent = $HOME . '/lombok.jar'
 endif
 
 " Auto open lint error list, error only for this window :lopen

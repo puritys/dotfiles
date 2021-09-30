@@ -150,7 +150,7 @@ function! SWITCH_THEME_AS_NAME(name)
     if $MY_SWITCH_THEME != "mystyle_white"
         let g:airline_theme='base16'
     else
-        let g:airline_theme='solarized'
+        let g:airline_theme='minimalist'
     endif
     colors $MY_SWITCH_THEME
     call RevertTablineArrow("TabLineSelRightIcon", "TabLineSel", "TabLine")
