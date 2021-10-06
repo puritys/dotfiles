@@ -111,8 +111,10 @@ endfunction
 " ============
 
 " F2 toggle tagbar
-noremap <ESC>OQ    :TagbarToggle<CR>
-noremap <F2>    :TagbarToggle<CR>
+noremap <ESC>OQ  :TagbarOpenAutoClose<CR>
+noremap <F2>     :TagbarOpenAutoClose<CR>
+":TagbarToggle<CR>
+
 " F3, toggle paste
 function! PASTE()
     set paste!
