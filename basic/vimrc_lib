@@ -45,3 +45,14 @@ function! INIT_JAVA()
     set filetype=java
     let g:ale_disable_lsp = 1
 endfunction
+
+" coc hover function
+function! Show_coc_documentation()
+  if (index(['vim','help'], &filetype) >= 0)
+    execute 'h '.expand('<cword>')
+  elseif (coc#rpc#ready())
+    call CocActionAsync('doHover')
+  else
+    execute '!' . &keywordprg . " " . expand('<cword>')
+  endif
+endfunction

@@ -3,5 +3,6 @@
     "diagnostic.enable": true,
     "suggest.autoTrigger": "always",
     "suggest.triggerAfterInsertEnter": false,
-    "coc.preferences.extensionUpdateCheck": "never"
+    "coc.preferences.extensionUpdateCheck": "never",
+    "coc.preferences.jumpCommand": "tabe"
 }

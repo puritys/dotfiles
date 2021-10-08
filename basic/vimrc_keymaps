@@ -4,7 +4,7 @@
 
 " Hot key
 map <Esc> :<C-c>
-
+let g:coc_last_hover_message = 1
 "數字鍵轉正常數字
 map <Esc>Oq 1
 map <Esc>Or 2
@@ -197,10 +197,10 @@ let g:fzf_config = {
 :imap <c-s> <Esc>:w!<CR>a
 :nmap <c-q> :q<CR>
 :imap <c-q> <Esc>:q<CR>a
-:nmap :T :t
-:nmap :W :w
-:nmap :Q :q
-:nmap :ss<CR> :Sessions<CR>
+"":nmap :T :t
+"":nmap :W :w
+"":nmap :Q :q
+"":nmap :ss<CR> :Sessions<CR>
 
 " plugin hot key
 nmap ,tree :NERDTree<CR> " NERDTree plugin
@@ -217,7 +217,7 @@ if !empty(glob("~/.vim/plugged/YouCompleteMe"))
     if version > 800 || has('nvim')
         if g:enablePluginYouCompleteMe == 1
             nmap sc :YcmForceCompileAndDiagnostics<CR>
-            nmap :ycmlist :YcmDiags<CR>
+            "nmap :ycmlist :YcmDiags<CR>
             nmap <C-g> :YcmCompleter GoTo<CR>
         endif
     endif
@@ -230,17 +230,16 @@ endif
 if g:enablePluginAle == 1
     if version > 800 || has('nvim')
         if !empty(glob("~/.vim/plugged/ale"))
-            nnoremap sc :ALELint<CR>
+            " use coc to replace these features
+            "nnoremap sc :ALELint<CR>
             nnoremap ,af :ALEFix<CR>
-            nnoremap ,ah :ALEHover<CR>
-            nnoremap ,as :ALESymbolSearch
-            nnoremap ,ag :ALEGoToDefinition -tab<CR>
-            nnoremap ,alere :ALEStopAllLSPs<CR>:w<CR>
-            nnoremap :ALE-RESTART :ALEStopAllLSPs<CR>:w<CR>
-
-            inoremap <C-d> <C-\><C-O>:ALEComplete<CR>
-            nnoremap <C-d> :ALEHover<CR>
-
+            "nnoremap ,ah :ALEHover<CR>
+            "nnoremap ,as :ALESymbolSearch
+            "nnoremap ,ag :ALEGoToDefinition -tab<CR>
+            "nnoremap ,alere :ALEStopAllLSPs<CR>:w<CR>
+            "nnoremap ,ALE-RESTART :ALEStopAllLSPs<CR>:w<CR>
+            "inoremap <C-d> <C-\><C-O>:ALEComplete<CR>
+            "nnoremap <C-d> :ALEHover<CR>
             " ALEFix
         else
             " SyntasticCheck
@@ -268,7 +267,6 @@ endif
 
 if !empty(glob("~/.vim/plugged/vim-indent-guides"))
     map ,indent :IndentGuidesToggle<CR>
-    map :indent<CR> :IndentGuidesToggle<CR>
 endif
 
 " ===
@@ -282,6 +280,17 @@ nnoremap ,ecliu :AsyncRun -raw=1 source ~/.alias_common; fn_ecliUpdate
 " plugin NerdTree
 " ===
 noremap <C-f> :NERDTreeToggle<CR> " open NerdTree tab
+
+" ===
+" plugin coc
+" ===
+" GoTo code navigation.
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+inoremap <silent><expr><c-d> coc#refresh()
+noremap <silent><c-d> :call Show_coc_documentation()<CR>
 
 
 " ===
