@@ -123,7 +123,7 @@ function! PASTE()
         " paste mode
         let $DEF_COLOR = g:colors_name
         call SWITCH_THEME_AS_NAME("paste_only")
-        set nu!
+        set nonu
     else
         call SWITCH_THEME_AS_NAME($DEF_COLOR)
         set nu
