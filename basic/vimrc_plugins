@@ -20,10 +20,6 @@ let php_sync_method=-1
 " ----------------
 " Airline settings
 " ----------------
-set laststatus=2   " Always show the statusline
-set encoding=utf-8 " Necessary to show Unicode glyphs
-set term=xterm-256color
-set termencoding=utf-8
 let g:airline_extensions = ['branch', 'ale']
 let g:airline_powerline_fonts = 1
 let g:airline_theme='solarized'
@@ -192,6 +188,12 @@ let g:ale_sign_error = 'E>'
 let g:ale_lint_delay = 300
 let g:ale_lint_on_insert_leave = 0
 let g:ale_lint_on_enter = 0
+if has('nvim')
+    let g:ale_floating_preview = 1
+    let g:ale_hover_cursor = 1
+    let g:ale_hover_to_preview = 1
+    let g:ale_floating_window_border = ['│', '─', '╭', '╮', '╯', '╰']
+endif
 if g:enablePluginAleJavaagent == 1
     let g:ale_java_eclipselsp_javaagent = $HOME . '/lombok.jar'
 endif
@@ -274,7 +276,7 @@ if !empty(glob("~/.vim/plugged/YouCompleteMe"))
     "let g:ycm_keep_logfiles = 1
     "let g:ycm_log_level = 'debug'
 
-    if version > 800
+    if version > 800 || has('nvim')
         if g:enablePluginYouCompleteMe == 1
             augroup load_ycm
                 autocmd!
@@ -479,7 +481,7 @@ Plug 'skywind3000/asyncrun.vim', {'on': 'AsyncRun'}
 " ----------------
 Plug 'vim-syntastic/syntastic', {'on': 'SyntasticCheck'} " syntax check
 Plug 'danro/rename.vim'
-if version > 800
+if version > 800 || has('nvim')
     Plug 'w0rp/ale'
 endif
 
@@ -487,7 +489,7 @@ endif
 " Auto complete
 " ----------------
 " :CocInstall coc-json coc-tsserver
-if version > 800
+if version > 800 || has('nvim')
     Plug 'neoclide/coc.nvim', {'branch': 'release'}
 endif
 "" :CocInstall coc-java

@@ -84,7 +84,10 @@ rm -rf ~/.sh_tool/z/
 
 touch ~/.bash_host
 cp config/coc-settings.json ~/.vim/
+
+#
 # Copy all dotfiles
+#
 files=($(ls basic))
 for(( i=0; i<${#files[@]}; i++ ))
 do
@@ -93,7 +96,8 @@ do
     echo "copy $file to $newFile"
     cp $file ~/$newFile
 done
-
+mkdir -p ~/.config/nvim/
+cp nvim/init.vim ~/.config/nvim/
 
 pwd=`pwd`
 if hash sudo 2>/dev/null; then

@@ -42,6 +42,13 @@ set rtp+=~/.fzf
 
 syntax on
 
+set laststatus=2   " Always show the statusline
+set encoding=utf-8 " Necessary to show Unicode glyphs
+if !has('nvim')
+    set term=xterm-256color
+endif
+set termencoding=utf-8
+
 set noswapfile
 set nocompatible
 set hlsearch "high light search
@@ -61,7 +68,7 @@ set tabpagemax=100
 
 
 " vim version is smaller than 8 the cursorline performance is bad
-if version > 800
+if version > 800 || has('nvim')
     set cursorline
 endif
 
@@ -88,7 +95,7 @@ set smartcase
 " automatically open and close the popup menu / preview window
 au CursorMovedI,InsertLeave * if pumvisible() == 0|silent! pclose|endif
 
-if version > 800
+if version > 800 || has('vim')
     set completeopt=menuone,menu,noinsert,longest"
 else
     set completeopt=menuone,menu"

@@ -33,6 +33,8 @@ if (exists("g:forceUseTab") && g:forceUseTab == 1)
     " item2: add a mapping on profile keys, "option+a" = "+Esc a",  "options+s" = "+Esc s"
     nmap <C-[>a :tabp<CR>
     nmap <C-[>s :tabn<CR>
+    nmap <M-a> :tabp<CR>
+    nmap <M-s> :tabn<CR>
 
     "vim tab
     nmap <ESC>[1;2D :tabp<CR> " shift + left
@@ -53,6 +55,9 @@ else
     nmap m :bn<CR>
     nmap <C-[>a :bp<CR>
     nmap <C-[>s :bn<CR>
+    nmap <M-a> :bp<CR>
+    nmap <M-s> :bn<CR>
+
 
     "vim tab
     nmap <ESC>[1;2D :bp<CR> " shift + left
@@ -117,22 +122,25 @@ noremap <F2>     :TagbarOpenAutoClose<CR>
 
 " F3, toggle paste
 function! PASTE()
-    set paste!
-    let l:paste = &paste
-    if  l:paste == 1
-        " paste mode
-        let $DEF_COLOR = g:colors_name
-        call SWITCH_THEME_AS_NAME("paste_only")
+    let l:pasteTheme = "paste_only"
+    if  g:colors_name != l:pasteTheme
+        set paste
+        let g:DEF_COLOR = g:colors_name
+        call SWITCH_THEME_AS_NAME(l:pasteTheme)
         set nonu
+        set pastetoggle=<F3>
     else
-        call SWITCH_THEME_AS_NAME($DEF_COLOR)
+        let g:DEF_COLOR = get(g:, 'DEF_COLOR', "nord")
+        set  nopaste
+        call SWITCH_THEME_AS_NAME(g:DEF_COLOR)
         set nu
+        set pastetoggle=
     endif
 endfunction
-noremap <ESC>OR :call PASTE()<CR>
+nnoremap <ESC>OR :call PASTE()<CR>
+nnoremap <F3> <ESC>:call PASTE()<CR>
 inoremap <ESC>OR <ESC>:call PASTE()<CR>i
 inoremap <F3> <ESC>:call PASTE()<CR>i
-
 
 " F4, switch theme
 let g:myThemeIndex=0
@@ -206,7 +214,7 @@ map ,align, :Tab /,\zs
 " plugin youcompleteme
 " ===
 if !empty(glob("~/.vim/plugged/YouCompleteMe"))
-    if version > 800
+    if version > 800 || has('nvim')
         if g:enablePluginYouCompleteMe == 1
             nmap sc :YcmForceCompileAndDiagnostics<CR>
             nmap :ycmlist :YcmDiags<CR>
@@ -220,7 +228,7 @@ endif
 " plugin ale
 " ===
 if g:enablePluginAle == 1
-    if version > 800
+    if version > 800 || has('nvim')
         if !empty(glob("~/.vim/plugged/ale"))
             nnoremap sc :ALELint<CR>
             nnoremap ,af :ALEFix<CR>
@@ -231,6 +239,7 @@ if g:enablePluginAle == 1
             nnoremap :ALE-RESTART :ALEStopAllLSPs<CR>:w<CR>
 
             inoremap <C-d> <C-\><C-O>:ALEComplete<CR>
+            nnoremap <C-d> :ALEHover<CR>
 
             " ALEFix
         else

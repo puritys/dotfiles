@@ -6,6 +6,7 @@ alias ecliConfig='fn_ecliConfig'
 alias f='findFile'
 alias vi='vim -p'
 alias vim='vim -p'
+alias nvim='nvim -p'
 alias cpu="ps aux | awk '{printf \"CPU Usage: %s Process: %s\n\n\", \$3, \$0}' | sort -n"
 alias cpuSum="ps aux | awk '{sum += \$3} END {print sum}'"
 alias mem="ps aux | awk '{printf \"%s %s\n\",\$4,\$0}' | sort -n"
