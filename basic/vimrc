@@ -104,36 +104,14 @@ endif
 source ~/.vimrc_lib
 source ~/.vimrc_keymaps
 
-function! INIT_CPP()
-    set filetype=cpp
-    " OmniCppComplete
-    set tags+=~/.vim/tags/cpp
-    "map <C-F12> :!ctags -R --sort=yes --c++-kinds=+p --fields=+iaS --extra=+q .<CR>
-    let OmniCpp_NamespaceSearch = 1
-    let OmniCpp_GlobalScopeSearch = 1
-    let OmniCpp_ShowAccess = 1
-    let OmniCpp_ShowPrototypeInAbbr = 1 " show function parameters
-    let OmniCpp_MayCompleteDot = 1 " autocomplete after .
-    let OmniCpp_MayCompleteArrow = 1 " autocomplete after ->
-    let OmniCpp_MayCompleteScope = 1 " autocomplete after ::
-    let OmniCpp_DefaultNamespaces = ["std", "_GLIBCXX_STD"]
-endfunction
-
-function! INIT_PHP()
-    set filetype=php
-    set tags+=~/.vim/php_tags
-    call PHP_KEYMAP()
-    let b:ale_disable_lsp = 1
-endfunction
-
 
 
 au BufRead,BufNewFile *.sjs set filetype=javascript
 au BufRead,BufNewFile *.js set filetype=javascript
 au BufRead,BufNewFile *.html set filetype=html
 au BufRead,BufNewFile *.go set filetype=go
-au BufRead,BufNewFile *.java set filetype=java
-au BufRead,BufNewFile *.groovy set filetype=java
+au BufRead,BufNewFile *.java call INIT_JAVA()
+au BufRead,BufNewFile *.groovy call INIT_JAVA()
 au BufRead,BufNewFile *.py set filetype=python
 au BufRead,BufNewFile *.vim set filetype=vim
 au BufRead,BufNewFile *.cc  call INIT_CPP()

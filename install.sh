@@ -84,6 +84,7 @@ rm -rf ~/.sh_tool/z/
 
 touch ~/.bash_host
 cp config/coc-settings.json ~/.vim/
+cp config/coc-settings.json ~/.config/nvim/
 
 #
 # Copy all dotfiles
@@ -269,7 +270,7 @@ if [ "x$installVimPlugin" != "x" ];then
         mkdir -p ~/.config/coc/extensions;
         sudo chmod -R 755 ~/.config/coc/extensions;
         cd ~/.config/coc/extensions;
-            npm install coc-tabnine coc-snippets --global-style --ignore-scripts --no-bin-links --no-package-lock --only=prod;
+            npm install coc-tabnine coc-snippets coc-java coc-groovy --global-style --ignore-scripts --no-bin-links --no-package-lock --only=prod;
             # Manually download tabnine and fix permission
             # - https://update.tabnine.com/bundles/3.7.5/x86_64-unknown-linux-musl/TabNine.zip
             # - sudo chmod -R 755 ~/.config/coc/extensions/coc-tabnine-data/
