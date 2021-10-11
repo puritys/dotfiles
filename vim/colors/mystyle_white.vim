@@ -291,6 +291,10 @@ hi! link MatchTag OptionHeavy
 hi link multiple_cursors_cursor OptionSel
 hi link multiple_cursors_visual OptionHeavy
 
+" coc
+hi! link CocWarningSign ThemeFGText1
+hi! link CocErrorSign   ThemeFGText3
+
 let g:fzf_colors =
 \ { 'fg':      ['fg', 'Option'],
   \ 'bg':      ['bg', 'Option'],

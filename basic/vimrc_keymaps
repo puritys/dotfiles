@@ -292,7 +292,6 @@ nmap <silent> gr <Plug>(coc-references)
 inoremap <silent><expr><c-d> coc#refresh()
 noremap <silent><c-d> :call Show_coc_documentation()<CR>
 
-
 " ===
 " plugin multiple cursor
 " ===
