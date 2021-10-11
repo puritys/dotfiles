@@ -16,22 +16,21 @@ let php_sync_method=-1
 ""let g:gitgutter_sign_modified = 'm'
 ""let g:gitgutter_sign_removed = '-'
 
-
 " ----------------
 " Airline settings
 " ----------------
-let g:airline_extensions = ['branch', 'ale']
+let g:airline_extensions = ['branch', 'coc']
 let g:airline_powerline_fonts = 1
 let g:airline_theme='solarized'
 let g:airline_detect_paste=1
-let g:airline#extensions#ale#enabled = 1
-let g:airline#extensions#ale#error_symbol = 'E:'
-let g:airline#extensions#ale#warning_symbol = 'W:'
-let g:airline#extensions#ale#show_line_numbers = 1
-let g:airline#extensions#ale#open_lnum_symbol = '(L'
-let g:airline#extensions#ale#close_lnum_symbol = ')'
 let g:airline#extensions#coc#enabled = 1
-let g:airline_section_z  = "%l/%L:%c"
+"let g:airline#extensions#ale#enabled = 1
+"let g:airline#extensions#ale#error_symbol = 'E:'
+"let g:airline#extensions#ale#warning_symbol = 'W:'
+"let g:airline#extensions#ale#show_line_numbers = 1
+"let g:airline#extensions#ale#open_lnum_symbol = '(L'
+"let g:airline#extensions#ale#close_lnum_symbol = ')'
+"let g:airline_section_z  = "%l/%L:%c"
 if !exists('g:airline_symbols')
     let g:airline_symbols = {}
     let g:airline_symbols.linenr = ''
@@ -354,19 +353,20 @@ if !empty(glob("~/.vim/plugged/lightline.vim"))
               \ 'active': {
               \   'left': [ [ 'mode', 'paste' ],
               \             [ 'readonly', 'filename' ] ],
-              \ },
               \   'right': [ [ 'lineinfo' ],
               \              [ 'percent' ],
               \              [ 'fileformat', 'fileencoding', 'filetype', 'charvaluehex' ] ],
-              \ 'component_function': {
-              \   'filename': 'LightlineFilename',
               \ },
+              \ 'component_function': {
+              \   'charvaluehex': 'coc#status'
+              \ },
+              \ 'separator': { 'left': "\ue0b0", 'right': "\ue0b2" },
+              \ 'subseparator': { 'left': "\ue0b1", 'right': "\ue0b3" }
               \ }
         let g:lightline.enable = {
                     \ 'statusline': 1,
-                    \ 'tabline': 1
+                    \ 'tabline': 0
                     \ }
-
         :set noshowmode
 
         function! LightlineFilename()
@@ -550,3 +550,6 @@ if version > 800
         endif
     endif
 endif
+
+
+autocmd User CocStatusChange,CocDiagnosticChange call lightline#update()
