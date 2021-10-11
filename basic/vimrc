@@ -33,6 +33,9 @@ endif
 if !exists("g:enablePluginAleJavaagent")
     let g:enablePluginAleJavaagent = 0
 endif
+if !exists("g:enableCocLsp")
+    let g:enableCocLsp = 1
+endif
 
 " vim log
 "set verbosefile=/tmp/vim.log
@@ -110,6 +113,11 @@ else
   set signcolumn=yes
 endif
 
+if has('python3')
+    set pyx=3
+elseif has('python')
+    set pyx=2
+endif
 source ~/.vimrc_lib
 source ~/.vimrc_keymaps
 

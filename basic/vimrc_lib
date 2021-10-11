@@ -38,12 +38,10 @@ function! INIT_PHP()
     set filetype=php
     set tags+=~/.vim/php_tags
     call PHP_KEYMAP()
-    let b:ale_disable_lsp = 1
 endfunction
 
 function! INIT_JAVA()
     set filetype=java
-    let g:ale_disable_lsp = 1
 endfunction
 
 " coc hover function

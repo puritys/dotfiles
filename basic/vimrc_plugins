@@ -181,6 +181,10 @@ let s:php_language_server=$HOME. "/vendor/bin/php-language-server.php"
 if !empty(glob(s:php_language_server))
     let g:ale_php_langserver_executable=s:php_language_server
 endif
+
+if g:enableCocLsp == 1
+    let b:ale_disable_lsp = 1
+endif
 let g:ale_cpp_clang_options="-std=c++11 -Wall -I./"
 let g:ale_sign_warning = 'W>'
 let g:ale_sign_error = 'E>'
