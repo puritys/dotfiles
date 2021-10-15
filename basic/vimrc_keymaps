@@ -291,6 +291,8 @@ nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
 inoremap <silent><expr><c-d> coc#refresh()
 noremap <silent><c-d> :call Show_coc_documentation()<CR>
+" open diagnostics list
+nmap <silent> oe <ESC>:CocDiagnostics<CR>
 
 " ===
 " plugin multiple cursor

@@ -29,7 +29,11 @@ appendClasspath () {
     preSpace="        "
     if [ $hasPath -eq 0 ];then
         echo "To append $appendPath"
-        command="sed 's/<\/classpath>/$preSpace<classpathentry kind=\"src\" path=\"$appendPathSlash\" including=\"**\/*.java\" \/>\n<\/classpath>/'  -i $file"
+        if [ `uname` == "Darwin" ];then
+            command="sed -i '' 's/<\/classpath>/$preSpace<classpathentry kind=\"src\" path=\"$appendPathSlash\" including=\"**\/*.java\" \/>\n<\/classpath>/'  $file"
+        else
+            command="sed 's/<\/classpath>/$preSpace<classpathentry kind=\"src\" path=\"$appendPathSlash\" including=\"**\/*.java\" \/>\n<\/classpath>/'  -i $file"
+        fi
         echo $command
         eval $command
     fi

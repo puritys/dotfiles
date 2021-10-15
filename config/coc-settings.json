@@ -11,5 +11,6 @@
     "suggest.autoTrigger": "always",
     "suggest.triggerAfterInsertEnter": false,
     "coc.preferences.extensionUpdateCheck": "never",
-    "coc.preferences.jumpCommand": "tabe"
+    "coc.preferences.jumpCommand": "tabe",
+    "diagnostic.messageTarget": "echo"
 }

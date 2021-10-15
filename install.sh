@@ -277,6 +277,10 @@ if [ "x$installVimPlugin" != "x" ];then
             # - sudo chmod -R 755 ~/.config/coc/extensions/coc-tabnine-data/
         cd -
     fi
+
+    # ALE fixer:
+    sudo npm install -g fixjson
+
 fi
 
 
