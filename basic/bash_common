@@ -181,6 +181,11 @@ function getMySSHAgent {
     pids=( $pids )
     length=${#pids[@]}
     isDone=0
+    yubiagent=$HOME/.yubiagent/sock
+    if [ -S "$yubiagent" ]; then
+        export SSH_AUTH_SOCK=$yubiagent
+        return
+    fi
     if [[ X"$OS" == X"Linux" ]]; then
         sshagent_socket=$(find /tmp/ssh-* -user `whoami` -type s -printf '%T@ %p\n' 2>/dev/null | sort -n | tail -1)
         ssh_agent_info="/tmp/$(whoami).agent.info"
