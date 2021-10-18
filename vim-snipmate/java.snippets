@@ -441,6 +441,12 @@ snippet reg
 snippet splitToList
 	Arrays.asList("aa,aa".split(","));
 
+snippet spliteToList-filter
+	List<String> list = Stream.of(id.split(","))
+		.map(String::trim)
+		.filter(s -> !s.isEmpty())
+		.collect(Collectors.toList());
+
 snippet explode
 	str.split("\04");
 
