@@ -75,9 +75,9 @@ if version > 800 || has('nvim')
 endif
 
 " cursor shape
-"if has('nvim')
-"    set guicursor=n-v-c-i:block
-"endif
+if has('nvim')
+    set guicursor=n-v-c-i:block
+endif
 
 "use mouse
 "set mouse=a
