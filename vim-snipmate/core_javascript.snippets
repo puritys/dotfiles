@@ -61,15 +61,19 @@ snippet er
 	console.error(${0});
 
 snippet options
-	var param = require('commander');
+	import fs from 'fs';
+	let program = new Command();
+	program.version('0.0.1')
+	.option('-d, --debug [type]', 'enable debug or not', 'default')
+	.option('-f, --file [filename]', 'read from file', '')
+	.parse(process.argv);
 
-	param.version('0.0.1')
-	    .option('-d, --debug [type]', 'enable debug or not', 'default')
-	    .parse(process.argv);
+	const options = program.opts();
+	if (options.debug === "true") console.log('Enable debug');
 
-	if (param.debug === "true") console.log('Enable debug');
 snippet chr
 	String.fromCharCode(${0});
+
 snippet ord
 	${0}charAt(0);
 

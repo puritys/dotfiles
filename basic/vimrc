@@ -68,7 +68,7 @@ set t_Co=256 "設定成256色
 source $VIMRUNTIME/macros/matchit.vim
 set foldmethod=marker
 set tabpagemax=100
-
+set autoindent
 " vim version is smaller than 8 the cursorline performance is bad
 if version > 800 || has('nvim')
     set cursorline
@@ -154,13 +154,6 @@ endfunction
 
 
 if has("autocmd")
-" autocmd Filetype java setlocal omnifunc=javacomplete#Complete
-"  autocmd Filetype php setlocal omnifunc=phpcomplete#CompletePHP
-"  autocmd Filetype cpp setlocal omnifunc=omni#cpp#complete#Main
-"  autocmd Filetype js  setlocal omnifunc=js#CompleteJS
-"  autocmd Filetype javascript  setlocal omnifunc=js#CompleteJS
-"  autocmd Filetype go setlocal omnifunc=gocomplete#Complete
-
   " whitespace
   autocmd BufRead,BufNew * match ExtraWhitespace /\t\+\| \s\+$/
     hi ExtraWhitespace cterm=NONE ctermfg=NONE ctermbg=252 guifg=NONE guibg=#d0d0d0
