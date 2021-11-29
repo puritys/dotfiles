@@ -17,19 +17,27 @@ snippet expd "expect" b
 	expect(${1:}).to.deep.equal(${0});
 
 snippet class
-	function ${1:function_name}() {//{{{ 
+	function ${1:function_name}() {//{{{
 		${0}
 	}//}}}
 	var o = $1.prototype;
 	o.xxx = function() {
 	}
+
+snippet json-parse
+	JSON.parse(body);
+
+snippet json-print
+	import util from 'util'
+	console.log(util.inspect(text, {showHidden: false, depth:null, colors: false}));
+
 snippet mocha
 	var assert = require('assert');
 
-	describe("Test Method ", function() {//{{{ 
-	    it("normal case", function() {
-	        assert.equal("", "");
-	    }); 
+	describe("Test Method ", function() {//{{{
+		it("normal case", function() {
+			assert.equal("", "");
+		});
 	});//}}}
 snippet promise
 	Q.Promise(function (resolve, reject, notify) {
@@ -41,7 +49,7 @@ snippet multiline
 	`
 snippet foreach
 	${1}.forEach(function(val, index) {
-		$(0)	
+		$(0)
 	});
 snippet proto
 	o.${1} = function() {
@@ -119,5 +127,21 @@ snippet exit
 
 snippet date
 	var d = date.getFullYear() + "/" + (date.getMonth() + 1) + "/" + date.getDate()
-		+ " " + date.getHours() + ":" + date.getMinutes() + ":" + date.getSeconds(); 
+		+ " " + date.getHours() + ":" + date.getMinutes() + ":" + date.getSeconds();
 
+sinnpet curl
+	var headersOpt = {
+		"User-Agent": "curl/7.77.0"
+	};
+	const agent = new https.Agent({
+		key: fs.readFileSync(key),
+		cert: fs.readFileSync(cert),
+		rejectUnauthorized: false
+	})
+	fetch(url, {
+		agent: agent,
+		headers: headersOpt
+	})
+		.catch(err => console.error(err))
+		.then(res => res.text())
+		.then(body => jconsole.log(body));
