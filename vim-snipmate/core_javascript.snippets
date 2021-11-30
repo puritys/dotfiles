@@ -181,12 +181,12 @@ snippet proto
 	}
 
 snippet options
-	import fs from 'fs';
+	import { Command } from 'commander';
 	let program = new Command();
 	program.version('0.0.1')
-	.option('-d, --debug [type]', 'enable debug or not', 'default')
-	.option('-f, --file [filename]', 'read from file', '')
-	.parse(process.argv);
+		.option('-d, --debug [type]', 'enable debug or not', 'default')
+		.option('-f, --file [filename]', 'read from file', '')
+		.parse(process.argv);
 
 	const options = program.opts();
 	if (options.debug === "true") console.log('Enable debug');
