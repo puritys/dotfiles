@@ -33,6 +33,10 @@ snippet expd "expect" b
 snippet er
 	console.error(${0});
 
+snippet exec
+	import {execSync} from 'child_process'
+	execSync(command, {stdio: 'inherit'});
+
 snippet class
 	function ${1:function_name}() {//{{{
 		${0}
