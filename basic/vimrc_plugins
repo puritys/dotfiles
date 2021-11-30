@@ -449,6 +449,7 @@ Plug 'dominickng/fzf-session.vim'
 Plug 'dracula/vim', { 'as': 'dracula' }
 Plug 'junegunn/seoul256.vim'
 Plug 'arcticicestudio/nord-vim'
+
 " ----------------
 " Code change Plugins
 " ----------------

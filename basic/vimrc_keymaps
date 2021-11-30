@@ -294,6 +294,11 @@ noremap <silent><c-d> :call Show_coc_documentation()<CR>
 " open diagnostics list
 nmap <silent> oe <ESC>:CocDiagnostics<CR>
 
+" coc prettier: https://github.com/neoclide/coc-prettier
+command! -nargs=0 Prettier :CocCommand prettier.formatFile
+vmap <c-p>  <Plug>(coc-format-selected)
+
+
 " ===
 " plugin multiple cursor
 " ===
