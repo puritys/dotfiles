@@ -182,10 +182,9 @@ endif
 
 
 """ Theme
-if version > 742
-    if has("termguicolors")
-        set termguicolors
-    endif
+" To enable true colors
+if has("termguicolors")
+    set termguicolors
 endif
 
 " customized theme: export VIM_THEME=nord
