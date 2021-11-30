@@ -1,3 +1,20 @@
+########
+# import
+########
+
+snippet imp-format
+	import util from "util";
+
+snippet imp-curl
+	import fetch from "node-fetch"
+
+########
+#  A ~ E
+########
+
+snippet chr
+	String.fromCharCode(${0});
+
 snippet desc "Describe" b
 	describe('${1:}', function() {//{{{
 		it('${2}', function() {
@@ -5,16 +22,16 @@ snippet desc "Describe" b
 			assert.equal("", "");
 		});
 	});//}}}
-snippet it "it" b
-	it('${1:}', function() {
-		${0}
-	});
+
 snippet exp "expect" b
 	expect(${1:})${0};
 snippet expe "expect" b
 	expect(${1:}).to.equal(${0});
 snippet expd "expect" b
 	expect(${1:}).to.deep.equal(${0});
+
+snippet er
+	console.error(${0});
 
 snippet class
 	function ${1:function_name}() {//{{{
@@ -24,12 +41,90 @@ snippet class
 	o.xxx = function() {
 	}
 
+sinnpet curl
+	var headersOpt = {
+		"User-Agent": "curl/xxx.0"
+	};
+	// Use cert and key
+	const agent = new https.Agent({
+		key: fs.readFileSync(key),
+		cert: fs.readFileSync(cert),
+		rejectUnauthorized: false
+	})
+	await fetch(url, {
+		agent: agent,
+		headers: headersOpt
+	})
+		.catch(err => console.error(err))
+		.then(res => res.text())
+		.then(body => jconsole.log(body));
+
+snippet cwd
+	process.cwd()
+
+snippet date
+	let name = util.format("date-%s%s%s-%s%s%s.txt", date.getFullYear(), date.getMonth() + 1,  date.getDate(),  date.getHours(), date.getMinutes(), date.getSeconds());
+
+snippet exit
+	process.exit(1)
+
+snippet export
+	// es6
+	export let c = {}
+	// common js
+	module.exports = xx
+
+snippet dirpath
+	__dirname
+
+########
+#  F ~ J
+########
+
+snippet for
+	for (${1};${2};${3}) {
+		${0}
+	}
+
+snippet func
+	function ${1}() { //{{{
+		${2}
+	} //}}}
+
+snippet file_get_contents
+	fs.readFileSync(${1}, "UTF-8");
+
+snippet file_put_contents
+	fs.writeFileSync(${1:filename}, ${2:content}, "UTF-8");
+
+snippet format
+	util.format("string %s", a);
+
+snippet foreach
+	${1}.forEach(function(val, index) {
+		$(0)
+	});
+
+
+snippet it "it" b
+	it('${1:}', function() {
+		${0}
+	});
+
 snippet json-parse
 	JSON.parse(body);
 
 snippet json-print
 	import util from 'util'
 	console.log(util.inspect(text, {showHidden: false, depth:null, colors: false}));
+
+########
+#  K ~ O
+########
+
+snippet log
+	console.log(${0});
+
 
 snippet mocha
 	var assert = require('assert');
@@ -39,26 +134,29 @@ snippet mocha
 			assert.equal("", "");
 		});
 	});//}}}
-snippet promise
-	Q.Promise(function (resolve, reject, notify) {
-		${0}
-	});
+
 snippet multiline
 	var s=`aaa
 		${0}
 	`
-snippet foreach
-	${1}.forEach(function(val, index) {
-		$(0)
+
+snippet ord
+	${0}charAt(0);
+
+
+########
+#  P ~ T
+########
+
+snippet promise
+	Q.Promise(function (resolve, reject, notify) {
+		${0}
 	});
+
 snippet proto
 	o.${1} = function() {
 		$(0)
 	}
-snippet log
-	console.log(${0});
-snippet er
-	console.error(${0});
 
 snippet options
 	import fs from 'fs';
@@ -71,84 +169,31 @@ snippet options
 	const options = program.opts();
 	if (options.debug === "true") console.log('Enable debug');
 
-snippet chr
-	String.fromCharCode(${0});
-
-snippet ord
-	${0}charAt(0);
-
-snippet for
-	for (${1};${2};${3}) {
-		${0}
-	}
-
-snippet func
-	function ${1}() { //{{{
-		${2}
-	} //}}}
-
 snippet re
 	require('${1:fs}');
 
-snippet file_get_contents
-	fs.readFileSync(${1}, "UTF-8");
-
-snippet file_put_contents
-	fs.writeFileSync(${1:filename}, ${2:content}, "UTF-8");
 
 snippet strict
 	"use strict";
 snippet time
 	Math.round((new Date).getTime()/1000)
 
-snippet /*
-	/**
-	 *
-	 */
 
 snippet path_file
 	__filename
 
-snippet dirpath
-	__dirname
 
 snippet path_cwd
 	process.cwd()
 
-snippet cwd
-	process.cwd()
 
-snippet export
-	module.exports = xx
 
 snippet padleft
 	i.toString().padStart(10, '0')
 
 snippet padright
 	i.toString().padEnd(10, '0')
-snippet exit
-	process.exit(1)
 
-snippet date
-	var d = date.getFullYear() + "/" + (date.getMonth() + 1) + "/" + date.getDate()
-		+ " " + date.getHours() + ":" + date.getMinutes() + ":" + date.getSeconds();
-
-sinnpet curl
-	var headersOpt = {
-		"User-Agent": "curl/7.77.0"
-	};
-	const agent = new https.Agent({
-		key: fs.readFileSync(key),
-		cert: fs.readFileSync(cert),
-		rejectUnauthorized: false
-	})
-	fetch(url, {
-		agent: agent,
-		headers: headersOpt
-	})
-		.catch(err => console.error(err))
-		.then(res => res.text())
-		.then(body => jconsole.log(body));
 
 snippet sleep
 	const delay = ms => new Promise(resolve => setTimeout(resolve, ms))
@@ -163,3 +208,12 @@ snippet try
 	} catch (e) {
 
 	}
+
+########
+#  U ~ Z
+########
+
+snippet /*
+	/**
+	 *
+	 */
