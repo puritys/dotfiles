@@ -86,6 +86,16 @@ snippet for
 		${0}
 	}
 
+snippet for-object
+	Object.keys(obj).forEach(function(key) {
+		console.log("key %s, value %s", key, obj[key]);
+	});
+
+snippet for-array
+	array.forEach(function(value, index) {
+		console.log("value: %s, index: %d", value, index);
+	});
+
 snippet func
 	function ${1}() { //{{{
 		${2}
@@ -99,6 +109,14 @@ snippet file_put_contents
 
 snippet format
 	util.format("string %s", a);
+
+snippet format-property
+	function format(string, keys = {}) {
+		Object.keys(keys).forEach(function(key) {
+			string = string.replace(new RegExp("\\{" + key + "\\}", "g"), keys[key]);
+		});
+		return string;
+	}
 
 snippet foreach
 	${1}.forEach(function(val, index) {

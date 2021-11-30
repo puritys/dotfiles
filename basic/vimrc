@@ -68,7 +68,7 @@ set t_Co=256 "設定成256色
 source $VIMRUNTIME/macros/matchit.vim
 set foldmethod=marker
 set tabpagemax=100
-set autoindent
+
 " vim version is smaller than 8 the cursorline performance is bad
 if version > 800 || has('nvim')
     set cursorline
@@ -168,7 +168,7 @@ source ~/.vimrc_plugins
 
 " indent
 set nocindent
-set noautoindent
+set autoindent
 set nosmartindent
 filetype indent off
 
