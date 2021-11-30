@@ -246,7 +246,7 @@ function vim_start() {
         docker rm $containerName 2>&1
         docker run -d -t --name $containerName  \
             -e VIM_THEME=mystyle_white \
-            -e VIM_PLUGIN_LightLine=0 \
+            -e VIM_PLUGIN_LightLine=1 \
             -e VIM_PLUGIN_YouCompleteMe=0 \
             -e VIM_PLUGIN_YouCompleteMe_ENABLE_SYNTAX=0 \
             -e VIM_PLUGIN_YouCompleteMe_auto_trigger=0 \
