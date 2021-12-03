@@ -244,6 +244,10 @@ snippet random-uuid
 snippet list
 	List<String> status = Arrays.asList("0", "1");
 
+snipet list-partition
+	import org.apache.commons.collections4.ListUtils;
+	List<String> p = ListUtils.partition(ps, 10);
+
 snippet list-synchronized
 	List<String> ex = Collections.synchronizedList(new ArrayList<>());
 
