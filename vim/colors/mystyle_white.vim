@@ -1,6 +1,4 @@
 
-
-
 if &t_Co != 256 && ! has("gui_running")
 echomsg ""
 echomsg "err: please use GUI or a 256-color terminal (so that t_Co=256 could be set)"
@@ -14,7 +12,11 @@ if exists("syntax_on")
 syntax reset
 endif
 
-let g:colors_name = "mystyle_white"
+if has("termguicolors")
+    echomsg "termguicolors is required"
+else
+    set termguicolors
+endif
 
 set fillchars=
 
@@ -22,36 +24,36 @@ set fillchars=
 " Color Template
 " -----
 " fill up background
-hi ThemeBG cterm=NONE ctermfg=NONE ctermbg=NONE guifg=NONE guibg=#F1E7D0
-hi ThemeBGSel cterm=NONE ctermfg=NONE ctermbg=180 guifg=NONE guibg=#d0c6ae
-hi ThemeBGText1 cterm=NONE ctermfg=255 ctermbg=115 guifg=#FFFFFF guibg=#78ad78
-hi ThemeBGText2 cterm=NONE ctermfg=255 ctermbg=160 guifg=#FFFFFF guibg=#b76855
-hi ThemeBGText3 cterm=NONE ctermfg=255  ctermbg=93  guifg=#FFFFFF guibg=#8378ad
-hi ThemeBGText4 cterm=NONE ctermfg=255 ctermbg=75  guifg=#FFFFFF guibg=#589cb1
-hi ThemeBGText5 cterm=NONE ctermfg=240 ctermbg=253 guifg=#585858 guibg=#dadada
-hi ThemeBGText6 cterm=NONE ctermfg=253 ctermbg=243 guifg=#dadada guibg=#767676
-hi ThemeBGText7 cterm=NONE ctermfg=255 ctermbg=18 guifg=#ffffff guibg=#004e8a
-hi ThemeBGText8 cterm=NONE ctermfg=255 ctermbg=28 guifg=#ffffff guibg=#056900
-hi ThemeBGText9 cterm=NONE ctermfg=255 ctermbg=23 guifg=#ffffff guibg=#00614b
-hi ThemeBGText10 cterm=NONE ctermfg=255 ctermbg=88 guifg=#ffffff guibg=#870000
-hi ThemeBGText11 cterm=NONE ctermfg=255 ctermbg=225 guifg=#ffffff guibg=#ffd7ff
-hi ThemeBGText12 cterm=NONE ctermfg=255 ctermbg=52 guifg=#ffffff guibg=#753d04
+hi ThemeBG    guifg=NONE guibg=#F1E7D0
+hi ThemeBGSel    guifg=NONE guibg=#d0c6ae
+hi ThemeBGText1    guifg=#FFFFFF guibg=#78ad78
+hi ThemeBGText2    guifg=#FFFFFF guibg=#b76855
+hi ThemeBGText3      guifg=#FFFFFF guibg=#8378ad
+hi ThemeBGText4     guifg=#FFFFFF guibg=#589cb1
+hi ThemeBGText5    guifg=#585858 guibg=#dadada
+hi ThemeBGText6    guifg=#dadada guibg=#767676
+hi ThemeBGText7    guifg=#ffffff guibg=#004e8a
+hi ThemeBGText8    guifg=NONE guibg=#d75f00
+hi ThemeBGText9    guifg=#ffffff guibg=#00614b
+hi ThemeBGText10    guifg=#ffffff guibg=#870000
+hi ThemeBGText11    guifg=#ffffff guibg=#ffd7ff
+hi ThemeBGText12    guifg=#ffffff guibg=#753d04
 
 " font color
-hi ThemeFG cterm=NONE ctermfg=234 ctermbg=NONE guifg=#333333 guibg=NONE
-hi ThemeFGSel cterm=NONE ctermfg=233 ctermbg=NONE guifg=#222222 guibg=NONE
-hi ThemeFGText1 cterm=NONE ctermfg=128 ctermbg=NONE guifg=#800da3 guibg=NONE
-hi ThemeFGText2 cterm=NONE ctermfg=72 ctermbg=NONE guifg=#1d7b79 guibg=NONE
-hi ThemeFGText3 cterm=NONE ctermfg=160 ctermbg=NONE guifg=#a32b0d guibg=NONE
-hi ThemeFGText4 cterm=NONE ctermfg=166 ctermbg=NONE guifg=#d75f00 guibg=NONE
-hi ThemeFGText5 cterm=NONE ctermfg=33 ctermbg=NONE guifg=#0087d7 guibg=NONE
-hi ThemeFGText6 cterm=NONE ctermfg=237 ctermbg=NONE guifg=#3a3a3a guibg=NONE
-hi ThemeFGText7 cterm=NONE ctermfg=18 ctermbg=NONE guifg=#004e8a guibg=NONE
-hi ThemeFGText8 cterm=NONE ctermfg=28 ctermbg=NONE guifg=#056900 guibg=NONE
-hi ThemeFGText9 cterm=NONE ctermfg=23 ctermbg=NONE guifg=#00614b guibg=NONE
-hi ThemeFGText10 cterm=NONE ctermfg=88 ctermbg=NONE guifg=#870000 guibg=NONE
-hi ThemeFGText11 cterm=NONE ctermfg=225 ctermbg=NONE guifg=#ffd7ff guibg=NONE
-hi ThemeFGText12 cterm=NONE ctermfg=52 ctermbg=NONE guifg=#753d04 guibg=NONE
+hi ThemeFG    guifg=#333333 guibg=NONE
+hi ThemeFGSel    guifg=#222222 guibg=NONE
+hi ThemeFGText1    guifg=#2b812b guibg=NONE
+hi ThemeFGText2    guifg=#b76855 guibg=NONE
+hi ThemeFGText3    guifg=#8378ad guibg=NONE
+hi ThemeFGText4    guifg=#1d7895 guibg=NONE
+hi ThemeFGText5    guifg=#0087d7 guibg=NONE
+hi ThemeFGText6    guifg=#3a3a3a guibg=NONE
+hi ThemeFGText7    guifg=#004e8a guibg=NONE
+hi ThemeFGText8    guifg=#b75100 guibg=NONE
+hi ThemeFGText9    guifg=#00614b guibg=NONE
+hi ThemeFGText10    guifg=#870000 guibg=NONE
+hi ThemeFGText11    guifg=#ffd7ff guibg=NONE
+hi ThemeFGText12    guifg=#753d04 guibg=NONE
 
 " ------
 " define basic color
@@ -64,7 +66,7 @@ hi! link NoticeText ThemeBGText3
 hi! link Unknown ThemeBGText2
 
 " /* axxxxxxxxx*/ // #
-hi! link Comment ThemeFGText8
+hi! link Comment ThemeFGText1
 hi! link CommentKey ThemeFGText9
 
 " ---------
@@ -72,36 +74,36 @@ hi! link CommentKey ThemeFGText9
 " ---------
 hi! link TextKey ThemeFGText7
 hi! link TextSub ThemeFGSel
-hi! link TextBold ThemeFGText4
+hi! link TextBold ThemeFGText8
 hi! link TextEmphasize ThemeFGText10
-hi! link TextDesc ThemeFGText8
+hi! link TextDesc ThemeFGText4
 hi! link TextSelEmphasize ThemeFGText11
 
-hi TabLineFill cterm=NONE ctermfg=NONE ctermbg=240 guifg=NONE guibg=#585858
-hi TabLine cterm=NONE ctermfg=247 ctermbg=240 guifg=#9e9e9e guibg=#585858
-hi TabLineSel cterm=NONE ctermfg=16 ctermbg=230 guifg=#000000 guibg=#f1e7d0
-"hi TabLineSelRightIcon cterm=NONE ctermfg=230 ctermbg=240 guifg=#f1e7d0 guibg=#585858
+hi TabLineFill    guifg=NONE guibg=#585858
+hi TabLine    guifg=#9e9e9e guibg=#585858
+hi TabLineSel    guifg=#000000 guibg=#f1e7d0
+"hi TabLineSelRightIcon    guifg=#f1e7d0 guibg=#585858
 call RevertTablineArrow("TabLineSelRightIcon", "TabLineSel", "TabLine")
-"hi TabLineRightIcon cterm=NONE ctermfg=240 ctermbg=230 guifg=#585858 guibg=#f1e7d0
+"hi TabLineRightIcon    guifg=#585858 guibg=#f1e7d0
 call RevertTablineArrow("TabLineRightIcon", "TabLine", "TabLineSel")
 
-hi ExtraWhitespace cterm=NONE ctermfg=NONE ctermbg=252 guifg=NONE guibg=#d0d0d0
+hi ExtraWhitespace    guifg=NONE guibg=#d0d0d0
 
 " if termguicolors is true and guibg is not NONE then the word selection in tmux will include the tail empty space of window.
-hi Normal cterm=NONE ctermfg=238 ctermbg=223 guifg=#222222 guibg=#F1E7D0
+hi Normal    guifg=#222222 guibg=#F1E7D0
 
 hi! link  TextType  TextKey
 
 " Number line
-hi LineNr cterm=NONE ctermfg=240 ctermbg=254 guifg=#585858 guibg=#e4e4e4
+hi LineNr    guifg=#585858 guibg=#e4e4e4
 
 " The number line which cursor on it.
 hi! link CursorLineNr ThemeBGSel
 hi! link CursorLine ThemeBGSel
-hi Cursor cterm=NONE ctermfg=NONE ctermbg=252 guifg=NONE guibg=#d0d0d0
-hi iCursor cterm=NONE ctermfg=NONE ctermbg=252 guifg=NONE guibg=#d0d0d0
-hi vCursor cterm=NONE ctermfg=NONE ctermbg=252 guifg=NONE guibg=#d0d0d0
-hi lCursor cterm=NONE ctermfg=NONE ctermbg=252 guifg=NONE guibg=#d0d0d0
+hi Cursor    guifg=NONE guibg=#d0d0d0
+hi iCursor    guifg=NONE guibg=#d0d0d0
+hi vCursor    guifg=NONE guibg=#d0d0d0
+hi lCursor    guifg=NONE guibg=#d0d0d0
 
 " Validation error
 hi! link SpellBad ErrorText
@@ -109,7 +111,7 @@ hi! link SpellBad ErrorText
 hi! link SpellCap NoticeText
 
 "  "xxxxxx"
-"hi Constant cterm=NONE  ctermfg=202  ctermbg=NONE
+"hi Constant
 hi! link Constant TextBold
 
 hi! link Exception ErrorText
@@ -121,25 +123,25 @@ hi! link ALEErrorSign  ErrorText
 hi! link ALEWarningSign  NoticeText
 
 " -- INSERT --
-hi ModeMsg cterm=NONE ctermfg=NONE ctermbg=NONE guifg=NONE guibg=NONE
-hi MoreMsg cterm=NONE ctermfg=242 ctermbg=NONE guifg=#6c6c6c guibg=NONE
+hi ModeMsg    guifg=NONE guibg=NONE
+hi MoreMsg    guifg=#6c6c6c guibg=NONE
 
-hi VertSplit cterm=reverse ctermfg=NONE ctermbg=240 guifg=NONE guibg=#585858
+hi VertSplit    guifg=NONE guibg=#585858
 
-"hi WildMenu cterm=NONE  ctermfg=0   ctermbg=184 gui=NONE    guifg=#000000   guibg=#dfdf00
+"hi WildMenu       gui=NONE    guifg=#000000   guibg=#dfdf00
 
-hi Folded cterm=NONE ctermfg=234 ctermbg=253 guifg=#1c1c1c guibg=#dadada
-hi FoldColumn cterm=NONE ctermfg=248 ctermbg=58 guifg=#a8a8a8 guibg=#5f5f00
-hi SignColumn cterm=NONE ctermfg=248 ctermbg=58 guifg=#a8a8a8 guibg=#5f5f00
+hi Folded    guifg=#1c1c1c guibg=#dadada
+hi FoldColumn    guifg=#a8a8a8 guibg=#5f5f00
+hi SignColumn    guifg=#a8a8a8 guibg=#5f5f00
 
 " open  dir  text color
-hi Directory cterm=NONE ctermfg=0 ctermbg=NONE guifg=#000000 guibg=NONE
+hi Directory    guifg=#000000 guibg=NONE
 
 "left Line number
-"hi NonText  cterm=NONE  ctermfg=233 ctermbg=NONE
+"hi NonText
 
-hi Title cterm=NONE ctermfg=0 ctermbg=184 guifg=#000000 guibg=#d7d700
-hi Visual cterm=NONE ctermfg=255 ctermbg=244 guifg=#eeeeee guibg=#808080
+hi Title    guifg=#000000 guibg=#d7d700
+hi Visual    guifg=#eeeeee guibg=#808080
 
 " comment
 hi! link SpecialComment Comment
@@ -163,11 +165,11 @@ hi! link Type TextType
 hi! link Function  TextType
 
 " ( ) {}
-hi Delimiter cterm=NONE ctermfg=18 ctermbg=NONE guifg=#000087 guibg=NONE
-hi Underlined cterm=underline ctermfg=39 ctermbg=NONE guifg=#00afff guibg=NONE
+hi! link Delimiter Normal
+"hi! link Underlined
 
 " Buffer Status Line
-hi StatusLine cterm=NONE ctermfg=230 ctermbg=240 guifg=#F1E7D0 guibg=#585858
+hi StatusLine    guifg=#F1E7D0 guibg=#585858
 hi! link StatusLineNC TabLine
 hi! link StatusLineTerm TabLineSel
 hi! link StatusLineTermNC TabLine
@@ -191,7 +193,6 @@ hi! link Keyword         TextKey
 hi! link SignColumn      PreProc
 hi! link Tag             Comment
 hi! link SpecialChar     Special
-hi! link Delimiter       Special
 hi! link Debug           Special
 hi! link Label           TextDesc
 
@@ -280,8 +281,8 @@ hi! link javaDocTags Comment
 " ===============
 
 " indent guide
-hi IndentGuidesOdd cterm=NONE ctermfg=NONE ctermbg=254 guifg=NONE guibg=#e4e4e4
-hi IndentGuidesEven cterm=NONE ctermfg=NONE ctermbg=252 guifg=NONE guibg=#d0d0d0
+hi IndentGuidesOdd    guifg=NONE guibg=#e4e4e4
+hi IndentGuidesEven    guifg=NONE guibg=#d0d0d0
 
 
 " Valloric/MatchTagAlways
@@ -292,8 +293,8 @@ hi link multiple_cursors_cursor OptionSel
 hi link multiple_cursors_visual OptionHeavy
 
 " coc
-hi! link CocWarningSign ThemeFGText1
-hi! link CocErrorSign   ThemeFGText3
+hi! link CocWarningSign ThemeFGText3
+hi! link CocErrorSign   ThemeFGText10
 
 let g:fzf_colors =
 \ { 'fg':      ['fg', 'Option'],
