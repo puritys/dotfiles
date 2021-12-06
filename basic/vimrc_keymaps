@@ -150,7 +150,6 @@ function! SWITCH_THEME()
     if g:myThemeIndex >= len(g:myThemes)
         let g:myThemeIndex = 0
     endif
-    echo g:myThemeIndex
     let $MY_SWITCH_THEME = get(g:myThemes, g:myThemeIndex)
     call SWITCH_THEME_AS_NAME($MY_SWITCH_THEME)
 endfunction

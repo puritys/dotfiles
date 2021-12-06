@@ -12,13 +12,15 @@ if exists("syntax_on")
 syntax reset
 endif
 
-if has("termguicolors")
+if !has("termguicolors")
     echomsg "termguicolors is required"
 else
     set termguicolors
 endif
 
 set fillchars=
+
+let g:colors_name = "mystyle_white"
 
 " ------
 " Color Template

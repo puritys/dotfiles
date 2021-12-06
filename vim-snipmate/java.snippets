@@ -797,3 +797,32 @@ snippet sha
 	} catch (Exception e) {
 		logger.error("err");
 	}
+
+
+#######
+# S-Z
+#######
+snippet ssl_skip_certificate
+	String keyManagerFactoryAlgorithm = KeyManagerFactory.getDefaultAlgorithm();
+	KeyManagerFactory kmf = KeyManagerFactory.getInstance(keyManagerFactoryAlgorithm)
+	kms = kmf.getKeyManagers();
+	final SSLContext context = sslContextFactory.createSslContext().init(kms, new AcceptAllTrustManager(), null)
+	public static class AcceptAllTrustManager implements X509TrustManager {
+
+		@Override
+		public void checkClientTrusted(X509Certificate[] arg0, String arg1)
+			throws CertificateException {
+		// Nothing to do here
+		}
+
+		@Override
+		public void checkServerTrusted(X509Certificate[] arg0, String arg1)
+			throws CertificateException {
+		// Nothing to do here
+		}
+
+		@Override
+		public X509Certificate[] getAcceptedIssuers() {
+			return new X509Certificate[0];
+		}
+	}

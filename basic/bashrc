@@ -14,8 +14,113 @@ export PATH
 
 export NODE_PATH=/usr/local/lib/node_modules:/usr/lib/node_modules
 
+###############
+# Theme
+###############
+hexToDecimal () {
+    hex=$1
+    a=${hex:1:2}
+    b=${hex:3:2}
+    c=${hex:5:2}
+    rgb="$((0x$a));$((0x$b));$((0x$c))"m
+}
+if [ ! -z ${THEME} ] && [ ${THEME} == "NORD" ]; then
+    ConstColorHexBgLevel1="#2E3440"
+    ConstColorHexBgLevel2="#3B4252"
+    ConstColorHexBgLevel3="#434C5E"
+    ConstColorHexBgLevel4="#4C566A"
+
+    ConstColorHexFgLevel1="#D8DEE9"
+    ConstColorHexFgLevel2="#E5E9F0"
+    ConstColorHexFgLevel3="#ECEFF4"
+
+    ConstColorHexFgSelLevel1="#5E81AC"
+    ConstColorHexFgSelLevel2="#81A1C1"
+    ConstColorHexFgSelLevel3="#88C0D0"
+    ConstColorHexFgSelLevel4="#8FBCBB"
+
+    ConstColorHexC1="#BF616A"
+    ConstColorHexC2="#D08770"
+    ConstColorHexC3="#EBCB8B"
+    ConstColorHexC4="#A3BE8C"
+    ConstColorHexC5="#B48EAD"
+
+    ConstColorTerminalBg=$ConstColorBgLevel3
+    ConstColorTerminalFg="229;232;239m"
+else
+    ConstColorHexBgLevel1="#F1E7D0"
+    ConstColorHexBgLevel2="#F1E7D0"
+    ConstColorHexBgLevel3="#F1E7D0"
+    ConstColorHexBgLevel4="#F1E7D0"
+
+    ConstColorHexFgLevel1="#000000"
+    ConstColorHexFgLevel2="#2E3440"
+    ConstColorHexFgLevel3="#434C5E"
+
+    ConstColorHexFgSelLevel1="#a14c02"
+    ConstColorHexFgSelLevel2="#0ca9a6"
+    ConstColorHexFgSelLevel3="#88C0D0"
+    ConstColorHexFgSelLevel4="#c29b07"
+
+    ConstColorHexC1="#BF616A"
+    ConstColorHexC2="#D08770"
+    ConstColorHexC3="#9f6a00"
+    ConstColorHexC4="#A3BE8C"
+    ConstColorHexC5="#B48EAD"
+
+    ConstColorTerminalBg="241;231;208m"
+    ConstColorTerminalFg="0;0;0m"
+fi
+
+hexToDecimal $ConstColorHexBgLevel1
+ConstColorBgLevel1=$rgb
+hexToDecimal $ConstColorHexBgLevel2
+ConstColorBgLevel2=$rgb
+hexToDecimal $ConstColorHexBgLevel3
+ConstColorBgLevel3=$rgb
+hexToDecimal $ConstColorHexBgLevel4
+ConstColorBgLevel4=$rgb
+hexToDecimal $ConstColorHexFgLevel1
+ConstColorFgLevel1=$rgb
+hexToDecimal $ConstColorHexFgLevel2
+ConstColorFgLevel2=$rgb
+hexToDecimal $ConstColorHexFgLevel3
+ConstColorFgLevel3=$rgb
+hexToDecimal $ConstColorHexC1
+ConstColorC1=$rgb
+hexToDecimal $ConstColorHexC2
+ConstColorC2=$rgb
+hexToDecimal $ConstColorHexC3
+ConstColorC3=$rgb
+hexToDecimal $ConstColorHexC4
+ConstColorC4=$rgb
+hexToDecimal $ConstColorHexC5
+ConstColorC5=$rgb
+
 # set background color
-printf %b '\e[48;2;241;231;208m' '\e[8]' '\e[H\e[J'
+printf %b "\e[48;2;$ConstColorTerminalBg" "\e[8]" "\e[H\e[J"
+# tw: dir +t,o+w
+# ow: o+w
+# st: Directory with the sticky bit set (+t) and not other-writable
+# ex: executable
+dirColor="38;2;0;119;193"
+fileGreen="38;2;6;115;87"
+fileRed="38;2;169;56;56"
+fileGrey="38;2;84;97;105"
+fileOrange="38;2;148;86;5"
+filePurple="38;2;124;18;175"
+LS_COLORS="no=00:fi=00:di=$dirColor:ow=$dirColor:tw=$dirColor:st=$dirColor:ln=36:pi=33:so=35:do=35:bd=33:cd=33:or=0:ex=0:*.tgz=$fileRed:*.zip=$fileRed:*.gz=$fileRed:*.bz2=$fileRed:*.bz=$fileRed:*error=$fileGrey:*.log=$fileGrey:*.jpg=$fileOrange:*.gif=$fileOrange:*.bmp=$fileOrange:*.png=$fileOrange:*.jpeg=$fileOrange:*.tif=$fileOrange:*.h=$fileGrey:*.c=$filePurple:*.cc=$filePurple:*.cpp=$filePurple:*.php=$filePurple:*.inc=$filePurple:*.js=$filePurple:*.ts=$filePurple:*.css=$filePurple:*.java=$filePurple:*.py=$filePurple:*.pl=$filePurple:*.sh=$filePurple:*.json=$fileGreen:*.yaml=$fileGreen:*.yml=$fileGreen:*.xml=$fileGreen:*.sql=$fileGreen"
+LS_OPTIONS="-b --color=auto"
+export LS_COLORS
+export LS_OPTIONS
+GREP_COLORS='mt=38;5;166:ms=01;31:mc=01;31:sl=:cx=:fn=35:ln=32:bn=32:se=36'
+export GREP_COLORS
+
+# + means selected
+export FZF_DEFAULT_OPTS="
+  --color light,hl:$ConstColorHexFgSelLevel4,fg:$ConstColorHexFgLevel2,fg+:$ConstColorHexFgLevel1,bg:$ConstColorHexBgLevel3,bg+:$ConstColorHexBgLevel1,hl+:$ConstColorHexFgSelLevel1
+  --color info:$ConstColorHexC3,prompt:$ConstColorHexC2,spinner:$ConstColorHexFgLevel3,pointer:$ConstColorHexC2,marker:$ConstColorHexC1,header:$ConstColorHexFgLevel2
+"
 
 if [ -f ~/.custEnv ]; then
    . ~/.custEnv
@@ -92,27 +197,6 @@ setTerm
 PROMPT_COMMAND=changePS
 
 
-# tw: dir +t,o+w
-# ow: o+w
-# st: Directory with the sticky bit set (+t) and not other-writable
-# ex: executable
-dirColor="38;2;0;119;193"
-fileGreen="38;2;6;115;87"
-fileRed="38;2;169;56;56"
-fileGrey="38;2;84;97;105"
-fileOrange="38;2;148;86;5"
-filePurple="38;2;124;18;175"
-LS_COLORS="no=00:fi=00:di=$dirColor:ow=$dirColor:tw=$dirColor:st=$dirColor:ln=36:pi=33:so=35:do=35:bd=33:cd=33:or=0:ex=0:*.tgz=$fileRed:*.zip=$fileRed:*.gz=$fileRed:*.bz2=$fileRed:*.bz=$fileRed:*error=$fileGrey:*.log=$fileGrey:*.jpg=$fileOrange:*.gif=$fileOrange:*.bmp=$fileOrange:*.png=$fileOrange:*.jpeg=$fileOrange:*.tif=$fileOrange:*.h=$fileGrey:*.c=$filePurple:*.cc=$filePurple:*.cpp=$filePurple:*.php=$filePurple:*.inc=$filePurple:*.js=$filePurple:*.ts=$filePurple:*.css=$filePurple:*.java=$filePurple:*.py=$filePurple:*.pl=$filePurple:*.sh=$filePurple:*.json=$fileGreen:*.yaml=$fileGreen:*.yml=$fileGreen:*.xml=$fileGreen:*.sql=$fileGreen"
-LS_OPTIONS="-b --color=auto"
-export LS_COLORS
-export LS_OPTIONS
-GREP_COLORS='mt=38;5;166:ms=01;31:mc=01;31:sl=:cx=:fn=35:ln=32:bn=32:se=36'
-export GREP_COLORS
-
-export FZF_DEFAULT_OPTS='
-  --color light,hl:124,fg+:242,bg+:230,hl+:33
-  --color info:52,prompt:245,spinner:245,pointer:245,marker:208
-'
 export _FASD_DATA=~/.fasd_tmp
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 [ -d ~/.sh_tool/clvv-fasd-4822024/ ] && eval "$(fasd --init auto)"
