@@ -13,6 +13,10 @@ PATH=$PATH:$HOME/bin:/usr/local/bin:/sbin:/usr/local/sbin:/usr/sbin:/usr/local/g
 export PATH
 
 export NODE_PATH=/usr/local/lib/node_modules:/usr/lib/node_modules
+
+# set background color
+printf %b '\e[48;2;241;231;208m' '\e[8]' '\e[H\e[J'
+
 if [ -f ~/.custEnv ]; then
    . ~/.custEnv
 fi
