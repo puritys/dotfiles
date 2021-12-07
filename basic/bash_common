@@ -52,7 +52,8 @@ powerline () {
     if [ -z $enableCustFont ]; then
         powPath="$powPath$color \[\e[0m\]"
     fi
-    PS1="$RET$powPath\n\e[38;2;$ConstColorTerminalFg\e[48;2;$ConstColorTerminalBg"
+    PS1="$RET$powPath\n"
+
 }
 
 changePS () {
