@@ -45,7 +45,6 @@ if [ ! -z ${THEME} ] && [ ${THEME} == "NORD" ]; then
     ConstColorHexC4="#A3BE8C"
     ConstColorHexC5="#B48EAD"
 
-    ConstColorTerminalBg=$ConstColorBgLevel3
     ConstColorTerminalFg="229;232;239m"
 else
     ConstColorHexBgLevel1="#F1E7D0"
@@ -96,6 +95,7 @@ hexToDecimal $ConstColorHexC4
 ConstColorC4=$rgb
 hexToDecimal $ConstColorHexC5
 ConstColorC5=$rgb
+ConstColorTerminalBg=$ConstColorBgLevel3
 
 # set background color
 printf %b "\e[48;2;$ConstColorTerminalBg" "\e[8]" "\e[H\e[J"
