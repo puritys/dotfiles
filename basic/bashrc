@@ -14,106 +14,9 @@ export PATH
 
 export NODE_PATH=/usr/local/lib/node_modules:/usr/lib/node_modules
 
-###############
-# Theme
-###############
-if [ -f ~/.bash_theme_settings ]; then
-    . ~/.bash_theme_settings
+if [ -f ~/.bash_theme ]; then
+    . ~/.bash_theme
 fi
-
-
-hexToDecimal () {
-    hex=$1
-    a=${hex:1:2}
-    b=${hex:3:2}
-    c=${hex:5:2}
-    rgb="$((0x$a));$((0x$b));$((0x$c))"m
-}
-if [ ! -z ${THEME} ] && [ ${THEME} == "NORD" ]; then
-    ConstColorHexBgLevel1="#2E3440"
-    ConstColorHexBgLevel2="#3B4252"
-    ConstColorHexBgLevel3="#434C5E"
-    ConstColorHexBgLevel4="#4C566A"
-
-    ConstColorHexFgLevel1="#D8DEE9"
-    ConstColorHexFgLevel2="#E5E9F0"
-    ConstColorHexFgLevel3="#ECEFF4"
-
-    ConstColorHexFgSelLevel1="#5E81AC"
-    ConstColorHexFgSelLevel2="#81A1C1"
-    ConstColorHexFgSelLevel3="#88C0D0"
-    ConstColorHexFgSelLevel4="#8FBCBB"
-
-    ConstColorHexC1="#BF616A"
-    ConstColorHexC2="#D08770"
-    ConstColorHexC3="#EBCB8B"
-    ConstColorHexC4="#A3BE8C"
-    ConstColorHexC5="#B48EAD"
-
-    ConstColorTerminalFg="229;232;239m"
-else
-    ConstColorHexBgLevel1="#F1E7D0"
-    ConstColorHexBgLevel2="#F1E7D0"
-    ConstColorHexBgLevel3="#F1E7D0"
-    ConstColorHexBgLevel4="#F1E7D0"
-
-    ConstColorHexFgLevel1="#000000"
-    ConstColorHexFgLevel2="#2E3440"
-    ConstColorHexFgLevel3="#434C5E"
-
-    ConstColorHexFgSelLevel1="#a14c02"
-    ConstColorHexFgSelLevel2="#0ca9a6"
-    ConstColorHexFgSelLevel3="#88C0D0"
-    ConstColorHexFgSelLevel4="#c29b07"
-
-    ConstColorHexC1="#BF616A"
-    ConstColorHexC2="#D08770"
-    ConstColorHexC3="#9f6a00"
-    ConstColorHexC4="#A3BE8C"
-    ConstColorHexC5="#B48EAD"
-
-    ConstColorTerminalBg="241;231;208m"
-    ConstColorTerminalFg="0;0;0m"
-fi
-
-hexToDecimal $ConstColorHexBgLevel1
-ConstColorBgLevel1=$rgb
-hexToDecimal $ConstColorHexBgLevel2
-ConstColorBgLevel2=$rgb
-hexToDecimal $ConstColorHexBgLevel3
-ConstColorBgLevel3=$rgb
-hexToDecimal $ConstColorHexBgLevel4
-ConstColorBgLevel4=$rgb
-hexToDecimal $ConstColorHexFgLevel1
-ConstColorFgLevel1=$rgb
-hexToDecimal $ConstColorHexFgLevel2
-ConstColorFgLevel2=$rgb
-hexToDecimal $ConstColorHexFgLevel3
-ConstColorFgLevel3=$rgb
-hexToDecimal $ConstColorHexC1
-ConstColorC1=$rgb
-ConstColorC1NoM={$rgb::-1}
-hexToDecimal $ConstColorHexC2
-ConstColorC2=$rgb
-hexToDecimal $ConstColorHexC3
-ConstColorC3=$rgb
-hexToDecimal $ConstColorHexC4
-ConstColorC4=$rgb
-hexToDecimal $ConstColorHexC5
-ConstColorC5=$rgb
-
-hexToDecimal $ConstColorHexFgSelLevel1
-ConstColorFgSelLevel1=$rgb
-hexToDecimal $ConstColorHexFgSelLevel2
-ConstColorFgSelLevel2=$rgb
-hexToDecimal $ConstColorHexFgSelLevel3
-ConstColorFgSelLevel3=$rgb
-hexToDecimal $ConstColorHexFgSelLevel4
-ConstColorFgSelLevel4=$rgb
-
-
-ConstColorTerminalBg=$ConstColorBgLevel1
-
 
 # set background color
 printf %b "\e[48;2;$ConstColorTerminalBg" "\e[8]" "\e[H\e[J"
@@ -126,11 +29,11 @@ else
     # st: Directory with the sticky bit set (+t) and not other-writable
     # ex: executable
     dirColor="38;2;0;119;193"
-    fileGreen="38;2;6;115;87"
+    fileGreen="38;2;$ConstColorC4NoM"
     fileRed="38;2;$ConstColorC1NoM"
     fileGrey="38;2;84;97;105"
-    fileOrange="38;2;148;86;5"
-    filePurple="38;2;124;18;175"
+    fileOrange="38;2;$ConstColorC2NoM"
+    filePurple="38;2;$ConstColorC5NoM"
     LS_COLORS="no=00:fi=00:di=$dirColor:ow=$dirColor:tw=$dirColor:st=$dirColor:ln=36:pi=33:so=35:do=35:bd=33:cd=33:or=0:ex=0:*.tgz=$fileRed:*.zip=$fileRed:*.gz=$fileRed:*.bz2=$fileRed:*.bz=$fileRed:*error=$fileGrey:*.log=$fileGrey:*.jpg=$fileOrange:*.gif=$fileOrange:*.bmp=$fileOrange:*.png=$fileOrange:*.jpeg=$fileOrange:*.tif=$fileOrange:*.h=$fileGrey:*.c=$filePurple:*.cc=$filePurple:*.cpp=$filePurple:*.php=$filePurple:*.inc=$filePurple:*.js=$filePurple:*.ts=$filePurple:*.css=$filePurple:*.java=$filePurple:*.py=$filePurple:*.pl=$filePurple:*.sh=$filePurple:*.json=$fileGreen:*.yaml=$fileGreen:*.yml=$fileGreen:*.xml=$fileGreen:*.sql=$fileGreen"
     LS_OPTIONS="-b --color=auto"
     export LS_COLORS

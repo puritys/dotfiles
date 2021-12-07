@@ -258,6 +258,7 @@ fnDate() {
 
 fnTmux() {
     c=$1
+    ~/.tmux.conf.sh > ~/.tmux.conf
     cmd="/usr/bin/tmux"
     if [ ! -f $cmd ]; then
         cmd="/usr/local/bin/tmux"

@@ -1,0 +1,111 @@
+#!/bin/bash
+
+###############
+# Theme
+###############
+
+# set default theme
+export THEME=NORD
+export VIM_THEME=mystyle_nord
+if [ -f ~/.bash_theme_settings ]; then
+    . ~/.bash_theme_settings
+fi
+
+hexToDecimal () {
+    hex=$1
+    a=${hex:1:2}
+    b=${hex:3:2}
+    c=${hex:5:2}
+    rgb="$((0x$a));$((0x$b));$((0x$c))"m
+}
+
+if [ ! -z ${THEME} ] && [ ${THEME} == "NORD" ]; then
+    ConstColorHexBgLevel1="#2E3440"
+    ConstColorHexBgLevel2="#3B4252"
+    ConstColorHexBgLevel3="#434C5E"
+    ConstColorHexBgLevel4="#4C566A"
+
+    ConstColorHexFgLevel0="#818EA8"
+    ConstColorHexFgLevel1="#D8DEE9"
+    ConstColorHexFgLevel2="#E5E9F0"
+    ConstColorHexFgLevel3="#ECEFF4"
+
+    ConstColorHexFgSelLevel1="#5E81AC"
+    ConstColorHexFgSelLevel2="#81A1C1"
+    ConstColorHexFgSelLevel3="#88C0D0"
+    ConstColorHexFgSelLevel4="#8FBCBB"
+
+    ConstColorHexC1="#BF616A"
+    ConstColorHexC2="#D08770"
+    ConstColorHexC3="#EBCB8B"
+    ConstColorHexC4="#A3BE8C"
+    ConstColorHexC5="#B48EAD"
+
+    ConstColorTerminalFg="229;232;239m"
+else
+    ConstColorHexBgLevel1="#F1E7D0"
+    ConstColorHexBgLevel2="#F1E7D0"
+    ConstColorHexBgLevel3="#F1E7D0"
+    ConstColorHexBgLevel4="#F1E7D0"
+
+    ConstColorHexFgLevel1="#000000"
+    ConstColorHexFgLevel2="#2E3440"
+    ConstColorHexFgLevel3="#434C5E"
+
+    ConstColorHexFgSelLevel1="#a14c02"
+    ConstColorHexFgSelLevel2="#0ca9a6"
+    ConstColorHexFgSelLevel3="#88C0D0"
+    ConstColorHexFgSelLevel4="#c29b07"
+
+    ConstColorHexC1="#BF616A"
+    ConstColorHexC2="#D08770"
+    ConstColorHexC3="#9f6a00"
+    ConstColorHexC4="#839E6C"
+    ConstColorHexC5="#946E8D"
+
+    ConstColorTerminalFg="0;0;0m"
+fi
+
+hexToDecimal $ConstColorHexBgLevel1
+ConstColorBgLevel1=$rgb
+hexToDecimal $ConstColorHexBgLevel2
+ConstColorBgLevel2=$rgb
+hexToDecimal $ConstColorHexBgLevel3
+ConstColorBgLevel3=$rgb
+hexToDecimal $ConstColorHexBgLevel4
+ConstColorBgLevel4=$rgb
+hexToDecimal $ConstColorHexFgLevel0
+ConstColorFgLevel0=$rgb
+hexToDecimal $ConstColorHexFgLevel1
+ConstColorFgLevel1=$rgb
+hexToDecimal $ConstColorHexFgLevel2
+ConstColorFgLevel2=$rgb
+hexToDecimal $ConstColorHexFgLevel3
+ConstColorFgLevel3=$rgb
+hexToDecimal $ConstColorHexC1
+ConstColorC1=$rgb
+ConstColorC1NoM=${rgb:-1}
+hexToDecimal $ConstColorHexC2
+ConstColorC2=$rgb
+ConstColorC2NoM=${rgb:-1}
+hexToDecimal $ConstColorHexC3
+ConstColorC3=$rgb
+ConstColorC3NoM=${rgb:-1}
+hexToDecimal $ConstColorHexC4
+ConstColorC4=$rgb
+ConstColorC4NoM=${rgb:-1}
+hexToDecimal $ConstColorHexC5
+ConstColorC5=$rgb
+ConstColorC5NoM=${rgb:-1}
+
+hexToDecimal $ConstColorHexFgSelLevel1
+ConstColorFgSelLevel1=$rgb
+hexToDecimal $ConstColorHexFgSelLevel2
+ConstColorFgSelLevel2=$rgb
+hexToDecimal $ConstColorHexFgSelLevel3
+ConstColorFgSelLevel3=$rgb
+hexToDecimal $ConstColorHexFgSelLevel4
+ConstColorFgSelLevel4=$rgb
+
+
+ConstColorTerminalBg=$ConstColorBgLevel2

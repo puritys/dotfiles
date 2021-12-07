@@ -361,7 +361,7 @@ if !empty(glob("~/.vim/plugged/lightline.vim"))
     if g:enablePluginLightLine == 1
 
         let g:lightline = {
-              \ 'colorscheme': 'jellybeans',
+              \ 'colorscheme': 'nord',
               \ 'active': {
               \   'left': [ [ 'mode', 'paste' ],
               \             [ 'readonly', 'filename' ] ],
@@ -448,7 +448,7 @@ Plug 'dominickng/fzf-session.vim'
 " ----------------
 Plug 'dracula/vim', { 'as': 'dracula' }
 Plug 'junegunn/seoul256.vim'
-Plug 'arcticicestudio/nord-vim'
+"Plug 'arcticicestudio/nord-vim' " I copy to local and change some color
 
 " ----------------
 " Code change Plugins

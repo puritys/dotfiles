@@ -1,3 +1,10 @@
+#!/bin/bash
+
+if [ -f ~/.bash_theme ]; then
+    . ~/.bash_theme
+fi
+cat <<EOF
+
 # ---------
 # Command
 # ---------
@@ -56,13 +63,15 @@ bind-key k kill-pane
 set -g status-justify left
 set -g status-interval 120 # 120 sec refresh status
 
-set -g status-bg '#585858'
-set -g status-fg '#d0d0d0'
+set -g status-bg '$ConstColorHexBgLevel3'
+set -g status-fg '$ConstColorHexFgLevel1'
 set -g status-right ''
-set -g status-left '#[fg=#ffffd7]#S'
+set -g status-left '#[fg=$ConstColorHexFgSelLevel1]#S'
 set -g status-left-length 10
-set -g window-status-format " #I #W "
-set -g window-status-current-format "#[fg=#585858,bg=#ffffd7]#[fg=#000000,bg=#ffffd7] #I #W #[fg=#ffffd7,bg=#585858]"
+set -g window-status-format "#[fg=$ConstColorHexBgLevel1,bg=$ConstColorHexBgLevel3] \ue0b1 #[fg=$ConstColorHexFgLevel0,bg=$ConstColorHexBgLevel3] #I #W"
+
+set -g window-status-separator ""
+set -g window-status-current-format "#[fg=$ConstColorHexBgLevel3,bg=$ConstColorHexFgSelLevel2]#[fg=$ConstColorHexBgLevel2,bg=$ConstColorHexFgSelLevel2] #I #W #[fg=$ConstColorHexFgSelLevel2,bg=$ConstColorHexBgLevel3]"
 
 # ---------
 # Basic Setting
@@ -102,3 +111,5 @@ set-option -ga terminal-overrides ",*256col*:Tc"
 #set -g mouse-resize-pane off
 #set -g mouse-select-pane off
 #set -g mouse-select-window off
+
+EOF
