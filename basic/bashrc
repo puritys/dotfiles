@@ -101,7 +101,19 @@ hexToDecimal $ConstColorHexC4
 ConstColorC4=$rgb
 hexToDecimal $ConstColorHexC5
 ConstColorC5=$rgb
+
+hexToDecimal $ConstColorHexFgSelLevel1
+ConstColorFgSelLevel1=$rgb
+hexToDecimal $ConstColorHexFgSelLevel2
+ConstColorFgSelLevel2=$rgb
+hexToDecimal $ConstColorHexFgSelLevel3
+ConstColorFgSelLevel3=$rgb
+hexToDecimal $ConstColorHexFgSelLevel4
+ConstColorFgSelLevel4=$rgb
+
+
 ConstColorTerminalBg=$ConstColorBgLevel1
+
 
 # set background color
 printf %b "\e[48;2;$ConstColorTerminalBg" "\e[8]" "\e[H\e[J"

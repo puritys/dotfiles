@@ -8,8 +8,8 @@ powerline () {
     arrow=$2
     arrowLight=$3
     local powPath=""
-    local bg="109;138;167m"
-    local fg="251;252;253m"
+    local bg="$ConstColorBgLevel4"
+    local fg="$ConstColorFgLevel1"
     local hostColorArrow="\e[38;2;$bg\e[48;5;230m"
     local hostColorArrow2="\e[38;5;230m\e[48;2;$bg"
     local color="\e[38;2;$fg\e[48;2;$bg"
