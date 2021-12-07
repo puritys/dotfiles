@@ -17,6 +17,11 @@ export NODE_PATH=/usr/local/lib/node_modules:/usr/lib/node_modules
 ###############
 # Theme
 ###############
+if [ -f ~/.bash_theme_settings ]; then
+    . ~/.bash_theme_settings
+fi
+
+
 hexToDecimal () {
     hex=$1
     a=${hex:1:2}
@@ -87,6 +92,7 @@ hexToDecimal $ConstColorHexFgLevel3
 ConstColorFgLevel3=$rgb
 hexToDecimal $ConstColorHexC1
 ConstColorC1=$rgb
+ConstColorC1NoM={$rgb::-1}
 hexToDecimal $ConstColorHexC2
 ConstColorC2=$rgb
 hexToDecimal $ConstColorHexC3
@@ -95,26 +101,32 @@ hexToDecimal $ConstColorHexC4
 ConstColorC4=$rgb
 hexToDecimal $ConstColorHexC5
 ConstColorC5=$rgb
-ConstColorTerminalBg=$ConstColorBgLevel3
+ConstColorTerminalBg=$ConstColorBgLevel1
 
 # set background color
 printf %b "\e[48;2;$ConstColorTerminalBg" "\e[8]" "\e[H\e[J"
-# tw: dir +t,o+w
-# ow: o+w
-# st: Directory with the sticky bit set (+t) and not other-writable
-# ex: executable
-dirColor="38;2;0;119;193"
-fileGreen="38;2;6;115;87"
-fileRed="38;2;169;56;56"
-fileGrey="38;2;84;97;105"
-fileOrange="38;2;148;86;5"
-filePurple="38;2;124;18;175"
-LS_COLORS="no=00:fi=00:di=$dirColor:ow=$dirColor:tw=$dirColor:st=$dirColor:ln=36:pi=33:so=35:do=35:bd=33:cd=33:or=0:ex=0:*.tgz=$fileRed:*.zip=$fileRed:*.gz=$fileRed:*.bz2=$fileRed:*.bz=$fileRed:*error=$fileGrey:*.log=$fileGrey:*.jpg=$fileOrange:*.gif=$fileOrange:*.bmp=$fileOrange:*.png=$fileOrange:*.jpeg=$fileOrange:*.tif=$fileOrange:*.h=$fileGrey:*.c=$filePurple:*.cc=$filePurple:*.cpp=$filePurple:*.php=$filePurple:*.inc=$filePurple:*.js=$filePurple:*.ts=$filePurple:*.css=$filePurple:*.java=$filePurple:*.py=$filePurple:*.pl=$filePurple:*.sh=$filePurple:*.json=$fileGreen:*.yaml=$fileGreen:*.yml=$fileGreen:*.xml=$fileGreen:*.sql=$fileGreen"
-LS_OPTIONS="-b --color=auto"
-export LS_COLORS
-export LS_OPTIONS
-GREP_COLORS='mt=38;5;166:ms=01;31:mc=01;31:sl=:cx=:fn=35:ln=32:bn=32:se=36'
-export GREP_COLORS
+if [ ! -z ${THEME} ] && [ ${THEME} == "NORD" ] && [ -f ~/.dir_colors ] && [ -f /usr/local/opt/coreutils/libexec/gnubin/dircolors ] ; then
+    # NORD dircolor
+    test -e ~/.dir_colors && eval `/usr/local/opt/coreutils/libexec/gnubin/dircolors -b ~/.dir_colors`
+else
+    # tw: dir +t,o+w
+    # ow: o+w
+    # st: Directory with the sticky bit set (+t) and not other-writable
+    # ex: executable
+    dirColor="38;2;0;119;193"
+    fileGreen="38;2;6;115;87"
+    fileRed="38;2;$ConstColorC1NoM"
+    fileGrey="38;2;84;97;105"
+    fileOrange="38;2;148;86;5"
+    filePurple="38;2;124;18;175"
+    LS_COLORS="no=00:fi=00:di=$dirColor:ow=$dirColor:tw=$dirColor:st=$dirColor:ln=36:pi=33:so=35:do=35:bd=33:cd=33:or=0:ex=0:*.tgz=$fileRed:*.zip=$fileRed:*.gz=$fileRed:*.bz2=$fileRed:*.bz=$fileRed:*error=$fileGrey:*.log=$fileGrey:*.jpg=$fileOrange:*.gif=$fileOrange:*.bmp=$fileOrange:*.png=$fileOrange:*.jpeg=$fileOrange:*.tif=$fileOrange:*.h=$fileGrey:*.c=$filePurple:*.cc=$filePurple:*.cpp=$filePurple:*.php=$filePurple:*.inc=$filePurple:*.js=$filePurple:*.ts=$filePurple:*.css=$filePurple:*.java=$filePurple:*.py=$filePurple:*.pl=$filePurple:*.sh=$filePurple:*.json=$fileGreen:*.yaml=$fileGreen:*.yml=$fileGreen:*.xml=$fileGreen:*.sql=$fileGreen"
+    LS_OPTIONS="-b --color=auto"
+    export LS_COLORS
+    export LS_OPTIONS
+    GREP_COLORS='mt=38;5;166:ms=01;31:mc=01;31:sl=:cx=:fn=35:ln=32:bn=32:se=36'
+    export GREP_COLORS
+
+fi
 
 # + means selected
 export FZF_DEFAULT_OPTS="

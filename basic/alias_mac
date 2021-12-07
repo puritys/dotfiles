@@ -1,5 +1,11 @@
-alias ll='ls -la -G'
-alias ls='ls -G'
+if [ -f /usr/local/opt/coreutils/libexec/gnubin/ls ];then
+    # brew install coreutils
+    alias ll='/usr/local/opt/coreutils/libexec/gnubin/ls -la --color=auto'
+    alias ls='/usr/local/opt/coreutils/libexec/gnubin/ls --color=auto'
+else
+    alias ll='ls -la -G'
+    alias ls='ls -G'
+fi
 alias gmake='make '
 
 if [ -f ~/.alias_common ]; then
@@ -9,4 +15,3 @@ fi
 if [ -f ~/.alias_docker ]; then
     source ~/.alias_docker
 fi
-
