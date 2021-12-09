@@ -35,7 +35,8 @@ snippet er
 
 snippet exec
 	import {execSync} from 'child_process'
-	execSync(command, {stdio: 'inherit'});
+	let ret = execSync(command, {stdio: 'pipe'});
+	console.dir(ret, {depth: null, colors: true})
 
 snippet class
 	function ${1:function_name}() {//{{{
@@ -45,7 +46,7 @@ snippet class
 	o.xxx = function() {
 	}
 
-sinnpet curl
+snippet curl
 	var headersOpt = {
 		"User-Agent": "curl/xxx.0"
 	};
@@ -138,7 +139,7 @@ snippet json-parse
 
 snippet json-print
 	import util from 'util'
-	console.log(util.inspect(text, {showHidden: false, depth:null, colors: false}));
+	console.dir(text, {depth: null, colors: true});
 
 ########
 #  K ~ O
@@ -146,7 +147,6 @@ snippet json-print
 
 snippet log
 	console.log(${0});
-
 
 snippet mocha
 	var assert = require('assert');
@@ -185,7 +185,8 @@ snippet options
 	let program = new Command();
 	program.version('0.0.1')
 		.option('-d, --debug [type]', 'enable debug or not', 'default')
-		.option('-f, --file [filename]', 'read from file', '')
+		.option('-f, --file [string]', 'read from file', '')
+		.requiredOption('-a, --age [int]', 'your age')
 		.parse(process.argv);
 
 	const options = program.opts();

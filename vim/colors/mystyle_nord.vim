@@ -845,3 +845,6 @@ function! NordPalette() abort
   let ret["nord3_bright"] = s:nord3_gui_bright
   return ret
 endfunction
+
+" Valloric/MatchTagAlways
+hi! link MatchTag TabLineSel
