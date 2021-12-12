@@ -232,6 +232,7 @@ function vim_start() {
     port=$2
     containerName="puritys-vim-$version"
     r=`docker ps --filter="name=$containerName" 2>&1 | wc -l`
+    mountSrc="-v $ROOT:/src -v $HOME/:/puritys"
     if [[ $r == *"1"* ]]; then
         startVimDocker=1
         mkdir -p ~/docker_tmp ~/docker_tmp/fzf_session ~/.m2 ~/docker_tmp/ssh-agent ~/docker_tmp/workspace
@@ -240,8 +241,12 @@ function vim_start() {
         if [ `uname` == "Darwin" ]; then
             # mount root is not working on apple M1
             ROOT=$HOME
+            # don't mount home dir, fuse cpu issue
+            mountSrc=""
         fi
-
+        if [ ! -z  $dockerVimMountSrc ];then
+            mountSrc=$dockerVimMountSrc
+        fi
         pwd=`pwd`
         docker rm $containerName 2>&1
         docker run -d -t --name $containerName  \
@@ -257,12 +262,10 @@ function vim_start() {
             -v $HOME/docker_tmp/ssh-agent/:/docker_tmp/ssh-agent/:ro \
             -v /tmp:/host_tmp:ro \
             -e SSH_AUTH_SOCK=/docker_tmp/ssh-agent/ssh-agent \
-            -v $ROOT:/src  \
-            -v $HOME/:/puritys \
             -v $HOME/docker_tmp:/tmp \
             -v $HOME/docker_tmp/.bash_history:/root/.bash_history \
             -v $HOME/.m2:/root/.m2 \
-            -v $HOME/docker_tmp/workspace:/root/workspace \
+            -v $HOME/docker_tmp/workspace:/root/workspace $mountSrc \
             -w /src$pwd \
             puritys/vim:$version
 
