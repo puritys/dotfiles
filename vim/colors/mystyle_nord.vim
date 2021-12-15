@@ -19,6 +19,7 @@ set background=dark
 let s:nord0_gui = "#2E3440"
 let s:nord1_gui = "#3B4252"
 let s:nord2_gui = "#434C5E"
+" don't use nord3 as FG on default BG(nord1_gui)
 let s:nord3_gui = "#4C566A"
 "let s:nord3_gui_bright = "#616E88"
 let s:nord3_gui_bright = "#818EA8"
@@ -224,7 +225,7 @@ if g:nord_cursor_line_number_background == 0
 else
   call s:hi("CursorLineNr", s:nord4_gui, s:nord1_gui, "NONE", s:nord1_term, "NONE", "")
 endif
-call s:hi("Folded", s:nord3_gui, s:nord1_gui, s:nord3_term, s:nord1_term, s:bold, "")
+call s:hi("Folded", s:nord3_gui_bright, s:nord1_gui, s:nord3_term, s:nord1_term, s:bold, "")
 call s:hi("FoldColumn", s:nord3_gui, s:nord0_gui, s:nord3_term, "NONE", "", "")
 call s:hi("SignColumn", s:nord1_gui, s:nord0_gui, s:nord1_term, "NONE", "", "")
 
