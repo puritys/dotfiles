@@ -8,6 +8,8 @@ snippet imp-format
 snippet imp-curl
 	import fetch from "node-fetch"
 
+snippet imp-jwt
+	import jwt_decode from "jwt-decode";
 ########
 #  A ~ E
 ########
@@ -59,6 +61,21 @@ snippet curl
 	await fetch(url, {
 		agent: agent,
 		headers: headersOpt
+	})
+		.catch(err => console.error(err))
+		.then(res => res.text())
+		.then(body => jconsole.log(body));
+
+snippet curl-post
+	var headersOpt = {
+		"User-Agent": "curl/xxx.0",
+		"content-type": "application/json"
+	};
+	let body = {}
+	await fetch(url, {
+		method: 'POST',
+		headers: headersOpt,
+		body: JSON.stringify(body),
 	})
 		.catch(err => console.error(err))
 		.then(res => res.text())
@@ -140,6 +157,10 @@ snippet json-parse
 snippet json-print
 	import util from 'util'
 	console.dir(text, {depth: null, colors: true});
+
+snippet jwt-decode
+	let jwtDecoded = jwt_decode("token", { header: true });
+	console.log("jwtDecoded" , jwtDecoded);
 
 ########
 #  K ~ O
