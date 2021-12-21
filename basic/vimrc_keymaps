@@ -127,12 +127,18 @@ function! PASTE()
         set paste
         let g:DEF_COLOR = g:colors_name
         call SWITCH_THEME_AS_NAME(l:pasteTheme)
+        if g:enableCocLsp == 1
+            call CocAction('diagnosticToggle')
+        endif
         set nonu
         set pastetoggle=<F3>
     else
         let g:DEF_COLOR = get(g:, 'DEF_COLOR', "nord")
         set  nopaste
         call SWITCH_THEME_AS_NAME(g:DEF_COLOR)
+        if g:enableCocLsp == 1
+            call CocAction('diagnosticToggle')
+        endif
         set nu
         set pastetoggle=
     endif
