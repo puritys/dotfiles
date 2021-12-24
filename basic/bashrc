@@ -19,7 +19,7 @@ if [ -f ~/.bash_theme ]; then
 fi
 
 # set background color
-printf %b "\e[48;2;$ConstColorTerminalBg" "\e[8]" "\e[H\e[J"
+[[ $- == *i* ]] && printf %b "\e[48;2;$ConstColorTerminalBg" "\e[8]" "\e[H\e[J"
 if [ ! -z ${THEME} ] && [ ${THEME} == "NORD" ] && [ -f ~/.dir_colors ] && [ -f /usr/local/opt/coreutils/libexec/gnubin/dircolors ] ; then
     # NORD dircolor
     test -e ~/.dir_colors && eval `/usr/local/opt/coreutils/libexec/gnubin/dircolors -b ~/.dir_colors`
@@ -90,7 +90,7 @@ getMySSHAgent
 
 
 # disable control-s and control-q
-stty -ixon
+[[ $- == *i* ]] && stty -ixon
 
 
 # ------------
