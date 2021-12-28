@@ -1,7 +1,8 @@
 # dotfiles
 My ssh config, vimrc, .screenrc, alias
 
-<img src="https://www.puritys.me/filemanage/blog_files/file_362.jpg?temp=1" width="500" alt="Chrome SSH terminal" />
+<img src="https://www.puritys.me/filemanage/blog_files/terminal_nord.png?temp=2" width="500" alt="Chrome SSH terminal" />
+<!--img src="https://www.puritys.me/filemanage/blog_files/file_362.jpg?temp=1" width="500" alt="Chrome SSH terminal" /-->
 
 # How to install
 

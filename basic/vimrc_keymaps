@@ -237,7 +237,7 @@ if g:enablePluginAle == 1
         if !empty(glob("~/.vim/plugged/ale"))
             " use coc to replace these features
             "nnoremap sc :ALELint<CR>
-            nnoremap ,af :ALEFix<CR>
+            nnoremap ,af <ESC>:call TogggleAleFixOnSave()<CR>
             "nnoremap ,ah :ALEHover<CR>
             "nnoremap ,as :ALESymbolSearch
             "nnoremap ,ag :ALEGoToDefinition -tab<CR>

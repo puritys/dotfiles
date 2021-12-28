@@ -13,5 +13,8 @@
     "coc.preferences.extensionUpdateCheck": "never",
     "coc.preferences.jumpCommand": "tabe",
     "diagnostic.messageTarget": "echo",
-    "java.jdt.ls.vmargs": "-javaagent:/usr/local/lib/lombok.jar"
+    "java.jdt.ls.vmargs": "-javaagent:/usr/local/lib/lombok.jar",
+    "coc.preferences.formatOnSaveFiletypes": [
+        "xml"
+    ]
 }
