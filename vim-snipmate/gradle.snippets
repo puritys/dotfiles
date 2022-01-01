@@ -110,7 +110,7 @@ snippet implog-simple
 snippet dep
 	dependencies {
 		implementation (
-
+			"a:b:${version}"
 		)
 	}
 
@@ -181,8 +181,8 @@ snippet dep_local
 
 snippet test_before
 	task buildDir(type: Exec) {
-	  executable "sh"
-	  args "-c", "mkdir -p /home/xxx"
+		executable "sh"
+		args "-c", "mkdir -p /home/xxx"
 	}
 	tasks.test.dependsOn("buildDir")
 
@@ -201,22 +201,22 @@ snippet protobuf
 		)
 	}
 	sourceSets {
-	  main {
-		  proto {
+		main {
+			proto {
 				srcDir 'src/main/java/com/proto'
 				include '**/*.proto'
-		  }
-		  java {
+			}
+			java {
 				srcDirs 'src/main/java', 'build/generated/source/proto/main/java'
-		  }
-	  }
+			}
+		}
 	}
 	protobuf {
-	  // Configure the protoc executable
-	  protoc {
-		  // Download from repositories
-		  artifact = 'com.google.protobuf:protoc:3.7.0'
-	  }
+		// Configure the protoc executable
+		protoc {
+			// Download from repositories
+			artifact = 'com.google.protobuf:protoc:3.7.0'
+		}
 	}
 
 snippet: imp_proto
