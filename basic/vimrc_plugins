@@ -129,6 +129,7 @@ let g:snipMate.scope_aliases['php'] = 'core_php,core_html'
 let g:snipMate.scope_aliases['inc'] = 'core_php'
 let g:snipMate.scope_aliases['xml'] = 'mvn_pom'
 let g:snipMate.scope_aliases['java'] = 'java,groovy'
+let g:snipMate.scope_aliases['groovy'] = 'java,groovy,gradle'
 let g:snipMate.scope_aliases['python'] = 'py'
 let g:snipMate.scope_aliases['vim'] = 'vim'
 
