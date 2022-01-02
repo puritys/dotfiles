@@ -123,8 +123,11 @@ fi
 setTerm
 PROMPT_COMMAND=changePS
 
-
-export _FASD_DATA=~/.fasd_tmp
+if [ ! -z $FASD_TMP ]; then
+    export _FASD_DATA=$FASD_TMP
+else
+    export _FASD_DATA=~/.fasd_tmp
+fi
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 [ -d ~/.sh_tool/clvv-fasd-4822024/ ] && eval "$(fasd --init auto)"
 

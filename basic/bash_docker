@@ -235,7 +235,7 @@ function vim_start() {
     mountSrc="-v $ROOT:/src -v $HOME/:/puritys"
     if [[ $r == *"1"* ]]; then
         startVimDocker=1
-        mkdir -p ~/docker_tmp ~/docker_tmp/fzf_session ~/.m2 ~/docker_tmp/ssh-agent ~/docker_tmp/workspace
+        mkdir -p ~/docker_tmp ~/docker_tmp/fzf_session ~/.m2 ~/docker_tmp/ssh-agent ~/docker_tmp/workspace ~/docker_tmp/.fasd_tmp
         touch ~/docker_tmp/.bash_history
         ROOT="/"
         if [ `uname` == "Darwin" ]; then
