@@ -269,9 +269,15 @@ if [ "x$installVimPlugin" != "x" ];then
     if [ "x" != "x`command -v npm`" ]; then
         mkdir -p ~/.config/coc/extensions;
         sudo chmod -R 755 ~/.config/coc/extensions;
+        if [ `arch` == "aarch64" ];
+            # coc-tabnine not support apple M1 cpu(arm64)
+            cocPlugins=""
+        else
+            cocPlugins="coc-tabnine"
+        fi
         cd ~/.config/coc/extensions;
             npm init -y
-            npm install coc-xml coc-tabnine coc-snippets coc-java coc-groovy coc-tsserver coc-eslint coc-go coc-word coc-phpls coc-pyright coc-json coc-prettier --global-style --ignore-scripts --no-bin-links --only=prod;
+            npm install coc-xml $cocPlugins coc-snippets coc-java coc-groovy coc-tsserver coc-eslint coc-go coc-word coc-phpls coc-pyright coc-json coc-prettier --global-style --ignore-scripts --no-bin-links --only=prod;
             # Manually download tabnine and fix permission
             # - https://update.tabnine.com/bundles/3.7.5/x86_64-unknown-linux-musl/TabNine.zip
             # - sudo chmod -R 755 ~/.config/coc/extensions/coc-tabnine-data/
