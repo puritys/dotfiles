@@ -244,8 +244,8 @@ function vim_start() {
             # don't mount home dir, fuse cpu issue
             mountSrc=""
         fi
-        if [ ! -z  $dockerVimMountSrc ];then
-            mountSrc=$dockerVimMountSrc
+        if [ ! -z  "${dockerVimMountSrc}" ];then
+            mountSrc=${dockerVimMountSrc}
         fi
         pwd=`pwd`
         docker rm $containerName 2>&1
