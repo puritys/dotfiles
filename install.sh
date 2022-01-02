@@ -269,7 +269,7 @@ if [ "x$installVimPlugin" != "x" ];then
     if [ "x" != "x`command -v npm`" ]; then
         mkdir -p ~/.config/coc/extensions;
         sudo chmod -R 755 ~/.config/coc/extensions;
-        if [ `arch` == "aarch64" ];
+        if [ `arch` == "aarch64" ]; then
             # coc-tabnine not support apple M1 cpu(arm64)
             cocPlugins=""
         else
