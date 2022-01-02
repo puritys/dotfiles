@@ -21,6 +21,10 @@ done
 if [ `uname` == "Darwin" ];then
     if [ $version == 11 ];then
         brew install openjdk@11
-        sudo ln -sf /usr/local/opt/openjdk@11/bin/java /usr/local/bin/java
+        if [ -f /opt/homebrew/opt/openjdk@11/bin/java ];then
+            sudo ln -sf /opt/homebrew/opt/openjdk@11/bin/java /usr/local/bin/java
+        else
+            sudo ln -sf /usr/local/opt/openjdk@11/bin/java /usr/local/bin/java
+        fi
     fi
 fi
