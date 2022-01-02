@@ -84,24 +84,26 @@ hexToDecimal $ConstColorHexFgLevel3
 ConstColorFgLevel3=$rgb
 hexToDecimal $ConstColorHexC1
 ConstColorC1=$rgb
-ConstColorC1NoM=${rgb:-1}
+ConstColorC1NoM=${rgb/m/}
 hexToDecimal $ConstColorHexC2
 ConstColorC2=$rgb
-ConstColorC2NoM=${rgb:-1}
+ConstColorC2NoM=${rgb/m/}
 hexToDecimal $ConstColorHexC3
 ConstColorC3=$rgb
-ConstColorC3NoM=${rgb:-1}
+ConstColorC3NoM=${rgb/m/}
 hexToDecimal $ConstColorHexC4
 ConstColorC4=$rgb
-ConstColorC4NoM=${rgb:-1}
+ConstColorC4NoM=${rgb/m/}
 hexToDecimal $ConstColorHexC5
 ConstColorC5=$rgb
-ConstColorC5NoM=${rgb:-1}
+ConstColorC5NoM=${rgb/m/}
 
 hexToDecimal $ConstColorHexFgSelLevel1
 ConstColorFgSelLevel1=$rgb
+ConstColorFgSelLevel1NoM=${rgb/m/}
 hexToDecimal $ConstColorHexFgSelLevel2
 ConstColorFgSelLevel2=$rgb
+ConstColorFgSelLevel2NoM=${rgb/m/}
 hexToDecimal $ConstColorHexFgSelLevel3
 ConstColorFgSelLevel3=$rgb
 hexToDecimal $ConstColorHexFgSelLevel4
