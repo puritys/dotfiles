@@ -262,6 +262,10 @@ snippet listtomap
 		Collectors.toMap(Person::getName,  Function.identity(), (u1, u2) -> u1)
 	);
 
+snippet listtomap2
+	import org.apache.commons.collections4.MapUtils;
+	MapUtils.populateMap(map, list, Animal::getId);
+
 snippet set
 	Set<String> m = new HashSet<String>(Arrays.asList("0", "1"));
 
