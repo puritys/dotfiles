@@ -254,6 +254,14 @@ snippet list-synchronized
 snippet listempty
 	List<String> status = new ArrayList<>();
 
+snippet listtomap
+	List<Person> persons = new ArrayList<>();
+	persons.add((new Person()).setName("aaa1").setAge(12));
+	persons.add((new Person()).setName("aaa2").setAge(13));
+	Map<String, Person> p = persons.stream().collect(
+		Collectors.toMap(Person::getName,  Function.identity(), (u1, u2) -> u1)
+	);
+
 snippet set
 	Set<String> m = new HashSet<String>(Arrays.asList("0", "1"));
 
