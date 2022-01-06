@@ -124,14 +124,17 @@ let g:snipMate.scope_aliases = {}
 let g:snipMate.no_default_aliases = 1
 
 let g:snipMate.scope_aliases['javascript'] = 'core_javascript'
+let g:snipMate.scope_aliases['typescript'] = 'typescript,core_javascript'
 let g:snipMate.scope_aliases['html'] = 'core_html,js'
 let g:snipMate.scope_aliases['php'] = 'core_php,core_html'
 let g:snipMate.scope_aliases['inc'] = 'core_php'
 let g:snipMate.scope_aliases['xml'] = 'mvn_pom'
-let g:snipMate.scope_aliases['java'] = 'java,core_groovy'
+let g:snipMate.scope_aliases['java'] = 'core_java,core_groovy'
 let g:snipMate.scope_aliases['groovy'] = 'java,core_groovy,gradle'
 let g:snipMate.scope_aliases['python'] = 'py'
 let g:snipMate.scope_aliases['vim'] = 'vim'
+let g:snipMate.scope_aliases['kotlin'] = 'kotlin_java,core_java'
+let g:snipMate.scope_aliases['kotlin_gradle'] = 'kotlin_gradle,gradle'
 
 " snippet remap
 "let g:snips_no_mappings = 1

@@ -1,0 +1,18 @@
+snippet type-class
+	class Point {
+		x: number;
+		y: number;
+
+		// Normal signature with defaults
+		constructor(x = 0, y = 0) {
+			this.x = x;
+			this.y = y;
+		}
+	}
+
+snippet async-run
+	let main = async () => {
+		const bar = await baz();
+		// do smt with bar
+	};
+	main();
