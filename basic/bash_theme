@@ -5,8 +5,8 @@
 ###############
 
 # set default theme
-export THEME=NORD
-export VIM_THEME=mystyle_nord
+export THEME= # NORD
+export VIM_THEME=mystyle_white
 if [ -f ~/.bash_theme_settings ]; then
     . ~/.bash_theme_settings
 fi
@@ -43,14 +43,14 @@ if [ ! -z ${THEME} ] && [ ${THEME} == "NORD" ]; then
 
     ConstColorTerminalFg="229;232;239m"
 else
-    ConstColorHexBgLevel1="#F1E7D0"
+    ConstColorHexBgLevel1="#e1d7c0"
     ConstColorHexBgLevel2="#F1E7D0"
-    ConstColorHexBgLevel3="#F1E7D0"
-    ConstColorHexBgLevel4="#F1E7D0"
+    ConstColorHexBgLevel3="#F8EED7"
+    ConstColorHexBgLevel4="#FFF7DE"
 
-    ConstColorHexFgLevel1="#000000"
-    ConstColorHexFgLevel2="#2E3440"
-    ConstColorHexFgLevel3="#434C5E"
+    ConstColorHexFgLevel1="#2E3440"
+    ConstColorHexFgLevel2="#818EA8"
+    ConstColorHexFgLevel3="#E5E9F0"
 
     ConstColorHexFgSelLevel1="#a14c02"
     ConstColorHexFgSelLevel2="#0ca9a6"
