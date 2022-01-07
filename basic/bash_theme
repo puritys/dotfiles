@@ -45,8 +45,8 @@ if [ ! -z ${THEME} ] && [ ${THEME} == "NORD" ]; then
 else
     ConstColorHexBgLevel1="#e1d7c0"
     ConstColorHexBgLevel2="#F1E7D0"
-    ConstColorHexBgLevel3="#F8EED7"
-    ConstColorHexBgLevel4="#FFF7DE"
+    ConstColorHexBgLevel3="#c1b7a0"
+    ConstColorHexBgLevel4="#918770"
 
     ConstColorHexFgLevel1="#2E3440"
     ConstColorHexFgLevel2="#818EA8"
