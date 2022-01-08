@@ -3,6 +3,37 @@
 if [ -f ~/.bash_theme ]; then
     . ~/.bash_theme
 fi
+
+if [ ! -z $THEME ] && [ $THEME == "NORD" ]; then
+
+read -r -d '' colorStyle  <<EOF
+    set -g status-bg '$ConstColorHexBgLevel3'
+    set -g status-fg '$ConstColorHexFgLevel1'
+    set -g status-right ''
+    set -g status-left '#[fg=$ConstColorHexFgSelLevel1]#S'
+    set -g status-left-length 10
+    set -g window-status-format "#[fg=$ConstColorHexBgLevel1,bg=$ConstColorHexBgLevel3] \ue0b1 #[fg=$ConstColorHexFgLevel0,bg=$ConstColorHexBgLevel3] #I #W"
+    set -g window-status-separator ""
+    set -g window-status-current-format "#[fg=$ConstColorHexBgLevel3,bg=$ConstColorHexFgSelLevel2]#[fg=$ConstColorHexBgLevel2,bg=$ConstColorHexFgSelLevel2] #I #W #[fg=$ConstColorHexFgSelLevel2,bg=$ConstColorHexBgLevel3]"
+EOF
+
+else
+
+read -r -d '' colorStyle  <<EOF
+    set -g status-bg '$ConstColorHexBgLevel3'
+    set -g status-fg '$ConstColorHexFgLevel1'
+    set -g status-right ''
+    set -g status-left '#[fg=$ConstColorHexFgSelLevel1]#S'
+    set -g status-left-length 10
+    set -g window-status-format "#[fg=$ConstColorHexFgLevel1,bg=$ConstColorHexBgLevel3] \ue0b1 #[fg=$ConstColorHexFgLevel0,bg=$ConstColorHexBgLevel3] #I #W"
+
+    set -g window-status-separator ""
+    set -g window-status-current-format "#[fg=$ConstColorHexBgLevel3,bg=$ConstColorHexBgLevel4]#[fg=$ConstColorHexFgLevel3,bg=$ConstColorHexBgLevel4] #I #W #[fg=$ConstColorHexBgLevel4,bg=$ConstColorHexBgLevel3]"
+
+EOF
+
+fi
+
 cat <<EOF
 
 # ---------
@@ -63,15 +94,7 @@ bind-key k kill-pane
 set -g status-justify left
 set -g status-interval 120 # 120 sec refresh status
 
-set -g status-bg '$ConstColorHexBgLevel3'
-set -g status-fg '$ConstColorHexFgLevel1'
-set -g status-right ''
-set -g status-left '#[fg=$ConstColorHexFgSelLevel1]#S'
-set -g status-left-length 10
-set -g window-status-format "#[fg=$ConstColorHexFgLevel1,bg=$ConstColorHexBgLevel3] \ue0b1 #[fg=$ConstColorHexFgLevel0,bg=$ConstColorHexBgLevel3] #I #W"
-
-set -g window-status-separator ""
-set -g window-status-current-format "#[fg=$ConstColorHexBgLevel3,bg=$ConstColorHexBgLevel4]#[fg=$ConstColorHexFgLevel3,bg=$ConstColorHexBgLevel4] #I #W #[fg=$ConstColorHexBgLevel4,bg=$ConstColorHexBgLevel3]"
+$colorStyle
 
 # ---------
 # Basic Setting
