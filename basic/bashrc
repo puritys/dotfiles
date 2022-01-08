@@ -19,29 +19,25 @@ if [ -f ~/.bash_theme ]; then
 fi
 
 # set background color
+# brew install dircolor
 [[ $- == *i* ]] && printf %b "\e[48;2;$ConstColorTerminalBg" "\e[8]" "\e[H\e[J"
-if [ ! -z ${THEME} ] && [ ${THEME} == "NORD" ] && [ -f ~/.dir_colors ] && [ -f /usr/local/opt/coreutils/libexec/gnubin/dircolors ] ; then
-    # NORD dircolor
-    test -e ~/.dir_colors && eval `/usr/local/opt/coreutils/libexec/gnubin/dircolors -b ~/.dir_colors`
-else
-    # tw: dir +t,o+w
-    # ow: o+w
-    # st: Directory with the sticky bit set (+t) and not other-writable
-    # ex: executable
-    dirColor="38;2;$ConstColorFgSelLevel2NoM"
-    fileGreen="38;2;$ConstColorC4NoM"
-    fileRed="38;2;$ConstColorC1NoM"
-    fileGrey="38;2;$ConstColorC3NoM"
-    fileOrange="38;2;$ConstColorC2NoM"
-    filePurple="38;2;$ConstColorC5NoM"
-    LS_COLORS="no=00:fi=00:di=$dirColor:ow=$dirColor:tw=$dirColor:st=$dirColor:ln=36:pi=33:so=35:do=35:bd=33:cd=33:or=0:ex=0:*.tgz=$fileRed:*.zip=$fileRed:*.gz=$fileRed:*.bz2=$fileRed:*.bz=$fileRed:*error=$fileGrey:*.log=$fileGrey:*.jpg=$fileOrange:*.gif=$fileOrange:*.bmp=$fileOrange:*.png=$fileOrange:*.jpeg=$fileOrange:*.tif=$fileOrange:*.h=$fileGrey:*.c=$filePurple:*.cc=$filePurple:*.cpp=$filePurple:*.php=$filePurple:*.inc=$filePurple:*.js=$filePurple:*.ts=$filePurple:*.css=$filePurple:*.java=$filePurple:*.py=$filePurple:*.pl=$filePurple:*.sh=$filePurple:*.json=$fileGreen:*.yaml=$fileGreen:*.yml=$fileGreen:*.xml=$fileGreen:*.sql=$fileGreen"
-    LS_OPTIONS="-b --color=auto"
-    export LS_COLORS
-    export LS_OPTIONS
-    GREP_COLORS='mt=38;5;166:ms=01;31:mc=01;31:sl=:cx=:fn=35:ln=32:bn=32:se=36'
-    export GREP_COLORS
 
-fi
+# tw: dir +t,o+w
+# ow: o+w
+# st: Directory with the sticky bit set (+t) and not other-writable
+# ex: executable
+dirColor="38;2;$ConstColorFgSelLevel2NoM"
+fileGreen="38;2;$ConstColorC4NoM"
+fileRed="38;2;$ConstColorC1NoM"
+fileGrey="38;2;$ConstColorC3NoM"
+fileOrange="38;2;$ConstColorC2NoM"
+filePurple="38;2;$ConstColorC5NoM"
+LS_COLORS="no=00:fi=00:di=$dirColor:ow=$dirColor:tw=$dirColor:st=$dirColor:ln=36:pi=33:so=35:do=35:bd=33:cd=33:or=0:ex=0:*.tgz=$fileRed:*.zip=$fileRed:*.gz=$fileRed:*.bz2=$fileRed:*.bz=$fileRed:*error=$fileGrey:*.log=$fileGrey:*.jpg=$fileOrange:*.gif=$fileOrange:*.bmp=$fileOrange:*.png=$fileOrange:*.jpeg=$fileOrange:*.tif=$fileOrange:*.h=$fileGrey:*.c=$filePurple:*.cc=$filePurple:*.cpp=$filePurple:*.php=$filePurple:*.inc=$filePurple:*.js=$filePurple:*.ts=$filePurple:*.css=$filePurple:*.java=$filePurple:*.py=$filePurple:*.pl=$filePurple:*.sh=$filePurple:*.json=$fileGreen:*.yaml=$fileGreen:*.yml=$fileGreen:*.xml=$fileGreen:*.sql=$fileGreen"
+LS_OPTIONS="-b --color=auto"
+export LS_COLORS
+export LS_OPTIONS
+GREP_COLORS='mt=38;5;166:ms=01;31:mc=01;31:sl=:cx=:fn=35:ln=32:bn=32:se=36'
+export GREP_COLORS
 
 # + means selected
 export FZF_DEFAULT_OPTS="

@@ -5,8 +5,8 @@
 ###############
 
 # set default theme
-export THEME=LIGHT
-export VIM_THEME=mystyle_white
+export THEME=NORD
+export VIM_THEME=dynamic
 if [ -f ~/.bash_theme_settings ]; then
     . ~/.bash_theme_settings
 fi
