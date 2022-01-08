@@ -112,7 +112,7 @@ eclipseHome=$HOME/.vim/eclipse
 if [[ `uname` == 'Darwin' ]]; then
     cp -R vim/ ~/.vim
     eclipseHome=$HOME/.vim/Eclipse.app/Contents/Eclipse
-    if [ ! -f /usr/local/opt/coreutils/libexec/gnubin/ls ] && [ ! -f /opt/homebrew/opt/coreutils/libexec/gnubin/ls];then
+    if [ ! -f /usr/local/opt/coreutils/libexec/gnubin/ls ] && [ ! -f /opt/homebrew/opt/coreutils/libexec/gnubin/ls ];then
         brew install coreutils
     fi
 else
