@@ -150,7 +150,7 @@ inoremap <F3> <ESC>:call PASTE()<CR>i
 
 " F4, switch theme
 let g:myThemeIndex=0
-let g:myThemes = ['mystyle_white', 'nord', 'dracula', 'seoul256']
+let g:myThemes = ['mystyle_white', 'mystyle_nord', 'dracula', 'seoul256', 'dynamic']
 function! SWITCH_THEME()
     let g:myThemeIndex = g:myThemeIndex + 1
     if g:myThemeIndex >= len(g:myThemes)

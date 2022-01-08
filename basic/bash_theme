@@ -5,7 +5,7 @@
 ###############
 
 # set default theme
-export THEME= # NORD
+export THEME=LIGHT
 export VIM_THEME=mystyle_white
 if [ -f ~/.bash_theme_settings ]; then
     . ~/.bash_theme_settings
@@ -18,6 +18,24 @@ hexToDecimal () {
     c=${hex:5:2}
     rgb="$((0x$a));$((0x$b));$((0x$c))"m
 }
+
+ConstColorGreyLevel0="#000000"
+ConstColorGreyLevel1="#111111"
+ConstColorGreyLevel2="#222222"
+ConstColorGreyLevel3="#333333"
+ConstColorGreyLevel4="#444444"
+ConstColorGreyLevel5="#555555"
+ConstColorGreyLevel6="#666666"
+ConstColorGreyLevel7="#777777"
+ConstColorGreyLevel8="#888888"
+ConstColorGreyLevel9="#999999"
+ConstColorGreyLevel10="#aaaaaa"
+ConstColorGreyLevel11="#bbbbbb"
+ConstColorGreyLevel12="#cccccc"
+ConstColorGreyLevel13="#dddddd"
+ConstColorGreyLevel14="#eeeeee"
+ConstColorGreyLevel15="#ffffff"
+
 
 if [ ! -z ${THEME} ] && [ ${THEME} == "NORD" ]; then
     ConstColorHexBgLevel1="#2E3440"
@@ -42,6 +60,32 @@ if [ ! -z ${THEME} ] && [ ${THEME} == "NORD" ]; then
     ConstColorHexC5="#B48EAD"
 
     ConstColorTerminalFg="229;232;239m"
+elif [ ! -z ${THEME} ] && [ ${THEME} == "LIGHT" ]; then
+    ConstColorHexBgLevel1="#818EA8"
+    ConstColorHexBgLevel2="#D8DEE9"
+    ConstColorHexBgLevel3="#E5E9F0"
+    ConstColorHexBgLevel4="#ECEFF4"
+
+    ConstColorHexFgLevel0="#2E3440"
+    ConstColorHexFgLevel1="#3B4252"
+    ConstColorHexFgLevel2="#434C5E"
+    ConstColorHexFgLevel3="#4C566A"
+
+    ConstColorHexFgSelLevel1="#5E81AC"
+    ConstColorHexFgSelLevel2="#516181"
+    ConstColorHexFgSelLevel3="#488090"
+    ConstColorHexFgSelLevel4="#4F7C7B"
+
+    ConstColorHexC1="#BF616A"
+    ConstColorHexC2="#D08770"
+    ConstColorHexC3="#ca8b0d"
+    ConstColorHexC4="#4ca600"
+    ConstColorHexC5="#9c1683"
+
+    ConstColorHexFgComment=$ConstColorGreyLevel10
+    ConstColorHexBgOverlay="#C8CED9"
+    ConstColorTerminalFg="229;232;239m"
+
 else
     ConstColorHexBgLevel1="#e1d7c0"
     ConstColorHexBgLevel2="#F1E7D0"
@@ -65,7 +109,12 @@ else
 
     ConstColorTerminalFg="0;0;0m"
 fi
-
+if [ -z $ConstColorHexFgComment ];then
+    ConstColorHexFgComment=$ConstColorHexFgLevel0
+fi
+if [ -z $ConstColorHexBgOverlay ];then
+    ConstColorHexBgOverlay=$ConstColorHexBgLevel1
+fi
 hexToDecimal $ConstColorHexBgLevel1
 ConstColorBgLevel1=$rgb
 hexToDecimal $ConstColorHexBgLevel2
@@ -111,3 +160,5 @@ ConstColorFgSelLevel4=$rgb
 
 
 ConstColorTerminalBg=$ConstColorBgLevel2
+
+export ConstColorHexBgLevel1=$ConstColorHexBgLevel1 ConstColorHexBgLevel2=$ConstColorHexBgLevel2 ConstColorHexBgLevel3=$ConstColorHexBgLevel3 ConstColorHexBgLevel4=$ConstColorHexBgLevel4 ConstColorHexFgLevel0=$ConstColorHexFgLevel0 ConstColorHexFgLevel1=$ConstColorHexFgLevel1 ConstColorHexFgLevel2=$ConstColorHexFgLevel2 ConstColorHexFgLevel3=$ConstColorHexFgLevel3 ConstColorHexFgLevel4=$ConstColorHexFgLevel4 ConstColorHexFgSelLevel1=$ConstColorHexFgSelLevel1 ConstColorHexFgSelLevel2=$ConstColorHexFgSelLevel2 ConstColorHexFgSelLevel3=$ConstColorHexFgSelLevel3 ConstColorHexFgSelLevel4=$ConstColorHexFgSelLevel4 ConstColorHexFgComment=$ConstColorHexFgComment ConstColorHexC1=$ConstColorHexC1 ConstColorHexC2=$ConstColorHexC2 ConstColorHexC3=$ConstColorHexC3 ConstColorHexC4=$ConstColorHexC4 ConstColorHexC5=$ConstColorHexC5 ConstColorHexBgOverlay=$ConstColorHexBgOverlay
