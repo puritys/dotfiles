@@ -2,10 +2,10 @@ if [ -f /usr/local/opt/coreutils/libexec/gnubin/ls ];then
     # brew install coreutils
     alias ll='/usr/local/opt/coreutils/libexec/gnubin/ls -la --color=auto'
     alias ls='/usr/local/opt/coreutils/libexec/gnubin/ls --color=auto'
-else if [ -f /opt/homebrew/opt/coreutils/libexec/gnubin/ls ];then
+elif [ -f /opt/homebrew/opt/coreutils/libexec/gnubin/ls ];then
     # brew install coreutils
-    alias ll='/usr/local/opt/coreutils/libexecgnubin/ls -la --color=auto'
-    alias ls='/usr/local/opt/coreutils/libexecgnubin/ls --color=auto'
+    alias ll='/opt/homebrew/opt/coreutils/libexec/gnubin/ls -la --color=auto'
+    alias ls='/opt/homebrew/opt/coreutils/libexec/gnubin/ls --color=auto'
 else
     alias ll='ls -la -G'
     alias ls='ls -G'
