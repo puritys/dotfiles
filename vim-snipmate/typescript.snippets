@@ -10,9 +10,35 @@ snippet type-class
 		}
 	}
 
-snippet async-run
-	let main = async () => {
-		const bar = await baz();
-		// do smt with bar
-	};
-	main();
+snippet type-format
+	`xxxx = ${yyy}`
+
+snippet type-enum
+	enum Type {
+		a = "a",
+		b = "b",
+	}
+
+snippet type-enum-all
+	enum Type {
+		a = "a",
+		b = "b",
+	}
+	let ty = "a" as Type
+	if (ty.valueOf() === Type.valueOf()) {
+
+	}
+
+snippet type-enum-value
+	xxx as EnumClass
+
+snippet type-func
+	function getXX(id: string = "default") {
+		return null;
+	}
+
+snippet type-default-object
+	func(params: {offset?: number, limit?: number}) {
+		let {offset = 0, limit = 2} = params;
+		console.log("${offset} ${limit}")
+	}

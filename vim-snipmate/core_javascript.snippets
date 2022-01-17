@@ -13,6 +13,12 @@ snippet imp-jwt
 ########
 #  A ~ E
 ########
+snippet async-run
+	let main = async () => {
+		const bar = await baz();
+		// do smt with bar
+	};
+	main();
 
 snippet chr
 	String.fromCharCode(${0});
@@ -224,7 +230,10 @@ snippet time
 
 
 snippet path_file
-	__filename
+	import { dirname } from 'path';
+	import { fileURLToPath } from 'url';
+	let filePath = import.meta.url;
+	const dirname = dirname(filePath));
 
 
 snippet path_cwd
