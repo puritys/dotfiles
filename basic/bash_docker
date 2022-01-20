@@ -161,11 +161,6 @@ function vim_ssh_fn() {
     if [ "x1" == "x$startVimDocker" ];then
         sleep 4
     fi
-    if [ `uname` == "Darwin" ]; then
-        HOME2=`echo $HOME | sed 's/\//\\\\\//g'`
-        pwd=`echo $pwd | sed "s/$HOME2//"`
-    fi
-
     command="ssh -t -e ] root@localhost -p$port \"export SSH_AUTH_SOCK=/docker_tmp/ssh-agent/ssh-agent; cd /src$pwd; /bin/bash\";";
 
     echo $command
@@ -231,7 +226,12 @@ function vim_start() {
     version=$1
     port=$2
     containerName="puritys-vim-$version"
-    r=`docker ps --filter="name=$containerName" 2>&1 | wc -l`
+    dockerHost=""
+    if [ ! -z  "${dockerVimHost}" ];then
+        dockerHost=${dockerVimHost}
+    fi
+
+    r=`docker $dockerHost ps --filter="name=$containerName" 2>&1 | wc -l`
     mountSrc="-v $ROOT:/src -v $HOME/:/puritys"
     if [[ $r == *"1"* ]]; then
         startVimDocker=1
@@ -247,9 +247,10 @@ function vim_start() {
         if [ ! -z  "${dockerVimMountSrc}" ];then
             mountSrc=${dockerVimMountSrc}
         fi
+
         pwd=`pwd`
-        docker rm $containerName 2>&1
-        docker run -d -t --name $containerName  \
+        docker $dockerHost rm $containerName 2>&1
+        docker $dockerHost run -d -t --name $containerName  \
             -e VIM_THEME=mystyle_white \
             -e VIM_PLUGIN_LightLine=1 \
             -e VIM_PLUGIN_YouCompleteMe=0 \
@@ -270,6 +271,6 @@ function vim_start() {
             puritys/vim:$version
 
             #-e USER=puritys \
-        docker exec -d $containerName sh /root/start.sh
+        docker $dockerHost exec -d $containerName sh /root/start.sh
     fi
 }
