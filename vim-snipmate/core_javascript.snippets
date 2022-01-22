@@ -54,6 +54,9 @@ snippet class
 	o.xxx = function() {
 	}
 
+snippet clone
+	let new = Object.assign({}, org);
+
 snippet curl
 	var headersOpt = {
 		"User-Agent": "curl/xxx.0"
@@ -68,9 +71,14 @@ snippet curl
 		agent: agent,
 		headers: headersOpt
 	})
-		.catch(err => console.error(err))
-		.then(res => res.text())
-		.then(body => jconsole.log(body));
+		.catch(err => {
+			console.error(err);
+			throw new Error('error message')
+		})
+		.then(res => {
+			if (res) return res.text();
+			throw new Error('error message')
+		});
 
 snippet curl-post
 	var headersOpt = {
@@ -83,9 +91,14 @@ snippet curl-post
 		headers: headersOpt,
 		body: JSON.stringify(body),
 	})
-		.catch(err => console.error(err))
-		.then(res => res.text())
-		.then(body => jconsole.log(body));
+		.catch(err => {
+			console.error(err);
+			throw new Error('error message')
+		})
+		.then(res => {
+			if (res) return res.text();
+			throw new Error('error message')
+		});
 
 snippet cwd
 	process.cwd()
