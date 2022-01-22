@@ -53,9 +53,19 @@ snippet main
 		id "java-library"
 		id "java"
 	}
+	// ./gradlew run
 	application {
 		mainClassName = 'com.puritys.App'
 	}
+	// ./gradlew runApp -i --args="-Dapp=xxx"
+	ext {
+		app = System.getProperty('app') ? System.getProperty('app') : "TestKt"
+	}
+	task runApp(type: JavaExec) {
+		classpath = sourceSets.main.runtimeClasspath
+		main = project.ext.app
+	}
+
 
 snippet impoptions
 	'commons-cli:commons-cli:1.4'
