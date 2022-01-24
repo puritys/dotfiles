@@ -1,0 +1,22 @@
+snippet /*
+	/*
+	 *
+	 */
+
+snippet log
+	println("textl \${var}")
+
+snippet main
+	fun main(args: Array<String>) {
+		println("Hello World!")
+	}
+
+snippet variable
+	val s = "v"
+	var a = "v" // could not reassign
+
+snippet stack
+	import java.util.ArrayDeque
+	val stack = ArrayDeque<String>()
+	stack.push("a")
+	stack.pop()

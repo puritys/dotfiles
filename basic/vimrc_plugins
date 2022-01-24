@@ -133,7 +133,7 @@ let g:snipMate.scope_aliases['java'] = 'core_java,core_groovy'
 let g:snipMate.scope_aliases['groovy'] = 'java,core_groovy,gradle'
 let g:snipMate.scope_aliases['python'] = 'py'
 let g:snipMate.scope_aliases['vim'] = 'vim'
-let g:snipMate.scope_aliases['kotlin'] = 'kotlin_java,core_java'
+let g:snipMate.scope_aliases['kotlin'] = 'core_kotlin_java'
 let g:snipMate.scope_aliases['kotlin_gradle'] = 'kotlin_gradle,gradle'
 
 " snippet remap

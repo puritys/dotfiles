@@ -1,7 +1,7 @@
-snippet type-getType
+snippet ts-getType
 	typeof XXtype
 
-snippet type-class
+snippet ts-class
 	class Point {
 		x: number;
 		y: number;
@@ -13,16 +13,16 @@ snippet type-class
 		}
 	}
 
-snippet type-format
+snippet ts-format
 	`xxxx = ${yyy}`
 
-snippet type-enum
+snippet ts-enum
 	enum Type {
 		a = "a",
 		b = "b",
 	}
 
-snippet type-enum-all
+snippet ts-enum-all
 	enum Type {
 		a = "a",
 		b = "b",
@@ -36,24 +36,24 @@ snippet type-enum-all
 			break;
 	}
 
-snippet type-enum-value
+snippet ts-enum-value
 	xxx as EnumClass
 
-snippet type-func
+snippet ts-func
 	function getXX(id: string = "default") {
 		return null;
 	}
 
-snippet type-default-object
+snippet ts-default-object
 	func(params: {offset?: number, limit?: number}) {
 		let {offset = 0, limit = 2} = params;
 		console.log("${offset} ${limit}")
 	}
 
-snippet type-merge-object
+snippet ts-merge-object
 	let newObj = {...obj1, ...obj2}
 
-snippet type-anonymous-func-run
+snippet ts-anonymous-func-run
 	(() => {
 		console.log("go");
 	})();

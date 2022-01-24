@@ -76,8 +76,19 @@ snippet curl
 			throw new Error('error message')
 		})
 		.then(res => {
-			if (res) return res.text();
-			throw new Error('error message')
+			if (res && res.status === 200) {
+				return res.text()
+					.then(body => {
+						return body;
+					});
+			} else if (!res){
+				throw new Error(`error message`)
+			} else {
+				return res.text()
+					.then(body => {
+						throw new Error(`error message, resp = ${body}`)
+					})
+			}
 		});
 
 snippet curl-post
