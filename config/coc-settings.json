@@ -17,5 +17,32 @@
     "coc.preferences.formatOnSaveFiletypes": [
         "xml"
     ],
-    "tabnine.priority": 10
+    "tabnine.priority": 10,
+    "snippets.snipmate.enable": true,
+    "snippets.extends": {
+        "java": [
+            "core_java"
+        ],
+        "javascript": [
+            "core_javascript"
+        ],
+        "typecript": [
+            "core_javascript"
+        ],
+        "kotlin": [
+            "core_kotlin_java"
+        ],
+        "php": [
+            "core_php",
+            "core_html"
+        ],
+        "groovy": [
+            "java",
+            "core_groovy",
+            "gradle"
+        ],
+        "xml": [
+            "mvn_pom"
+        ]
+    }
 }
