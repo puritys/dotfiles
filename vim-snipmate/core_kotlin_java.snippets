@@ -1,3 +1,5 @@
+priority -60
+
 snippet /*
 	/*
 	 *
@@ -5,6 +7,23 @@ snippet /*
 
 snippet log
 	println("textl \${var}")
+
+snippet for-from-to
+	for (i in 1 until String.length) {
+	}
+
+snippet for-from-to-step
+	for (i in 1..5 step 2) {
+	}
+
+snippet for-iterator
+	for(item in list){
+	}
+
+snippet for-forEach
+	list.forEach {item ->
+		println(item)
+	}
 
 snippet main
 	fun main(args: Array<String>) {

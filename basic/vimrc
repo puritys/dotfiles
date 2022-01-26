@@ -141,6 +141,7 @@ au BufRead,BufNewFile *.cpp   call INIT_CPP()
 au BufRead,BufNewFile *.php call INIT_PHP()
 au BufRead,BufNewFile *.phtml call INIT_PHP()
 au BufRead,BufNewFile *.inc call INIT_PHP()
+au BufRead,BufNewFile *.kt set filetype=kotlin
 au BufRead,BufNewFile *.kts set filetype=kotlin_gradle
 
 function! Tab_Or_Complete()
