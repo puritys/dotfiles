@@ -303,6 +303,28 @@ nmap <silent> oe <ESC>:CocDiagnostics<CR>
 command! -nargs=0 Prettier :CocCommand prettier.formatFile
 vmap <c-p>  <Plug>(coc-format-selected)
 
+" use <tab> for trigger completion and navigate to the next complete item
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~ '\s'
+endfunction
+
+"inoremap <silent><expr> <down>
+"      \ !coc#_selected() ? "\<down>" : "\<C-n>"
+
+inoremap <silent><expr> <down>
+      \ coc#_selected() ? "\<C-n>" :
+      \ pumvisible() ? "\<C-e>\<down>" : "\<down>"
+
+inoremap <silent><expr> <Tab>
+      \ pumvisible() && !coc#_selected() ? "\<C-n>" :
+      \ coc#_selected() ? "\<C-y>" :
+      \ "\<Tab>"
+
+"let g:coc_snippet_prev = '<Down>'
+"let g:coc_snippet_next = '<tab>'
+
+inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 
 " ===
 " plugin multiple cursor
