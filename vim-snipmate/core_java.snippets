@@ -1,3 +1,5 @@
+priority -60
+
 snippet resource_path
 	this.getClass().getClassLoader().getResource("xxx").getPath();
 
@@ -125,6 +127,12 @@ snippet sleep
 snippet bytetostring
 	new String(byte[]xxx, StandardCharsets.UTF_8);
 
+snippet string-multipleline
+	String a = """
+		a
+		bb
+	""";
+
 # -----------
 # JSON
 # -----------
@@ -189,7 +197,7 @@ snippet class_private
 	final class Field {
 
 		private Field() {
-			 throw new IllegalStateException("Don't initiate class");
+			throw new IllegalStateException("Don't initiate class");
 		}
 	}
 
@@ -667,6 +675,13 @@ snippet mockinject
 		o2 = new o2();
 		MockitoAnnotations.initMocks(this);
 	}
+
+snippet mockprivate
+	Method method = xxObj.getClass().getDeclaredMethod("method_name", Int.class);
+	method.setAccessible(true);
+	Object[] parameters = new Object[1];
+	parameters[0] = 1;
+	int ret = (Int) method.invoke(this, parameters);
 
 snippet unitprodvier
 	@RunWith(DataProviderRunner.class)

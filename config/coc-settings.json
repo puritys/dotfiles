@@ -16,5 +16,6 @@
     "java.jdt.ls.vmargs": "-javaagent:/usr/local/lib/lombok.jar",
     "coc.preferences.formatOnSaveFiletypes": [
         "xml"
-    ]
+    ],
+    "tabnine.priority": 10
 }
