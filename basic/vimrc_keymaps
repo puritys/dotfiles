@@ -321,15 +321,16 @@ inoremap <silent><expr> <up>
       \ pumvisible() ? "\<C-e>\<up>" : "\<up>"
 
 inoremap <silent><expr> <Tab>
-      \ pumvisible() && !coc#_selected() ? "\<C-n>" :
-      \ coc#_selected() ? "\<C-y>" :
+      \ pumvisible() ? "\<C-n>" :
       \ <SID>check_back_space() ? "\<Tab>" :
       \ coc#refresh()
 
 "inoremap <silent><expr> <Tab>
 "      \ pumvisible() && !coc#_selected() ? "\<C-n>" :
 "      \ coc#_selected() ? "\<C-y>" :
-"      \ "\<Tab>"
+"      \ <SID>check_back_space() ? "\<Tab>" :
+"      \ coc#refresh()
+
 
 "let g:coc_snippet_prev = '<Down>'
 "let g:coc_snippet_next = '<tab>'

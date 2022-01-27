@@ -30,7 +30,8 @@
             "core_javascript"
         ],
         "kotlin": [
-            "core_kotlin_java"
+            "core_kotlin_java",
+            "core_java"
         ],
         "php": [
             "core_php",

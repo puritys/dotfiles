@@ -1,19 +1,39 @@
-priority -60
+priority -50
 
-snippet /*
+snippet if "if (condition) { ... }"
+if`!p snip.rv = keyword_spacing(snip)`(${1:true}) {
+	${VISUAL}$0
+}
+
+snippet doc
 	/*
 	 *
 	 */
+
+#########
+# A - F
+#########
+
+snippet array-initial
+	var ret: IntArray = intArrayOf(10, 20)
+	val ret = IntArray(180) // 180 items all zero
+	val ret = IntArray(180) {1} // initialize value
 
 snippet log
 	println("textl \${var}")
 
 snippet for-from-to
-	for (i in 1 until String.length) {
+	for (i in 0 until 3) {
+		0 ~ 2
+	}
+
+snippet for-decrease
+	for (i in 3 downTo 0) {
+		3 ~ 0
 	}
 
 snippet for-from-to-step
-	for (i in 1..5 step 2) {
+	for (i in 0..5 step 2) {
 	}
 
 snippet for-iterator
@@ -24,6 +44,9 @@ snippet for-forEach
 	list.forEach {item ->
 		println(item)
 	}
+
+snippet list-mutable
+	var ret: MutableList<Int> = mutableListOf()
 
 snippet main
 	fun main(args: Array<String>) {
