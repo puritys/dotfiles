@@ -302,6 +302,9 @@ nmap <silent> oe <ESC>:CocDiagnostics<CR>
 " coc prettier: https://github.com/neoclide/coc-prettier
 command! -nargs=0 Prettier :CocCommand prettier.formatFile
 vmap <c-p>  <Plug>(coc-format-selected)
+nmap ,cocdebug :CocCommand workspace.showOutput<CR>
+nmap <leader>rf <Plug>(coc-refactor)
+nmap <leader>rn <Plug>(coc-rename)
 
 " use <tab> for trigger completion and navigate to the next complete item
 function! s:check_back_space() abort

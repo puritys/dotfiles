@@ -17,6 +17,7 @@
     "coc.preferences.formatOnSaveFiletypes": [
         "xml"
     ],
+    "pairs.enableBackspace": false,
     "tabnine.priority": 10,
     "snippets.snipmate.enable": true,
     "snippets.extends": {

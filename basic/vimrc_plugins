@@ -512,7 +512,7 @@ endif
 
 " others
 "Plug 'takac/vim-hardtime' " prevent repeat typing
-Plug 'Raimondi/delimitMate'
+"Plug 'Raimondi/delimitMate' " use coc-pairs to replace this
 "Plug 'pangloss/vim-javascript' " javascript hightlight, better indent
 "Plug 'groenewege/vim-less'    " less highlight, indent, autocomplete
 "Plug 'fatih/vim-go'           " Golang
@@ -570,5 +570,6 @@ endif
 " coc setting
 let g:coc_status_error_sign = "😡"
 let g:coc_status_warning_sign = "🤔"
+let g:coc_disable_transparent_cursor = 1
 "" coc integrate lightline status
 autocmd User CocStatusChange,CocDiagnosticChange call lightline#update()
