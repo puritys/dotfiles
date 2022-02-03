@@ -338,7 +338,7 @@ inoremap <silent><expr> <Tab>
 "let g:coc_snippet_prev = '<Down>'
 "let g:coc_snippet_next = '<tab>'
 
-inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+inoremap <expr> <cr> pumvisible() && coc#_selected() ? "\<C-y>" : "\<C-g>u\<CR>"
 
 " ===
 " plugin multiple cursor
