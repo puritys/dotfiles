@@ -1,5 +1,12 @@
 priority -70
 
+snippet doc
+	/**
+	 * ${0}
+	 * @param xxx xxx
+	 * @return String
+	 */
+
 snippet ts-getType
 	typeof XXtype
 
@@ -55,7 +62,7 @@ snippet ts-default-object
 snippet ts-merge-object
 	let newObj = {...obj1, ...obj2}
 
-snippet ts-anonymous-func-run
+snippet ts-main-func-run
 	(() => {
 		console.log("go");
 	})();

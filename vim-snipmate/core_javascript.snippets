@@ -12,6 +12,8 @@ snippet imp-curl
 
 snippet imp-jwt
 	import jwt_decode from "jwt-decode";
+snippet imp-assert
+	import { strict as assert } from 'assert';
 
 ########
 #  A ~ E
@@ -273,7 +275,7 @@ snippet padleft
 
 snippet padright
 	i.toString().padEnd(10, '0')
-
+	number.toPrecision(5) or toFixed(5)
 
 snippet sleep
 	const delay = ms => new Promise(resolve => setTimeout(resolve, ms))
