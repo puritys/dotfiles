@@ -6,7 +6,7 @@ else
     # yum -y install libtool
     wget https://github.com/neovim/neovim/releases/download/v0.5.1/nvim-linux64.tar.gz
     tar -zxvf nvim-linux64.tar.gz
-    cd nvim-linux64
-    make CMAKE_BUILD_TYPE=Release
-    make install
+    sudo cp -r nvim-linux64/share/nvim/ /usr/share/
+    sudo cp -r nvim-linux64/bin/nvim/ /usr/bin/
+
 fi
