@@ -316,20 +316,20 @@ endfunction
 
 "inoremap <silent><expr> <down>
 "      \ !coc#_selected() ? "\<down>" : "\<C-n>"
+if version > 800 || has('nvim')
+    inoremap <silent><expr> <down>
+          \ coc#_selected() ? "\<C-n>" :
+          \ pumvisible() ? "\<C-e>\<down>" : "\<down>"
 
-inoremap <silent><expr> <down>
-      \ coc#_selected() ? "\<C-n>" :
-      \ pumvisible() ? "\<C-e>\<down>" : "\<down>"
+    inoremap <silent><expr> <up>
+          \ coc#_selected() ? "\<C-p>" :
+          \ pumvisible() ? "\<C-e>\<up>" : "\<up>"
 
-inoremap <silent><expr> <up>
-      \ coc#_selected() ? "\<C-p>" :
-      \ pumvisible() ? "\<C-e>\<up>" : "\<up>"
-
-inoremap <silent><expr> <Tab>
-      \ pumvisible() ? "\<C-n>" :
-      \ <SID>check_back_space() ? "\<Tab>" :
-      \ coc#refresh()
-
+    inoremap <silent><expr> <Tab>
+          \ pumvisible() ? "\<C-n>" :
+          \ <SID>check_back_space() ? "\<Tab>" :
+          \ coc#refresh()
+endif
 "inoremap <silent><expr> <Tab>
 "      \ pumvisible() && !coc#_selected() ? "\<C-n>" :
 "      \ coc#_selected() ? "\<C-y>" :
