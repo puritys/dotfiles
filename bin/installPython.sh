@@ -1,15 +1,21 @@
 # Install Python 3.9
-if [ ! -f /usr/bin/python3 ];then
-    wget https://www.python.org/ftp/python/3.9.0/Python-3.9.0.tgz
-    tar -zxvf Python-3.9.0.tgz
-    cd Python-3.9.0
-    ./configure --prefix=/usr
-    gmake
-    sudo gmake install
-    wget https://bootstrap.pypa.io/get-pip.py
-    sudo /usr/bin/python3.9 get-pip.py
-    #sudo pip3.9 install xxx
-    cd ../
+if [ "x" != "x`command -v yum`" ]; then
+    sudo yum install python38 -y
+else
+    if [ ! -f /usr/bin/python3 ];then
+        if [ ! -f Python-3.9.0.tgz ];then
+            wget https://www.python.org/ftp/python/3.9.0/Python-3.9.0.tgz
+            tar -zxvf Python-3.9.0.tgz
+        fi
+        cd Python-3.9.0
+        ./configure --prefix=/usr --enable-shared
+        gmake
+        sudo gmake install
+        wget https://bootstrap.pypa.io/get-pip.py
+        sudo /usr/bin/python3.9 get-pip.py
+        #sudo pip3.9 install xxx
+        cd ../
+    fi
 fi
 
 # Intsall Python 2.7
