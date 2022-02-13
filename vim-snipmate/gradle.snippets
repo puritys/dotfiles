@@ -18,6 +18,9 @@ snippet application
 		id 'com.github.johnrengelman.shadow' version '7.0.0'
 		id 'java'
 	}
+	repositories {
+		jcenter()
+	}
 	shadowJar {
 		baseName = 'shadow'
 		classifier = null
