@@ -134,6 +134,12 @@ snippet export
 snippet dirpath
 	__dirname
 
+snippet doc
+	/**
+	*
+	*/
+
+
 ########
 #  F ~ J
 ########
@@ -291,11 +297,12 @@ snippet try
 
 	}
 
+snippet reduce
+	let res = ["a", "b"].reduce((pre, cur) => {
+		return pre + ","+ cur
+	}, "init");
+
+
 ########
 #  U ~ Z
 ########
-
-snippet /*
-	/**
-	 *
-	 */

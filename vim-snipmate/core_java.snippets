@@ -314,7 +314,7 @@ snippet map-stream-filter-value
 snippet time
 	System.currentTimeMillis();
 
-snippet /*
+snippet doc
 	/**
 	 * ${0}
 	 * @param xxx xxx
@@ -831,6 +831,13 @@ snippet sha
 # S-Z
 #######
 snippet ssl_skip_certificate
+	import javax.net.ssl.SSLContext;
+	import javax.net.ssl.TrustManager;
+	import javax.net.ssl.X509TrustManager;
+	import javax.net.ssl.KeyManager;
+	import javax.net.ssl.KeyManagerFactory;
+
+	KeyManager[] kms = null;
 	String keyManagerFactoryAlgorithm = KeyManagerFactory.getDefaultAlgorithm();
 	KeyManagerFactory kmf = KeyManagerFactory.getInstance(keyManagerFactoryAlgorithm)
 	kms = kmf.getKeyManagers();

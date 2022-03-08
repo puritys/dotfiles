@@ -10,6 +10,11 @@ snippet doc
 snippet ts-getType
 	typeof XXtype
 
+snippet ts-type-equal
+	if (typeof var == "string") {
+
+	}
+
 snippet ts-class
 	class Point {
 		x: number;
@@ -66,3 +71,12 @@ snippet ts-main-func-run
 	(() => {
 		console.log("go");
 	})();
+
+snippet ts-overloading
+	function add(a:string, b:string):string;
+
+	function add(a:number, b:number): number;
+
+	function add(a: any, b:any): any {
+		return a + b;
+	}
