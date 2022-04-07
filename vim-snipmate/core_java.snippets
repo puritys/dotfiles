@@ -183,8 +183,11 @@ snippet atoi
 snippet atol
 	Long.parseLong(${1});
 
-snippet empty
+snippet empty "check string is empty"
 	StringUtils.isBlank(${1});
+
+snippet (empty "check string is empty in if condition"
+	(StringUtils.isBlank(${1})
 
 snippet main
 	public class main {

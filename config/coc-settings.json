@@ -19,6 +19,8 @@
     ],
     "pairs.enableBackspace": false,
     "tabnine.priority": 10,
+    "suggest.enablePreselect": true,
+    "suggest.preferCompleteThanJumpPlaceholder": true,
     "snippets.snipmate.enable": true,
     "snippets.extends": {
         "java": [

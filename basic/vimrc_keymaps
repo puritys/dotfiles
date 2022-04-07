@@ -311,7 +311,7 @@ nmap <leader>rn <Plug>(coc-rename)
 " use <tab> for trigger completion and navigate to the next complete item
 function! s:check_back_space() abort
   let col = col('.') - 1
-  return !col || getline('.')[col - 1]  =~ '\s'
+  return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
 
 "inoremap <silent><expr> <down>
@@ -325,17 +325,12 @@ if version > 800 || has('nvim')
           \ coc#_selected() ? "\<C-p>" :
           \ pumvisible() ? "\<C-e>\<up>" : "\<up>"
 
-    inoremap <silent><expr> <Tab>
-          \ pumvisible() ? "\<C-n>" :
-          \ <SID>check_back_space() ? "\<Tab>" :
-          \ coc#refresh()
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? "\<C-n>" :
+      \ coc#expandable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#refresh()
 endif
-"inoremap <silent><expr> <Tab>
-"      \ pumvisible() && !coc#_selected() ? "\<C-n>" :
-"      \ coc#_selected() ? "\<C-y>" :
-"      \ <SID>check_back_space() ? "\<Tab>" :
-"      \ coc#refresh()
-
 
 "let g:coc_snippet_prev = '<Down>'
 "let g:coc_snippet_next = '<tab>'
