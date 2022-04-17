@@ -355,7 +355,22 @@ if !empty(glob("~/.vim/plugged/vim-indent-guides"))
     let g:indent_guides_guide_size = 1
 endif
 
-
+" --------------
+" tagbar
+" --------------
+let g:tagbar_type_typescript = {
+  \ 'ctagstype': 'typescript',
+  \ 'kinds': [
+    \ 'c:classes',
+    \ 'n:modules',
+    \ 'f:functions',
+    \ 'v:variables',
+    \ 'v:varlambdas',
+    \ 'm:members',
+    \ 'i:interfaces',
+    \ 'e:enums',
+  \ ]
+\ }
 
 " --------------
 " light line
