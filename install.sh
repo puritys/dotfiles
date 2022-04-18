@@ -262,15 +262,15 @@ if [ "x$installVimPlugin" != "x" ];then
         $sudo rm -rf ~/.vim/.vimrc_vundle
     fi
 
+    if [ "x" == "x`command -v npm`" ]; then
+        sudo dnf install npm -y
+    fi
+
     curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
     sudo rm -rf ~/.vim/plugged/vim-snipmate/
     echo "\n" | vim -c :PlugInstall +qall
-
-    if [ "x" != "x`command -v npm`" ]; then
-        sudo dnf install npm -y
-    fi
 
     # install coc plugin
     if [ "x" != "x`command -v npm`" ]; then
