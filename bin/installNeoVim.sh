@@ -10,4 +10,5 @@ else
     sudo cp -r nvim-linux64/bin/nvim /usr/bin/
     sudo chmod -R 755 /usr/share/nvim/
     sudo chmod 755 /usr/bin/nvim
+    sudo ln -sf /usr/bin/nvim /usr/bin/vim
 fi
