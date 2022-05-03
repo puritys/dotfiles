@@ -17,6 +17,8 @@
     "coc.preferences.formatOnSaveFiletypes": [
         "xml"
     ],
+    "typescript.suggest.enabled": true,
+    "typescript.format.enabled": true,
     "pairs.enableBackspace": false,
     "tabnine.priority": 10,
     "suggest.preferCompleteThanJumpPlaceholder": true,

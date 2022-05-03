@@ -1,9 +1,213 @@
 priority -60
 
+#######
+# A - F
+#######
+
+snippet execute-submit
+	ExecutorService.submit(() -> {  })
+
+snippet exec-promise
+	import {execSync, exec} from "child_process";
+	import util from 'util';
+	const execPromise = util.promisify(exec);
+
+snippet date-string
+	new Date().toString())
+
+snippet dateToTime
+	SimpleDateFormat dateFormat = new SimpleDateFormat("yyyyMMdd");
+	dateFormat.setTimeZone(TimeZone.getTimeZone("Asia/Taipei"));
+	try {
+		return dateFormat.parse("20200101").getTime();
+	} carch (Exception e) {
+
+	}
+
+snippet filewrite
+	try {
+		FileOutputStream out = new FileOutputStream("filename");
+		out.write(data.getBytes());
+		out.close();
+	} catch (Exception e) {
+		LOG.error("Exception, err = " + e.getMessage());
+	}
+
+snippet fileread
+	String text = new String(Files.readAllBytes(Paths.get("filename")), StandardCharsets.UTF_8);
+
+snippet fileread_linebyline
+	BufferedReader bufReader = null;
+	File file = new File(filePath);
+	if (!file.isFile()) {
+		throw exception
+	}
+	try {
+		bufReader = new BufferedReader(
+		new InputStreamReader(new FileInputStream(file), Charset.forName("Big5"))
+		String line;
+		while ((line = bufReader.readLine()) != null) {
+		}
+	} catch (Exception e) {
+	} finally {
+		bufReader.close();
+	}
+
+
+
+snippet calender
+	Calendar startTime = Calendar.getInstance(TimeZone.getTimeZone("Asia/Taipei"));
+	startTime.setTimeInMillis(1583921131000L);
+	System.out.println("date " + startTime.getTime());
+
+
+# -------------
+# Future / Complete Future
+# -------------
+
+snippet future-simple
+	CompletableFuture<String> completableFuture
+		= CompletableFuture.supplyAsync(() -> "Hello")
+
+snippet future-combo
+	CompletableFuture<String> completableFuture
+		= CompletableFuture.supplyAsync(() -> "Hello")
+		.thenCompose(s -> {
+				xx;
+				CompletableFuture.supplyAsync(() -> s + " World");
+	});
+
+snippet future-multi-request
+	CompletableFuture<String> f1 = sss.get();
+	CompletableFuture<Integer> f2 = zzz.get(qs);
+	return CompletableFuture.allOf(f1, f2
+	).thenCompose(non -> {
+		String s = f1.join();
+		Integer i= f2.join();
+	});
+
+
+#######
+# G - K
+#######
+
+snippet impgsontype
+	import com.google.gson.reflect.TypeToken;
+	import java.lang.reflect.Type;
+
+snippet imp-instant
+	import java.time.Instant;
+	import java.time.ZonedDateTime;
+	import java.time.ZoneId;
+	import java.time.temporal.ChronoUnit;
+	import java.time.format.DateTimeFormatter;
+
+snippet gsontype
+	Type lastKeyType = (new TypeToken<Map<String, AttributeValue>>() { }).getType();
+	GSON.fromJson(data, lastKeyType)
+
+
+#######
+# L - Q
+#######
+snippet log
+	System.out.println(${1});
+
+snippet optional_if
+	String text = Optional.ofNullable(t1).orElseGet(() -> getT2());
+# -----------
+# Protobuf
+# -----------
+
+snippet proto
+	syntax = "proto3";
+	package com.xxx.yyy;
+	option java_outer_classname = "ZzzProto";
+	enum Option {
+		A = 0
+		B = 1
+	}
+	message Msg {
+		string id = 1;
+		Option opt = 2; // A or B
+		string name = 3;
+		repeated string aList = 4;
+	}
+
+
+snippet proto_enum
+	enum Option {
+		A = 0
+		B = 1
+	}
+#######
+# R - W
+#######
 snippet resource_path
 	this.getClass().getClassLoader().getResource("xxx").getPath();
 
-snippet log
+snippet runable_func
+	public <T> T getObj(Callable<T> func) {
+		return (T) func.call();
+	}
+snippet sort
+	List<Employee> emplyees;
+	Comparator<Employee> compareById = (Employee o1, Employee o2) ->
+										o1.getId().compareTo( o2.getId() );
+	Collections.sort(emplyees, compareById);
+
+snippet timeToDate
+	ZonedDateTime date = ZonedDateTime.ofInstant(i, ZoneId.of("Asia/Taipei"));
+	DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy/MM/dd");
+	System.out.println("date " + date.format(formatter));
+
+snippet sha
+	try {
+		MessageDigest digest = MessageDigest.getInstance("SHA-256");
+		return new String(digest.digest("text".getBytes(StandardCharsets.UTF_8)), StandardCharsets.UTF_8);
+	} catch (Exception e) {
+		logger.error("err");
+	}
+
+
+snippet ssl_skip_certificate
+	import javax.net.ssl.SSLContext;
+	import javax.net.ssl.TrustManager;
+	import javax.net.ssl.X509TrustManager;
+	import javax.net.ssl.KeyManager;
+	import javax.net.ssl.KeyManagerFactory;
+
+	KeyManager[] kms = null;
+	String keyManagerFactoryAlgorithm = KeyManagerFactory.getDefaultAlgorithm();
+	KeyManagerFactory kmf = KeyManagerFactory.getInstance(keyManagerFactoryAlgorithm)
+	kms = kmf.getKeyManagers();
+	final SSLContext context = sslContextFactory.createSslContext().init(kms, new AcceptAllTrustManager(), null)
+	public static class AcceptAllTrustManager implements X509TrustManager {
+
+		@Override
+		public void checkClientTrusted(X509Certificate[] arg0, String arg1)
+			throws CertificateException {
+		// Nothing to do here
+		}
+
+		@Override
+		public void checkServerTrusted(X509Certificate[] arg0, String arg1)
+			throws CertificateException {
+		// Nothing to do here
+		}
+
+		@Override
+		public X509Certificate[] getAcceptedIssuers() {
+			return new X509Certificate[0];
+		}
+	}
+
+#######
+# X - Z
+#######
+
+
+snippet print
 	System.out.println(${1});
 
 snippet logline
@@ -234,6 +438,11 @@ snippet sw
 			break;
 	}
 
+snippet if
+	if (${1}) {
+
+	}
+
 snippet for
 	for (int i = 0; i < n ; i++) {
 	}
@@ -379,35 +588,6 @@ snippet pathCurrent
 snippet pathDir
 	this.getClass().getClassLoader().getResource("").getPath()
 
-snippet filewrite
-	try {
-		FileOutputStream out = new FileOutputStream("filename");
-		out.write(data.getBytes());
-		out.close();
-	} catch (Exception e) {
-		LOG.error("Exception, err = " + e.getMessage());
-	}
-
-snippet fileread
-	String text = new String(Files.readAllBytes(Paths.get("filename")), StandardCharsets.UTF_8);
-
-snippet fileread_linebyline
-	BufferedReader bufReader = null;
-	File file = new File(filePath);
-	if (!file.isFile()) {
-		throw exception
-	}
-	try {
-		bufReader = new BufferedReader(
-		new InputStreamReader(new FileInputStream(file), Charset.forName("Big5"))
-		String line;
-		while ((line = bufReader.readLine()) != null) {
-		}
-	} catch (Exception e) {
-	} finally {
-		bufReader.close();
-	}
-
 snippet join
 	String.join(",", list);
 
@@ -544,83 +724,9 @@ snippet join-stream
 snippet pair
 	Pair.of(String, String);
 
-# ------------------
-# Time
-# ------------------
 snippet instant-ofEpoch
 	Instant i = Instant.ofEpochMilli(1183921121000L).minus(5, ChronoUnit.DAYS);
 
-snippet timeToDate
-	ZonedDateTime date = ZonedDateTime.ofInstant(i, ZoneId.of("Asia/Taipei"));
-	DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy/MM/dd");
-	System.out.println("date " + date.format(formatter));
-
-snippet date-string
-	new Date().toString())
-
-snippet dateToTime
-	SimpleDateFormat dateFormat = new SimpleDateFormat("yyyyMMdd");
-	dateFormat.setTimeZone(TimeZone.getTimeZone("Asia/Taipei"));
-	try {
-		return dateFormat.parse("20200101").getTime();
-	} carch (Exception e) {
-
-	}
-
-# -------------
-# Future / Complete Future
-# -------------
-
-snippet future-simple
-	CompletableFuture<String> completableFuture
-		= CompletableFuture.supplyAsync(() -> "Hello")
-
-snippet future-combo
-	CompletableFuture<String> completableFuture
-		= CompletableFuture.supplyAsync(() -> "Hello")
-		.thenCompose(s -> {
-				xx;
-				CompletableFuture.supplyAsync(() -> s + " World");
-	});
-
-snippet future-multi-request
-	CompletableFuture<String> f1 = sss.get();
-	CompletableFuture<Integer> f2 = zzz.get(qs);
-	return CompletableFuture.allOf(f1, f2
-	).thenCompose(non -> {
-		String s = f1.join();
-		Integer i= f2.join();
-	});
-
-snippet sort
-	List<Employee> emplyees;
-	Comparator<Employee> compareById = (Employee o1, Employee o2) ->
-										o1.getId().compareTo( o2.getId() );
-	Collections.sort(emplyees, compareById);
-
-
-snippet gsontype
-	Type lastKeyType = (new TypeToken<Map<String, AttributeValue>>() { }).getType();
-	GSON.fromJson(data, lastKeyType)
-
-snippet impgsontype
-	import com.google.gson.reflect.TypeToken;
-	import java.lang.reflect.Type;
-
-snippet imp-instant
-	import java.time.Instant;
-	import java.time.ZonedDateTime;
-	import java.time.ZoneId;
-	import java.time.temporal.ChronoUnit;
-	import java.time.format.DateTimeFormatter;
-
-snippet calender
-	Calendar startTime = Calendar.getInstance(TimeZone.getTimeZone("Asia/Taipei"));
-	startTime.setTimeInMillis(1583921131000L);
-	System.out.println("date " + startTime.getTime());
-
-snippet execute-submit
-	ExecutorService.submit(() -> {  })
 
 # ------------------
 # Exception Handling
@@ -785,82 +891,3 @@ snippet runable
 		}
 	};
 	run.call();
-
-snippet runable_func
-	public <T> T getObj(Callable<T> func) {
-		return (T) func.call();
-	}
-
-snippet optional_if
-	String text = Optional.ofNullable(t1).orElseGet(() -> getT2());
-
-
-# -----------
-# Protobuf
-# -----------
-
-snippet proto
-	syntax = "proto3";
-	package com.xxx.yyy;
-	option java_outer_classname = "ZzzProto";
-	enum Option {
-		A = 0
-		B = 1
-	}
-	message Msg {
-		string id = 1;
-		Option opt = 2; // A or B
-		string name = 3;
-		repeated string aList = 4;
-	}
-
-
-snippet proto_enum
-	enum Option {
-		A = 0
-		B = 1
-	}
-
-snippet sha
-	try {
-		MessageDigest digest = MessageDigest.getInstance("SHA-256");
-		return new String(digest.digest("text".getBytes(StandardCharsets.UTF_8)), StandardCharsets.UTF_8);
-	} catch (Exception e) {
-		logger.error("err");
-	}
-
-
-#######
-# S-Z
-#######
-snippet ssl_skip_certificate
-	import javax.net.ssl.SSLContext;
-	import javax.net.ssl.TrustManager;
-	import javax.net.ssl.X509TrustManager;
-	import javax.net.ssl.KeyManager;
-	import javax.net.ssl.KeyManagerFactory;
-
-	KeyManager[] kms = null;
-	String keyManagerFactoryAlgorithm = KeyManagerFactory.getDefaultAlgorithm();
-	KeyManagerFactory kmf = KeyManagerFactory.getInstance(keyManagerFactoryAlgorithm)
-	kms = kmf.getKeyManagers();
-	final SSLContext context = sslContextFactory.createSslContext().init(kms, new AcceptAllTrustManager(), null)
-	public static class AcceptAllTrustManager implements X509TrustManager {
-
-		@Override
-		public void checkClientTrusted(X509Certificate[] arg0, String arg1)
-			throws CertificateException {
-		// Nothing to do here
-		}
-
-		@Override
-		public void checkServerTrusted(X509Certificate[] arg0, String arg1)
-			throws CertificateException {
-		// Nothing to do here
-		}
-
-		@Override
-		public X509Certificate[] getAcceptedIssuers() {
-			return new X509Certificate[0];
-		}
-	}

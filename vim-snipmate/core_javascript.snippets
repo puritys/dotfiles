@@ -1,4 +1,4 @@
-priority -60
+priority 60
 
 ########
 # import
@@ -170,6 +170,17 @@ snippet file_get_contents
 snippet file_put_contents
 	fs.writeFileSync(${1:filename}, ${2:content}, "UTF-8");
 
+snippet file_read_line_by_line
+	let file = "x.txt"
+	let fileStream = fs.createReadStream(file);
+	let rl = readline.createInterface({
+		input: fileStream,
+		crlfDelay: Infinity
+	});
+	for await (const line of rl) {
+		log.info(line)
+	}
+
 snippet format
 	util.format("string %s", a);
 
@@ -191,6 +202,11 @@ snippet it "it" b
 	it('${1:}', function() {
 		${0}
 	});
+
+snippet if
+	if (${1}) {
+
+	}
 
 snippet json-parse
 	JSON.parse(body);
