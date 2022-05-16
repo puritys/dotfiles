@@ -2833,6 +2833,8 @@ FunctionName com.sun.tracing.dtrace.FunctionName
 Functions sun.security.pkcs11.wrapper.Functions
 Future java.util.concurrent.Future
 FutureTask java.util.concurrent.FutureTask
+FutureCallback com.google.common.util.concurrent.FutureCallback
+FutureCallback org.apache.hc.core5.concurrent.FutureCallback
 GapContent javax.swing.text.GapContent
 GapVector javax.swing.text.GapVector
 GarbageCollectionNotificationInfo com.sun.management.GarbageCollectionNotificationInfo
