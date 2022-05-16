@@ -84,7 +84,22 @@ snippet curl-apache5-ssl
 		return client;
 	}
 
+
 snippet curl-apache5-get
+	final CloseableHttpAsyncClient client = getClient();
+	final HttpHost target = new HttpHost("https", "xxx", 443);
+	final SimpleHttpRequest request = SimpleRequestBuilder.get()
+			.setHttpHost(target)
+			.setPath("/zzzn")
+			.build();
+
+	Future<SimpleHttpResponse> future = client.execute(
+			SimpleRequestProducer.create(request),
+			SimpleResponseConsumer.create(), null);
+	SimpleHttpResponse resp = future.get();
+	JSONObject json = new JSONObject(resp.getBodyText());
+
+snippet curl-apache5-post
 	final String url = String.format("%s/xxx", this.host);
 	final IOReactorConfig ioReactorConfig = IOReactorConfig.custom()
 			.setSoTimeout(Timeout.ofSeconds(5))
