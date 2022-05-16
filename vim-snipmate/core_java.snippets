@@ -60,6 +60,71 @@ snippet calender
 	startTime.setTimeInMillis(1583921131000L);
 	System.out.println("date " + startTime.getTime());
 
+snippet curl-apache5-ssl
+	private CloseableHttpAsyncClient getClient() {
+		SSLContext sslContext = TLS.create(this.keyPath, this.certPath);
+		final IOReactorConfig ioReactorConfig = IOReactorConfig.custom()
+				.setSoTimeout(Timeout.ofSeconds(5))
+				.build();
+
+		final TlsStrategy tlsStrategy = ClientTlsStrategyBuilder.create()
+			.setSslContext(sslContext)
+			.build();
+
+		final PoolingAsyncClientConnectionManager cm = PoolingAsyncClientConnectionManagerBuilder.create()
+				.setTlsStrategy(tlsStrategy)
+				.build();
+
+		CloseableHttpAsyncClient client = HttpAsyncClients.custom()
+		  .setConnectionManager(cm)
+		  .setIOReactorConfig(ioReactorConfig)
+		  .build();
+
+		client.start();
+		return client;
+	}
+
+snippet curl-apache5-get
+	final String url = String.format("%s/xxx", this.host);
+	final IOReactorConfig ioReactorConfig = IOReactorConfig.custom()
+			.setSoTimeout(Timeout.ofSeconds(5))
+			.build();
+
+	final CloseableHttpAsyncClient client = HttpAsyncClients.custom()
+			.setIOReactorConfig(ioReactorConfig)
+			.build();
+	client.start();
+	final SimpleHttpRequest request = SimpleRequestBuilder
+			.post(url)
+			.setBody(payload.toString(), ContentType.APPLICATION_JSON)
+			.setHeader("Authorization", "Basic xx")
+			.build();
+	final Future<SimpleHttpResponse> future = client.execute(
+			SimpleRequestProducer.create(request),
+			SimpleResponseConsumer.create(),
+			new FutureCallback<SimpleHttpResponse>() {
+
+				@Override
+				public void completed(final SimpleHttpResponse response) {
+					System.out.println("status" + new StatusLine(response));
+					System.out.println("resp " + response.getBody().getBodyText());
+					//return response.getBody().toString();
+				}
+
+				@Override
+				public void failed(final Exception ex) {
+					System.out.println(request + "->" + ex);
+				}
+
+				@Override
+				public void cancelled() {
+					System.out.println(request + " cancelled");
+				}
+
+			});
+	SimpleHttpResponse resp = future.get();
+	client.close(CloseMode.GRACEFUL);
+	JSONObject json = new JSONObject(resp.getBodyText());
 
 # -------------
 # Future / Complete Future
@@ -101,6 +166,26 @@ snippet imp-instant
 	import java.time.ZoneId;
 	import java.time.temporal.ChronoUnit;
 	import java.time.format.DateTimeFormatter;
+
+snippet imp-curl-apache5
+	import org.apache.hc.client5.http.async.methods.SimpleHttpRequest;
+	import org.apache.hc.client5.http.async.methods.SimpleHttpResponse;
+	import org.apache.hc.client5.http.async.methods.SimpleRequestBuilder;
+	import org.apache.hc.client5.http.async.methods.SimpleRequestProducer;
+	import org.apache.hc.client5.http.async.methods.SimpleResponseConsumer;
+	import org.apache.hc.client5.http.impl.async.CloseableHttpAsyncClient;
+	import org.apache.hc.client5.http.impl.async.HttpAsyncClients;
+	import org.apache.hc.client5.http.impl.nio.PoolingAsyncClientConnectionManager;
+	import org.apache.hc.client5.http.impl.nio.PoolingAsyncClientConnectionManagerBuilder;
+	import org.apache.hc.client5.http.ssl.ClientTlsStrategyBuilder;
+	import org.apache.hc.core5.concurrent.FutureCallback;
+	import org.apache.hc.core5.http.ContentType;
+	import org.apache.hc.core5.http.HttpHost;
+	import org.apache.hc.core5.http.message.StatusLine;
+	import org.apache.hc.core5.http.nio.ssl.TlsStrategy;
+	import org.apache.hc.core5.io.CloseMode;
+	import org.apache.hc.core5.reactor.IOReactorConfig;
+	import org.apache.hc.core5.util.Timeout;
 
 snippet gsontype
 	Type lastKeyType = (new TypeToken<Map<String, AttributeValue>>() { }).getType();
