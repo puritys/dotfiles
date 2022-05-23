@@ -165,10 +165,10 @@ snippet func
 	} //}}}
 
 snippet file_get_contents
-	fs.readFileSync(${1}, "UTF-8");
+	fs.readFileSync(${1}, {encoding:'utf8', flag:'r'});
 
 snippet file_put_contents
-	fs.writeFileSync(${1:filename}, ${2:content}, "UTF-8");
+	fs.writeFileSync(${1:filename}, ${2:content}, {encoding:'utf8', flag:'w'});
 
 snippet file_read_line_by_line
 	let file = "x.txt"
