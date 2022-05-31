@@ -827,6 +827,9 @@ snippet pair
 snippet instant-ofEpoch
 	Instant i = Instant.ofEpochMilli(1183921121000L).minus(5, ChronoUnit.DAYS);
 
+snippet stream-array
+	keys = String[]
+	keys = Arrays.stream(keys).map(key -> do(key)).toArray(String[]::new);
 
 # ------------------
 # Exception Handling
