@@ -237,7 +237,6 @@ if g:enablePluginAle == 1
         if !empty(glob("~/.vim/plugged/ale"))
             " use coc to replace these features
             "nnoremap sc :ALELint<CR>
-            nnoremap ,af <ESC>:call TogggleAleFixOnSave()<CR>
             "nnoremap ,ah :ALEHover<CR>
             "nnoremap ,as :ALESymbolSearch
             "nnoremap ,ag :ALEGoToDefinition -tab<CR>
@@ -303,6 +302,9 @@ nmap <silent> oe <ESC>:CocDiagnostics<CR>
 
 " coc prettier: https://github.com/neoclide/coc-prettier
 command! -nargs=0 Prettier :CocCommand prettier.formatFile
+nnoremap ,af <ESC>:call ToggleAutoFormatAndFix()<CR>
+command! -nargs=0 ToggleFormat :call ToggleAutoFormatAndFix()
+
 vmap <c-p>  <Plug>(coc-format-selected)
 nmap ,cocdebug :CocCommand workspace.showOutput<CR>
 nmap <leader>rf <Plug>(coc-refactor)

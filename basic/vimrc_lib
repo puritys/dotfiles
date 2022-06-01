@@ -64,3 +64,22 @@ function! TogggleAleFixOnSave()
         let g:ale_fix_on_save = 1
     endif
 endfunction
+
+let g:coc_auto_format_and_fix = 1
+function! ToggleAutoFormatAndFix()
+    if g:enablePluginAle == 1
+        if version > 800 || has('nvim')
+            if !empty(glob("~/.vim/plugged/ale"))
+                call TogggleAleFixOnSave()
+            endif
+        endif
+    endif
+
+    if g:coc_auto_format_and_fix == 1
+        CocDisable
+        let g:coc_auto_format_and_fix = 0
+    else
+        CocEnable
+        let g:coc_auto_format_and_fix = 1
+    endif
+endfunction
