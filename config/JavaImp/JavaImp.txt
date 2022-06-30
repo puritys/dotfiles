@@ -705,6 +705,7 @@ BooleanTypeImpl com.sun.tools.jdi.BooleanTypeImpl
 BooleanValue com.sun.jdi.BooleanValue
 BooleanValueExp javax.management.BooleanValueExp
 BooleanValueImpl com.sun.tools.jdi.BooleanValueImpl
+BooleanUtils org.apache.commons.lang3.BooleanUtils
 Bootstrap com.sun.jdi.Bootstrap
 BootstrapConstructorAccessorImpl sun.reflect.BootstrapConstructorAccessorImpl
 BootstrapMethodError java.lang.BootstrapMethodError
