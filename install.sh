@@ -321,7 +321,7 @@ fi
 
 # install  JavaImp
 # http://www.vim.org/scripts/script.php?script_id=325
-# Java JDK http://download.java.net/openjdk/jdk7/promoted/b147/openjdk-7-fcs-src-b147-27_jun_2011.zip
+# Java JDK https://github.com/AdoptOpenJDK/openjdk-jdk11/archive/refs/tags/jdk-11+28.zip
 downloadOpenJdk=0
 if [ "x$JAVA" != "x" ] && [ ! -d "$HOME/openjdk" ]; then
     downloadOpenJdk=1
@@ -333,16 +333,18 @@ if [ "x$downloadOpenJdk" == "x1" ]; then
     if [ "x" != "x`command -v yum`" ]; then
         sudo yum install unzip -y
     fi
-    wget http://download.java.net/openjdk/jdk7/promoted/b147/openjdk-7-fcs-src-b147-27_jun_2011.zip
+    if [ ! -f "jdk-11+28.zip" ]; then
+        wget https://github.com/AdoptOpenJDK/openjdk-jdk11/archive/refs/tags/jdk-11+28.zip
+    fi
     mkdir ~/.vim/JavaImp
     cp config/JavaImp/* ~/.vim/JavaImp/
     mkdir ~/openjdk
-    mv openjdk-7-fcs-src-b147-27_jun_2011.zip ~/openjdk/
+    mv jdk-11+28.zip ~/openjdk/
     cd ~/openjdk
-        unzip openjdk-7-fcs-src-b147-27_jun_2011.zip
-        mv openjdk/jdk/src/share/classes/ ./
-        rm -rf openjdk
-        rm openjdk-7-fcs-src-b147-27_jun_2011.zip
+        unzip jdk-11+28.zip
+        mv openjdk-jdk11-jdk-11-28/src ./classes
+        rm -rf openjdk-jdk11-jdk-11-28
+        rm jdk-11+28.zip
     cd -
 fi
 

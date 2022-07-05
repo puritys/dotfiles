@@ -10,6 +10,9 @@ function! DisableAle()
    "" let g:ale_linters_explicit = 1
 endfunction
 
+" disable SQL dynamic completion
+let g:omni_sql_no_default_maps = 1
+"let g:loaded_sql_completion = 1
 
 let g:forceUseTab = 1
 if !exists("g:enablePluginLightLine")
@@ -46,6 +49,7 @@ set rtp+=~/.fzf
 syntax on
 
 set laststatus=2   " Always show the statusline
+"set cmdheight=2 " ::help hit-enter, don't show Press ENTER or type command to contin
 set encoding=utf-8 " Necessary to show Unicode glyphs
 if !has('nvim')
     set term=xterm-256color
