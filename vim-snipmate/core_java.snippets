@@ -213,6 +213,15 @@ snippet gsontype
 snippet log
 	System.out.println(${1});
 
+snippet null
+	Objects.requireNonNull(key, "message");
+	Objects.isNull(obj)
+	Objects.nonNull(obj)
+
+snippet null_annotation
+	import lombok.NonNull;
+	@NonNull xx
+
 snippet optional_if
 	String text = Optional.ofNullable(t1).orElseGet(() -> getT2());
 # -----------

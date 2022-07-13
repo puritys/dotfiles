@@ -111,7 +111,10 @@ let g:netrw_liststyle = 3
 " A dir to save JavaImp settings and cache files
 let g:JavaImpDataDir = $HOME . "/.vim/JavaImp"
 " Java Source code path
-let g:JavaImpPaths = $HOME . "/openjdk/classes/"
+let g:JavaImpPaths = $HOME . "/openjdk/classes/java.base/share/classes," .
+ \ $HOME . "/openjdk/classes/java.sql/share/classes," .
+ \ $HOME . "/openjdk/classes/java.logging/share/classes," .
+ \ $HOME . "/openjdk/classes/java.net.http//share/classes"
 
 
 " ----------------
