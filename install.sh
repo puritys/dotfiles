@@ -285,6 +285,9 @@ if [ "x$installVimPlugin" != "x" ];then
         cd ~/.config/coc/extensions;
             npm init -y
             npm install coc-lists coc-pairs coc-xml $cocPlugins coc-snippets coc-java coc-groovy coc-kotlin coc-tsserver coc-eslint coc-go coc-word coc-phpls coc-pyright coc-json coc-prettier coc-sql --global-style --ignore-scripts --no-bin-links --only=prod;
+            # install java decompiler
+            echo "\n" | vim -c :CocInstall https://github.com/dgileadi/vscode-java-decompiler +qall
+
             # Manually download tabnine and fix permission
             # - https://update.tabnine.com/bundles/3.7.5/x86_64-unknown-linux-musl/TabNine.zip
             # - sudo chmod -R 755 ~/.config/coc/extensions/coc-tabnine-data/

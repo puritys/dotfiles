@@ -25,6 +25,9 @@ snippet async-run
 	};
 	main();
 
+snippet class_name
+	this.constructor.name
+
 snippet chr
 	String.fromCharCode(${0});
 
@@ -139,6 +142,14 @@ snippet doc
 	*
 	*/
 
+snippet decorator
+	function log(target, name: string, descriptor: any) {
+		let orgFunc = descriptor.value;
+		descriptor.value = function () {
+			log.info(`xxd${name}`)
+			return orgFunc.apply(this, arguments)
+		}
+	}
 
 ########
 #  F ~ J
@@ -320,6 +331,15 @@ snippet reduce
 		return pre + ","+ cur
 	}, "init");
 
+snippet query_params
+	new URLSearchParams(param).toString() // not support boolean
+	protected toParams(entries) {
+		const result = []
+		for (let key in entries) {
+			result.push(`${key}=${entries[key]}`);
+		}
+		return result.join("&");
+	}
 
 ########
 #  U ~ Z

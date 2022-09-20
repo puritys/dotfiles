@@ -141,6 +141,17 @@ snippet curl-apache5-post
 	client.close(CloseMode.GRACEFUL);
 	JSONObject json = new JSONObject(resp.getBodyText());
 
+snippet format
+	Map<String, String> argus = Map.of("x","y");
+	StrSubstitutor sub = new StrSubstitutor(argus, "{", "}");
+	sub.replace("{x} is ...");
+
+snippet grouping_stream
+	Map<String, List<String>> xxx = list.stream()
+	.collect(
+		Collectors.groupingBy(YYY::getId, HashMap::new, Collectors.toCollection(ArrayList::new))
+	);
+
 # -------------
 # Future / Complete Future
 # -------------
@@ -212,6 +223,11 @@ snippet gsontype
 #######
 snippet log
 	System.out.println(${1});
+
+snippet limiter
+	import com.google.common.util.concurrent.RateLimiter;
+	RateLimiter rateLimiter = RateLimiter.create(20);
+	rateLimiter.acquire();
 
 snippet null
 	Objects.requireNonNull(key, "message");
@@ -499,6 +515,12 @@ snippet atol
 snippet empty "check string is empty"
 	StringUtils.isBlank(${1});
 
+snippet empty_any
+	StringUtils.isAnyBlank();
+
+snippet empty_all
+	StringUtils.isAllBlank();
+
 snippet (empty "check string is empty in if condition"
 	(StringUtils.isBlank(${1})
 
@@ -565,6 +587,9 @@ snippet random
 	import java.util.Random;
 	Random ran = new Random();
 	ran.nextInt(42);
+
+snippet random_thread_local
+	int ran = ThreadLocalRandom.current().nextInt(0, 100);
 
 snippet random-uuid
 	import java.util.UUID;
@@ -839,6 +864,25 @@ snippet instant-ofEpoch
 snippet stream-array
 	keys = String[]
 	keys = Arrays.stream(keys).map(key -> do(key)).toArray(String[]::new);
+
+snippet urlencodeUrl
+	public String encodeQueryString(String url) {
+		try {
+			URL u = new URL(url);
+			List<String> query_pairs = new ArrayList<>();
+			String query = u.getQuery();
+			String[] pairs = query.split("&");
+			for (String pair : pairs) {
+				int idx = pair.indexOf("=");
+				query_pairs.add(pair.substring(0, idx) + "=" +  URLEncoder.encode(pair.substring(idx + 1), "UTF-8"));
+			}
+			String port = (u.getPort() > 0) ? ":" +u.getPort() : "";
+			return u.getProtocol() + "://"+ u.getHost() + port + u.getPath() + "?" + String.join("&", query_pairs);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		}
+	}
 
 # ------------------
 # Exception Handling

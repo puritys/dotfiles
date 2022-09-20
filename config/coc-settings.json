@@ -8,6 +8,7 @@
     "diagnostic.virtualText": false,
     "diagnostic.warningSign": "🤔",
     "diagnostic.errorSign": "😡",
+    "suggest.noselect": true,
     "suggest.autoTrigger": "always",
     "suggest.triggerAfterInsertEnter": false,
     "coc.preferences.extensionUpdateCheck": "never",
@@ -25,7 +26,8 @@
     "snippets.snipmate.enable": true,
     "snippets.extends": {
         "java": [
-            "core_java"
+            "core_java",
+            "core_groovy"
         ],
         "javascript": [
             "core_javascript"

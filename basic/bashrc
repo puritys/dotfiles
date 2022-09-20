@@ -93,7 +93,11 @@ getMySSHAgent
 # source bash-it
 # ------------
 # Path to the bash it configuration
-export BASH_IT="/home/puritys/.bash_it"
+if [ "$PLATFORM" == "Darwin" ]; then
+    export BASH_IT="/Users/puritys/.bash_it"
+else
+    export BASH_IT="/home/puritys/.bash_it"
+fi
 
 # Lock and Load a custom theme file
 # location /.bash_it/themes/

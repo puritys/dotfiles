@@ -320,15 +320,21 @@ endfunction
 "      \ !coc#_selected() ? "\<down>" : "\<C-n>"
 if version > 800 || has('nvim')
     inoremap <silent><expr> <down>
-          \ coc#_selected() ? "\<C-n>" :
-          \ pumvisible() ? "\<C-e>\<down>" : "\<down>"
+          \ coc#pum#visible() && coc#pum#info()['index'] != -1 ? coc#pum#next(1) : "\<down>"
 
     inoremap <silent><expr> <up>
-          \ coc#_selected() ? "\<C-p>" :
-          \ pumvisible() ? "\<C-e>\<up>" : "\<up>"
+          \ coc#pum#visible() && coc#pum#info()['index'] != -1 ? coc#pum#prev(1) : "\<up>"
+
+"    inoremap <silent><expr> <down>
+"          \ coc#_select_confirm() ? coc#pum#next(1) :
+"          \ coc#pum#visible() ? "\<C-e>\<down>" : "\<down>"
+"
+"    inoremap <silent><expr> <up>
+"          \ coc#_select_confirm() ? coc#pum#prev(1) :
+"          \ coc#pum#visible() ? "\<C-e>\<up>" : "\<up>"
 
 inoremap <silent><expr> <TAB>
-      \ pumvisible() ? "\<C-n>" :
+      \ coc#pum#visible() ? coc#pum#next(1) :
       \ coc#expandable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
       \ <SID>check_back_space() ? "\<TAB>" :
       \ coc#refresh()
@@ -337,7 +343,7 @@ endif
 "let g:coc_snippet_prev = '<Down>'
 "let g:coc_snippet_next = '<tab>'
 
-inoremap <expr> <cr> pumvisible() && coc#_selected() ? "\<C-y>" : "\<C-g>u\<CR>"
+inoremap <expr> <cr> coc#pum#visible() ? coc#pum#confirm() : "\<CR>"
 
 function! s:show_documentation()
   if (index(['vim','help'], &filetype) >= 0)

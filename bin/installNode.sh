@@ -11,4 +11,8 @@ if [ `uname` == "Linux" ]; then
 elif [ "x" != "x`command -v yum`" ]; then
     curl -sL https://rpm.nodesource.com/setup_17.x | sudo bash -
     sudo yum install nodejs -y
+else
+    curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
+    nvm install 16
+    nvm use 16
 fi
