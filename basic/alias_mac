@@ -19,3 +19,14 @@ fi
 if [ -f ~/.alias_docker ]; then
     source ~/.alias_docker
 fi
+
+alias base64encode=base64encodeFn
+alias base64decode=base64decodeFn
+
+base64encodeFn() {
+    echo -n "$1" | openssl base64  -e -A
+}
+
+base64decodeFn() {
+    echo -n "$1" | openssl base64  -d -A
+}
