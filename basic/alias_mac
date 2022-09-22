@@ -22,6 +22,7 @@ fi
 
 alias base64encode=base64encodeFn
 alias base64decode=base64decodeFn
+alias dateMy=dateFn
 
 base64encodeFn() {
     echo -n "$1" | openssl base64  -e -A
@@ -29,4 +30,13 @@ base64encodeFn() {
 
 base64decodeFn() {
     echo -n "$1" | openssl base64  -d -A
+}
+
+dateFn() {
+    if [ ! -z $1 ] && [ $1 -gt 1000000 ]; then
+        date -r $1
+        date -u -r $1 +%FT%TZ
+    else
+        date -u +%s
+    fi
 }
