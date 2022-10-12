@@ -20,6 +20,7 @@ done
 #appendPaths="target/generated-sources/java,target/generated-sources/annotations"
 appendPaths="src/generated-sources/java"
 appendPaths="target/generated-sources/java"
+appendPaths="target/generated-sources/openapi/src/main/java"
 
 
 appendClasspath () {
