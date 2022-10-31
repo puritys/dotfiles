@@ -175,3 +175,18 @@ snippet ls_as_array
 	files=($(ls *))
 snippet str_pad
 	id=`printf "%04d\n" $i`
+
+snippet replace
+	str=${str//\"/'/}
+
+snippet substring
+	str=${str:0:1}
+
+snippet array_guide
+	arr=()	Create an empty array
+	arr=(1 2 3)	Initialize array
+	${arr[2]}	Retrieve third element
+	${#arr[@]}	Calculate array size
+	arr[0]=3	Overwrite 1st element
+	str=$(ls)	Save ls output as a string
+	arr=( $(ls) )	Save ls output as an array of files

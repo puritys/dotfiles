@@ -120,6 +120,10 @@ snippet implog-simple
 	"org.slf4j:slf4j-simple:1.7.25"
 	src/main/resources/simplelogger.properties : org.slf4j.simpleLogger.defaultLogLevel=debug
 
+snippet implombok
+	compileOnly 'org.projectlombok:lombok:1.18.24'
+	annotationProcessor 'org.projectlombok:lombok:1.18.24'
+
 snippet dep
 	dependencies {
 		implementation (
