@@ -13,5 +13,16 @@ alias dv="vim_in_fn"
 alias dvs="vim_ssh_fn latest 39901"
 alias dvs_stable="vim_ssh_fn stable 39902"
 alias dps="docker ps --no-trunc"
-alias docker_clean="docker  images |grep none | awk '{print \$3}' | xargs -t -n 1 docker rmi -f ; docker rm -v \$(docker ps -a -q -f status=exited)"
+alias docker_clean="dockerClean"
 alias docker_kill="docker ps  |grep -v CONTAINER |awk '{printf \"docker kill %s\n\", $1}' | sh"
+
+
+dockerClean() {
+    if [ command -v "podman" ]; then
+        podman  images |grep 'none' | awk '{print $3}' | xargs -t -n 1 podman rmi -f
+    fi
+
+    if [ command -v "docker" ];then
+        docker  images |grep none | awk '{print \$3}' | xargs -t -n 1 docker rmi -f ; docker rm -v \$(docker ps -a -q -f status=exited)
+    fi
+}
