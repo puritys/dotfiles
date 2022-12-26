@@ -18,11 +18,11 @@ alias docker_kill="docker ps  |grep -v CONTAINER |awk '{printf \"docker kill %s\
 
 
 dockerClean() {
-    if [ command -v "podman" ]; then
+    if [ "x" != "x`command -v podman`" ]; then
         podman  images |grep 'none' | awk '{print $3}' | xargs -t -n 1 podman rmi -f
     fi
 
-    if [ command -v "docker" ];then
-        docker  images |grep none | awk '{print \$3}' | xargs -t -n 1 docker rmi -f ; docker rm -v \$(docker ps -a -q -f status=exited)
+    if [ "x" != "x`command -v docker`" ]; then
+        docker  images |grep none | awk '{print $3}' | xargs -t -n 1 docker rmi -f ; docker rm -v $(docker ps -a -q -f status=exited)
     fi
 }
