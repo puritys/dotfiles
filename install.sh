@@ -183,6 +183,8 @@ installFzf () {
         cd ~/.sh_tool/ ; wget https://github.com/clvv/fasd/tarball/1.0.1
         tar -zxvf 1.0.1
         cd clvv-fasd-4822024; PREFIX=$HOME make install
+        sudo cp fasd /usr/bin/
+        sudo chmod 755 /usr/bin/fasd
         cd ../../
     fi
 
