@@ -27,4 +27,6 @@ if [ `uname` == "Darwin" ];then
             sudo ln -sf /usr/local/opt/openjdk@11/bin/java /usr/local/bin/java
         fi
     fi
+else
+    sudo dnf install java-11-openjdk-devel
 fi

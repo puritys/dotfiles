@@ -9,7 +9,7 @@ if [[ `uname` == 'Darwin' ]]; then
     #python3 -m pip install --user --upgrade pynvim
 else
     # yum -y install libtool
-    wget https://github.com/neovim/neovim/releases/download/v0.5.1/nvim-linux64.tar.gz
+    wget https://github.com/neovim/neovim/releases/download/v0.6.1/nvim-linux64.tar.gz
     tar -zxvf nvim-linux64.tar.gz
     sudo cp -r nvim-linux64/share/nvim/ /usr/share/
     sudo cp -r nvim-linux64/bin/nvim /usr/bin/
