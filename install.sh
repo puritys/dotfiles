@@ -97,7 +97,7 @@ do
     echo "copy $file to $newFile"
     cp $file ~/$newFile
 done
-mkdir -p ~/.config/nvim/
+mkdir -p ~/.config/nvim/ ~/vim_gradle
 cp nvim/init.vim ~/.config/nvim/
 
 pwd=`pwd`

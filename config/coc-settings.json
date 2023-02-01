@@ -57,5 +57,6 @@
         "sha256": "684d98bc1696f150c5f49c20ecafe79201d2ff9337520c227d7f51d2f55c6675",
         "allowed": true
     }
-    ]
+    ],
+    "java.import.gradle.user.home": "~/vim_gradle"
 }
