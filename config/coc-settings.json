@@ -53,10 +53,19 @@
         ]
     },
     "java.imports.gradle.wrapper.checksums": [
-    {
-        "sha256": "684d98bc1696f150c5f49c20ecafe79201d2ff9337520c227d7f51d2f55c6675",
-        "allowed": true
-    }
+        {
+            "sha256": "684d98bc1696f150c5f49c20ecafe79201d2ff9337520c227d7f51d2f55c6675",
+            "allowed": true
+        },
+        {
+            "sha256": "e81f25b9d1caba60aa285810d917d8e0c3be90140295c12713d08eefb7a5e536",
+            "allowed": true
+        },
+        {
+            "sha256": "3bdfcadb0a6274ec4654ad0db5294d63fe0e65c163d65b79d0c3ad9963ec7499",
+            "allowed": true
+        }
+
     ],
     "java.import.gradle.user.home": "~/vim_gradle"
 }
