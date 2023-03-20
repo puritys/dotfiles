@@ -66,6 +66,5 @@
             "allowed": true
         }
 
-    ],
-    "java.import.gradle.user.home": "~/vim_gradle"
+    ]
 }
