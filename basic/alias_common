@@ -25,7 +25,7 @@ alias c='/usr/local/bin/myExec.sh'
 alias urlencode='sh /usr/local/bin/puritys/urlencode.sh '
 alias urldecode='sh /usr/local/bin/puritys/urldecode.sh '
 alias so='source ~/.bash_profile'
-alias rmGradleLock='fnRmGradleLock'
+alias gradleFix='fnGradleFix'
 #alias fg='builtin fg $@; printf "\e[H\e[2J"'
 
 if [ -f /usr/bin/ag ]; then
@@ -273,7 +273,8 @@ fnTmux() {
     fi
 }
 
-fnRmGradleLock() {
+fnGradleFix() {
     find .gradle/ -name "*.lock" | xargs -t -n 1 sudo rm
     find ~/.gradle/ -name "*.lock" | xargs -t -n 1 sudo rm
+    sudo chmod -R 777 .gradle build bin ~/.gradle/
 }
