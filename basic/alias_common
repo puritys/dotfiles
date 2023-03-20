@@ -25,6 +25,7 @@ alias c='/usr/local/bin/myExec.sh'
 alias urlencode='sh /usr/local/bin/puritys/urlencode.sh '
 alias urldecode='sh /usr/local/bin/puritys/urldecode.sh '
 alias so='source ~/.bash_profile'
+alias rmGradleLock='fnRmGradleLock'
 #alias fg='builtin fg $@; printf "\e[H\e[2J"'
 
 if [ -f /usr/bin/ag ]; then
@@ -270,4 +271,9 @@ fnTmux() {
         $cmd source-file ~/.tmux.conf
         $cmd -2 attach -t $1 || $cmd -2 new -s $1
     fi
+}
+
+fnRmGradleLock() {
+    find .gradle/ -name "*.lock" | xargs -t -n 1 sudo rm
+    find ~/.gradle/ -name "*.lock" | xargs -t -n 1 sudo rm
 }
