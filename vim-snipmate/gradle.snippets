@@ -8,6 +8,20 @@ snippet fat-jar
 		with jar
 	}
 
+snippet jar
+	jar {
+		enabled = true
+		archiveName = "xx-with-dependencies"
+		manifest {
+		  attributes(
+			  'Main-Class': 'org.application'
+		  )
+		}
+		from {
+			configurations.runtimeClasspath.collect { it.isDirectory() ? it : zipTree(it) }
+		}
+	}
+
 snippet application
 	buildscript {
 		dependencies {
