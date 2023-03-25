@@ -1,5 +1,8 @@
 snippet local-jar
-	files("/home/xxx.jar")
+	implementation files("build/libs/xxx.jar")
+
+snippet local-dep
+	implementation files('build/libs/one.jar', 'build/libs/two.jar')
 
 snippet fat-jar
 	task fatJar(type: Jar) {
