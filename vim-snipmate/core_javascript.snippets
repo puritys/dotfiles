@@ -126,6 +126,11 @@ snippet date
 	let now = new Date()
 	let date = `${now.getFullYear()}-${now.getMonth() + 1}-${now.getDate()} ${now.getHours()}:${now.getMinutes()}:${now.getSeconds()}`;
 
+snippet date-timezone
+	import moment from 'moment-timezone'
+	let date = moment.tz(new Date(), 'Asia/Taipei')
+	let str = date.format('YYYY-MM-DD HH:mm:ss z')
+
 snippet exit
 	process.exit(1)
 
