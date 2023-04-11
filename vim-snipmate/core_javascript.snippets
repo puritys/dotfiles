@@ -236,6 +236,9 @@ snippet jwt-decode
 	let jwtDecoded = jwt_decode("token", { header: true });
 	console.log("jwtDecoded" , jwtDecoded);
 
+snippet join
+	variable.join(",")
+
 ########
 #  K ~ O
 ########
@@ -349,6 +352,9 @@ snippet query_params
 
 snippet sort
 	sortByTime = array.sort((a, b) => (a.time > b.time) ? -1 : 1)
+
+snippet regular_match_all
+	let matches = [...content.matchAll(/(https?:)?\/\/.+/g)]
 
 ########
 #  U ~ Z
