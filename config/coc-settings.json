@@ -5,7 +5,6 @@
     "diagnostic.enableSign": true,
     "diagnostic.enableHighlightLineNumber": true,
     "diagnostic.checkCurrentLine": true,
-    "diagnostic.virtualText": false,
     "diagnostic.warningSign": "🤔",
     "diagnostic.errorSign": "😡",
     "suggest.noselect": true,
@@ -13,7 +12,8 @@
     "suggest.triggerAfterInsertEnter": false,
     "coc.preferences.extensionUpdateCheck": "never",
     "coc.preferences.jumpCommand": "tabe",
-    "diagnostic.messageTarget": "echo",
+    "diagnostic.messageTarget": "float",
+    "diagnostic.virtualText": false,
     "java.jdt.ls.vmargs": "-javaagent:/usr/local/lib/lombok.jar",
     "coc.preferences.formatOnSaveFiletypes": [
         "xml"
