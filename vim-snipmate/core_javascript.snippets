@@ -355,7 +355,9 @@ snippet sort
 
 snippet regular_match_all
 	let matches = [...content.matchAll(/(https?:)?\/\/.+/g)]
-
+	for (let match of matches) {
+		match[0] is full content
+	}
 ########
 #  U ~ Z
 ########
