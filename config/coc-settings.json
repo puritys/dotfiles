@@ -50,6 +50,9 @@
         ],
         "xml": [
             "mvn_pom"
+        ],
+        "python": [
+            "py"
         ]
     },
     "java.imports.gradle.wrapper.checksums": [
@@ -65,6 +68,5 @@
             "sha256": "3bdfcadb0a6274ec4654ad0db5294d63fe0e65c163d65b79d0c3ad9963ec7499",
             "allowed": true
         }
-
     ]
 }

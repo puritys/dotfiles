@@ -6,6 +6,11 @@ snippet main
 	import re
 	import os.path
 	import MySQLdb
+	def main():
+		printf("test")
+
+	if __name__== "__main__" :
+	    main()
 
 snippet array
 	val = []
@@ -21,7 +26,7 @@ snippet empty
 	if not a:
 
 snippet function
-	def ${0}(param1):
+	def ${0}(param1: str) -> object:
 		return "aaa"
 
 snippet log
@@ -99,6 +104,14 @@ snippet file_read
 	content = f.read().splitlines()
 	print(content)
 
+snippet file_read_line_by_line
+	filename = "XXXX.txt"
+
+	with open(filename) as file:
+		for line in file:
+			print(line.rstrip())
+
+
 snippet file_exist
 	if not os.path.exists(file):
 
@@ -113,6 +126,9 @@ snippet fetchUrl
 	contente = f.read()
 	print(contente)
 
+##
+# J
+###
 snippet json_parse
 	import json
 	j = json.loads(str)
@@ -126,6 +142,10 @@ snippet json_print
 
 snippet json_if_not
 	if "key" not in json["level1"]:
+
+snippet join_array
+	delimiter = ','
+	delimiter.join(array)
 
 snippet image_size
 	import requests
@@ -254,4 +274,4 @@ snippet time
 	ts = time.gmtime()
 
 snippet time_to_date
-	time.strftime("%Y-%m-%d", uts)
+	datetime.fromtimestamp(10020xx).strftime('%Y%m%d')
