@@ -32,6 +32,10 @@ snippet function
 snippet log
 	print getframeinfo(currentframe()).lineno
 
+snippet logging-init
+	import logging
+	logging.basicConfig(level=logging.INFO, filename="/tmp/xx")
+
 snippet print
 	print ("{} - {} ".format(str, str2))
 

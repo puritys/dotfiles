@@ -55,6 +55,7 @@
             "py"
         ]
     },
+    "java.import.gradle.user.home": "/home/puritys/gradle_user_home",
     "java.imports.gradle.wrapper.checksums": [
         {
             "sha256": "684d98bc1696f150c5f49c20ecafe79201d2ff9337520c227d7f51d2f55c6675",

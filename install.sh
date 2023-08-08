@@ -85,6 +85,7 @@ rm -rf ~/.sh_tool/z/
 touch ~/.bash_host
 cp config/coc-settings.json ~/.vim/
 cp config/coc-settings.json ~/.config/nvim/
+mkdir -p ~/gradle_user_home
 
 #
 # Copy all dotfiles
