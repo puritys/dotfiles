@@ -4053,7 +4053,7 @@ ListSelectionListener javax.swing.event.ListSelectionListener
 ListSelectionModel javax.swing.ListSelectionModel
 ListUI javax.swing.plaf.ListUI
 ListView javax.swing.text.html.ListView
-Lists org.apache.commons.collections4.ListUtils
+ListUtils org.apache.commons.collections4.ListUtils
 Literal sun.tools.jstat.Literal
 LiveRef sun.rmi.transport.LiveRef
 LoaderHandler java.rmi.server.LoaderHandler
