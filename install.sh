@@ -317,11 +317,15 @@ $sudo rm -f ~/.vim/plugged/vim-snipmate/snippets/*
 
 cp vim-snipmate/*.snippets ~/.vim/plugged/vim-snipmate/snippets/
 
-# install google java code format
 if [ -d /usr/local/lib/ ]; then
+    # install google java code format
     if [ ! -f /usr/local/lib/google-java-format-1.4-all-deps.jar ]; then
         sudo cp vim/javaPlugin/google-java-format-1.4-all-deps.jar /usr/local/lib/
     fi
+
+    # install lombok for coc-java
+    wget https://projectlombok.org/downloads/lombok.jar
+    sudo mv lombok.jar /usr/local/lib/
 fi
 
 
