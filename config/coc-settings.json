@@ -14,7 +14,6 @@
     "coc.preferences.jumpCommand": "tabe",
     "diagnostic.messageTarget": "float",
     "diagnostic.virtualText": false,
-    "java.jdt.ls.vmargs": "-javaagent:/usr/local/lib/lombok.jar",
     "coc.preferences.formatOnSaveFiletypes": [
         "xml"
     ],
@@ -55,7 +54,7 @@
             "py"
         ]
     },
-    "java.import.gradle.user.home": "/home/puritys/gradle_user_home",
+    "java.import.gradle.user.home": "~/gradle_user_home",
     "java.imports.gradle.wrapper.checksums": [
         {
             "sha256": "684d98bc1696f150c5f49c20ecafe79201d2ff9337520c227d7f51d2f55c6675",
