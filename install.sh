@@ -322,9 +322,11 @@ if [ -d /usr/local/lib/ ]; then
     if [ ! -f /usr/local/lib/google-java-format-1.4-all-deps.jar ]; then
         sudo cp vim/javaPlugin/google-java-format-1.4-all-deps.jar /usr/local/lib/
     fi
-    # install lombok for coc-java
-    wget https://projectlombok.org/downloads/lombok.jar
-    sudo mv lombok.jar /usr/local/lib/
+    if [ ! -f /usr/local/lib/lombok.jar ]; then
+        # install lombok for coc-java
+        wget https://projectlombok.org/downloads/lombok.jar
+        sudo mv lombok.jar /usr/local/lib/
+    fi
 fi
 
 
