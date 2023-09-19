@@ -21,6 +21,8 @@
     "typescript.format.enabled": true,
     "pairs.enableBackspace": false,
     "tabnine.priority": 10,
+    "java.jdt.ls.vmargs": "-javaagent:/usr/local/lib/lombok.jar",
+    "java.jdt.ls.lombokSupport.enabled": false,
     "suggest.preferCompleteThanJumpPlaceholder": true,
     "snippets.snipmate.enable": true,
     "snippets.extends": {
