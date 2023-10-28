@@ -13,6 +13,7 @@ elif [ "x" != "x`command -v yum`" ]; then
     sudo yum install nodejs -y
 else
     curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
+    source ~/.bashrc
     nvm install 16
     nvm use 16
 fi
