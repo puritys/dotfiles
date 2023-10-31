@@ -295,6 +295,7 @@ nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
 nmap <silent> gh :call <SID>show_documentation()<CR>
 
+
 inoremap <silent><expr><c-d> coc#refresh()
 noremap <silent><c-d> :call Show_coc_documentation()<CR>
 " open diagnostics list
@@ -309,6 +310,9 @@ vmap <c-p>  <Plug>(coc-format-selected)
 nmap ,cocdebug :CocCommand workspace.showOutput<CR>
 nmap <leader>rf <Plug>(coc-refactor)
 nmap <leader>rn <Plug>(coc-rename)
+" ,rw: dart wrap
+xmap <leader>rw  <Plug>(coc-codeaction-selected)w
+nmap <leader>rw  <Plug>(coc-codeaction-selected)w
 
 " use <tab> for trigger completion and navigate to the next complete item
 function! s:check_back_space() abort
