@@ -261,7 +261,14 @@ fnDate() {
 fnTmux() {
     c=$1
     ~/.tmux.conf.sh > ~/.tmux.conf
-    cmd="/usr/bin/tmux"
+    if [ -f "/usr/bin/tmux" ]; then
+        cmd="/usr/bin/tmux";
+    elif [ -f "/usr/local/bin/tmux" ]; then
+        cmd="/usr/local/bin/tmux"
+    elif [ -f /opt/homebrew/bin/tmux ]; then
+        cmd="/opt/homebrew/bin/tmux"
+    fi
+
     if [ ! -f $cmd ]; then
         cmd="/usr/local/bin/tmux"
     fi

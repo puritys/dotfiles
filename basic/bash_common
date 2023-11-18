@@ -121,6 +121,8 @@ screen_title () {
             tmux="/usr/bin/tmux";
         elif [ -f "/usr/local/bin/tmux" ]; then
             tmux="/usr/local/bin/tmux"
+        elif [ -f /opt/homebrew/bin/tmux ]; then
+            tmux="/opt/homebrew/bin/tmux"
         fi
         if [ "x" != "x$tmux" ]; then
             hostname=`echo $hostname | cut -c1-6`
