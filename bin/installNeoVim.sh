@@ -1,8 +1,8 @@
 if [[ `uname` == 'Darwin' ]]; then
     wget https://github.com/neovim/neovim/releases/download/v0.6.1/nvim-macos.tar.gz
     tar -zxvf nvim-macos.tar.gz
-    sudo mkdir -p /opt/homebrew/Cellar/neovim/0.6.1/bin/nvim
-    cp -r nvim-osx64 /opt/homebrew/Cellar/neovim/0.6.1/
+    sudo mkdir -p /opt/homebrew/Cellar/neovim/0.6.1/
+    sudo cp -r nvim-osx64/* /opt/homebrew/Cellar/neovim/0.6.1/
     sudo ln -sf /opt/homebrew/Cellar/neovim/0.6.1/bin/nvim  /usr/local/bin/vim
     rm -rf nvim-osx64 nvim-macos.tar.gz
     #brew install neovim
