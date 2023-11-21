@@ -298,12 +298,7 @@ if [ "x$installVimPlugin" != "x" ];then
     fi
 
     # ALE fixer:
-    if [ -f /usr/local/bin/npm ]; then
-        npm="/usr/local/bin/npm"
-    else
-        npm="/usr/bin/npm"
-    fi
-    sudo $npm install -g fixjson
+    sudo npm install -g fixjson
 
 fi
 
