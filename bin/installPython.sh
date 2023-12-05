@@ -2,15 +2,15 @@
 if [ "x" != "x`command -v yum`" ]; then
     sudo yum install python38 -y
 else
-    if [ ! -f /usr/bin/python3 ];then
+    if [ ! -f /usr/bin/python3 ] || [ ! -f /usr/usr/bin/python3 ] ;then
         if [ ! -f Python-3.9.0.tgz ];then
             wget https://www.python.org/ftp/python/3.9.0/Python-3.9.0.tgz
             tar -zxvf Python-3.9.0.tgz
         fi
         cd Python-3.9.0
         ./configure --prefix=/usr --enable-shared
-        gmake
-        sudo gmake install
+        make
+        sudo make install
         wget https://bootstrap.pypa.io/get-pip.py
         sudo /usr/bin/python3.9 get-pip.py
         #sudo pip3.9 install xxx
@@ -28,10 +28,10 @@ if [ ! -f /usr/local/bin/python2.7 ];then
 
     cd Python-2.7.14
     ./configure --prefix=/usr/local/share/python2.7 --enable-unicode=ucs4
-    gmake
-    sudo gmake install
-    sudo ln -sf /usr/local/share/python2.7/bin/python2.7  /usr/bin/python2
-    sudo ln -sf /usr/local/share/python2.7/bin/python2.7  /usr/bin/python2.7
+    make
+    sudo make install
+    sudo ln -sf /usr/local/share/python2.7/bin/python2.7  /usr/local/bin/python2
+    sudo ln -sf /usr/local/share/python2.7/bin/python2.7  /usr/local/bin/python2.7
 
     python setup.py install
     wget https://bootstrap.pypa.io/get-pip.py
