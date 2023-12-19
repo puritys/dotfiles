@@ -895,6 +895,13 @@ snippet stream-array
 	keys = String[]
 	keys = Arrays.stream(keys).map(key -> do(key)).toArray(String[]::new);
 
+snippet stream-parallel
+	List<String> ret = list.parallelStream()
+	.map(s -> {
+		return s + "-ok";
+	})
+	.collect(Collectors.toList());
+
 snippet urlencodeUrl
 	public String encodeQueryString(String url) {
 		try {
