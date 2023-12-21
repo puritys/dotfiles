@@ -329,10 +329,10 @@ fi
 # http://www.vim.org/scripts/script.php?script_id=325
 # Java JDK https://github.com/AdoptOpenJDK/openjdk-jdk11/archive/refs/tags/jdk-11+28.zip
 downloadOpenJdk=0
-if [ "x$JAVA" != "x" ] && [ ! -d "$HOME/openjdk" ]; then
+if [ "x$JAVA" != "x" ] && [ ! -d "$HOME/openjdk/classes" ]; then
     downloadOpenJdk=1
 fi
-if [ "x$JAVAIMP" != "x" ] && [ ! -d "$HOME/openjdk" ]; then
+if [ "x$JAVAIMP" != "x" ] && [ ! -d "$HOME/openjdk/classes" ]; then
     downloadOpenJdk=1
 fi
 if [ "x$downloadOpenJdk" == "x1" ]; then
