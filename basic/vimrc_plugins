@@ -471,6 +471,7 @@ Plug 'dominickng/fzf-session.vim'
 Plug 'dracula/vim', { 'as': 'dracula' }
 Plug 'junegunn/seoul256.vim'
 "Plug 'arcticicestudio/nord-vim' " I copy to local and change some color
+Plug 'uiiaoo/java-syntax.vim'
 
 " ----------------
 " Code change Plugins
