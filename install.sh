@@ -296,7 +296,10 @@ if [ "x$installVimPlugin" != "x" ];then
             # - sudo chmod -R 755 ~/.config/coc/extensions/coc-tabnine-data/
         cd -
     fi
-
+    pip=`command -v pip3`
+    if [ -f $pip ]; then
+        pip3 install pynvim
+    fi
     # ALE fixer:
     sudo npm install -g fixjson
 
