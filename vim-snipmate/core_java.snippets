@@ -507,6 +507,9 @@ snippet jsonpath
 	ReadContext ctx = JsonPath.parse(json);
 	String text = ctx.read("$.store.book[1].author");
 
+snippet jackson-dynamodb
+	TypeReference<Map<String,AttributeValue>> typeRef = new TypeReference<Map<String,AttributeValue>>() {};
+	Map<String,AttributeValue> offset = JsonUtil.jsonToObject(nextOffset, typeRef);
 
 snippet impMap
 	import java.util.Map;

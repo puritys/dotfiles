@@ -6944,6 +6944,7 @@ TypeVariableImpl sun.reflect.generics.reflectiveObjects.TypeVariableImpl
 TypeVariable java.lang.reflect.TypeVariable
 TypeVariableSignature sun.reflect.generics.tree.TypeVariableSignature
 TzIDOldMapping sun.util.calendar.TzIDOldMapping
+TypeReference com.fasterxml.jackson.core.type.TypeReference
 UBiDiProps sun.text.normalizer.UBiDiProps
 UCDecoder sun.misc.UCDecoder
 UCEncoder sun.misc.UCEncoder
