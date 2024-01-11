@@ -4232,6 +4232,7 @@ MBeanTrustPermission javax.management.MBeanTrustPermission
 MD2 sun.security.provider.MD2
 MD4 sun.security.provider.MD4
 MD5 sun.security.provider.MD5
+MDC org.slf4j.MDC
 MechanismFactory sun.security.jgss.spi.MechanismFactory
 Media javax.print.attribute.standard.Media
 MediaName javax.print.attribute.standard.MediaName
