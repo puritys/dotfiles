@@ -87,59 +87,64 @@ snippet main
 	}
 
 
-snippet impoptions
+snippet imp-options
 	'commons-cli:commons-cli:1.4'
 
-snippet impdynamodb
+snippet imp-dynamodb
 	"com.amazonaws:aws-java-sdk-dynamodb:1.11.531",
 
-snippet impdynamodblocal
+snippet imp-dynamodblocal
 	"com.almworks.sqlite4java:sqlite4java:1.0.392",
 	"com.almworks.sqlite4java:libsqlite4java-linux-amd64:1.0.392",
 	"com.amazonaws:DynamoDBLocal:1.11.119"
 
-snippet impstring
+snippet imp-string
 	"org.apache.commons:commons-lang3:3.9"
 
-snippet impguice
+snippet imp-guice
 	"com.google.inject:guice:4.2.2"
 
-snippet impinject
+snippet imp-inject
 	"com.google.inject:guice:4.2.2"
 
-snippet impgson
+snippet imp-gson
 	"com.google.code.gson:gson:1.7.1"
 	"org.json:json:20190722"
 
 snippet impjson
 	"org.json:json:20210307"
 
-snippet impjson_path
+snippet imp-json_path
 	"com.jayway.jsonpath:json-path:2.5.0"
 
-snippet impasync_client
+snippet imp-async_client
 	"org.asynchttpclient:async-http-client:2.12.2"
 
-snippet impapache
-	"org.apache.commons:commons-lang3:3.10",
+snippet imp-apache
+	"org.apache.commons:commons-lang3:3.10"
 
-snippet impbasic
+snippet imp-common-lang
+	"org.apache.commons:commons-lang3:3.14.0"
+
+snippet imp-basic
 	"org.apache.commons:commons-lang3:3.10",
 	"com.google.code.gson:gson:1.7.1",
 	"org.json:json:20190722"
 
 
-snippet implog
+snippet imp-log
 	"org.slf4j:slf4j-api:1.7.25",
 	"org.slf4j:slf4j-jdk14:1.7.25",
 
-snippet implog-simple
+snippet imp-log-simple
 	"org.slf4j:slf4j-simple:1.7.25"
 	src/main/resources/simplelogger.properties : org.slf4j.simpleLogger.defaultLogLevel=debug
 
-snippet implombok
+snippet imp-lombok
 	compileOnly 'org.projectlombok:lombok:1.18.24'
 	annotationProcessor 'org.projectlombok:lombok:1.18.24'
+
+
 
 snippet dep
 	dependencies {
