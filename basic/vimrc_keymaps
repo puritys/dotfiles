@@ -308,6 +308,7 @@ command! -nargs=0 ToggleFormat :call ToggleAutoFormatAndFix()
 
 vmap <c-p>  <Plug>(coc-format-selected)
 nmap ,cocdebug :CocCommand workspace.showOutput<CR>
+nmap ,coclog :CocCommand workspace.showOutput<CR>
 nmap <leader>rf <Plug>(coc-refactor)
 nmap <leader>rn <Plug>(coc-rename)
 " ,rw: dart wrap
