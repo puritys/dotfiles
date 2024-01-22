@@ -26,6 +26,8 @@
     "java.compile.nullAnalysis.mode": "disabled",
     "suggest.preferCompleteThanJumpPlaceholder": true,
     "snippets.snipmate.enable": true,
+    "groovy.trace.server": "off",
+    "groovy.project.referencedLibraries": ["build/libs/"],
     "snippets.extends": {
         "java": [
             "core_java",
