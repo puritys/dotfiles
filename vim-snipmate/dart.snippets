@@ -34,6 +34,27 @@ snippet padding
 		child: Text("xx")
 	),
 
+snippet main
+	import 'package:flutter/material.dart';
+	void main() {
+		runApp(MyApp());
+	}
+	class MyApp extends StatelessWidget {
+		const MyApp({super.key});
+
+		@override
+		Widget build(BuildContext context) {
+			return MaterialApp(
+				title: 'test',
+				home: Scaffold(
+						appBar: AppBar(
+							title: const Text('Demo'),
+						),
+						body: Text("test"),
+				),
+			);
+		}
+	}
 #######
 # R - W
 #######
