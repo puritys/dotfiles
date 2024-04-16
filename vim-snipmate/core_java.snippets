@@ -730,6 +730,42 @@ snippet unit
 	 	}
 	}
 
+snippet unit-with-provider
+	package com.xxx;
+	import com.tngtech.java.junit.dataprovider.*;
+	import org.junit.*;
+	import org.junit.runner.RunWith;
+	import static org.junit.Assert.assertEquals;
+
+	public class AppTest {
+		private App tester;
+
+		@Before
+		public void setUp() throws Exception {
+			this.tester = new App();
+		}
+
+		@Test
+		public void testApp() throws exception {
+			String ret = this.tester.getLink(1);
+			assertEquals("The url should be xxxx", "http://", ret);
+	 	}
+		@DataProvider
+		public static Object[][] provideTest() {
+			return new Object[][] {
+					 // expect      input
+					{"2020-05-01", 1588}
+			};
+		}
+
+		@Test
+		@UseDataProvider("provideTest")
+		public void testFormatDate(String expect, long t) {
+			String result = Tester.run(t);
+			assertEquals(expect, result);
+		}
+	}
+
 snippet unitexception
 	@Test(expected = Exception.class)
 

@@ -111,7 +111,7 @@ snippet imp-gson
 	"com.google.code.gson:gson:1.7.1"
 	"org.json:json:20190722"
 
-snippet impjson
+snippet imp-json
 	"org.json:json:20210307"
 
 snippet imp-json_path
@@ -144,7 +144,11 @@ snippet imp-lombok
 	compileOnly 'org.projectlombok:lombok:1.18.24'
 	annotationProcessor 'org.projectlombok:lombok:1.18.24'
 
-
+snippet imp-test-junit4
+	testImplementation (
+		'com.tngtech.java:junit-dataprovider:1.13.1',
+		'junit:junit:4.13.2'
+	)
 
 snippet dep
 	dependencies {
