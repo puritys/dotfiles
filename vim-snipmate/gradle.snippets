@@ -271,3 +271,8 @@ snippet protobuf
 snippet imp_proto
 	"com.google.protobuf:protobuf-java:3.8.0",
 	"com.google.protobuf:protobuf-java-util:3.17.3"
+
+snippet exclude
+	implementation ('com.xxx:1.2.1') {
+		exclude group: "org.slf4j", module: "slf4j-jdk14"
+	}
