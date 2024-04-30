@@ -276,3 +276,38 @@ snippet exclude
 	implementation ('com.xxx:1.2.1') {
 		exclude group: "org.slf4j", module: "slf4j-jdk14"
 	}
+
+snippet release
+	plugins {
+		id 'java'
+		id 'maven-publish'
+
+		// build one jar application
+		id 'com.github.johnrengelman.shadow' version "7.0.0"
+
+		// build package plugins
+		id "net.researchgate.release" version "2.6.0"
+	}
+	shadowJar {
+		zip64 = true
+		classifier = 'jar-with-dependencies'
+	}
+	release {
+		failOnUpdateNeeded = false
+		failOnCommitNeeded = false
+		failOnUnversionedFiles = false
+		failOnPublishNeeded = false
+		preTagCommitMessage = '[skip ci]'
+		preCommitText = '[skip ci]'
+		tagTemplate = '${name}-${version}'
+		git {
+			requireBranch = 'main'
+			pushToRemote = 'origin'
+			pushToBranchPrefix = ''
+			commitVersionFileOnly = true
+			signTag = false
+		}
+	}
+	// don't commit version file
+	commitNewVersion.enabled = false
+	preTagCommit.enabled = false
