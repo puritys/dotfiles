@@ -1115,7 +1115,7 @@ snippet options-pure
 			if (args[i].length() >= 2 && args[i].substring(0, 2).equals("-h")) {
 				showHelp(options);
 			}
-			if (args[i].length() >= 6 && args[i].substring(0, 2).equals("--help")) {
+			if (args[i].length() >= 6 && args[i].substring(0, 6).equals("--help")) {
 				showHelp(options);
 			}
 
