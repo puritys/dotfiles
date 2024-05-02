@@ -252,6 +252,13 @@ snippet null_annotation
 	import lombok.NonNull;
 	@NonNull xx
 
+snippet lombok-data
+	import lombok.Data;
+	import lombok.experimental.Accessors;
+
+	@Data
+	@Accessors(chain = true)
+
 snippet optional_if
 	String text = Optional.ofNullable(t1).orElseGet(() -> getT2());
 # -----------
