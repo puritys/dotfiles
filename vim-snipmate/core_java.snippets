@@ -1107,15 +1107,34 @@ snippet options
 
 snippet options-pure
 	public static Map<String, String> readInput(String[] args) {
+		Map<String, String> options = new HashMap<String, String>();
+		options.put("debug", "true / false");
+
 		Map<String, String> ret = new HashMap<>();
 		for (int i = 0; i < args.length; i++) {
-		if (args[i].length() > 2 && args[i].substring(0, 2).equals("--")) {
-			if (args.length > (i + 1))
+			if (args[i].length() >= 2 && args[i].substring(0, 2).equals("-h")) {
+				showHelp(options);
+			}
+			if (args[i].length() >= 6 && args[i].substring(0, 2).equals("--help")) {
+				showHelp(options);
+			}
+
+			if (args[i].length() >= 2 && args[i].substring(0, 2).equals("--")) {
+				if (args.length > (i + 1))
 				ret.put(args[i].substring(2), args[++i]);
 			}
 		}
 		return ret;
 	}
+
+	public static void showHelp(Map<String, String> options) {
+		System.out.println("\n\nHelp?");
+		for (Map.Entry<String, String> entry : options.entrySet()) {
+			System.out.println(entry.getKey() + ": " + entry.getValue());
+		}
+		System.exit(1);
+	}
+
 
 snippet sync
 	private volatile syn = null;
