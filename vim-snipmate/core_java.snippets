@@ -1105,6 +1105,18 @@ snippet options
 	}
 	String version = cmd.getOptionValue(versionOpt.getOpt());
 
+snippet options-pure
+	public static Map<String, String> readInput(String[] args) {
+		Map<String, String> ret = new HashMap<>();
+		for (int i = 0; i < args.length; i++) {
+		if (args[i].length() > 2 && args[i].substring(0, 2).equals("--")) {
+			if (args.length > (i + 1))
+				ret.put(args[i].substring(2), args[++i]);
+			}
+		}
+		return ret;
+	}
+
 snippet sync
 	private volatile syn = null;
 	if (null == syn) {
