@@ -26,6 +26,7 @@ alias urlencode='sh /usr/local/bin/puritys/urlencode.sh '
 alias urldecode='sh /usr/local/bin/puritys/urldecode.sh '
 alias so='source ~/.bash_profile'
 alias gradleFix='fnGradleFix'
+alias removeAllCocJava="rm -rf ~/.config/coc/extensions/coc-java-data/jdt_ws*"
 #alias fg='builtin fg $@; printf "\e[H\e[2J"'
 
 if [ -f /usr/bin/ag ]; then
