@@ -290,7 +290,16 @@ snippet proto_enum
 # R - W
 #######
 snippet resource_path
-	this.getClass().getClassLoader().getResource("xxx").getPath();
+	String path = this.getClass().getClassLoader().getResource("xxx").getPath();
+	@Cleanup BufferedReader bufReader = new BufferedReader(
+		new InputStreamReader(new FileInputStream(file), Charset.forName("UTF-8"))
+	);
+
+snippet resource_stream
+	InputStream path = this.getClass().getClassLoader().getResourceAsStream("xxx");
+	@Cleanup BufferedReader bufReader = new BufferedReader(
+		new InputStreamReader(path)
+	);
 
 snippet runable_func
 	public <T> T getObj(Callable<T> func) {
