@@ -28,7 +28,7 @@ alias so='source ~/.bash_profile'
 alias gradleFix='fnGradleFix'
 alias cocJavaRemoveAll="cocJavaKill; echo -e 'rm -rf ~/.config/coc/extensions/coc-java-data/jdt_ws*'; rm -rf ~/.config/coc/extensions/coc-java-data/jdt_ws*"
 alias cocJavaTail="echo -e 'tail -f  ~/.config/coc/extensions/coc-java-data/jdt_ws_*/.metadata/.log\n'; tail -f  ~/.config/coc/extensions/coc-java-data/jdt_ws_*/.metadata/.log"
-alias cocJavaKill="ps aux |grep 'coc-java-data' |grep 'coc'  |grep -v 'grep|--color-line' | tee /dev/tty | awk '{printf \"kill -9 %s\\n\",\$2}' | tee /dev/tty | sh"
+alias cocJavaKill='fnCocKill'
 alias readCert="openssl x509 -noout -text -in "
 
 #alias fg='builtin fg $@; printf "\e[H\e[2J"'
@@ -289,4 +289,12 @@ fnGradleFix() {
     find .gradle/ -name "*.lock" | xargs -t -n 1 sudo rm
     find ~/.gradle/ -name "*.lock" | xargs -t -n 1 sudo rm
     sudo chmod -R 777 .gradle build bin ~/.gradle/ ./container
+}
+
+fnCocKill() {
+    ps aux |grep 'coc-java-data' |grep 'coc'  |grep -v 'grep|--color-line' | tee /dev/tty | awk '{printf "kill -9 %s\n",$2}' | tee /dev/tty | sh
+
+    ps aux |grep 'coc.nvim'  |grep -v 'grep|--color-line' | tee /dev/tty | awk '{printf "kill -9 %s\n",$2}' | tee /dev/tty | sh
+
+
 }
