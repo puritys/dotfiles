@@ -1054,12 +1054,21 @@ snippet mockinject
 		MockitoAnnotations.initMocks(this);
 	}
 
-snippet mockprivate
+snippet mockprivate_method
 	Method method = xxObj.getClass().getDeclaredMethod("method_name", Int.class);
 	method.setAccessible(true);
 	Object[] parameters = new Object[1];
 	parameters[0] = 1;
 	int ret = (Int) method.invoke(this, parameters);
+
+snippet mockprivate_property
+	try {
+		Field field = object.getClass().getDeclaredField("keyname");
+		field.setAccessible(true);
+	 	String xx = (String) field.get(dao);
+	} catch (Exception e) {
+		e.printStackTrace();
+	}
 
 snippet unitprodvier
 	@RunWith(DataProviderRunner.class)
