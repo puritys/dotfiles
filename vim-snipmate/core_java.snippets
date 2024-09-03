@@ -444,12 +444,6 @@ snippet imppowermock
 	import org.powermock.modules.junit4.PowerMockRunner;
 	import org.powermock.api.mockito.PowerMockito;
 
-snippet impprovider
-	import org.junit.*
-	import com.tngtech.java.junit.dataprovider.DataProvider;
-	import com.tngtech.java.junit.dataprovider.DataProviderRunner;
-	import com.tngtech.java.junit.dataprovider.UseDataProvider;
-	import org.junit.runner.RunWith;
 
 
 snippet impinject
@@ -1070,7 +1064,7 @@ snippet mockprivate_property
 		e.printStackTrace();
 	}
 
-snippet unitprodvier
+snippet unit-provider
 	@RunWith(DataProviderRunner.class)
 	public class xxxoTest {
 		@Test
@@ -1087,7 +1081,7 @@ snippet unitprodvier
 		}
 	}
 
-snippet unitprodvier_testng
+snippet unit-provider-testng
 	import org.testng.annotations.DataProvider;
 	public class xxxoTest {
 		@Test(dataProvider = "provideTestG")
