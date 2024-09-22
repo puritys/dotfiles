@@ -158,6 +158,7 @@ installTmux () {
         make
         sudo make install
         rm -rf tmux*
+        cd -
     elif [[ `uname` == 'Darwin' ]]; then
         ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)" < /dev/null 2> /dev/null
         brew install tmux
@@ -183,10 +184,11 @@ installFzf () {
         # ------------
         cd ~/.sh_tool/ ; wget https://github.com/clvv/fasd/tarball/1.0.1
         tar -zxvf 1.0.1
-        cd clvv-fasd-4822024; PREFIX=$HOME make install
+        cd -
+        cd ~/.sh_tool/clvv-fasd-4822024; PREFIX=$HOME make install
         sudo cp fasd /usr/local/bin/
         sudo chmod 755 /usr/local/bin/fasd
-        cd ../../
+        cd -
     fi
 
 }
@@ -211,6 +213,7 @@ installAg() {
         fi
         if [ "x0" == "x$installedAg" ] && [ "x" != "x`command -v yum`" ];then
             sudo yum install automake pcre-devel xz-devel zlib-devel -y
+            echo "current pwd = `pwd`"
             if [ ! -d the_silver_searcher ]; then
                 git clone https://github.com/ggreer/the_silver_searcher.git
             fi
@@ -218,7 +221,7 @@ installAg() {
             ./build.sh
             make
             sudo make install
-            cd ..
+            cd -
         fi
     fi
 
@@ -253,6 +256,7 @@ if [ ! -d ~/.vim/plugged/YouCompleteMe ]; then
     cd ~/.vim/plugged/YouCompleteMe
     git submodule update --init --recursive
     python2 ./install.py --clang-completer # or --all  --clang-completer --gocode-completer --java-completer
+    cd -
 fi
 fi
 
