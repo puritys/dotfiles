@@ -708,11 +708,12 @@ snippet map-entry
 	Map.Entry<String, String> m = new AbstractMap.SimpleEntry<String, String>("a", "b");
 
 snippet map-initialize
-	import com.google.common.collect.ImmutableMap;
-	private static Map<String, String> m = ImmutableMap.<String, String>builder()
-		.put("id", "id")
-		.put("image", "image")
-	.build();
+	Map<String, String> map = Map.of("key1", "value1", "key2", "value2");
+	// or
+	Map<String, String> map = Stream.of(new String[][] {
+		{ "key1", "value1" },
+		{ "key2", "value2" },
+	}).collect(Collectors.toMap(data -> data[0], data -> data[1]));
 
 snippet map-stream-filter-value
 	<String, String>maObj.entrySet().stream()
