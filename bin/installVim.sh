@@ -5,8 +5,8 @@ else
     sudo yum install  -y ncurses-devel
 fi
 if [ ! -f vim.tar.gz ]; then
-    wget https://github.com/vim/vim/archive/v8.2.3401.tar.gz
-    mv v8.2.3401.tar.gz vim.tar.gz
+    wget https://github.com/vim/vim/archive/v9.1.0810.tar.gz
+    mv v9.1.0810.tar.gz vim.tar.gz
 fi
 tar -zxvf vim.tar.gz
 if [[ `uname` == 'Darwin' ]]; then
