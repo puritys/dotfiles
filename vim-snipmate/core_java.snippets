@@ -721,6 +721,10 @@ snippet map-stream-filter-value
 		.map(Map.Entry::getValue)
 		.collect(Collectors.toList());
 
+snippet map-get-or-init
+	userPermissions.computeIfAbsent(userId, key -> new ArrayList<>()).add("READ");
+
+
 snippet time
 	System.currentTimeMillis();
 
