@@ -311,6 +311,10 @@ snippet sort
 										o1.getId().compareTo( o2.getId() );
 	Collections.sort(emplyees, compareById);
 
+snippet sort-simple
+	List<Object> users
+	users.sort(Comparator.comparingLong(User::getTime));
+
 snippet timeToDate
 	ZonedDateTime date = ZonedDateTime.ofInstant(i, ZoneId.of("Asia/Taipei"));
 	DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy/MM/dd");
@@ -644,6 +648,11 @@ snippet for
 snippet forMap
 	for (Map.Entry<String, String> entry : map.entrySet()) {
 		System.out.println(entry.getKey() + "/" + entry.getValue());
+	}
+
+snippet forMapValues
+	for (String value : map.values()) {
+		System.out.println(value);
 	}
 
 snippet random
