@@ -480,6 +480,7 @@ Plug 'uiiaoo/java-syntax.vim'
 Plug 'godlygeek/tabular' " align code
 Plug 'vim-scripts/PDV--phpDocumentor-for-Vim', {'for': 'php'}
 Plug 'puritys/vim-cterm-to-gui', {'for': 'vim'}
+Plug 'puritys/vim-openai-codeImprove'
 
 "" code format
 "Plugin 'google/vim-codefmt'
