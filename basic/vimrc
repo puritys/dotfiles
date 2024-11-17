@@ -10,6 +10,8 @@ function! DisableAle()
    "" let g:ale_linters_explicit = 1
 endfunction
 
+let g:python3_host_prog = '/usr/bin/python3'
+
 " disable SQL dynamic completion
 let g:omni_sql_no_default_maps = 1
 "let g:loaded_sql_completion = 1
