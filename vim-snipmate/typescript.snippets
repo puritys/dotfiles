@@ -80,3 +80,14 @@ snippet ts-overloading
 	function add(a: any, b:any): any {
 		return a + b;
 	}
+
+snippet ts-promise
+	return new Promise<any>((resolve, reject) => {
+		connection.query(
+			"select * from xx",
+			(error, results, fields) => {
+				if (error) console.log(error);
+				resolve(results);
+			}
+		);
+	});
