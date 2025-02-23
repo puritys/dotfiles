@@ -208,12 +208,13 @@ fnDate() {
             break;
         fi
         case "$1" in
-          -t | --timestamp   ) timestamp=$2; shift 2 ;;
-          -d | --date ) date=$2; shift 2 ;;
+          -t | --timestamp   ) timestamp=$2; output="date"; shift 2 ;;
+          -d | --date ) date=$2; output="time"; shift 2 ;;
           -o | --output ) output=$2; shift 2 ;;
           -h | --help  )
               echo "Usage:"
-              echo "mydate -d 20170101 -o time"
+              echo "mydate -d 20170101"
+              echo "mydate -t 1637645400"
               echo "-t: timestamp, ex: -t 12312 "
               echo "-d: date, ex: -d 20170301"
               echo "-o: date/timestamp/time, ex: -o time"
@@ -229,13 +230,16 @@ fnDate() {
     if [ "x$os" == "xDarwin" ]; then
         case "$output" in
         time*)
-            echo `date +%s`
+            date -j -f "%Y/%m/%d" "$date" +"%s"
+            return
         ;;
         date)
-            echo `date "+%Y/%m/%d %H:%M:%S"`
+            date -r $timestamp +"%Y/%m/%d %H:%M:%S %z"
+            return
         ;;
         *)
             echo `date -r $1`
+            return
         ;;
         esac
     else
@@ -259,7 +263,7 @@ fnDate() {
 
     fi
     echo "$cmd"
-    echo `$cmd`
+    `$cmd`
 
 }
 
