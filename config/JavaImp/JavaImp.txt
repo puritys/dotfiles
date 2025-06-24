@@ -988,6 +988,8 @@ CallableStatement java.sql.CallableStatement
 CallbackHandler javax.security.auth.callback.CallbackHandler
 Callback javax.security.auth.callback.Callback
 CallSite java.lang.invoke.CallSite
+Caffeine com.github.benmanes.caffeine.cache.Caffeine
+Cache com.github.benmanes.caffeine.cache.Cache
 CancelablePrintJob javax.print.CancelablePrintJob
 Cancellable sun.nio.ch.Cancellable
 Cancellable sun.nio.fs.Cancellable
@@ -4059,6 +4061,7 @@ LiveRef sun.rmi.transport.LiveRef
 LoaderHandler java.rmi.server.LoaderHandler
 LoaderHandler sun.rmi.server.LoaderHandler
 LoadLibraryAction sun.security.action.LoadLibraryAction
+LoadingCache com.github.benmanes.caffeine.cache.LoadingCache
 LocaleData sun.util.resources.LocaleData
 LocaleExtensions sun.util.locale.LocaleExtensions
 LocaleISOData java.util.LocaleISOData

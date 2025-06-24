@@ -165,6 +165,24 @@ snippet aws-regions
 	import com.amazonaws.regions.Regions;
 	Regions REGION = Regions.AP_SOUTHEAST_1;
 
+snippet caffeine-simple
+	Cache<String, Val> cache = Caffeine.newBuilder()
+		.expireAfterWrite(10, TimeUnit.MINUTES)
+		.maximumSize(10)
+		.build();
+	Val data = cache.getIfPresent(key);
+
+snippet caffeine-fallback
+	LoadingCache<String, Val> cache = Caffeine.newBuilder()
+		.maximumSize(10)
+		.expireAfterWrite(10, TimeUnit.MINUTES)
+		.build(key -> this.getFromSource(key));
+
+snippet caffeine-async-fallback
+	AsyncLoadingCache<String, Val> cache = Caffeine.newBuilder()
+		.maximumSize(10)
+		.expireAfterWrite(10, TimeUnit.MINUTES)
+		.buildAsync(key -> this.getFromSource(key));
 
 # -------------
 # Future / Complete Future
