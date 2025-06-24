@@ -975,8 +975,6 @@ CachedXPathFuncHereAPI com.sun.org.apache.xml.internal.security.utils.CachedXPat
 CacheMap com.sun.jmx.remote.util.CacheMap
 CacheRequest java.net.CacheRequest
 CacheResponse java.net.CacheResponse
-Cache sun.misc.Cache
-Cache sun.security.util.Cache
 CacheTable sun.security.krb5.internal.rcache.CacheTable
 CalendarBuilder java.text.CalendarBuilder
 CalendarDate sun.util.calendar.CalendarDate
