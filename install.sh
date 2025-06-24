@@ -362,6 +362,10 @@ if [ "x$downloadOpenJdk" == "x1" ]; then
     cd -
 fi
 
+if [ -d ~/.vim/JavaImp/ ];then
+    cp config/JavaImp/* ~/.vim/JavaImp/
+fi
+
 # JAVA settings
 if [ ! -d "$HOME/workspace/.metadata/.plugins/org.eclipse.core.runtime/.settings/" ];then
     mkdir -p $HOME/workspace/.metadata/.plugins/org.eclipse.core.runtime/.settings/;
