@@ -6407,6 +6407,7 @@ StorageResolver com.sun.org.apache.xml.internal.security.keys.storage.StorageRes
 StorageResolverException com.sun.org.apache.xml.internal.security.keys.storage.StorageResolverException
 StorageResolverSpi com.sun.org.apache.xml.internal.security.keys.storage.StorageResolverSpi
 StratumLineInfo com.sun.tools.jdi.StratumLineInfo
+Stream java.util.stream.Stream
 StreamClosedException sun.net.httpserver.StreamClosedException
 StreamCloser com.sun.imageio.stream.StreamCloser
 StreamCorruptedException java.io.StreamCorruptedException

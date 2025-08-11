@@ -691,7 +691,7 @@ snippet list
 
 snippet list-partition
 	import org.apache.commons.collections4.ListUtils;
-	List<String> p = ListUtils.partition(ps, 10);
+	List<List<String>> p = ListUtils.partition(ps, 10);
 
 snippet list-synchronized
 	List<String> ex = Collections.synchronizedList(new ArrayList<>());
