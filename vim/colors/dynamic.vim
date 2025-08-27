@@ -136,7 +136,7 @@ call s:hi("Error", s:nord4_gui, s:nord11_gui, "", s:nord11_term, "", "")
 call s:hi("iCursor", s:nord0_gui, s:nord4_gui, "", "NONE", "", "")
 call s:hi("LineNr", s:nord3_gui_bright, "NONE", s:nord3_term, "NONE", "", "")
 call s:hi("MatchParen", s:nord8_gui, s:nord3_gui, s:nord8_term, s:nord3_term, "", "")
-call s:hi("NonText", s:nord2_gui, "", s:nord3_term, "", "", "")
+call s:hi("NonText", s:nord3_gui_bright, "", s:nord3_term, "", "", "")
 call s:hi("Normal", s:nord4_gui, s:nord1_gui, "NONE", "NONE", "", "")
 call s:hi("Pmenu", s:nord4_gui, s:nord2_gui, "NONE", s:nord1_term, "NONE", "")
 call s:hi("PmenuSbar", s:nord4_gui, s:nord2_gui, "NONE", s:nord1_term, "", "")
@@ -195,7 +195,7 @@ call s:hi("SignColumn", s:nord1_gui, s:nord0_gui, s:nord1_term, "NONE", "", "")
 call s:hi("Directory", s:nord8_gui, "", s:nord8_term, "NONE", "", "")
 
 "+--- Prompt/Status ---+
-call s:hi("EndOfBuffer", s:nord1_gui, "", s:nord1_term, "NONE", "", "")
+call s:hi("EndOfBuffer", s:nord3_gui_bright, "", s:nord1_term, "NONE", "", "")
 call s:hi("ErrorMsg", s:nord4_gui, s:nord11_gui, "NONE", s:nord11_term, "", "")
 call s:hi("ModeMsg", s:nord4_gui, "", "", "", "", "")
 call s:hi("MoreMsg", s:nord8_gui, "", s:nord8_term, "", "", "")
@@ -227,9 +227,9 @@ call s:hi("TabLineSel", s:nord1_gui, s:nord9_gui, s:nord8_term, s:nord3_term, "N
 call s:hi("Title", s:nord4_gui, "", "NONE", "", "NONE", "")
 
 if g:nord_bold_vertical_split_line == 0
-  call s:hi("VertSplit", s:nord2_gui, s:nord0_gui, s:nord3_term, "NONE", "NONE", "")
+  call s:hi("VertSplit", s:nord3_gui_bright, s:nord0_gui, s:nord3_term, "NONE", "NONE", "")
 else
-  call s:hi("VertSplit", s:nord2_gui, s:nord1_gui, s:nord3_term, s:nord1_term, "NONE", "")
+  call s:hi("VertSplit", s:nord3_gui_bright, s:nord1_gui, s:nord3_term, s:nord1_term, "NONE", "")
 endif
 
 "+----------------------+
@@ -238,7 +238,7 @@ endif
 call s:hi("Boolean", s:nord9_gui, "", s:nord9_term, "", "", "")
 call s:hi("Character", s:nord14_gui, "", s:nord14_term, "", "", "")
 call s:hi("Comment", s:comment_gui, "", s:nord3_term, "", s:italicize_comments, "")
-call s:hi("Conceal", "", "NONE", "", "NONE", "", "")
+call s:hi("Conceal", s:nord3_gui_bright, "NONE", "", "NONE", "", "")
 call s:hi("Conditional", s:nord9_gui, "", s:nord9_term, "", "", "")
 call s:hi("Constant", s:nord4_gui, "", "NONE", "", "", "")
 call s:hi("Decorator", s:nord12_gui, "", s:nord12_term, "", "", "")
