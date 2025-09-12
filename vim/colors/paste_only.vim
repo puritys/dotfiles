@@ -15,7 +15,7 @@ endif
 
 let g:colors_name = "paste_only"
 
-hi Normal       ctermfg=248 ctermbg=233 gui=NONE  guifg=#008787   guibg=NONE
+hi Normal       ctermfg=248 ctermbg=233 gui=NONE  guifg=#a0d7d7   guibg=NONE
 hi TabLineFill cterm=NONE ctermfg=NONE ctermbg=240 guifg=NONE guibg=#585858
 hi TabLine cterm=NONE ctermfg=247 ctermbg=240 guifg=#9e9e9e guibg=#585858
 hi TabLineSel cterm=NONE ctermfg=16 ctermbg=230 guifg=#000000 guibg=#f1e7d0
