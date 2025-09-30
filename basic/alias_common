@@ -30,6 +30,7 @@ alias cocJavaRemoveAll="cocJavaKill; echo -e 'rm -rf ~/.config/coc/extensions/co
 alias cocJavaTail="echo -e 'tail -f  ~/.config/coc/extensions/coc-java-data/jdt_ws_*/.metadata/.log\n'; tail -f  ~/.config/coc/extensions/coc-java-data/jdt_ws_*/.metadata/.log"
 alias cocJavaKill='fnCocKill'
 alias readCert="openssl x509 -noout -text -in "
+alias javaVersion="sudo update-alternatives --config java"
 
 #alias fg='builtin fg $@; printf "\e[H\e[2J"'
 
