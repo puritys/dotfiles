@@ -22,6 +22,7 @@
     "pairs.enableBackspace": false,
     "tabnine.priority": 10,
     "java.jdt.ls.vmargs": "-javaagent:/usr/local/lib/lombok.jar -XX:+UseParallelGC -XX:GCTimeRatio=4 -XX:AdaptiveSizePolicyWeight=90 -Dsun.zip.disableMemoryMapping=true -Xmx2G -Xms100m -Xlog:disable",
+    "java.inlayHints.parameterNames.enabled":  "none",
     "java.jdt.ls.lombokSupport.enabled": false,
     "java.compile.nullAnalysis.mode": "disabled",
     "java.import.gradle.wrapper.enabled": false,
