@@ -5,7 +5,7 @@
     "diagnostic.enableSign": true,
     "diagnostic.enableHighlightLineNumber": true,
     "diagnostic.messageTarget": "float",
-    "diagnostic.checkCurrentLine": false,
+    "diagnostic.checkCurrentLine": true,
     "diagnostic.warningSign": "🤔",
     "diagnostic.errorSign": "😡",
     "suggest.noselect": true,
