@@ -593,3 +593,7 @@ let g:coc_status_warning_sign = "🤔"
 let g:coc_disable_transparent_cursor = 1
 "" coc integrate lightline status
 autocmd User CocStatusChange,CocDiagnosticChange call lightline#update()
+
+
+"" vim-openai-codeImprove
+let g:vim_openai_codeImprove_enableGemini = 1
