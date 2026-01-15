@@ -2229,6 +2229,7 @@ DuctusRenderingEngine sun.dc.DuctusRenderingEngine
 DummyScope sun.reflect.generics.scope.DummyScope
 DuplicateFormatFlagsException java.util.DuplicateFormatFlagsException
 DuplicateRequestException com.sun.jdi.request.DuplicateRequestException
+Duration java.time.Duration
 DynamicFileAttributeView sun.nio.fs.DynamicFileAttributeView
 DynamicMBean2 com.sun.jmx.mbeanserver.DynamicMBean2
 DynamicMBean javax.management.DynamicMBean
