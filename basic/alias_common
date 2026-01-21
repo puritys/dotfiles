@@ -298,7 +298,7 @@ fnGradleFix() {
 
 fnCocKill() {
     ps aux |grep 'coc-java-data' |grep 'coc'  |grep -v 'grep|--color-line' | tee /dev/tty | awk '{printf "kill -9 %s\n",$2}' | tee /dev/tty | sh
-
+    ps aux |grep 'groovy-languag' |grep 'coc' |grep -v 'grep|--color-line' | tee /dev/tty | awk '{printf "kill -9 %s\n",$2}'  | tee /dev/tty | sh
     ps aux |grep 'coc.nvim'  |grep -v 'grep|--color-line' | tee /dev/tty | awk '{printf "kill -9 %s\n",$2}' | tee /dev/tty | sh
 
 
