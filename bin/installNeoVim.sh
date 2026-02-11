@@ -18,4 +18,8 @@ else
     sudo chmod -R 755 /usr/share/nvim/
     sudo chmod 755 /usr/bin/nvim
     sudo ln -sf /usr/bin/nvim /usr/bin/vim
+
+    # install required python module
+    sh installPython.sh
+    python3 -m pip install --user --upgrade pynvim
 fi
