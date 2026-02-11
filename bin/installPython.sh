@@ -1,6 +1,6 @@
 # Install Python 3.9
 if [ "x" != "x`command -v yum`" ]; then
-    sudo yum install python38 -y
+    sudo yum install python39 -y
 else
     if [ ! -f /usr/bin/python3 ] || [ ! -f /usr/usr/bin/python3 ] ;then
         if [ ! -f Python-3.9.0.tgz ];then
