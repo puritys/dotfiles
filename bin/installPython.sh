@@ -1,6 +1,8 @@
 # Install Python 3.9
 if [ "x" != "x`command -v yum`" ]; then
     sudo yum install python39 -y
+    wget https://bootstrap.pypa.io/get-pip.py
+    /usr/bin/python3.9 get-pip.py
 else
     if [ ! -f /usr/bin/python3 ] || [ ! -f /usr/usr/bin/python3 ] ;then
         if [ ! -f Python-3.9.0.tgz ];then
