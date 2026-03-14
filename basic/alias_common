@@ -31,6 +31,7 @@ alias cocJavaTail="echo -e 'tail -f  ~/.config/coc/extensions/coc-java-data/jdt_
 alias cocJavaKill='fnCocKill'
 alias readCert="openssl x509 -noout -text -in "
 alias javaVersion="sudo update-alternatives --config java"
+alias vscodeCreateSetting='fnVscodeCreateSetting'
 
 #alias fg='builtin fg $@; printf "\e[H\e[2J"'
 
@@ -300,6 +301,24 @@ fnCocKill() {
     ps aux |grep 'coc-java-data' |grep 'coc'  |grep -v 'grep|--color-line' | tee /dev/tty | awk '{printf "kill -9 %s\n",$2}' | tee /dev/tty | sh
     ps aux |grep 'groovy-languag' |grep 'coc' |grep -v 'grep|--color-line' | tee /dev/tty | awk '{printf "kill -9 %s\n",$2}'  | tee /dev/tty | sh
     ps aux |grep 'coc.nvim'  |grep -v 'grep|--color-line' | tee /dev/tty | awk '{printf "kill -9 %s\n",$2}' | tee /dev/tty | sh
+
+
+}
+
+fnVscodeCreateSetting() {
+    cat <<EOF >> .vscode/settings.json
+{
+    "java.compile.nullAnalysis.mode": "automatic",
+    "java.debug.settings.onBuildFailureProceed": true,
+    "java.configuration.updateBuildConfiguration": "automatic",
+    "java.project.sourcePaths": [
+        "src/main/java",
+        "src/test/java",
+        "src/test/groovy",
+        "target/generated-sources/java"
+    ]
+}
+EOF
 
 
 }
