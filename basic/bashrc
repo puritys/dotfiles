@@ -15,6 +15,9 @@ export PATH
 
 export NODE_PATH=/usr/local/lib/node_modules:/usr/lib/node_modules
 
+
+export CLAUDE_CODE_DISABLE_ALTERNATE_SCREEN=1
+
 if [ -f ~/.bash_theme ]; then
     . ~/.bash_theme
 fi
