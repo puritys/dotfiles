@@ -52,7 +52,7 @@ powerline () {
     if [ -z $enableCustFont ]; then
         powPath="$powPath$color \[\e[0m\]"
     fi
-    PS1="$RET$powPath\n"
+    PS1="$RET$powPath\[\e[0m\]\[\e[38;2;160;160;160m\] \D{%Y-%m-%d} \t \[\e[0m\]\n"
 
 }
 
