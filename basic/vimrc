@@ -50,18 +50,20 @@ set rtp+=~/.fzf
 
 syntax on
 
+set encoding=utf-8
+set fileencodings=utf-8,big5,cp936,latin1 "encoding
+"set termencoding=utf-8
+
+
 set laststatus=2   " Always show the statusline
 "set cmdheight=2 " ::help hit-enter, don't show Press ENTER or type command to contin
-set encoding=utf-8 " Necessary to show Unicode glyphs
 if !has('nvim')
     set term=xterm-256color
 endif
-set termencoding=utf-8
 
 set noswapfile
 set nocompatible
 set hlsearch "high light search
-set encoding=utf-8
 set nu
 set tabstop=4 shiftwidth=4  softtabstop=0 expandtab
 set nosmarttab
@@ -71,7 +73,7 @@ set showcmd
 set bg=dark
 set backspace=2
 set t_Co=256 "設定成256色
-source $VIMRUNTIME/macros/matchit.vim
+"source $VIMRUNTIME/macros/matchit.vim
 set foldmethod=marker
 set tabpagemax=100
 
@@ -92,10 +94,6 @@ endif
 set ruler
 
 let mapleader=","
-
-set encoding=utf-8
-set fileencodings=utf-8,big5,cp936,latin1 "encoding
-set termencoding=utf-8
 
 
 source $VIMRUNTIME/menu.vim
