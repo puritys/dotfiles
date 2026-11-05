@@ -205,6 +205,8 @@ fnGitMergeRepo() {
 
 
 fnDate() {
+    # 避免上一次呼叫殘留的值影響這次的判斷
+    local date timestamp output
     while true; do
         if [ "x$1" == "x" ];then
             break;
@@ -215,7 +217,7 @@ fnDate() {
           -o | --output ) output=$2; shift 2 ;;
           -h | --help  )
               echo "Usage:"
-              echo "mydate -d 20170101"
+              echo "mydate -d 2017/01/01"
               echo "mydate -t 1637645400"
               echo "-t: timestamp, ex: -t 12312 "
               echo "-d: date, ex: -d 20170301"
@@ -227,6 +229,11 @@ fnDate() {
           * ) echo "$1 is not a correct option.";shift 1; ;;
         esac
     done
+
+    if [ "x$date" == "x" ] && [ "x$timestamp" == "x" ]; then
+        date +"%s"
+        return
+    fi
 
     os=`uname`
     if [ "x$os" == "xDarwin" ]; then
