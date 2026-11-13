@@ -121,24 +121,27 @@ noremap <F2>     :TagbarOpenAutoClose<CR>
 ":TagbarToggle<CR>
 
 " F3, toggle paste
+" coc 尚未啟動完成時呼叫 CocAction 會丟 E605，所以先檢查 ready
+function! s:CocDiagnosticToggle()
+    if g:enableCocLsp == 1 && exists('*coc#rpc#ready') && coc#rpc#ready()
+        call CocAction('diagnosticToggle')
+    endif
+endfunction
+
 function! PASTE()
     let l:pasteTheme = "paste_only"
     if  g:colors_name != l:pasteTheme
         set paste
         let g:DEF_COLOR = g:colors_name
         call SWITCH_THEME_AS_NAME(l:pasteTheme)
-        if g:enableCocLsp == 1
-            call CocAction('diagnosticToggle')
-        endif
+        call s:CocDiagnosticToggle()
         set nonu
         set pastetoggle=<F3>
     else
         let g:DEF_COLOR = get(g:, 'DEF_COLOR', "nord")
         set  nopaste
         call SWITCH_THEME_AS_NAME(g:DEF_COLOR)
-        if g:enableCocLsp == 1
-            call CocAction('diagnosticToggle')
-        endif
+        call s:CocDiagnosticToggle()
         set nu
         set pastetoggle=
     endif
