@@ -27,7 +27,7 @@
     "java.jdt.ls.lombokSupport.enabled": false,
     "java.compile.nullAnalysis.mode": "disabled",
     "java.import.gradle.wrapper.enabled": false,
-    "java.import.gradle.version": "7.6.4",
+    "java.import.gradle.version": "8.14.3",
     "suggest.preferCompleteThanJumpPlaceholder": true,
     "snippets.snipmate.enable": true,
     "groovy.trace.server": "off",
